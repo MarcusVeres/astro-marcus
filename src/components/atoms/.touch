@@ -1,0 +1,25 @@
+# Atomic Design - Component Architecture
+
+## Atoms (your "small components")
+
+Button, Input, Label, Icon
+Single-purpose, highly reusable
+No business logic
+
+
+## Molecules (your "bigger components")
+
+Form, SearchBar, Card
+Combine atoms into functional units
+Some local state/logic
+
+
+## Organisms (your "sections")
+
+ContactSection, HeroSection, TestimonialBlock
+Complete, self-contained sections
+Business logic and data fetching
+
+---
+
+I used Atoms, Blocks and Sections because "Blocks" and "Sections" are self-evident, but "UI" is generic. Also "atoms" come before blocks alphabetically. 
