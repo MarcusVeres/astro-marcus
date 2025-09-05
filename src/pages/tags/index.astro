@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+// 
+import { getCollection } from "astro:content";
+
+// Get all unique tags from all posts 
+const allPosts = await getCollection("blog");
+const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+
+const pageTitle = "Tags Index"
+---
+<BaseLayout pageTitle={ pageTitle }>
+    <ul class="tags">
+        { uniqueTags.map( (tag) => (
+            <li><a class="tag" href={`/tags/${tag}`}>{tag}</a></li>   
+        ) ) }
+    </ul>
+</BaseLayout>
+
+<style>
+  a {
+    color: #00539F;
+    display: block;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .tag {
+    margin: 0.25em;
+    border: dotted 1px #a1a1a1;
+    border-radius: .5em;
+    padding: .5em 1em;
+    font-size: 1.15em;
+    background-color: #F8FCFD;
+  }
+  .tag:hover {
+    background-color: #FFF;
+  }
+</style>

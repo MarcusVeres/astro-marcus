@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+const pageTitle = "About Me"
+const subject = "you"
+
+const identity = {
+    firstName: "Namey",
+    lastName: "Boi",
+    country: "Heaven",
+    occupation: "Entrepreneur",
+    hobbies: ["eating", "pooping", "making money"],
+}
+
+const skills = ["Writing" , "Speaking", "Programming", "Design", "Sex"]
+
+const happy = true;
+const finished = true;
+const goal = "side your butt";
+const treatos = 5;
+
+const titleColor = "salmon"     // this won't work, but the others below it, will...
+const skillColor = "#1e75bb"
+const skillWeight = "bold"
+const skillCase = "uppercase"
+---
+<BaseLayout pageTitle={pageTitle}>
+    
+    <style is:global define:vars={{skillColor, skillWeight, skillCase, titleColor}}>
+        :root {
+            --titleColor: salmon;               /* Manual global injection */
+        }
+        h1 {
+            color: var(--titleColor);           /* Now available globally */
+            font-size: 3.14rem;                 /* Direct property, no conflict */
+        }
+        .skill {
+            color: var(--skillColor);           /* define:vars works fine here */
+            font-weight: var(--skillWeight);
+            text-transform: var(--skillCase);
+        }
+    </style>
+
+    <h2>All about <i>{subject}</i>, boo ;)</h2>
+    <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
+    <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
+    <hr>
+    <p>Here are a few facts about me:</p>
+    <ul>
+    <li>My name is {identity.firstName} {identity.lastName}.</li>
+    <li>I live in {identity.country} and I work as a {identity.occupation}.</li>
+    {identity.hobbies.length >= 2 &&
+        <li>Two of my hobbies are: {identity.hobbies[0]} and {identity.hobbies[1]}</li>
+    }
+    </ul>
+    <p>My skills are:</p>
+    <ul>
+    {skills.map((skill) => <li class="skill">{skill}</li>)}
+    </ul>
+    <hr>
+    <h2>Conditional logic:</h2>
+    {happy && <p>I am happy to be learning Astro!</p>}
+    {finished && <p>I finished this tutorial!</p>}
+    {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+    <p>Today I ate {treatos} treatos, which is {treatos > 3 ? "more than" : "less than"} 3.
+
+</BaseLayout>
