@@ -1,0 +1,15 @@
+---
+interface Props {
+  href?: string;
+  class?: string;
+}
+
+const { href = "/", class: className = "w-auto h-8" } = Astro.props;
+---
+
+<a href={href} class="-m-1.5 p-1.5 text-white">
+  <span class="sr-only">Your Portfolio</span>
+  <!-- <img src="/your-logo.svg" alt="Your Portfolio Logo" class={className} /> -->
+  <!-- <img src="/your-logo.svg" alt="Logo" class={className} /> -->
+   <h1 class="text-xs uppercase" style="font-size: 16px;">Marcus Veres</h1>
+</a>
