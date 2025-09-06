@@ -7,10 +7,10 @@ const greetings = ["Hai", "Hello", "Hej", "Hey there", "Hi", "Howdy", "Hola", "H
 const pageTitle = "Home Page"
 ---
 <BaseLayout pageTitle={`I am the bestest Astro Marcus and this is my ${pageTitle}!`}>
-	
-	<h2>#1 Good boy :3</h2>
+	<div class="mx-auto max-w-standard">
+		<h2>#1 Good boy :3</h2>
 
-	<!-- this button works because client:load tells the component to reload the script -->
-	<Greeting client:load messages={greetings} />
-
+		<!-- this button works because client:load tells the component to reload the script -->
+		<Greeting client:load messages={greetings} />
+	</div>
 </BaseLayout>

@@ -4,10 +4,9 @@ html {
 }
 
 body {
-  margin: 0 auto;
+  margin: 0;
+  padding: 0;
   width: 100%;
-  max-width: 80ch;
-  padding: 1rem;
   line-height: 1.5;
 }
 
@@ -18,6 +17,12 @@ body {
 h1 {
   margin: 1rem 0;
   font-size: 2.5rem;
+}
+
+/* generic */
+
+.max-w-standard {
+  max-width: 1220px;
 }
 
 /* nav styles */
