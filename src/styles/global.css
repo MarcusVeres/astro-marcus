@@ -1,7 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
 @import "tailwindcss";
+
+/* forces light mode */
+@custom-variant dark (&:where(.force-light, .force-light *));
+
+/* animations */
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
 @import "./theme.css";
 @import "./base.css";
 @import "./components.css";
 @import "./utilities.css";
 
 @import "./astro-crap.css";
+

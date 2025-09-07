@@ -26,4 +26,49 @@
   --max-width-standard: 1200px;
   --max-width-wide: 1400px;
   --max-width-narrow: 800px;
+
+  /* ------------------------------------- */
+
+  
+ --font-inter: "Inter", sans-serif;
+
+  /* simple mode */
+  --animate-rotate-border: border-rotate 3s linear infinite;
+  @keyframes border-rotate {
+    to {
+      --border-angle: 360deg;
+    }
+  }
+
+  /* 2Advanced */
+  --animate-rotate-border-square: border-rotate-square 5s linear infinite;    /* Square elements (1:1) - original works fine */
+  --animate-rotate-border-tall: border-rotate-tall 5s linear infinite;        /* Tall rectangles (1:2, 1:3, etc) */
+  --animate-rotate-border-wide: border-rotate-wide 5s linear infinite;
+  /* --animate-rotate-border-wide: border-rotate-wide 5s cubic-bezier(0.25, 1, 0.25, 1) infinite; */
+
+  /* Square (1:1) - Original works fine */
+  @keyframes border-rotate-square {
+    to {
+      --border-angle: 360deg;
+    }
+  }
+
+  /* Wide Rectangle - Smooth easing to counteract optical illusion */
+  @keyframes border-rotate-wide {
+    0%     { --border-angle: 62.5deg; }
+    25%  { --border-angle: 117.5deg; } 
+    50%    { --border-angle: 242.5deg; } 
+    75%    { --border-angle: 297.5deg; }
+    100%   { --border-angle: 422deg; }
+  }
+
+  /* Tall Rectangle (1:2) - Fast on short sides, slow on long sides */
+  @keyframes border-rotate-tall {
+    0% { --border-angle: 0deg; }
+    16.67% { --border-angle: 90deg; }   /* First short side (fast) */
+    50% { --border-angle: 180deg; }     /* First long side (slow) */
+    66.67% { --border-angle: 270deg; }  /* Second short side (fast) */
+    100% { --border-angle: 360deg; }    /* Second long side (slow) */
+  }
+
 }
