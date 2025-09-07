@@ -1,0 +1,12 @@
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 font-medium text-white rounded-lg bg-primary-500;
+    @apply hover:bg-primary-600 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+    @apply transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-white border border-gray-200 shadow-sm rounded-xl;
+    @apply p-6 transition-shadow duration-200 hover:shadow-md;
+  }
+}
