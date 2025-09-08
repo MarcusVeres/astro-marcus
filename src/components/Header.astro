@@ -4,8 +4,8 @@ import NavigationLinks from './blocks/NavigationLinks.astro';
 import MobileMenu from './blocks/MobileMenu.astro';
 ---
 
-<header class="sticky top-0 z-10 w-full border-b border-gray-600 isolate bg-black/90 backdrop-blur-md">
-  <nav aria-label="Global" class="flex items-center justify-between p-6 mx-auto max-w-7xl lg:px-8">
+<header class="sticky top-0 z-10 w-full bg-black border-b border-gray-600 isolate backdrop-blur-md">
+  <nav aria-label="Global" class="flex items-center justify-between p-4 mx-auto max-w-[1600px] lg:px-8">
     <!-- Logo -->
     <div class="flex lg:flex-1">
       <Logo />
@@ -26,16 +26,10 @@ import MobileMenu from './blocks/MobileMenu.astro';
     
     <!-- CTA -->
     <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-      <a href="/contact" class="transition-all ease-in-out duration-300 font-semibold text-gray-800 hover:text-black uppercase text-sm/6 animate-background rounded-full border-2 border-black/90 hover:border-black/30 bg-gradient-to-r from-green-300 via-blue-600 to-red-300 bg-[length:_400%_400%] p-0.5 [animation-duration:_6s]">
-        <span class="block px-6 py-2 text-sm font-medium rounded-full bg-pink-50 hover:bg-white"> Connect </span>
+      <a href="/contact" class="transition-all ease-in-out duration-500 font-semibold text-gray-800 hover:text-black uppercase text-sm/6 animate-background rounded-full border-[3px] border-black/90 hover:border-black/30 bg-gradient-to-r from-green-300 via-blue-600 to-red-300 bg-[length:_400%_400%] p-0.5 [animation-duration:_6s]">
+        <span class="block px-6 py-2 text-xs font-bold tracking-widest rounded-full bg-pink-50 hover:bg-white"> Connect </span>
       </a>
     </div>
-
-    <!-- <div class="hidden lg:flex lg:flex-1 lg:justify-end"></div>
-      <a href="/contact" class="block animate-background rounded-full border-8 border-black/30 bg-gradient-to-r from-green-300 via-blue-600 to-red-300 bg-[length:_400%_400%] p-1 [animation-duration:_6s]">
-        <span class="block px-10 py-4 text-sm font-medium rounded-full bg-pink-50"> Push to Start </span>
-      </a>
-    </div> -->
 
   </nav>
   
