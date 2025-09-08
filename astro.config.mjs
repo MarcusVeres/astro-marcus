@@ -8,7 +8,16 @@ import preact from "@astrojs/preact";
 export default defineConfig({
   integrations: [preact()],
   vite: {
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            'preact-bundle': ['preact', '@astrojs/preact', 'preact/hooks']
+          }
+        }
+      }
+    },
     plugins: [tailwindcss()],
   },
-  site: "https://astro-tutorial-1-good-boy-america.netlify.app",
+  site: "https://astro-marcus.netlify.app",
 });
