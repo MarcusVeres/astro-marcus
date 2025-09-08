@@ -1,12 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 
+import HeroSplitScreenshot from '../components/sections/HeroSplitScreenshot.astro'
+
 import Greeting from '../components/Greeting'
 const greetings = ["Hai", "Hello", "Hej", "Hey there", "Hi", "Howdy", "Hola", "Hullo"]
 
 const pageTitle = "Home Page"
 ---
 <BaseLayout pageTitle={`I am the bestest Astro Marcus and this is my ${pageTitle}!`}>
+
+	<HeroSplitScreenshot />
 
 	<div class="grid h-screen p-10 place-content-center bg-gradient-to-b from-black to-black">
 
