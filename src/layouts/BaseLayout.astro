@@ -18,12 +18,15 @@ const { pageTitle } = Astro.props;
 		
 		<title>Astro // {pageTitle}</title>
 
-		<!-- No more CDN scripts needed! Tailwind is now built into your CSS -->
+		<!-- Preconnect to font origins -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+		<!-- Load font with display=swap -->
+		<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
 		<!-- TailwindPlus Elements script -->
-		<!--
-		<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 		<script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
-		-->
 
 	</head>
 	<body class="antialiased">
