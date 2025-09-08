@@ -1,4 +1,5 @@
 @layer components {
+  
   .btn-primary {
     @apply px-6 py-3 font-medium text-white rounded-lg bg-primary-500;
     @apply hover:bg-primary-600 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
@@ -9,4 +10,32 @@
     @apply bg-white border border-gray-200 shadow-sm rounded-xl;
     @apply p-6 transition-shadow duration-200 hover:shadow-md;
   }
+  
+  /* Option 1: Using Tailwind v4 color/opacity syntax */
+  .glass-only {
+    @apply border border-gray-600 bg-gray-900/30 backdrop-blur-md;
+  }
+  
+  .glass {
+    @apply p-10 m-10 text-gray-100 border border-gray-600 bg-gray-900/30 backdrop-blur-md;
+  }
+  
+  .pane {
+    @apply p-10 pb-12 text-gray-100 border border-gray-600 bg-gray-900/30 backdrop-blur-md;
+  }
+
+  /* Option 2: More explicit glass effect with better browser support */
+  .glass-v2 {
+    @apply p-10 m-10 text-gray-100 border border-white/20 backdrop-blur-md;
+    background: rgba(17, 24, 39, 0.3); /* gray-900 with 30% opacity */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  
+  /* Option 3: Modern CSS approach using color-mix (if you want to be cutting edge) */
+  .glass-modern {
+    @apply p-10 m-10 text-gray-100 border border-white/20 backdrop-blur-md;
+    background: color-mix(in srgb, rgb(17 24 39) 30%, transparent);
+  }
+
 }

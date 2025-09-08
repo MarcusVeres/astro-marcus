@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+const pageTitle = "Contact"
+---
+<BaseLayout pageTitle={`${pageTitle} blog`}>
+
+    <div class="bg-fixed bg-teal-400 min-h-[100vh] w-[100vw] bg-[url('https://marcusveres.com/static/media/bg-phones.5295b2f16bb144454de3.webp')]">
+
+    <section class="flex flex-col items-center justify-center h-full md:flex-row">
+
+        <img class="absolute object-center" src="../assets/img/bg-bulb-1.jpg" />
+
+        <div class="relative flex flex-col items-center justify-center max-w-md glass rounded-3xl">
+            <img class="max-w-xs" src="../assets/img/moonlit-logo-1.png" />
+            <p class="-mb-6 tracking-widest uppercase">
+                Illuminating
+            </p>
+            <h2 class="font-bold tracking-wide uppercase">
+                Brilliant Ideas
+            </h2>
+            <p class="py-10 text-lg text-center text-gray-300">
+                Put the pixels of your content in front of your users. Easy, fast and beautiful.
+            </p>
+            <button class="px-6 py-3 text-white uppercase bg-blue-400 rounded-lg shadow-xl bg-opacity-10 hover:bg-opacity-30">
+                Contact Us Here
+            </button>
+            <div class="absolute text-2xl font-bold text-gray-200 -mt-18 -bottom-14">
+                <button class="block float-right px-6 pt-2 pb-4 m-0 bg-blue-900 rounded-br-lg bg-opacity-30 hover:bg-opacity-50">
+                    &gt;
+                </button>
+                <button class="block float-right px-6 pt-2 pb-4 m-0 bg-blue-900 rounded-bl-lg bg-opacity-20 hover:bg-opacity-50">
+                    &lt;
+                </button>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="">
+        <div class="container">
+
+            <h2 class="">
+                About
+            </h2>
+            <h3 class="">
+                We make web-based software tools for professionals. 
+            </h3>
+            <h4 class="pl-2 mt-4 text-xl">
+                Our sites are <span class="font-bold text-green-300">fast!</span>
+            </h4>
+            <p class="">
+                Our sites <span class="font-bold text-yellow-300">rank</span> as high as possible.
+            </p>
+
+        </div>
+    </section>
+
+    <section class="">
+        <div class="container relative">
+
+            <h2 class="">
+                Business
+            </h2>
+            <p>
+                Lorem ipsum dolor sit amet. 
+            </p>
+            <h3>
+                We offer the following services.
+            </h3>
+
+            <div class="mt-40">
+                <div class="">
+                    <ul class="mlit-services">
+                        <li class="">
+                            <div class="glass rounded-3xl">                                
+                                <h3 class="">
+                                    Web Sites
+                                </h3>
+                                <p>
+                                    Lorem ipsum dolor sit amet.
+                                </p>
+                            </div>
+                            <div class="max-w-4xl md:-ml-72">
+                                <img src="../assets/img/web-sites-1.png" />
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="glass rounded-3xl">
+                                <h3 class="">
+                                    Custom Dashboards
+                                </h3>
+                                <p class="text-lg">
+                                    You run your business, we show you how your business is running.
+                                </p>
+                            </div>
+                            <div class="max-w-2xl md:-mr-32">
+                                <img src="../assets/img/custom-dashboards-1.png" />
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="glass rounded-3xl">
+                                <h3 class="">
+                                    Mobile Apps
+                                </h3>
+                                <p>
+                                    Lorem ipsum dolor sit amet.
+                                </p>
+                            </div>
+                            <div class="max-w-md md:-ml-32">
+                                <img src="../assets/img/mobile-apps-1.png" />
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="glass rounded-3xl">
+                                <h3 class="">
+                                    Print
+                                </h3>
+                                <p class="text-lg">
+                                    Make pretty things!
+                                </p>
+                            </div>
+                            <div class="max-w-4xl md:-mr-64">
+                                <img src="../assets/img/web-sites-1.png" />
+                            </div>
+                        </li>
+                        <li class="">
+                            <div class="glass rounded-3xl">
+                                <h3 class="">
+                                    Branding
+                                </h3>
+                                <p>
+                                    Lorem ipsum dolor sit amet.
+                                </p>
+                            </div>
+                            <div class="max-w-md md:-ml-32">
+                                <img src="../assets/img/moonlit-logo-1.png" />
+                            </div>
+                        </li>
+                        <li class="py-44">
+                            <div class="absolute max-w-5xl">
+                                <img src="../assets/img/phone-back-blue.png" />
+                            </div>
+                            <div class="glass rounded-3xl">
+                                <h3 class="">
+                                    3D Illustration
+                                </h3>
+                                <p>
+                                    Lorem ipsum dolor sit amet.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+    <section class="">
+        <div class="container">
+            <h2 class="">
+                Contact
+            </h2>
+            <h4 class="">
+                Ready to take your business to the next level? 
+            </h4>
+            <h3 class="">
+                Let us bring the future to your fingertips.
+            </h3>
+            <form class="" action="#">
+                <input class="" type="text" placeholder="Hello" />
+                <input class="" type="text" placeholder="Hello" />
+                <input class="" type="text" placeholder="Hello" />
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+
+
+    </div>
+</BaseLayout>
