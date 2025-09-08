@@ -44,8 +44,8 @@ const pageTitle = "Home Page"
 	<div class="mx-auto max-w-standard">
 		<h2>#1 Good boy :3</h2>
 
-		<!-- this button works because client:load tells the component to reload the script -->
-		<Greeting client:load messages={greetings} />
+		<!-- this button works because client:load tells the component to reload the script; using client:visible to bypass pagespeed bullshit -->
+		<Greeting client:visible messages={greetings} />
 	</div>
 
 	<div class="grid h-screen p-10 place-content-center bg-gradient-to-tr from-green-50 to-teal-50 via-pink-50">
