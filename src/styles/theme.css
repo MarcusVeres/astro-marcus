@@ -29,6 +29,21 @@
 
   /* ------------------------------------- */
 
+  --animate-background: background-move ease infinite;
+
+  @keyframes background-move {
+    0%,
+    100% {
+      background-position: 10% 50%;
+    }
+
+    50% {
+      background-position: 90% 50%;
+    }
+  }
+
+  /* ------------------------------------- */
+
   
  --font-inter: "Inter", sans-serif;
 

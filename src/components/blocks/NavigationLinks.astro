@@ -1,14 +1,15 @@
 ---
 const navigationItems = [
-  { name: 'Blog', href: '/blog' },
-  { name: 'About', href: '/about' },
-  { name: 'Tags', href: '/tags' }
+  { name: 'Insights', href: '/blog' },
+  { name: 'Resources', href: '/about' },
+  { name: 'Services', href: '/tags' },
+  { name: 'Shop', href: '/tags' },
 ];
 ---
 
 <el-popover-group class="hidden lg:flex lg:gap-x-12">
   {navigationItems.map(item => (
-    <a href={item.href} class="font-semibold text-white text-sm/6">
+    <a href={item.href} class="font-semibold text-white uppercase transition-all duration-300 ease-in-out text-sm/6 hover:text-yellow-400">
       {item.name}
     </a>
   ))}
