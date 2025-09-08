@@ -3,12 +3,18 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 
 import HeroImageTiles from '../components/sections/HeroImageTiles.astro'
 import FeatureCentered2x2 from '../components/sections/FeatureCentered2x2.astro'
+import CTAGlassGlow from '../components/sections/CTAGlassGlow.astro'
+import BentoThreeColumn from '../components/sections/BentoThreeColumn.astro'
 
 const pageTitle = "Services"
 ---
 <BaseLayout pageTitle={`I am the bestest Astro Marcus and this is my ${pageTitle}!`}>
 
 	<FeatureCentered2x2 title="Everything you need to dominate" />
+
+	<BentoThreeColumn />
+
+	<CTAGlassGlow title="Supercharge your productivity." subtitle="Become more effective today!" />
 
 	<div class="grid h-screen p-10 place-content-center bg-gradient-to-b from-black to-black">
 
