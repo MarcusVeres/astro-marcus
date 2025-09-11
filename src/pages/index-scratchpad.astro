@@ -1,0 +1,212 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+import HeroSplitScreenshot from '../components/sections/HeroSplitScreenshot.astro'
+import CTAGlassGlow from '../components/sections/CTAGlassGlow.astro'
+
+import Greeting from '../components/Greeting'
+const greetings = ["Hai", "Hello", "Hej", "Hey there", "Hi", "Howdy", "Hola", "Hullo"]
+
+import { Image } from 'astro:assets'  // Import Astro's Image component
+import logo from '../assets/images/logo.png'  // Import the image
+
+const pageTitle = "Home Page"
+---
+<BaseLayout pageTitle={`I am the bestest Astro Marcus and this is my ${pageTitle}!`}>
+
+	<div class="hidden">
+		One Pager
+		<ul>
+			<li>hero message</li>
+			<li>temp pic</li>
+			<li>link to contact</li>
+			<li>link to insightsn</li>
+			<li>what I'm good at </li>
+			<li>how this works</li>
+			<li>services</li>
+			<li>contact me</li>
+			<li>testimonials</li>
+			<li>footer</li>
+		</ul>
+	</div>
+
+	<!--
+  <div class="relative overflow-hidden isolate pt-14">
+	<div class="relative">
+		<img src="/images/2022-01-27-live-2.png" alt="" class="fixed inset-0 object-cover -z-10 size-full" />
+		<div class="fixed top-0 left-0 z-30 w-full h-full bg-black/30"></div>
+	</div>
+    <div aria-hidden="true" class="absolute inset-x-0 z-50 overflow-hidden -top-40 transform-gpu blur-3xl sm:-top-80">
+      <div style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" class="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-30rem)] sm:w-288.75"></div>
+    </div>
+    <div class="px-6 mx-auto max-w-7xl lg:px-8">
+      <div class="max-w-2xl py-32 mx-auto sm:py-48 lg:py-56">
+        <div class="hidden sm:mb-8 sm:flex sm:justify-center">
+          <div class="relative px-3 py-1 text-gray-400 rounded-full text-sm/6 ring-1 ring-white/10 hover:ring-white/20">
+            Announcing our next round of funding. <a href="#" class="font-semibold text-indigo-400"><span aria-hidden="true" class="absolute inset-0"></span>Read more <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        </div>
+        <div class="text-center">
+          <h1 class="text-5xl font-semibold tracking-tight text-white text-balance sm:text-7xl">Data to enrich your online business</h1>
+          <p class="mt-8 text-lg font-medium text-gray-400 text-pretty sm:text-xl/8">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat.</p>
+          <div class="flex items-center justify-center mt-10 gap-x-6">
+            <a href="#" class="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Get started</a>
+            <a href="#" class="font-semibold text-white text-sm/6">Learn more <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div aria-hidden="true" class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]">
+      <div style="clip-path: polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" class="relative left-[calc(50%+3rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%+36rem)] sm:w-288.75"></div>
+    </div>
+  </div>
+-->
+
+	<HeroSplitScreenshot />
+	<CTAGlassGlow title="You already have everything you need." subtitle="It's time that you learn how to use it." />
+
+
+	<div class="grid h-screen p-10 place-content-center bg-gradient-to-b from-black to-black">
+
+		<a href="#" class="transition-all ease-in-out duration-700 block animate-background rounded-full border-8 border-black/80 bg-gradient-to-r from-green-300 via-blue-600 to-red-300 bg-[length:_400%_400%] p-2 [animation-duration:_6s] group hover:border-black/50 hover:bg-black/50">
+			<span class="transition-all ease-in-out duration-700 block px-10 py-4 text-md md:text-[44px] text-white uppercase rounded-full bg-black/90 font-extralight group-hover:bg-black/50"> Push to Start </span>
+		</a>
+
+		<!-- <div
+		class="no-repeat border-[10px] border-black/80 w-full max-w-lg bg-conic/[from_var(--border-angle)] from-red-400 to-pink-500 dark:from-black via-green-300 dark:to-black animate-rotate-border-wide rounded-full p-[8px] transition-all ease-in-out duration-300 text-gray-300 hover:text-gray-100"
+		>
+		<div class="p-5 bg-black border rounded-full dark:bg-zinc-900 border-white/40">
+			<p class="text-5xl text-center dark:text-white font-extralight">
+			START NOW
+			</p>
+		</div>
+		</div>
+
+		<div
+		class="no-repeat border-[16px] border-black/90 w-full max-w-lg bg-conic/[from_var(--border-angle)] from-red-400 to-pink-500 dark:from-black via-green-300 dark:to-black animate-rotate-border-wide rounded-full p-[4px] transition-all ease-in-out duration-300 text-gray-300 hover:text-gray-100 shadow-2xl shadow-slate-600"
+		>
+		<div class="p-5 bg-black rounded-full opacity-100 dark:bg-zinc-900 ">
+			<p class="text-5xl text-center dark:text-white font-extralight">
+			START NOW
+			</p>
+		</div>
+		</div> -->
+
+	</div>
+
+	
+	<div class="max-w-6xl px-4 mx-auto">
+		<h1 class="mb-8 text-3xl font-bold text-gray-900">{pageTitle}</h1>
+	</div>
+
+	<div class="mx-auto max-w-standard">
+		<h2>#1 Good boy :3</h2>
+
+		<!-- this button works because client:load tells the component to reload the script; using client:visible to bypass pagespeed bullshit -->
+		<Greeting client:visible messages={greetings} />
+	</div>
+
+	<div class="grid h-screen p-10 place-content-center bg-gradient-to-tr from-green-50 to-teal-50 via-pink-50">
+	<a href="#" class="block animate-background rounded-full border-8 border-black/30 bg-gradient-to-r from-green-300 via-blue-600 to-red-300 bg-[length:_400%_400%] p-1 [animation-duration:_6s]">
+		<span class="block px-10 py-4 text-lg font-medium rounded-full bg-pink-50"> Push to Start </span>
+	</a>
+	</div>
+
+
+	<div class="bg-gradient-to-tr from-mint-100 via-slate-50 to-white dark:from-black dark:to-slate-900 bg-slate-200 dark:bg-slate-950 text-black dark:text-white gap-5 bg-no-repeat bg-cover flex min-h-[100vh] py-20 flex-col items-center justify-center">
+	<!-- <div class="bg-gradient-to-tr from-mint-100 via-pink-200 to-pink-50 dark:from-black dark:to-slate-900 bg-slate-50 dark:bg-slate-950 text-black dark:text-white gap-5 bg-no-repeat bg-cover flex min-h-[100vh] py-20 flex-col items-center justify-center"> -->
+
+		<!--
+		<div
+		class="w-full max-w-lg bg-conic/[from_var(--border-angle)] from-white to-white dark:from-black via-green-400 dark:to-black animate-rotate-border rounded-2xl p-[1px]"
+		>
+		<div class="p-10 rounded-2xl dark:bg-zinc-900 bg-pink-50">
+			<p class="text-sm font-semibold text-center text-black dark:text-white">
+			Adjust padding to "increase the border thickness"
+			</p>
+		</div>
+		</div>
+
+		<div
+		class="w-full max-w-lg bg-conic/[from_var(--border-angle)] from-white to-white dark:from-black via-green-400 dark:to-black animate-rotate-border rounded-2xl p-[1px]"
+		>
+		<div class="p-10 rounded-2xl dark:bg-zinc-900 bg-pink-50 opacity-5">
+			<p class="font-semibold text-center text-black dark:text-white">
+			By the padding to "increase the border thickness"
+			</p>
+		</div>
+		</div>
+		-->
+
+		<div
+		class="no-repeat border-[10px] border-black/80 w-full max-w-lg bg-conic/[from_var(--border-angle)] from-red-400 to-pink-500 dark:from-black via-green-300 dark:to-black animate-rotate-border-wide rounded-full p-[8px] transition-all ease-in-out duration-300 text-gray-300 hover:text-gray-100"
+		>
+		<div class="p-5 bg-black border rounded-full dark:bg-zinc-900 border-white/40">
+			<p class="text-5xl text-center dark:text-white font-extralight">
+			START NOW
+			</p>
+		</div>
+		</div>
+
+		<div
+		class="no-repeat border-[16px] border-black/90 w-full max-w-lg bg-conic/[from_var(--border-angle)] from-red-400 to-pink-500 dark:from-black via-green-300 dark:to-black animate-rotate-border-wide rounded-full p-[4px] transition-all ease-in-out duration-300 text-gray-300 hover:text-gray-100 shadow-2xl shadow-slate-600"
+		>
+		<div class="p-5 bg-black rounded-full opacity-100 dark:bg-zinc-900 ">
+			<p class="text-5xl text-center dark:text-white font-extralight">
+			START NOW
+			</p>
+		</div>
+		</div>
+
+		<!-- <div
+		class="no-repeat border-[15px] border-black/0 w-full max-w-lg bg-conic/[from_var(--border-angle)] from-red-400 to-pink-500 dark:from-black via-green-300 dark:to-black animate-rotate-border-wide rounded-full p-[4px] transition-all ease-in-out duration-300 text-gray-300 hover:text-gray-100"
+		>
+		<div class="p-5 bg-black rounded-full opacity-100 dark:bg-zinc-900 ">
+			<p class="text-5xl text-center dark:text-white font-extralight">
+			START NOW
+			</p>
+		</div>
+		</div> -->
+
+		<!-- <div
+		class="w-full max-w-lg bg-conic/[from_var(--border-angle)] from-red-400 to-pink-500 dark:from-black via-green-300 dark:to-black animate-rotate-border-wide rounded-full p-[4px] transition-all ease-in-out duration-300 text-gray-300 hover:text-gray-100"
+		>
+		<div class="p-5 rounded-full dark:bg-zinc-900 bg-black opacity-100 border-[3px] border-white/90">
+			<p class="text-5xl text-center dark:text-white font-extralight">
+			START NOW
+			</p>
+		</div>
+		</div> -->
+
+		<!-- <div
+		class="w-full max-w-lg bg-conic/[from_var(--border-angle)] from-red-400 to-pink-500 dark:from-black via-green-300 dark:to-black animate-rotate-border-wide rounded-full p-[4px] transition-all ease-in-out duration-300 text-gray-300 hover:text-gray-100"
+		>
+		<div class="p-5 bg-black rounded-full opacity-100 dark:bg-zinc-900 ">
+			<p class="text-5xl text-center dark:text-white font-extralight">
+			START NOW
+			</p>
+		</div>
+		</div> -->
+
+		<!-- <div
+		class="w-full max-w-lg bg-conic/[from_var(--border-angle)] from-mint-50 to-mint-50 dark:from-black via-pink-200 dark:to-black animate-rotate-border-wide rounded-full p-[1px] transition-all ease-in-out duration-300 text-gray-400 hover:text-gray-800"
+		>
+		<div class="p-10 rounded-full opacity-100 dark:bg-zinc-900 bg-pink-50 ">
+			<p class="text-5xl text-center dark:text-white font-extralight">
+			START NOW
+			</p>
+		</div>
+		</div> -->
+
+	</div>
+
+	
+	<div class="bg-gradient-to-tr from-mint-100 via-pink-200 to-pink-50 dark:from-black dark:to-slate-900 bg-slate-50 dark:bg-slate-950 text-black dark:text-white gap-5 bg-no-repeat bg-cover flex min-h-[100vh] py-20 flex-col items-center justify-center">
+		Beep	
+	</div>
+	<div class="bg-gradient-to-tr from-mint-100 via-slate-50 to-white dark:from-black dark:to-slate-900 bg-slate-200 dark:bg-slate-950 text-black dark:text-white gap-5 bg-no-repeat bg-cover flex min-h-[100vh] py-20 flex-col items-center justify-center">
+		Boop
+	</div>
+
+
+</BaseLayout>

@@ -35,10 +35,17 @@ Here is my file and folder structure
     node_modules/
     public/
     src/
-        blog/
-            post-1.md
-            post-2.md
-            ...
+        assets/
+            fonts/
+            images/
+                logo.png
+                my-image.png
+        collections/
+            blog/
+                post-1.md
+                post-2.md
+                ...
+            resources/
         components/
             Footer.astro
             Header.astro
