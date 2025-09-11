@@ -1,0 +1,69 @@
+---
+
+const faqs = [
+    {
+        question: "Why should I trust you over established consultants?",
+        answer: "You shouldn't. Trust your own intelligence instead. If what you read here resonates, if the approach makes sense, if you're tired of the same recycled solutions - then we might work well together. This isn't about faith. It's about fit.",
+    },
+    {
+        question: "What makes your approach different?",
+        answer: "Most experts sell you their system. I become YOUR system. The solution emerges from your situation, not my playbook. Think of it as custom-forged vs. mass-produced.",
+    },
+    {
+        question: "How do I know if I'm ready?",
+        answer: "You're ready when you're tired of the gap between where you are and where you should be. When you want transformation, not just information. When you're ready to stop learning and start becoming.",
+    },
+    {
+        question: "What if I don't know what I need?",
+        answer: "Perfect. Knowing you don't know is the beginning of wisdom. Start with a clarity session. We'll identify the real challenge together.",
+    },
+    {
+        question: "Is this just another self-help thing?",
+        answer: "No. This is about building real things in the real world. Websites that convert. Messages that land. Systems that scale. The only thing that changes internally is your confidence - because you'll have proof of your power.",
+    },
+    {
+        question: "What's your success rate?",
+        answer: "Wrong question. This isn't about my success - it's about your transformation. The better question: Am I willing to do what it takes? If yes, we'll make it happen.",
+    },
+]
+
+---
+
+<!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
+<div class="bg-gray-900">
+    <div class="px-6 py-24 mx-auto max-w-7xl sm:py-32 lg:px-8 lg:py-40">
+        <div class="max-w-4xl mx-auto">
+        <h2 class="text-4xl font-semibold tracking-tight text-white sm:text-5xl">Frequently asked questions</h2>
+        <dl class="mt-16 divide-y divide-white/10">
+
+            { faqs.map( (faq , index ) => ( 
+            <div class="py-6 first:pt-0 last:pb-0">
+                <dt>
+                    <button type="button" command="--toggle" commandfor={`faq-${index}`} class="flex items-start justify-between w-full text-left text-white">
+                    <span class="font-semibold text-base/7">
+                        {faq.question}
+                    </span>
+                    <span class="flex items-center ml-6 h-7">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 in-aria-expanded:hidden">
+                        <path d="M12 6v12m6-6H6" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 not-in-aria-expanded:hidden">
+                        <path d="M18 12H6" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                    </button>
+                </dt>
+                <el-disclosure id={`faq-${index}`} hidden class="contents">
+                    <dd class="pr-12 mt-2">
+                    <p class="text-gray-400 text-base/7">
+                        { faq.answer }
+                    </p>
+                    </dd>
+                </el-disclosure>
+            </div>
+            ) ) }
+        </dl>
+        </div>
+    </div>
+</div>

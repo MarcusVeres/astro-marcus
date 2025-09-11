@@ -11,6 +11,7 @@ import HeroSplitScreenshot from '../components/sections/HeroSplitScreenshot.astr
 import CTAGlassGlow from '../components/sections/CTAGlassGlow.astro'
 import FeatureCentered2x2 from '../components/sections/FeatureCentered2x2.astro'
 import BentoThreeColumn from '../components/sections/BentoThreeColumn.astro'
+import FAQs from '../components/FAQs.astro'
 
 // Specifics 
 import { Image } from 'astro:assets'  // Import Astro's Image component
@@ -409,7 +410,7 @@ const pageTitle = "Home Page"
 					Testimonials
 				</h2>
 				<p class="mt-2 text-4xl font-semibold tracking-tight text-white text-balance sm:text-5xl">
-					We have worked with thousands of amazing people
+					I have worked with hundreds of amazing people
 				</p>
 			</div>
 			<div class="flow-root max-w-2xl mx-auto mt-16 sm:mt-20 lg:mx-0 lg:max-w-none">
@@ -423,7 +424,7 @@ const pageTitle = "Home Page"
 					<img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" class="bg-gray-800 rounded-full size-10" />
 					<div>
 						<div class="font-semibold text-white">Neil Sweeney</div>
-						<div class="text-gray-400">CEO @ Reklaim</div>
+						<div class="text-gray-400">Founder &amp; CEO @ Reklaim</div>
 					</div>
 					</figcaption>
 				</figure>
@@ -586,137 +587,7 @@ const pageTitle = "Home Page"
 		</div>
 	</div>
 
-	<!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
-	<!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
-	<div class="bg-gray-900">
-		<div class="px-6 py-24 mx-auto max-w-7xl sm:py-32 lg:px-8 lg:py-40">
-			<div class="max-w-4xl mx-auto">
-			<h2 class="text-4xl font-semibold tracking-tight text-white sm:text-5xl">Frequently asked questions</h2>
-			<dl class="mt-16 divide-y divide-white/10">
-				<div class="py-6 first:pt-0 last:pb-0">
-				<dt>
-					<button type="button" command="--toggle" commandfor="faq-0" class="flex items-start justify-between w-full text-left text-white">
-					<span class="font-semibold text-base/7">What&#039;s the best thing about Switzerland?</span>
-					<span class="flex items-center ml-6 h-7">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 in-aria-expanded:hidden">
-						<path d="M12 6v12m6-6H6" stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 not-in-aria-expanded:hidden">
-						<path d="M18 12H6" stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-					</span>
-					</button>
-				</dt>
-				<el-disclosure id="faq-0" class="contents">
-					<dd class="pr-12 mt-2">
-					<p class="text-gray-400 text-base/7">I don&#039;t know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.</p>
-					</dd>
-				</el-disclosure>
-				</div>
-				<div class="py-6 first:pt-0 last:pb-0">
-				<dt>
-					<button type="button" command="--toggle" commandfor="faq-1" class="flex items-start justify-between w-full text-left text-white">
-					<span class="font-semibold text-base/7">How do you make holy water?</span>
-					<span class="flex items-center ml-6 h-7">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 in-aria-expanded:hidden">
-						<path d="M12 6v12m6-6H6" stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 not-in-aria-expanded:hidden">
-						<path d="M18 12H6" stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-					</span>
-					</button>
-				</dt>
-				<el-disclosure id="faq-1" hidden class="contents">
-					<dd class="pr-12 mt-2">
-					<p class="text-gray-400 text-base/7">You boil the hell out of it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam aut tempora vitae odio inventore fuga aliquam nostrum quod porro. Delectus quia facere id sequi expedita natus.</p>
-					</dd>
-				</el-disclosure>
-				</div>
-				<div class="py-6 first:pt-0 last:pb-0">
-				<dt>
-					<button type="button" command="--toggle" commandfor="faq-2" class="flex items-start justify-between w-full text-left text-white">
-					<span class="font-semibold text-base/7">What do you call someone with no body and no nose?</span>
-					<span class="flex items-center ml-6 h-7">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 in-aria-expanded:hidden">
-						<path d="M12 6v12m6-6H6" stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 not-in-aria-expanded:hidden">
-						<path d="M18 12H6" stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-					</span>
-					</button>
-				</dt>
-				<el-disclosure id="faq-2" hidden class="contents">
-					<dd class="pr-12 mt-2">
-					<p class="text-gray-400 text-base/7">Nobody knows. Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, voluptas ipsa quia excepturi, quibusdam natus exercitationem sapiente tempore labore voluptatem.</p>
-					</dd>
-				</el-disclosure>
-				</div>
-				<div class="py-6 first:pt-0 last:pb-0">
-				<dt>
-					<button type="button" command="--toggle" commandfor="faq-3" class="flex items-start justify-between w-full text-left text-white">
-					<span class="font-semibold text-base/7">Why do you never see elephants hiding in trees?</span>
-					<span class="flex items-center ml-6 h-7">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 in-aria-expanded:hidden">
-						<path d="M12 6v12m6-6H6" stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 not-in-aria-expanded:hidden">
-						<path d="M18 12H6" stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-					</span>
-					</button>
-				</dt>
-				<el-disclosure id="faq-3" hidden class="contents">
-					<dd class="pr-12 mt-2">
-					<p class="text-gray-400 text-base/7">Because they&#039;re so good at it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.</p>
-					</dd>
-				</el-disclosure>
-				</div>
-				<div class="py-6 first:pt-0 last:pb-0">
-				<dt>
-					<button type="button" command="--toggle" commandfor="faq-4" class="flex items-start justify-between w-full text-left text-white">
-					<span class="font-semibold text-base/7">Why can&#039;t you hear a pterodactyl go to the bathroom?</span>
-					<span class="flex items-center ml-6 h-7">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 in-aria-expanded:hidden">
-						<path d="M12 6v12m6-6H6" stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 not-in-aria-expanded:hidden">
-						<path d="M18 12H6" stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-					</span>
-					</button>
-				</dt>
-				<el-disclosure id="faq-4" hidden class="contents">
-					<dd class="pr-12 mt-2">
-					<p class="text-gray-400 text-base/7">Because the pee is silent. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam, quas voluptatibus ex culpa ipsum, aspernatur blanditiis fugiat ullam magnam suscipit deserunt illum natus facilis atque vero consequatur! Quisquam, debitis error.</p>
-					</dd>
-				</el-disclosure>
-				</div>
-				<div class="py-6 first:pt-0 last:pb-0">
-				<dt>
-					<button type="button" command="--toggle" commandfor="faq-5" class="flex items-start justify-between w-full text-left text-white">
-					<span class="font-semibold text-base/7">Why did the invisible man turn down the job offer?</span>
-					<span class="flex items-center ml-6 h-7">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 in-aria-expanded:hidden">
-						<path d="M12 6v12m6-6H6" stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 not-in-aria-expanded:hidden">
-						<path d="M18 12H6" stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-					</span>
-					</button>
-				</dt>
-				<el-disclosure id="faq-5" hidden class="contents">
-					<dd class="pr-12 mt-2">
-					<p class="text-gray-400 text-base/7">He couldn&#039;t see himself doing it. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet perspiciatis officiis corrupti tenetur. Temporibus ut voluptatibus, perferendis sed unde rerum deserunt eius.</p>
-					</dd>
-				</el-disclosure>
-				</div>
-			</dl>
-			</div>
-		</div>
-	</div>
+	<FAQs />
 
 	<div class="relative overflow-hidden bg-gray-900 isolate">
 		<div class="px-6 py-24 sm:py-32 lg:px-8">
