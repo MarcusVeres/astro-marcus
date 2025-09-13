@@ -1,0 +1,119 @@
+---
+
+const reviews = [
+    // {
+    //     name: "",
+    //     photo: "",
+    //     review: "",
+    //     title: "",
+    // },
+    {
+        name: "Harmony Francis",
+        photo: "/images/reviews/review-harmony.webp",
+        review: "Your communication skills are truly exceptional! You have a remarkable ability to teach new skills in a way that is clear, approachable, and easy to understand.",
+        title: "Founder @ Long Live Live",
+    },
+    {
+        name: "Neil Sweeney",
+        photo: "/images/reviews/review-neil.webp",
+        review: "You were great.",
+        title: "Founder &amp; CEO @ Reklaim",
+    },
+    {
+        name: "Feng Yan",
+        photo: "/images/reviews/review-feng.webp",
+        review: "Your feedback has been incredibly valuable and encouraging. I appreciate the detailed notes and suggestions you provided. They will certainly help me improve my public speaking skills. Your support means a lot to me!",
+        title: "Regional Sales Mgr @ Canada Life",
+    },
+    {
+        name: "Rob Harrison",
+        photo: "/images/reviews/review-rob.webp",
+        review: "Great work!",
+        title: "Director of Marketing & IT @ TCM",
+    },
+    {
+        name: "Lannie Le",
+        photo: "/images/reviews/review-lannie.webp",
+        review: "You are a fast, agile, and effective developer and problem solver. I appreciate your insights and abilities throughout our collaboration. I have consistently learned new things from you every time we worked together.",
+        title: "Co-Founder + CTO @ Pixel Dreams",
+    },
+    {
+        name: "Jermaine Mclean",
+        photo: "/images/reviews/review-jermaine.webp",
+        review: "Excellent job as always!",
+        title: "Sales & Operations Mgr @ TCM",
+    },
+    {
+        name: "Ase Deliri",
+        photo: "/images/reviews/review-ase.webp",
+        review: "You can pick up a thread on a conversation about any topic within a few lines. We can switch from code to lifting, to economics, to politics and it's all one smooth train.",
+        title: "Founder @ Moonlit Studios",
+    },
+    {
+        name: "Sara Sanguino",
+        photo: "/images/reviews/review-sara.webp",
+        review: "Lorem ipsum dolor sit amet.",
+        title: "Founder @ Saraz Studio",
+    },
+    {
+        name: "Anton Coetzee",
+        photo: "/images/reviews/review-anton.webp",
+        review: "You are a smart guy whom could go far as a Toastmaster and which ever career path you decide on.",
+        title: "ABCP, BEM, CBA, DTM, EEng, FA",
+    },
+    {
+        name: "Jeffrey Eisen",
+        photo: "/images/reviews/review-jeffrey.webp",
+        review: "You are an exceptionally bright and articulate consultant, with expertise in technology and many other fields. You communicate complex ideas with clarity, work with efficiency, and lead projects with insight and confidence.",
+        title: "CEO / Founder @ ",
+    },
+    {
+        name: "Brooke Monks",
+        photo: "/images/reviews/review-brooke.webp",
+        review: "Laborum quis quam. Dolorum et ut quod quia. Voluptas numquam delectus nihil. Aut enim doloremque et ipsam.",
+        title: "Toastmasters Area Director",
+    },
+    {
+        name: "Chas Cook",
+        photo: "/images/reviews/review-chas.webp",
+        review: "Top Man. Excellent work!",
+        title: "Founder @ Inspira Athletica & PCR",
+    },
+]
+
+---
+
+	<div class="pt-12 bg-gray-900 sm:pt-20">
+		<div class="px-6 mx-auto max-w-7xl lg:px-8">
+			<div class="max-w-2xl mx-auto text-center">
+				<h2 class="font-semibold text-indigo-400 text-base/7">
+					I have worked with hundreds of amazing people
+				</h2>
+				<p class="mt-2 text-4xl font-semibold tracking-tight text-white text-balance sm:text-5xl">
+					Here are some recent examples of what they had to say.
+				</p>
+			</div>
+			<div class="flow-root max-w-2xl mx-auto mt-16 sm:mt-20 lg:mx-0 lg:max-w-none">
+                <div class="-mt-8 sm:-mx-4 sm:columns-2 sm:text-[0] lg:columns-3">
+
+                    { reviews.map( review => (
+                        <div class="pt-8 sm:inline-block sm:w-full sm:px-4">
+                            <figure class="rounded-2xl bg-white/2.5 p-8 text-sm/6">
+                                <blockquote class="text-gray-100">
+                                <p>“{ review.review }”</p>
+                                </blockquote>
+                                <figcaption class="flex items-center mt-6 gap-x-4">
+                                <img src={review.photo} alt="" class="bg-gray-800 rounded-full size-10" />
+                                <div>
+                                    <div class="font-semibold text-white">{ review.name }</div>
+                                    <div class="text-gray-400">{ review.title }</div>
+                                </div>
+                                </figcaption>
+                            </figure>
+                        </div>
+                    ))}
+                    
+                </div>
+			</div>
+		</div>
+	</div>
