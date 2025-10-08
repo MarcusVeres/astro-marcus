@@ -1,0 +1,16 @@
+---
+import socials from '../../data/socials.json';
+---
+
+<ul class="flex justify-center mt-16 gap-x-10">
+    {socials.map((social) => (
+        <li>
+            <a href={social.url} target="_blank" class="text-gray-400 hover:text-white">
+                <span class="sr-only">{social.title}</span>
+                <svg viewBox={social.viewBox} fill="currentColor" aria-hidden="true" class="size-6">
+                    <Fragment set:html={social.content} />
+                </svg>
+            </a>
+        </li>
+    ))}
+</ul>
