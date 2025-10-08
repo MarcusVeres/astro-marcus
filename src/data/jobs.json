@@ -17,8 +17,8 @@
       "Company": "BM Innovators",
       "End": "2010-05",
       "Keywords": [
-        "HTML",
         "CSS",
+        "HTML",
         "JS"
       ],
       "Start": "2009-05",
@@ -50,9 +50,8 @@
       "Company": "Cummins & Partners",
       "End": "2015-07",
       "Keywords": [
-        "HTML",
         "CSS",
-        "Angular",
+        "HTML",
         "JS",
         "UI / UX"
       ],
@@ -83,10 +82,10 @@
       ],
       "Company": "Juice Mobile",
       "Keywords": [
-        "Python",
+        "CSS",
         "HTML",
-        "Angular JS",
-        "CSS"
+        "JS",
+        "Python"
       ],
       "Start": "2014-09",
       "Title": "Contract Web Developer"
@@ -102,9 +101,9 @@
       "Company": "Juice Mobile",
       "End": "2017-01",
       "Keywords": [
+        "AdTech",
         "HTML",
         "JS",
-        "AdTech",
         "Prototyping",
         "Wordpress"
       ],
@@ -159,12 +158,12 @@
       "Company": "Parrot Marketing / Hive Digital",
       "End": "2014-10",
       "Keywords": [
-        "HTML",
         "CSS",
-        "Angular JS",
+        "HTML",
+        "JS",
+        "PHP",
         "Python",
-        "UI / UX",
-        "PHP (Laravel)"
+        "UI / UX"
       ],
       "Start": "2013-11",
       "Title": "Sr Web Developer"
@@ -183,9 +182,9 @@
       "End": "2013-10",
       "Keywords": [
         "Graphic Design",
+        "Photography",
         "Sales",
-        "Wordpress",
-        "Photography"
+        "Wordpress"
       ],
       "Start": "2013-05",
       "Title": "Contract Web Developer"
@@ -219,8 +218,8 @@
       "Company": "Social Game Universe",
       "End": "2009-10",
       "Keywords": [
-        "Flash",
-        "Actionscript"
+        "Actionscript",
+        "Flash"
       ],
       "Start": "2008-12",
       "Title": "Intern"
@@ -237,10 +236,10 @@
       "Company": "Sybaris",
       "End": "2013-10",
       "Keywords": [
-        "PHP",
-        "HTML",
         "CSS",
-        "JS"
+        "HTML",
+        "JS",
+        "PHP"
       ],
       "Start": "2013-01",
       "Title": "Web Developer"
@@ -257,14 +256,14 @@
       "Company": "UpSling Inc",
       "End": "2013-09",
       "Keywords": [
-        "Product Design",
-        "UX",
-        "Java",
-        "JS",
         "CSS",
         "Graphic Design",
+        "Java",
+        "JS",
+        "Management",
         "PHP",
-        "Management"
+        "Product Design",
+        "UX"
       ],
       "Start": "2010-07",
       "Title": "Wantrepreneur"
@@ -282,16 +281,14 @@
       "Company": "Works of Love",
       "End": "Present",
       "Keywords": [
-        "HTML",
-        "CSS",
-        "JS",
-        "Chrome",
-        "Go",
-        "C#",
         "Blender",
+        "C#",
+        "CSS",
+        "HTML",
+        "JS",
         "Unity"
       ],
       "Start": "2018-06",
-      "Title": "Director"
+      "Title": "Freelancer"
     }
 ]
