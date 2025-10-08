@@ -5,15 +5,15 @@ const tools = Object.values(toolsData.data);
 ---
 
 <section>
-  <h2 class="pb-4 text-4xl font-extrabold tracking-tight text-left border-b border-white xl:text-6xl border-opacity-20">
+  <h2 class="pb-4 text-4xl font-extrabold tracking-tight text-left border-b border-blue-400 xl:text-6xl border-opacity-20">
     Tools I Use
   </h2>
   <ul class="grid grid-cols-2 gap-12 mt-6 mb-20 text-lg text-white md:gap-16 lg:text-3xl sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6">
     {tools.map((tool) => (
       <li class="relative group aspect-square">
-        <div class="flex items-center justify-center w-full h-full transition-all duration-300">
+        <div class="flex items-center justify-center w-full h-full transition-all duration-300 fill-white group-hover:fill-current" style={`color: ${tool.SvgColor}`}>
           <Fragment set:html={tool.Svg} />
-          <div class="absolute p-4 mx-8 text-lg font-medium text-center text-white uppercase transition-all duration-300 translate-y-12 bg-black rounded-sm opacity-0 group-hover:opacity-100 bg-opacity-20">
+          <div class="absolute p-4 mx-8 text-lg font-medium text-center text-white uppercase transition-all duration-300 translate-y-12 rounded-sm opacity-0 bg-black/50 group-hover:opacity-100 bg-opacity-20">
             {tool.Title}
           </div>
         </div>
