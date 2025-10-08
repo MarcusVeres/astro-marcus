@@ -6,12 +6,19 @@ import socials from '../../data/socials.json';
   {socials.map((social) => (
     <li>
       <a
-        class="block p-3 text-white transition-all duration-500 ease-in-out bg-black bg-opacity-50 border border-black rounded-full shadow-sm hover:scale-110 hover:bg-black border-opacity-40 group"
+        class="block p-3 text-white transition-all duration-500 ease-in-out border rounded-full shadow-sm bg-black/20 hover:scale-110 hover:bg-black border-opacity-40 group"
         href={social.url}
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Fragment set:html={social.svg} />
+        <svg
+          class="w-6 h-6 transition-all duration-500 ease-in-out fill-white opacity-10 group-hover:opacity-80 group-hover:scale-105"
+          role="img"
+          viewBox={social.viewBox}
+        >
+          <title>{social.title}</title>
+          <Fragment set:html={social.content} />
+        </svg>
       </a>
     </li>
   ))}
