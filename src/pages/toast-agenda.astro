@@ -1,0 +1,241 @@
+---
+import Printable from '../layouts/Printable.astro'
+
+
+---
+
+<style>
+
+    /*
+    @media print {
+        body { margin: 0; }
+        .no-print { display: none; }
+        table { page-break-inside: avoid; }
+    }
+    */
+    
+    table { /*border-collapse: collapse;*/ }
+    .agenda-table {
+        /* border: 1px solid #e5e7eb; */
+        padding: 12px !important;
+    }
+    .agenda-table td { 
+        vertical-align: top; 
+        /*border: 1px solid #e5e7eb;*/ 
+        border-top: 1px solid #ccc;
+        padding: 4px 4px 6px 4px; 
+    }
+    .agenda-table td(2nd-child) {
+        background: teal;
+    }
+    .agenda-table .time-col { width: 50px; }
+    .agenda-table .member-col { width: 120px; text-align: right; }
+</style>
+
+
+<Printable class="p-8 text-xs leading-tight bg-white">
+    
+    <!-- HEADER -->
+    <div class="flex flex-row justify-center w-full text-xs item-center">
+        <div class="flex-1">
+            <h1 class="text-lg font-bold">
+                Towns of York Toastmasters
+            </h1>
+            <p class="">
+                Meeting Agenda for September 24, 2025  
+            </p>
+        </div>
+        <div class="flex-1 pt-1 pl-28">
+            <div class="text-xs">Theme:  <span class="text-sm font-bold">Silence</span></div>
+            <div class="text-xs">Word of the Day: <span class="text-sm font-bold">Whole Rest (4 Beats)</span></div>
+        </div>
+        <div class="align-top w-14">
+            <div class="text-xs font-bold">
+                <img class="w-full" src="/images/tm-logo-small.jpg" />
+            </div>
+        </div>
+    </div>
+
+    <!-- MIDDLE -->
+    <table class="w-full mt-6">
+        <tr>
+            <!-- SIDEBAR -->
+            <td class="hidden w-40 pr-6 align-top">
+                <div class="space-y-1 text-xs">
+                    <div><strong>President</strong><br>Marc Jajko</div>
+                    <div><strong>VP Education</strong><br>Caroline Damecour</div>
+                    <div><strong>VP Membership</strong><br>Sofia Pietrolungo</div>
+                    <div><strong>VP Public Relations</strong><br>Ugo Bulgaretti</div>
+                    <div><strong>Treasurer</strong><br>Anton Coetzee, DTM</div>
+                    <div><strong>Sergeant at Arms</strong><br>Brooke Monks</div>
+                    <div><strong>Immed. Past Pres.</strong><br>Brooke Monks</div>
+                    <div class="mt-3">
+                        <div><strong>Location</strong></div>
+                        <div>https://www.townsofyork.org</div>
+                    </div>
+                    <div class="mt-2">
+                        <div><strong>Toastmasters International</strong></div>
+                        <div>www.toastmasters.org</div>
+                    </div>
+                    <div class="mt-3">
+                        <div class="font-semibold">Club Mission</div>
+                        <div>We provide a supportive and positive learning experience in which members are empowered to develop communication and leadership skills, resulting in greater self-confidence and personal growth.</div>
+                    </div>
+                </div>
+            </td>
+            
+            <!-- COLUMN 1 -->
+            <td class="w-1/2 pr-6 align-top">
+                <table class="w-full text-xs agenda-table">
+                    <thead>
+                        <tr>
+                            <th class="px-[4px] pb-2 font-bold text-left time-col">Time</th>
+                            <th class="px-[4px] pb-2 font-bold text-left">Role / Agenda Item</th>
+                            <th class="px-[4px] pb-2 font-bold text-right member-col">Member</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="time-col">7:00PM</td>
+                            <td><strong>Sergeant at Arms</strong><br><span class="text-gray-600">Opens meeting: Bangs gavel and reads script. (Lectern)</span></td>
+                            <td class="member-col">Brooke Monks</td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">7:02PM</td>
+                            <td><strong>Chairperson</strong><br><span class="text-gray-600">Explains role, shares any agenda updates, provides time for guest introductions and presents theme and word. (Lectern)</span></td>
+                            <td class="member-col">Marcus Veres</td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">7:09PM</td>
+                            <td><strong>Invocation & Toast</strong><br><span class="text-gray-600">Explains role and provides toast. (Lectern)</span></td>
+                            <td class="member-col">Sofia Pietrolungo</td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">7:12PM</td>
+                            <td><strong>Joke</strong><br><span class="text-gray-600">Explains role and delivers joke. (Lectern)</span></td>
+                            <td class="member-col">Anton Coetzee, DTM</td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">7:14PM</td>
+                            <td><strong>Toastmaster</strong><br><span class="text-gray-600">Explains role, calls on evaluators to share speech details, invites speakers to front. (Lectern)</span></td>
+                            <td class="member-col">Katrina Kowalski</td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">7:19PM</td>
+                            <td><strong>Speaker #1</strong><br><span class="text-gray-600">Presents speech. (Lectern)</span></td>
+                            <td class="member-col">Monica Stanica</td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">7:26PM</td>
+                            <td><strong>Speaker # 2</strong><br><span class="text-gray-600">Presents speech. (Lectern)</span></td>
+                            <td class="member-col">Gillian Booth-Moyle</td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">7:33PM</td>
+                            <td><strong>Speaker #3</strong><br><span class="text-gray-600">Presents speech. (Lectern)</span></td>
+                            <td class="member-col"></td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">7:40PM</td>
+                            <td><strong>Table Topics</strong><br><span class="text-gray-600">Explains role, provides Impromptu speaking questions/prompts for all members and guests. (Lectern)</span></td>
+                            <td class="member-col">Marcus Veres</td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">8:04PM</td>
+                            <td><strong>Break</strong><br><span class="text-gray-600">Enjoy yourselves and mingle :)</span></td>
+                            <td class="member-col">-</td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">8:14PM</td>
+                            <td><strong>General Evaluator</strong><br><span class="text-gray-600">Explains role, introduces evaluators, grammarian and timekeeper to share their reports. Shares evaluation of meeting. (Lectern)</span></td>
+                            <td class="member-col">Anton Coetzee, DTM</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+            
+            <!-- COLUMN 2 -->
+            <td class="w-1/2 pl-6 align-top">
+                <table class="w-full text-xs agenda-table">
+                    <thead>
+                        <tr>
+                            <th class="px-[4px] pb-2 font-bold text-left time-col">Time</th>
+                            <th class="px-[4px] pb-2 font-bold text-left">Role / Agenda Item</th>
+                            <th class="px-[4px] pb-2 font-bold text-right member-col">Member</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="time-col">8:17PM</td>
+                            <td><strong>Evaluator # 1</strong><br><span class="text-gray-600">Provides evaluation of speaker #1. (Lectern)</span></td>
+                            <td class="member-col">Brooke Monks</td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">8:20PM</td>
+                            <td><strong>Evaluator # 2</strong><br><span class="text-gray-600">Provides evaluation of speaker #2. (Lectern)</span></td>
+                            <td class="member-col">Marc Jajko</td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">8:23PM</td>
+                            <td><strong>Evaluator # 3</strong><br><span class="text-gray-600">Provides evaluation of speaker #3. (Lectern)</span></td>
+                            <td class="member-col"></td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">8:26PM</td>
+                            <td><strong>Grammarian's report</strong><br><span class="text-gray-600">Explains role, shares report. (Seat)</span></td>
+                            <td class="member-col"></td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">8:28PM</td>
+                            <td><strong>Timekeeper's report</strong><br><span class="text-gray-600">Explains role, shares report. (Seat)</span></td>
+                            <td class="member-col">Brooke Monks</td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">8:30PM</td>
+                            <td><strong>General Evaluator's report</strong><br><span class="text-gray-600">Shares report. (Lectern)</span></td>
+                            <td class="member-col">-</td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">8:35PM</td>
+                            <td><strong>Chairperson</strong><br><span class="text-gray-600">Calls president and/or executive to share club news. (Lectern)</span></td>
+                            <td class="member-col">Marcus Veres</td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">8:36PM</td>
+                            <td><strong>Club Business</strong><br><span class="text-gray-600">Club president and/or executive members share club news. (Lectern)</span></td>
+                            <td class="member-col">Marc Jajko</td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">8:41PM</td>
+                            <td><strong>Quizmaster</strong><br><span class="text-gray-600">Explains role, asks quiz questions. (Seat)</span></td>
+                            <td class="member-col">Marco Leung</td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">8:43PM</td>
+                            <td><strong>Chairperson</strong><br><span class="text-gray-600">Presents ribbons for best speaker, evaluator and tabletopics, invites guest feedback and fills roles for next meeting. (Lectern)</span></td>
+                            <td class="member-col">Marcus Veres</td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">8:49PM</td>
+                            <td><strong>Quotemaster</strong><br><span class="text-gray-600">Explains role and shares quote. (Seat)</span></td>
+                            <td class="member-col">Ugo Bulgaretti</td>
+                        </tr>
+                        <tr>
+                            <td class="time-col">8:50PM</td>
+                            <td><strong>Chairperson</strong><br><span class="text-gray-600">Closes meeting: Thanks members and guests, bangs gavel to conclude meeting. (Lectern)</span></td>
+                            <td class="member-col">Marcus Veres</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <!-- FOOTER -->
+    <div class="pt-2 mt-6 text-left">
+        <div class="w-3/4 text-xs text-justify">
+            The mission of a Toastmaster Club is to provide a mutually supportive and positive learning environment in which every member has the opportunity to develop communication and leadership skills, which in turn foster self-confidence and personal growth.
+        </div>
+    </div>
+
+</Printable>
