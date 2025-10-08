@@ -5,6 +5,9 @@ import ButtonAura from '../components/atoms/ButtonAura.astro'
 
 import SocialIcons from '../components/blocks/SocialIcons.astro'
 import SocialLinks from '../components/blocks/SocialLinks.astro'
+
+import ThingsIDo from '../components/sections/ThingsIDo.astro'
+import ToolsIUse from '../components/sections/ToolsIUse.astro'
 import WorkExperience from '../components/sections/WorkExperience.astro'
 
 const pageTitle = "Contact"
@@ -48,7 +51,7 @@ const pageTitle = "Contact"
 				</p>
 				<div class="flex items-center mt-10 gap-x-6">
 					<ButtonAura label="Resume" link="https://www.dropbox.com/scl/fi/rab76i0v93kvyie4i53q0/2025-09-25-one-page-resume.pdf?rlkey=il5dhrait1hhr8mmzpocyuycx&st=095sw1p6&dl=0" />
-					<a href="#cv" class="font-semibold text-white text-sm/6">Learn more <span aria-hidden="true">→</span></a>
+					<a href="#cv" class="font-semibold text-white text-sm/6">Learn more about me <span aria-hidden="true">↓</span></a>
 				</div>
 			</div>
 			<div class="flex max-w-2xl mx-auto mt-16 sm:mt-24 lg:mt-0 lg:mr-0 lg:ml-10 lg:max-w-md lg:flex-none xl:ml-32">
@@ -78,11 +81,25 @@ const pageTitle = "Contact"
 
   <!-- <SocialLinks /> -->
 
-    <!-- Work Experience -->
-    <section id="cv" class="pt-8 pb-20">
-      <div class="container px-10 mx-auto text-gray-200 md:max-w-3xl xl:max-w-6xl">
-        <WorkExperience />
-      </div>
-    </section>
+  <!-- Skill Set -->
+  <section id="cv" class="pt-16">
+    <div class="container px-10 mx-auto text-gray-200 md:max-w-3xl xl:max-w-6xl">
+      <ThingsIDo />
+    </div>
+  </section>
+
+  <!-- Tool Set -->
+  <section id="cv" class="pt-16">
+    <div class="container px-10 mx-auto text-gray-200 md:max-w-3xl xl:max-w-6xl">
+      <ToolsIUse />
+    </div>
+  </section>
+
+  <!-- Work Experience -->
+  <section id="cv" class="pt-16">
+    <div class="container px-10 mx-auto text-gray-200 md:max-w-3xl xl:max-w-6xl">
+      <WorkExperience />
+    </div>
+  </section>
 
 </BaseLayout>

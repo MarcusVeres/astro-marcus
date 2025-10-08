@@ -1,0 +1,21 @@
+---
+import thingsData from '../../data/things.json';
+---
+
+<section>
+  <h2 class="pb-4 text-4xl font-extrabold tracking-tight text-left text-gray-300 border-b border-white xl:text-6xl border-opacity-20">
+    Things I Do
+  </h2>
+  <ul class="grid grid-cols-2 gap-8 mt-6 mb-10 text-3xl text-white md:gap-8 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-6">
+    {thingsData.map((thing) => (
+      <li class="relative group aspect-square">
+        <div class="relative flex items-center justify-center w-full h-full transition-all duration-300 rounded-md">
+          <Fragment set:html={thing.svg} />
+          <div class="absolute p-4 mx-8 text-lg font-medium text-center text-white uppercase transition-all duration-300 translate-y-12 bg-black rounded-sm opacity-0 group-hover:opacity-100 bg-opacity-20">
+            <h3>{thing.title}</h3>
+          </div>
+        </div>
+      </li>
+    ))}
+  </ul>
+</section>
