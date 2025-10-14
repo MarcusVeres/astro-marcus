@@ -13,8 +13,9 @@ const pageTitle = "Tags Index"
 ---
 <BaseLayout pageTitle={ pageTitle }>
 
-    <SectionBlog />
+    <!-- <SectionBlog /> -->
 
+    <!--
   	<div class="max-w-6xl px-4 mx-auto">
       <h1 class="mb-8 text-3xl font-bold text-gray-900">{pageTitle}</h1>
     </div>
@@ -23,6 +24,33 @@ const pageTitle = "Tags Index"
             <li><a class="tag" href={`/tags/${tag}`}>{tag}</a></li>   
         ) ) }
     </ul>
+    -->
+
+<div class="py-24 bg-gray-900 sm:py-32">
+  <div class="px-6 mx-auto max-w-7xl lg:px-8">
+    <div class="grid items-center grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2">
+      <div class="w-full max-w-xl mx-auto lg:mx-0">
+        <h2 class="text-4xl font-semibold tracking-tight text-white text-pretty sm:text-5xl">
+          { pageTitle }
+        </h2>
+        <p class="mt-6 text-gray-300 text-lg/8">
+          Click a tag on the right to see all posts tags with that keyword. 
+        </p>
+      </div>
+      <ul class="grid items-center w-full max-w-xl grid-cols-1 mx-auto sm:grid-cols-2 gap-y-12 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:pl-8">
+
+        { uniqueTags.map( (tag) => (
+          <li class="object-contain object-left w-full max-h-12">
+            <a class="tag" href={`/tags/${tag}`}>{tag}</a>
+          </li>   
+        ) ) }
+
+      </ul>
+    </div>
+  </div>
+</div>
+
+
 </BaseLayout>
 
 <style>
