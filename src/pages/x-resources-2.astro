@@ -15,10 +15,14 @@ const pageTitle = "Resources"
 
     <section class="relative">
 
-        <div class="absolute top-0 bottom-0 z-0 w-full bg-fixed bg-position-[center_top_-200px] bg-cover opacity-30 bg-grene-300" style="background-image: url('/images/render-1.png');"></div>
+        <!-- decorative background image -->
+        <div class="absolute top-0 bottom-0 z-0 w-full bg-fixed bg-position-[center_top_-200px] bg-cover opacity-30 bg-grene-300"
+            style="background-image: url('/images/render-1.png');"></div>
 
+        <!-- <div class="pt-32 pb-12"> -->
         <div class="pt-12">
             <h2 class="pt-16 font-extrabold text-center text-white uppercase text-7xl drop-shadow-lg">
+                <!-- How will you improve today? -->
                 Become unstoppable
             </h2>
             <div class="font-extrabold text-center text-white uppercase mt-14 drop-shadow-lg">
@@ -154,6 +158,7 @@ const pageTitle = "Resources"
                     <IconBatteryBig />
                 </div>
 
+
             </div>
         </div>
 
@@ -166,5 +171,9 @@ const pageTitle = "Resources"
         </div>
 
     </section>
+
+    <footer class="flex flex-col items-center pb-16 border-t shadow-2xl border-white/30">
+        <MailingList />
+    </footer>
 
 </BaseLayout>
