@@ -1,4 +1,5 @@
 @layer utilities {
+  
   .text-balance {
     text-wrap: balance;
   }
@@ -10,4 +11,27 @@
     padding-left: 1rem;
     padding-right: 1rem;
   }
+
+  /* MVP-1 -- ADDED OCT 14 2025 */
+
+  .aspect-chonk {
+      aspect-ratio: 0.85/1;
+  }
+
+  .aspect-golden {
+      aspect-ratio: 1.618/1;
+  }
+
+  .aspect-portrait {
+      aspect-ratio: 1/1.618;
+  }
+
+  .aspect-square {
+      aspect-ratio: 1/1;
+  }
+
+  .rainbow {
+      background-image: linear-gradient( 135deg, #1e75bb, #852bbb, #ad0095, #be0070, #c0004e, #c8193f, #cd2e2e, #ce421b, #dd6212, #e88004, #f09f00, #f5bd0b);
+  }
+
 }

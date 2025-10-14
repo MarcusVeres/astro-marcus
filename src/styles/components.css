@@ -38,4 +38,36 @@
     background: color-mix(in srgb, rgb(17 24 39) 30%, transparent);
   }
 
+  /* MVP-1 -- ADDED -- OCT 14 2025 */
+
+  .project-grid {
+    /* lol */
+  }
+  .project-grid > * {
+      @apply p-8 transition-all duration-300 ease-in-out bg-gray-800 border border-gray-400/80 rounded-xl;
+  }
+  .project-grid > *:hover {
+      @apply bg-gray-600;
+  }
+
+  .card-zoom {
+      @apply relative flex items-center justify-center overflow-hidden border rounded-lg shadow-md border-white/10;
+  }
+
+  .card-zoom-image {
+      @apply absolute w-full h-full transition-all duration-500 ease-in-out transform bg-center bg-cover;
+  }
+
+  .card-zoom-text {
+      @apply absolute text-5xl font-black transition-all duration-500 ease-in-out transform scale-150 text-gray-50 opacity-60;
+  }
+
+  .card-zoom:hover .card-zoom-image {
+      @apply scale-150;
+  }
+
+  .card-zoom:hover .card-zoom-text {
+      @apply scale-100;
+  }
+
 }
