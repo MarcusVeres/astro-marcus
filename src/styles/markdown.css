@@ -1,0 +1,128 @@
+@layer components {
+
+  /* Blog Post Prose Styling - matches temp/templates/content.html design */
+  .prose {
+    @apply px-6 py-32 lg:px-8;
+  }
+
+  .prose-content {
+    @apply max-w-3xl mx-auto text-gray-300 text-base/7;
+  }
+
+  /* Intro/Lead Paragraph */
+  .prose-content > p:first-of-type {
+    @apply mt-6 text-xl/8;
+  }
+
+  /* Headings */
+  .prose-content h1 {
+    @apply mt-2 text-4xl font-semibold tracking-tight text-white text-pretty sm:text-5xl;
+  }
+
+  .prose-content h2 {
+    @apply mt-16 text-3xl font-semibold tracking-tight text-white text-pretty;
+  }
+
+  .prose-content h3 {
+    @apply mt-12 text-2xl font-semibold tracking-tight text-white text-pretty;
+  }
+
+  .prose-content h4 {
+    @apply mt-8 text-xl font-semibold tracking-tight text-white;
+  }
+
+  /* Paragraphs */
+  .prose-content p {
+    @apply mt-6 text-gray-400;
+  }
+
+  /* Body Content Container */
+  .prose-content > div,
+  .prose-body {
+    @apply max-w-2xl text-gray-400;
+  }
+
+  /* Lists */
+  .prose-content ul {
+    @apply max-w-xl mt-8 space-y-8 text-gray-400 list-none;
+  }
+
+  .prose-content ul li {
+    @apply flex gap-x-3;
+  }
+
+  /* Checkmark icon for list items - using CSS */
+  .prose-content ul li::before {
+    content: "";
+    @apply flex-none mt-1 text-indigo-400 size-5;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 20 20' fill='%23818cf8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  /* Ordered lists */
+  .prose-content ol {
+    @apply max-w-xl mt-8 space-y-4 text-gray-400 list-decimal list-inside;
+  }
+
+  .prose-content ol li {
+    @apply mt-2;
+  }
+
+  /* Strong/Bold text */
+  .prose-content strong {
+    @apply font-semibold text-white;
+  }
+
+  /* Emphasis/Italic */
+  .prose-content em {
+    @apply italic;
+  }
+
+  /* Blockquotes */
+  .prose-content blockquote {
+    @apply mt-10 font-semibold text-white border-l border-indigo-400 pl-9;
+  }
+
+  .prose-content blockquote p {
+    @apply mt-0;
+  }
+
+  /* Images */
+  .prose-content img {
+    @apply object-cover max-w-full mx-auto mt-16 bg-gray-800 rounded-xl;
+  }
+
+  /* Figure elements */
+  .prose-content figure {
+    @apply mt-16;
+  }
+
+  .prose-content figcaption {
+    @apply flex mt-4 text-gray-400 gap-x-2 text-sm/6;
+  }
+
+  /* Links */
+  .prose-content a {
+    @apply text-indigo-400 underline transition-colors hover:text-indigo-300;
+  }
+
+  /* Code blocks */
+  .prose-content pre {
+    @apply p-4 mt-8 overflow-x-auto text-sm text-gray-300 bg-gray-800 rounded-lg;
+  }
+
+  .prose-content code {
+    @apply px-2 py-1 text-sm text-indigo-300 bg-gray-800 rounded;
+  }
+
+  .prose-content pre code {
+    @apply p-0 bg-transparent;
+  }
+
+  /* Horizontal rules */
+  .prose-content hr {
+    @apply my-12 border-gray-700;
+  }
+
+}
