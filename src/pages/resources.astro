@@ -233,6 +233,13 @@ const sortedResources = allResources.sort((a, b) => {
         return;
       }
 
+      // Populate search box with lowercase category name
+      const lowerCategoryName = categoryName.toLowerCase();
+      if (searchInput) {
+        searchInput.value = lowerCategoryName;
+        toggleClearButton(); // Show clear button
+      }
+
       // Filter by category tags
       const tagsArray = categoryTags.split(',');
       resourceCards.forEach(card => {
@@ -254,8 +261,8 @@ const sortedResources = allResources.sort((a, b) => {
       link.classList.remove('opacity-40');
       link.classList.add('opacity-100');
 
-      // Update URL hash with category name
-      updateHash(categoryName);
+      // Update URL hash with lowercase category name
+      updateHash(lowerCategoryName);
     });
   });
 
@@ -263,18 +270,18 @@ const sortedResources = allResources.sort((a, b) => {
   window.addEventListener('DOMContentLoaded', () => {
     const hash = window.location.hash.slice(1); // Remove #
     if (hash) {
-      const decodedHash = decodeURIComponent(hash);
+      const decodedHash = decodeURIComponent(hash).toLowerCase();
 
-      // Check if it's a category name
+      // Check if it's a category name (case-insensitive)
       const categoryLink = Array.from(categoryLinks).find(
-        link => (link as HTMLElement).dataset.categoryFilter === decodedHash
+        link => (link as HTMLElement).dataset.categoryFilter?.toLowerCase() === decodedHash
       );
 
       if (categoryLink) {
         // It's a category - click it
         (categoryLink as HTMLElement).click();
       } else if (searchInput) {
-        // It's a search term - populate search
+        // It's a search term - populate search (already lowercase)
         searchInput.value = decodedHash;
         searchInput.dispatchEvent(new Event('input'));
       }
