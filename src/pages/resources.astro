@@ -1,15 +1,30 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-
-import HeroImageTiles from '../components/sections/HeroImageTiles.astro'
-import FeatureCentered2x2 from '../components/sections/FeatureCentered2x2.astro'
-
-import IconBatteryBig from '../components/atoms/IconBatteryBig.astro'
-import Logo from '../components/atoms/Logo.astro'
-
-import MailingList from '../components/blocks/MailingList.astro'
+import { getCollection } from "astro:content";
+import { getResourceColor } from "../utils/resourceColors";
+import ResourceIcon from '../components/atoms/ResourceIcon.astro';
 
 const pageTitle = "Resources"
+
+// Get all resources from collection
+const allResources = await getCollection("resources");
+
+// Sort: by order field (if present), then by pubDate (newest first)
+const sortedResources = allResources.sort((a, b) => {
+  if (a.data.order !== undefined && b.data.order !== undefined) {
+    return a.data.order - b.data.order;
+  }
+  if (a.data.order !== undefined) return -1;
+  if (b.data.order !== undefined) return 1;
+
+  // Fallback to date
+  const dateA = a.data.pubDate || new Date(0);
+  const dateB = b.data.pubDate || new Date(0);
+  return dateB.getTime() - dateA.getTime();
+});
+
+// Get unique tags for filter keywords
+const uniqueTags = [...new Set(allResources.map((r) => r.data.tags).flat())];
 ---
 <BaseLayout pageTitle={`RE sources ${pageTitle}!`}>
 
@@ -30,129 +45,38 @@ const pageTitle = "Resources"
             </div>
             <ul
                 class="flex items-center justify-center w-full pb-6 mx-auto mt-4 font-bold tracking-wider text-center text-yellow-400 uppercase divide-x-2 cursor-pointer divide-yellow-600/20 border-opacity-20 text-md drop-shadow-md">
-                <li class="px-3 transition-all duration-500 opacity-40 hover:opacity-100">All</li>
-                <li class="px-3 transition-all duration-500 opacity-40 hover:opacity-100">Business</li>
-                <li class="px-3 transition-all duration-500 opacity-40 hover:opacity-100">Design</li>
-                <li class="px-3 transition-all duration-500 opacity-40 hover:opacity-100">Finance</li>
-                <li class="px-3 transition-all duration-500 opacity-40 hover:opacity-100">Food</li>
-                <li class="px-3 transition-all duration-500 opacity-40 hover:opacity-100">Graphics</li>
-                <li class="px-3 transition-all duration-500 opacity-40 hover:opacity-100">Internet</li>
+                <li class="px-3 transition-all duration-500 opacity-40 hover:opacity-100" data-tag-filter="">All</li>
+                {uniqueTags.map((tag) => (
+                  <li class="px-3 transition-all duration-500 opacity-40 hover:opacity-100" data-tag-filter={tag}>
+                    {tag}
+                  </li>
+                ))}
             </ul>
         </div>
 
         <div class="container relative mx-auto text-left pt-44 max-w-8xl pb-44">
             <div class="grid grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-5">
 
-                <!-- add hover group -->
-                <div
-                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-56 bg-blue-700/30 rounded-2xl pane aspect-chonk hover:bg-blue-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
-                    <h4 class="text-5xl font-extrabold tracking-tight">
-                        <span class="text-2xl">How to Replace</span><br>A Car Battery
-                    </h4>
-                    <IconBatteryBig />
-                </div>
-                <div
-                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-32 bg-purple-700/30 rounded-2xl pane aspect-chonk hover:bg-purple-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
-                    <h4 class="text-5xl font-extrabold tracking-tight">
-                        <span class="text-2xl">How to Bake</span><br>Carrot Muffins
-                    </h4>
-                    <IconBatteryBig />
-                </div>
-                <div
-                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform bg-pink-700/30 -translate-y-0 rounded-2xl pane aspect-chonk hover:bg-pink-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
-                    <h4 class="text-5xl font-extrabold tracking-tight">
-                        <span class="text-2xl">How to Make</span><br>Things on the Internet
-                    </h4>
-                    <IconBatteryBig />
-                </div>
-                <div
-                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-32 bg-yellow-400/30 rounded-2xl pane aspect-chonk hover:bg-yellow-400/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
-                    <h4 class="text-5xl font-extrabold tracking-tight">
-                        <span class="text-2xl">How to</span><br>Calm Down Quickly
-                    </h4>
-                    <IconBatteryBig />
-                </div>
-                <div
-                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-56 bg-green-700/30 rounded-2xl pane aspect-chonk hover:bg-green-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
-                    <h4 class="text-5xl font-extrabold tracking-tight">
-                        <span class="text-2xl">Understanding</span><br>Domain Names
-                    </h4>
-                    <IconBatteryBig />
-                </div>
+                {sortedResources.map((resource, index) => {
+                  const color = getResourceColor(resource.data.tags, resource.data.color, index);
+                  // Stagger the vertical positioning (repeating pattern: -56, -32, 0, -32, -56)
+                  const translateYClasses = ['-translate-y-56', '-translate-y-32', '-translate-y-0', '-translate-y-32', '-translate-y-56'];
+                  const translateY = translateYClasses[index % 5];
 
-                <!-- add hover group -->
-                <div
-                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-56 bg-pink-700/30 rounded-2xl pane aspect-chonk hover:bg-pink-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
-                    <h4 class="text-5xl font-extrabold tracking-tight">
-                        <span class="text-2xl">Using</span><br>The Golden Proportion
-                    </h4>
-                    <IconBatteryBig />
-                </div>
-                <div
-                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-32 bg-yellow-400/30 rounded-2xl pane aspect-chonk hover:bg-yellow-400/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
-                    <h4 class="text-5xl font-extrabold tracking-tight">
-                        <span class="text-2xl">How to Make</span><br>3D Art with Blender
-                    </h4>
-                    <IconBatteryBig />
-                </div>
-                <div
-                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform bg-blue-700/30 -translate-y-0 rounded-2xl pane aspect-chonk hover:bg-blue-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
-                    <h4 class="text-5xl font-extrabold tracking-tight">
-                        <span class="text-2xl">Introduction to</span><br>Affinity Publisher
-                    </h4>
-                    <IconBatteryBig />
-                </div>
-                <div
-                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-32 bg-green-700/30 rounded-2xl pane aspect-chonk hover:bg-green-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
-                    <h4 class="text-5xl font-extrabold tracking-tight">
-                        <span class="text-2xl">How to Make</span><br>Vector Art
-                    </h4>
-                    <IconBatteryBig />
-                </div>
-                <div
-                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-56 bg-purple-700/30 rounded-2xl pane aspect-chonk hover:bg-purple-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
-                    <h4 class="text-5xl font-extrabold tracking-tight">
-                        <span class="text-2xl">How to Play</span><br>Dungeons &amp;&nbsp;Dragons
-                    </h4>
-                    <IconBatteryBig />
-                </div>
-
-                <!-- add hover group -->
-                <div
-                    class="flex flex-col justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-56 bg-blue-700/30 items-left rounded-2xl pane aspect-chonk hover:bg-blue-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
-                    <h4 class="text-5xl font-extrabold tracking-tight">
-                        <span class="text-2xl">How to Design</span><br>A Web Page
-                    </h4>
-                    <IconBatteryBig />
-                </div>
-                <div
-                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-32 bg-purple-700/30 rounded-2xl pane aspect-chonk hover:bg-purple-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
-                    <h4 class="text-5xl font-extrabold tracking-tight">
-                        <span class="text-2xl">How to Make a</span><br>Website Wireframe
-                    </h4>
-                    <IconBatteryBig />
-                </div>
-                <div
-                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform bg-pink-700/30 -translate-y-0 rounded-2xl pane aspect-chonk hover:bg-pink-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
-                    <h4 class="text-5xl font-extrabold tracking-tight">
-                        <span class="text-2xl">How to Design a</span><br>Résumé
-                    </h4>
-                    <IconBatteryBig />
-                </div>
-                <div
-                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-32 bg-yellow-400/30 rounded-2xl pane aspect-chonk hover:bg-yellow-400/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
-                    <h4 class="text-5xl font-extrabold tracking-tight">
-                        <span class="text-2xl">How to Play</span><br>Deadly Twister
-                    </h4>
-                    <IconBatteryBig />
-                </div>
-                <div
-                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-56 bg-green-700/30 rounded-2xl pane aspect-chonk hover:bg-green-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
-                    <h4 class="text-5xl font-extrabold tracking-tight">
-                        <span class="text-2xl">How to Make</span><br>Dank Memes
-                    </h4>
-                    <IconBatteryBig />
-                </div>
+                  return (
+                    <a href={`/resources/${resource.id}`}
+                       data-resource-card
+                       data-title={resource.data.title}
+                       data-description={resource.data.description}
+                       data-tags={resource.data.tags.join(' ')}
+                       class={`flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform ${translateY} bg-${color}/30 rounded-2xl pane aspect-chonk hover:bg-${color}/80 hover:scale-125 hover:z-30 hover:shadow-2xl`}>
+                      <h4 class="text-5xl font-extrabold tracking-tight text-center">
+                        {resource.data.title}
+                      </h4>
+                      <ResourceIcon icon={resource.data.icon} />
+                    </a>
+                  );
+                })}
 
             </div>
         </div>
@@ -168,3 +92,38 @@ const pageTitle = "Resources"
     </section>
 
 </BaseLayout>
+
+<script>
+  const searchInput = document.querySelector('input[type="text"]');
+  const resourceCards = document.querySelectorAll('[data-resource-card]');
+
+  searchInput?.addEventListener('input', (e) => {
+    const query = (e.target as HTMLInputElement).value.toLowerCase();
+
+    resourceCards.forEach(card => {
+      const cardElement = card as HTMLElement;
+      const title = cardElement.dataset.title?.toLowerCase() || '';
+      const description = cardElement.dataset.description?.toLowerCase() || '';
+      const tags = cardElement.dataset.tags?.toLowerCase() || '';
+
+      const matches = title.includes(query) ||
+                      description.includes(query) ||
+                      tags.includes(query);
+
+      cardElement.style.display = matches ? '' : 'none';
+    });
+  });
+
+  // Tag click auto-populates search
+  const tagLinks = document.querySelectorAll('[data-tag-filter]');
+  tagLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const tag = (link as HTMLElement).dataset.tagFilter || '';
+      if (searchInput) {
+        (searchInput as HTMLInputElement).value = tag;
+        searchInput.dispatchEvent(new Event('input'));
+      }
+    });
+  });
+</script>

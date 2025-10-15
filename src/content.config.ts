@@ -57,6 +57,26 @@ const products = defineCollection({
   })
 });
 
+const resources = defineCollection({
+  loader: glob({ pattern: '**/[^_]*.md', base: "./src/collections/resources" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    icon: z.string(),
+    tags: z.array(z.string()),
+    color: z.string().optional(),
+    order: z.number().optional(),
+    pubDate: z.date().optional(),
+    image: z.object({
+      url: z.string(),
+      alt: z.string()
+    }).optional(),
+    fileUrl: z.string().optional(),
+    fileType: z.string().optional(),
+    standaloneUrl: z.string().optional(),
+  })
+});
+
 // OPTIONAL 
 
 // If you split jobs into individual files
@@ -88,7 +108,7 @@ const products = defineCollection({
 
 // EXPORT
 
-// Export collections for use with glob 
+// Export collections for use with glob
 // Only export jobs/tools if using individual files approach
 
-export const collections = { blog, portfolio, products };
+export const collections = { blog, portfolio, products, resources };

@@ -8,26 +8,37 @@ import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
 
-    // This come MUST be in the scope of getStaticPaths()
+    // Get both blog posts and resources
     const allPosts = await getCollection("blog");
-      
-    // Get a list of all unique tags that exist
-    const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+    const allResources = await getCollection("resources");
 
-    // 
+    // Get a list of all unique tags from both collections
+    const allTags = [
+        ...allPosts.map((post) => post.data.tags).flat(),
+        ...allResources.map((resource) => resource.data.tags).flat()
+    ];
+    const uniqueTags = [...new Set(allTags)];
+
+    // Create pages for each tag, with filtered posts and resources
     return uniqueTags.map((tag) => {
         const filteredPosts = allPosts.filter((post) =>
             post.data.tags.includes(tag)
         );
+        const filteredResources = allResources.filter((resource) =>
+            resource.data.tags.includes(tag)
+        );
         return {
             params: { tag },
-            props: { posts: filteredPosts },
+            props: {
+                posts: filteredPosts,
+                resources: filteredResources
+            },
         };
     });
 }
 
 const { tag } = Astro.params;
-const { posts } = Astro.props;
+const { posts, resources } = Astro.props;
 
 ---
 <BaseLayout pageTitle={tag}>
@@ -130,11 +141,47 @@ const { posts } = Astro.props;
                 </div>
             </div>
         </div>
+
+        <!-- Resources Section -->
+        {resources.length > 0 && (
+            <div class="px-6 mx-auto mt-20 max-w-7xl lg:px-8">
+                <h2 class="text-3xl font-semibold tracking-tight text-white text-pretty sm:text-4xl">
+                    Resources tagged with: <span class="underline">{ tag }</span>
+                </h2>
+                <div class="pt-10 mt-10 space-y-8 border-t border-gray-700">
+                    {resources.map((resource) => (
+                        <article class="flex flex-col gap-4 lg:flex-row lg:items-center">
+                            <div class="flex-1">
+                                <h3 class="text-xl font-semibold text-white group-hover:text-gray-300">
+                                    <a href={`/resources/${resource.id}`}>
+                                        {resource.data.title}
+                                    </a>
+                                </h3>
+                                <p class="mt-2 text-gray-400 text-sm/6">
+                                    {resource.data.description}
+                                </p>
+                                <div class="flex gap-2 mt-4 text-xs">
+                                    {resource.data.tags.map((resourceTag) => (
+                                        <a href={`/tags/${resourceTag}`} class="px-3 py-1.5 font-medium text-gray-300 rounded-full bg-gray-800/60 hover:bg-gray-800">
+                                            {resourceTag}
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+                        </article>
+                    ))}
+                </div>
+            </div>
+        )}
+
         <div class="flex items-center justify-center gap-4 pt-44">
             <ButtonAura link="/tags" label="Back to Tags Page" />
             <ButtonAura link="/blog" label="Back to Blog" />
+            {resources.length > 0 && (
+                <ButtonAura link="/resources" label="All Resources" />
+            )}
         </div>
     </div>
-  
+
 
 </BaseLayout>

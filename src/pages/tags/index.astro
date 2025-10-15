@@ -2,12 +2,18 @@
 import BaseLayout from '../../layouts/BaseLayout.astro'
 import SectionBlog from '../../components/sections/SectionBlog.astro';
 
-// 
+//
 import { getCollection } from "astro:content";
 
-// Get all unique tags from all posts 
+// Get all unique tags from both blog posts and resources
 const allPosts = await getCollection("blog");
-const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+const allResources = await getCollection("resources");
+
+const allTags = [
+  ...allPosts.map((post) => post.data.tags).flat(),
+  ...allResources.map((resource) => resource.data.tags).flat()
+];
+const uniqueTags = [...new Set(allTags)];
 
 const pageTitle = "Tags Index"
 ---
