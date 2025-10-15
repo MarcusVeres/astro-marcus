@@ -61,6 +61,8 @@ const resources = defineCollection({
   loader: glob({ pattern: '**/[^_]*.md', base: "./src/collections/resources" }),
   schema: z.object({
     title: z.string(),
+    surTitle: z.string().optional(),  // e.g., "How to Bake"
+    mainTitle: z.string().optional(), // e.g., "Carrot Muffins" (defaults to title if not provided)
     description: z.string(),
     icon: z.string(),
     tags: z.array(z.string()),
