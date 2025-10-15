@@ -1,0 +1,170 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+import HeroImageTiles from '../components/sections/HeroImageTiles.astro'
+import FeatureCentered2x2 from '../components/sections/FeatureCentered2x2.astro'
+
+import IconBatteryBig from '../components/atoms/IconBatteryBig.astro'
+import Logo from '../components/atoms/Logo.astro'
+
+import MailingList from '../components/blocks/MailingList.astro'
+
+const pageTitle = "Resources"
+---
+<BaseLayout pageTitle={`RE sources ${pageTitle}!`}>
+
+    <section class="relative">
+
+        <div class="absolute top-0 bottom-0 z-0 w-full bg-fixed bg-position-[center_top_-200px] bg-cover opacity-30 bg-grene-300" style="background-image: url('/images/render-1.png');"></div>
+
+        <div class="pt-12">
+            <h2 class="pt-16 font-extrabold text-center text-white uppercase text-7xl drop-shadow-lg">
+                Become unstoppable
+            </h2>
+            <div class="font-extrabold text-center text-white uppercase mt-14 drop-shadow-lg">
+                <form class="max-w-2xl p-0 mx-auto transition-all duration-300 ease-in-out rounded-lg bg-black/40 hover:bg-black/80">
+                    <input
+                        class="w-full px-5 py-3 mt-0 text-2xl text-white bg-transparent border-none rounded-lg hover:ring-1"
+                        type="text" placeholder="Search..." />
+                </form>
+            </div>
+            <ul
+                class="flex items-center justify-center w-full pb-6 mx-auto mt-4 font-bold tracking-wider text-center text-yellow-400 uppercase divide-x-2 cursor-pointer divide-yellow-600/20 border-opacity-20 text-md drop-shadow-md">
+                <li class="px-3 transition-all duration-500 opacity-40 hover:opacity-100">All</li>
+                <li class="px-3 transition-all duration-500 opacity-40 hover:opacity-100">Business</li>
+                <li class="px-3 transition-all duration-500 opacity-40 hover:opacity-100">Design</li>
+                <li class="px-3 transition-all duration-500 opacity-40 hover:opacity-100">Finance</li>
+                <li class="px-3 transition-all duration-500 opacity-40 hover:opacity-100">Food</li>
+                <li class="px-3 transition-all duration-500 opacity-40 hover:opacity-100">Graphics</li>
+                <li class="px-3 transition-all duration-500 opacity-40 hover:opacity-100">Internet</li>
+            </ul>
+        </div>
+
+        <div class="container relative mx-auto text-left pt-44 max-w-8xl pb-44">
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-5">
+
+                <!-- add hover group -->
+                <div
+                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-56 bg-blue-700/30 rounded-2xl pane aspect-chonk hover:bg-blue-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
+                    <h4 class="text-5xl font-extrabold tracking-tight">
+                        <span class="text-2xl">How to Replace</span><br>A Car Battery
+                    </h4>
+                    <IconBatteryBig />
+                </div>
+                <div
+                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-32 bg-purple-700/30 rounded-2xl pane aspect-chonk hover:bg-purple-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
+                    <h4 class="text-5xl font-extrabold tracking-tight">
+                        <span class="text-2xl">How to Bake</span><br>Carrot Muffins
+                    </h4>
+                    <IconBatteryBig />
+                </div>
+                <div
+                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform bg-pink-700/30 -translate-y-0 rounded-2xl pane aspect-chonk hover:bg-pink-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
+                    <h4 class="text-5xl font-extrabold tracking-tight">
+                        <span class="text-2xl">How to Make</span><br>Things on the Internet
+                    </h4>
+                    <IconBatteryBig />
+                </div>
+                <div
+                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-32 bg-yellow-400/30 rounded-2xl pane aspect-chonk hover:bg-yellow-400/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
+                    <h4 class="text-5xl font-extrabold tracking-tight">
+                        <span class="text-2xl">How to</span><br>Calm Down Quickly
+                    </h4>
+                    <IconBatteryBig />
+                </div>
+                <div
+                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-56 bg-green-700/30 rounded-2xl pane aspect-chonk hover:bg-green-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
+                    <h4 class="text-5xl font-extrabold tracking-tight">
+                        <span class="text-2xl">Understanding</span><br>Domain Names
+                    </h4>
+                    <IconBatteryBig />
+                </div>
+
+                <!-- add hover group -->
+                <div
+                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-56 bg-pink-700/30 rounded-2xl pane aspect-chonk hover:bg-pink-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
+                    <h4 class="text-5xl font-extrabold tracking-tight">
+                        <span class="text-2xl">Using</span><br>The Golden Proportion
+                    </h4>
+                    <IconBatteryBig />
+                </div>
+                <div
+                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-32 bg-yellow-400/30 rounded-2xl pane aspect-chonk hover:bg-yellow-400/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
+                    <h4 class="text-5xl font-extrabold tracking-tight">
+                        <span class="text-2xl">How to Make</span><br>3D Art with Blender
+                    </h4>
+                    <IconBatteryBig />
+                </div>
+                <div
+                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform bg-blue-700/30 -translate-y-0 rounded-2xl pane aspect-chonk hover:bg-blue-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
+                    <h4 class="text-5xl font-extrabold tracking-tight">
+                        <span class="text-2xl">Introduction to</span><br>Affinity Publisher
+                    </h4>
+                    <IconBatteryBig />
+                </div>
+                <div
+                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-32 bg-green-700/30 rounded-2xl pane aspect-chonk hover:bg-green-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
+                    <h4 class="text-5xl font-extrabold tracking-tight">
+                        <span class="text-2xl">How to Make</span><br>Vector Art
+                    </h4>
+                    <IconBatteryBig />
+                </div>
+                <div
+                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-56 bg-purple-700/30 rounded-2xl pane aspect-chonk hover:bg-purple-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
+                    <h4 class="text-5xl font-extrabold tracking-tight">
+                        <span class="text-2xl">How to Play</span><br>Dungeons &amp;&nbsp;Dragons
+                    </h4>
+                    <IconBatteryBig />
+                </div>
+
+                <!-- add hover group -->
+                <div
+                    class="flex flex-col justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-56 bg-blue-700/30 items-left rounded-2xl pane aspect-chonk hover:bg-blue-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
+                    <h4 class="text-5xl font-extrabold tracking-tight">
+                        <span class="text-2xl">How to Design</span><br>A Web Page
+                    </h4>
+                    <IconBatteryBig />
+                </div>
+                <div
+                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-32 bg-purple-700/30 rounded-2xl pane aspect-chonk hover:bg-purple-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
+                    <h4 class="text-5xl font-extrabold tracking-tight">
+                        <span class="text-2xl">How to Make a</span><br>Website Wireframe
+                    </h4>
+                    <IconBatteryBig />
+                </div>
+                <div
+                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform bg-pink-700/30 -translate-y-0 rounded-2xl pane aspect-chonk hover:bg-pink-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
+                    <h4 class="text-5xl font-extrabold tracking-tight">
+                        <span class="text-2xl">How to Design a</span><br>Résumé
+                    </h4>
+                    <IconBatteryBig />
+                </div>
+                <div
+                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-32 bg-yellow-400/30 rounded-2xl pane aspect-chonk hover:bg-yellow-400/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
+                    <h4 class="text-5xl font-extrabold tracking-tight">
+                        <span class="text-2xl">How to Play</span><br>Deadly Twister
+                    </h4>
+                    <IconBatteryBig />
+                </div>
+                <div
+                    class="flex flex-col items-center justify-center gap-8 py-2 transition-all duration-500 transform -translate-y-56 bg-green-700/30 rounded-2xl pane aspect-chonk hover:bg-green-700/80 hover:scale-125 hover:z-30 hover:shadow-2xl">
+                    <h4 class="text-5xl font-extrabold tracking-tight">
+                        <span class="text-2xl">How to Make</span><br>Dank Memes
+                    </h4>
+                    <IconBatteryBig />
+                </div>
+
+            </div>
+        </div>
+
+        <div class="flex items-center justify-center w-full h-40">
+            <svg class="-mt-40 text-white w-14 h-14 opacity-40 animate-bounce">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 13l-3 3m0 0l-3-3m3 3V8m0 13a9 9 0 110-18 9 9 0 010 18z" />
+                </svg>
+            </svg>
+        </div>
+
+    </section>
+
+</BaseLayout>
