@@ -1,5 +1,7 @@
 ---
 title: "Memorization for Public Speakers"
+surTitle: "Memorization for"
+mainTitle: "Public Speakers"
 description: "How world champion speakers encode, store, and deploy information. Your mind becomes a fortress of accessible power."
 icon: "document"
 tags: ["public-speaking", "memory", "communication"]

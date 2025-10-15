@@ -1,5 +1,7 @@
 ---
 title: "Intro to Real-Time Bidding (RTB)"
+surTitle: "Intro to"
+mainTitle: "Real-Time Bidding (RTB)"
 description: "Understanding the real game behind online attention, influence, and conversion. See the matrix, then bend it."
 icon: "document"
 tags: ["advertising", "technology", "business"]

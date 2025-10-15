@@ -54,7 +54,7 @@ const uniqueTags = [...new Set(allResources.map((r) => r.data.tags).flat())];
             </ul>
         </div>
 
-        <div class="container relative mx-auto text-left pt-64 max-w-8xl pb-44">
+        <div class="container relative pt-64 mx-auto text-left max-w-8xl pb-44">
             <div class="grid grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-5">
 
                 {sortedResources.map((resource, index) => {
@@ -74,9 +74,9 @@ const uniqueTags = [...new Set(allResources.map((r) => r.data.tags).flat())];
                        data-description={resource.data.description}
                        data-tags={resource.data.tags.join(' ')}
                        class={`flex flex-col items-left justify-center gap-8 py-2 transition-all duration-500 transform ${translateY} bg-${color}/30 rounded-2xl pane aspect-chonk hover:bg-${color}/80 hover:scale-125 hover:z-30 hover:shadow-2xl`}>
-                      <h4 class="text-5xl font-extrabold tracking-tight text-left">
+                      <h4 class="text-4xl font-extrabold tracking-tight text-left">
                         {displaySurTitle && (
-                          <span class="block text-2xl font-normal">{displaySurTitle}</span>
+                          <span class="block text-2xl font-bold">{displaySurTitle}</span>
                         )}
                         <span class="block">{displayMainTitle}</span>
                       </h4>
