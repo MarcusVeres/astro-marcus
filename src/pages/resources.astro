@@ -55,13 +55,10 @@ const uniqueTags = [...new Set(allResources.map((r) => r.data.tags).flat())];
         </div>
 
         <div class="container relative pt-64 mx-auto text-left max-w-8xl pb-44">
-            <div class="grid grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-5">
+            <div id="resource-grid" class="grid grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-5">
 
                 {sortedResources.map((resource, index) => {
                   const color = getResourceColor(resource.data.tags, resource.data.color, index);
-                  // Stagger the vertical positioning (repeating pattern: -56, -32, 0, -32, -56)
-                  const translateYClasses = ['-translate-y-56', '-translate-y-32', '-translate-y-0', '-translate-y-32', '-translate-y-56'];
-                  const translateY = translateYClasses[index % 5];
 
                   // Use surTitle/mainTitle if available, otherwise fallback to full title
                   const displaySurTitle = resource.data.surTitle;
@@ -73,7 +70,7 @@ const uniqueTags = [...new Set(allResources.map((r) => r.data.tags).flat())];
                        data-title={resource.data.title}
                        data-description={resource.data.description}
                        data-tags={resource.data.tags.join(' ')}
-                       class={`flex flex-col items-left justify-center gap-8 py-2 transition-all duration-500 transform ${translateY} bg-${color}/30 rounded-2xl pane aspect-chonk hover:bg-${color}/80 hover:scale-125 hover:z-30 hover:shadow-2xl`}>
+                       class={`resource-card flex flex-col items-left justify-center gap-8 py-2 transition-all duration-500 transform bg-${color}/30 rounded-2xl pane aspect-chonk hover:bg-${color}/80 hover:scale-125 hover:z-30 hover:shadow-2xl`}>
                       <h4 class="text-4xl font-extrabold tracking-tight text-left">
                         {displaySurTitle && (
                           <span class="block text-2xl font-bold">{displaySurTitle}</span>
@@ -103,7 +100,49 @@ const uniqueTags = [...new Set(allResources.map((r) => r.data.tags).flat())];
 <script>
   const searchInput = document.querySelector('input[type="text"]');
   const resourceCards = document.querySelectorAll('[data-resource-card]');
+  const resourceGrid = document.getElementById('resource-grid');
 
+  // Translation pattern based on column position (5-column grid)
+  const translateYClasses = ['-translate-y-56', '-translate-y-32', '-translate-y-0', '-translate-y-32', '-translate-y-56'];
+
+  function applyGridTranslations() {
+    if (!resourceGrid) return;
+
+    // Get visible cards
+    const visibleCards = Array.from(resourceCards).filter(card => {
+      const cardElement = card as HTMLElement;
+      return cardElement.style.display !== 'none';
+    });
+
+    // Get the computed column count from the grid
+    const computedStyle = window.getComputedStyle(resourceGrid);
+    const columnCount = computedStyle.gridTemplateColumns.split(' ').length;
+
+    // Apply translations based on position in grid
+    visibleCards.forEach((card, index) => {
+      const cardElement = card as HTMLElement;
+      const columnIndex = index % columnCount;
+
+      // Remove all existing translate classes
+      translateYClasses.forEach(cls => cardElement.classList.remove(cls));
+
+      // Apply the correct translate class for this column
+      const translateClass = translateYClasses[columnIndex % 5];
+      cardElement.classList.add(translateClass);
+    });
+  }
+
+  // Apply translations on load
+  applyGridTranslations();
+
+  // Reapply on window resize (for responsive column changes)
+  let resizeTimeout: number;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(applyGridTranslations, 100);
+  });
+
+  // Search functionality
   searchInput?.addEventListener('input', (e) => {
     const query = (e.target as HTMLInputElement).value.toLowerCase();
 
@@ -119,6 +158,9 @@ const uniqueTags = [...new Set(allResources.map((r) => r.data.tags).flat())];
 
       cardElement.style.display = matches ? '' : 'none';
     });
+
+    // Reapply grid translations after filtering
+    applyGridTranslations();
   });
 
   // Tag click auto-populates search
