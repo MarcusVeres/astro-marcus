@@ -65,7 +65,7 @@ const sortedResources = allResources.sort((a, b) => {
             </ul>
         </div>
 
-        <div class="container relative pt-64 mx-auto text-left max-w-8xl pb-44">
+        <div class="container relative pt-0 mx-auto text-left md:pt-32 xl:pt-56 max-w-8xl pb-44">
             <div id="resource-grid" class="grid grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-5">
 
                 {sortedResources.map((resource, index) => {
@@ -81,10 +81,10 @@ const sortedResources = allResources.sort((a, b) => {
                        data-title={resource.data.title}
                        data-description={resource.data.description}
                        data-tags={resource.data.tags.join(' ')}
-                       class={`resource-card flex flex-col items-left justify-center gap-8 py-2 transition-all duration-500 transform bg-${color}/30 rounded-2xl pane aspect-chonk hover:bg-${color}/80 hover:scale-125 hover:z-30 hover:shadow-2xl`}>
-                      <h4 class="text-4xl font-extrabold tracking-tight text-left">
+                       class={`resource-card flex flex-col items-left justify-center gap-4 md:gap-6 xl:gap-8 py-2 transition-all duration-500 transform bg-${color}/30 rounded-2xl pane md:aspect-chonk md:hover:bg-${color}/80 md:hover:scale-125 md:hover:z-30 md:hover:shadow-2xl`}>
+                      <h4 class="text-2xl font-extrabold tracking-tight text-left md:text-xl xl:text-4xl">
                         {displaySurTitle && (
-                          <span class="block text-2xl font-bold">{displaySurTitle}</span>
+                          <span class="block text-lg font-bold md:text-base xl:text-2xl">{displaySurTitle}</span>
                         )}
                         <span class="block">{displayMainTitle}</span>
                       </h4>
@@ -114,8 +114,15 @@ const sortedResources = allResources.sort((a, b) => {
   const resourceCards = document.querySelectorAll('[data-resource-card]');
   const resourceGrid = document.getElementById('resource-grid');
 
-  // Translation pattern based on column position (5-column grid)
-  const translateYClasses = ['-translate-y-56', '-translate-y-32', '-translate-y-0', '-translate-y-32', '-translate-y-56'];
+  // All possible translation classes
+  const allTranslateClasses = ['-translate-y-56', '-translate-y-32', '-translate-y-20', '-translate-y-0'];
+
+  // Translation patterns based on column count
+  const translatePatterns: Record<number, string[]> = {
+    1: ['-translate-y-0'], // Mobile: no dip
+    3: ['-translate-y-20', '-translate-y-0', '-translate-y-20'], // 3-col: dip middle
+    5: ['-translate-y-56', '-translate-y-32', '-translate-y-0', '-translate-y-32', '-translate-y-56'], // 5-col: dip middle 3
+  };
 
   // Update URL hash with current search/filter state
   function updateHash(value: string) {
@@ -150,16 +157,19 @@ const sortedResources = allResources.sort((a, b) => {
     const computedStyle = window.getComputedStyle(resourceGrid);
     const columnCount = computedStyle.gridTemplateColumns.split(' ').length;
 
+    // Get the translate pattern for this column count
+    const pattern = translatePatterns[columnCount] || translatePatterns[5];
+
     // Apply translations based on position in grid
     visibleCards.forEach((card, index) => {
       const cardElement = card as HTMLElement;
       const columnIndex = index % columnCount;
 
       // Remove all existing translate classes
-      translateYClasses.forEach(cls => cardElement.classList.remove(cls));
+      allTranslateClasses.forEach(cls => cardElement.classList.remove(cls));
 
       // Apply the correct translate class for this column
-      const translateClass = translateYClasses[columnIndex % 5];
+      const translateClass = pattern[columnIndex % pattern.length];
       cardElement.classList.add(translateClass);
     });
   }
