@@ -4,12 +4,14 @@ import BlogPost from '../layouts/BlogPost.astro'
 
 import { getCollection } from "astro:content";
 const allPosts = await getCollection("blog");
+const uniqueTags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
 
 const pageTitle = "Blog"
 ---
 <BaseLayout pageTitle={`${pageTitle} blog`}>
+<!-- 
     <div class="max-w-6xl px-4 mx-auto">
-		<h1 class="mb-8 text-3xl font-bold text-gray-900">{pageTitle}</h1>
+		<h1 class="mb-8 text-3xl font-bold text-gray-100">{pageTitle}</h1>
 	</div>
     <h2>{pageTitle} blog blog</h2>
     <ul>
@@ -17,4 +19,97 @@ const pageTitle = "Blog"
             <BlogPost url={`/posts/${post.id}/`} title={post.data.title} />
         ) ) }
     </ul>
+ -->
+    <div class="container flex px-16 mx-auto mt-16 text-gray-100 max-w-7xl">  
+      <div class="w-[38%]">
+        <h1 class="pr-20 text-6xl font-extrabold tracking-tighter">
+          Absorb what is useful
+        </h1>
+        <p class="pt-20 pr-20">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus blandit volutpat enim, nec eleifend nisi ultrices aliquet. Aliquam rutrum tortor neque, a dictum lorem elementum sed. 
+        </p>
+        <nav class="sticky mt-20 mr-20 top-20 border-t-gray-100" id="article-nav">
+          <input class="w-full text-lg bg-transparent border-none rounded hover:ring-1" type="text" placeholder="filter tags" />
+          <ul class="pt-4 mr-16 text-2xl font-light leading-loose border-t border-t-white border-opacity-10">
+
+            { uniqueTags.map( (tag) => (
+                <li class="">
+                    <a class="" href={`/tags/${tag}`}>{tag}</a>
+                </li>   
+            ) ) }
+
+            <!--
+            <li>Web Development</li>
+            <li>Graphic Design</li>
+            <li>Time Management</li>
+            <li>Food Recipes</li>
+            <li>CSS</li>
+            -->
+
+            <li class="inline-block px-2 py-1 text-sm font-light text-blue-700 bg-transparent border border-blue-500 rounded-full hover:bg-blue-500 hover:text-white hover:border-transparent">CSS</li>
+            <li class="inline-block px-2 py-1 text-sm font-light text-blue-700 bg-transparent border border-blue-500 rounded-full hover:bg-blue-500 hover:text-white hover:border-transparent">Recipe</li>
+          </ul>
+        </nav>
+      </div>
+      <div class="w-[62%] flex-1 grid text-2xl font-light pb-24">
+        <div class="mt-1 rounded-lg bg-black/40">
+          <input class="w-full px-5 py-3 text-2xl text-white bg-transparent border-none rounded-lg hover:ring-1" type="text" placeholder="Search by title, subject or keywords..." />
+        </div>
+        <ul class="">
+            { allPosts.map((post) => (
+
+                <li class="pt-4">
+                    <a href={`/posts/${post.id}/`} class="group">
+                        <h3 class="pt-4 pb-2 text-4xl font-light border-t border-white/20 group-hover:opacity-50">
+                            {post.data.title}
+                        </h3>
+                        <img class="self-center object-cover w-full transition-all rounded shadow-lg h-36 group-hover:opacity-50" src={post.data.image.url} alt={post.data.image.alt}>
+                        <p class="py-4">
+                            {post.data.description}
+                        </p>   
+                    </a>
+                </li>
+                
+            ) ) }
+        </ul>
+<!--
+        <div class="pt-4">
+          <h3 class="pt-4 pb-2 text-4xl font-light border-t border-white border-opacity-20">
+            Centering a DIV using CSS Flexbox
+          </h3>
+          <img class="object-cover w-full rounded shadow-lg h-36" src="https://thumbs.dreamstime.com/b/infographics-dark-multipurpose-economic-charts-marketing-graphs-pie-bar-chart-flowchart-vector-proje-project-diagram-128774529.jpg" alt="golden ratio hero-image">
+          <p class="py-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus blandit volutpat enim, nec eleifend nisi ultrices aliquet. Aliquam rutrum tortor neque, a dictum lorem elementum sed. Nullam fringilla leo dolor, sed sodales enim efficitur at.
+          </p>   
+        </div>
+        <div class="pt-4">
+          <h3 class="pt-4 pb-2 text-4xl font-light border-t border-white border-opacity-20">
+            Understanding the Golden Proportion
+          </h3>
+          <img class="object-cover w-full mt-2 mb-4 rounded shadow-lg h-36" src="https://nuscimagazine.com/wp-content/uploads/2021/04/Screen-Shot-2021-04-22-at-9.24.20-AM.png" alt="hero-image">
+          <p class="py-4">
+            Nulla porta orci metus, ac blandit justo malesuada id. Integer ultricies nisl dui, vitae porttitor lacus gravida id. Praesent quis sagittis nisl. Ut vitae ultrices augue. Morbi eu accumsan eros, vestibulum elementum lacus. Nunc ultrices neque vitae nulla euismod blandit.
+          </p>  
+        </div>
+        <div class="pt-4">
+          <h3 class="pt-4 pb-2 text-4xl font-light border-t border-white border-opacity-20">
+            How to Close an Image Tag
+          </h3>
+          <img class="object-cover w-full rounded shadow-lg h-36" src="../assets/img/code-graphic.png" alt="golden ratio hero-image">
+          <p class="py-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus blandit volutpat enim, nec eleifend nisi ultrices aliquet. Aliquam rutrum tortor neque, a dictum lorem elementum sed. Nullam fringilla leo dolor, sed sodales enim efficitur at.
+          </p>   
+        </div>
+        <div class="pt-4">
+          <h3 class="pt-4 pb-2 text-4xl font-light border-t border-white border-opacity-20">
+            Understanding the Golden Proportion
+          </h3>
+          <img class="object-cover w-full mt-2 mb-4 rounded shadow-lg h-36" src="https://nuscimagazine.com/wp-content/uploads/2021/04/Screen-Shot-2021-04-22-at-9.24.20-AM.png" alt="hero-image">
+          <p class="py-4">
+            Nulla porta orci metus, ac blandit justo malesuada id. Integer ultricies nisl dui, vitae porttitor lacus gravida id. Praesent quis sagittis nisl. Ut vitae ultrices augue. Morbi eu accumsan eros, vestibulum elementum lacus. Nunc ultrices neque vitae nulla euismod blandit.
+          </p>  
+        </div>
+    -->
+    </div>
+
 </BaseLayout>
