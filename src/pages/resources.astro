@@ -34,10 +34,21 @@ const sortedResources = allResources.sort((a, b) => {
                 Become unstoppable
             </h2>
             <div class="font-extrabold text-center text-white uppercase mt-14 drop-shadow-lg">
-                <form class="max-w-2xl p-0 mx-auto transition-all duration-300 ease-in-out rounded-lg bg-black/40 hover:bg-black/80">
+                <form class="relative max-w-2xl p-0 mx-auto transition-all duration-300 ease-in-out rounded-lg bg-black/40 hover:bg-black/80">
                     <input
-                        class="w-full px-5 py-3 mt-0 text-2xl text-white bg-transparent border-none rounded-lg hover:ring-1"
+                        id="search-input"
+                        class="w-full px-5 py-3 pr-12 mt-0 text-2xl text-white bg-transparent border-none rounded-lg hover:ring-1"
                         type="text" placeholder="Search..." />
+                    <button
+                        id="clear-search"
+                        type="button"
+                        class="absolute hidden transition-all duration-200 transform -translate-y-1/2 right-4 top-1/2 hover:scale-110"
+                        aria-label="Clear search">
+                        <svg class="w-6 h-6 text-white opacity-60 hover:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 9l-6 6m0-6l6 6"/>
+                        </svg>
+                    </button>
                 </form>
             </div>
             <ul
@@ -98,12 +109,33 @@ const sortedResources = allResources.sort((a, b) => {
 </BaseLayout>
 
 <script>
-  const searchInput = document.querySelector('input[type="text"]');
+  const searchInput = document.getElementById('search-input') as HTMLInputElement | null;
+  const clearButton = document.getElementById('clear-search');
   const resourceCards = document.querySelectorAll('[data-resource-card]');
   const resourceGrid = document.getElementById('resource-grid');
 
   // Translation pattern based on column position (5-column grid)
   const translateYClasses = ['-translate-y-56', '-translate-y-32', '-translate-y-0', '-translate-y-32', '-translate-y-56'];
+
+  // Update URL hash with current search/filter state
+  function updateHash(value: string) {
+    if (value) {
+      window.location.hash = encodeURIComponent(value);
+    } else {
+      // Clear hash without adding to history
+      history.replaceState(null, '', window.location.pathname);
+    }
+  }
+
+  // Show/hide clear button based on input value
+  function toggleClearButton() {
+    if (!searchInput || !clearButton) return;
+    if (searchInput.value.length > 0) {
+      clearButton.classList.remove('hidden');
+    } else {
+      clearButton.classList.add('hidden');
+    }
+  }
 
   function applyGridTranslations() {
     if (!resourceGrid) return;
@@ -142,10 +174,24 @@ const sortedResources = allResources.sort((a, b) => {
     resizeTimeout = setTimeout(applyGridTranslations, 100);
   });
 
+  // Clear button functionality
+  clearButton?.addEventListener('click', () => {
+    if (searchInput) {
+      searchInput.value = '';
+      searchInput.dispatchEvent(new Event('input'));
+      searchInput.focus();
+    }
+  });
+
   // Search functionality
+  let searchTimeout: number;
   searchInput?.addEventListener('input', (e) => {
     const query = (e.target as HTMLInputElement).value.toLowerCase();
 
+    // Toggle clear button visibility
+    toggleClearButton();
+
+    // Filter resources
     resourceCards.forEach(card => {
       const cardElement = card as HTMLElement;
       const title = cardElement.dataset.title?.toLowerCase() || '';
@@ -161,6 +207,12 @@ const sortedResources = allResources.sort((a, b) => {
 
     // Reapply grid translations after filtering
     applyGridTranslations();
+
+    // Update URL hash with debounce (500ms)
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+      updateHash(query);
+    }, 500);
   });
 
   // Category click filters resources
@@ -174,9 +226,10 @@ const sortedResources = allResources.sort((a, b) => {
       // If "All" category, clear search and show all
       if (categoryName === 'All' || categoryTags === '') {
         if (searchInput) {
-          (searchInput as HTMLInputElement).value = '';
+          searchInput.value = '';
           searchInput.dispatchEvent(new Event('input'));
         }
+        updateHash('');
         return;
       }
 
@@ -200,6 +253,31 @@ const sortedResources = allResources.sort((a, b) => {
       categoryLinks.forEach(l => l.classList.add('opacity-40'));
       link.classList.remove('opacity-40');
       link.classList.add('opacity-100');
+
+      // Update URL hash with category name
+      updateHash(categoryName);
     });
+  });
+
+  // Read hash on page load and restore filter state
+  window.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash.slice(1); // Remove #
+    if (hash) {
+      const decodedHash = decodeURIComponent(hash);
+
+      // Check if it's a category name
+      const categoryLink = Array.from(categoryLinks).find(
+        link => (link as HTMLElement).dataset.categoryFilter === decodedHash
+      );
+
+      if (categoryLink) {
+        // It's a category - click it
+        (categoryLink as HTMLElement).click();
+      } else if (searchInput) {
+        // It's a search term - populate search
+        searchInput.value = decodedHash;
+        searchInput.dispatchEvent(new Event('input'));
+      }
+    }
   });
 </script>
