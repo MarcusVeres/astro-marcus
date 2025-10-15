@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import { getCollection } from "astro:content";
-import { getResourceColor } from "../utils/resourceColors";
+import { getResourceColor, featuredCategories } from "../utils/resourceColors";
 import ResourceIcon from '../components/atoms/ResourceIcon.astro';
 
 const pageTitle = "Resources"
@@ -22,9 +22,6 @@ const sortedResources = allResources.sort((a, b) => {
   const dateB = b.data.pubDate || new Date(0);
   return dateB.getTime() - dateA.getTime();
 });
-
-// Get unique tags for filter keywords
-const uniqueTags = [...new Set(allResources.map((r) => r.data.tags).flat())];
 ---
 <BaseLayout pageTitle={`RE sources ${pageTitle}!`}>
 
@@ -45,10 +42,13 @@ const uniqueTags = [...new Set(allResources.map((r) => r.data.tags).flat())];
             </div>
             <ul
                 class="flex items-center justify-center w-full pb-6 mx-auto mt-4 font-bold tracking-wider text-center text-yellow-400 uppercase divide-x-2 cursor-pointer divide-yellow-600/20 border-opacity-20 text-md drop-shadow-md">
-                <li class="px-3 transition-all duration-500 opacity-40 hover:opacity-100" data-tag-filter="">All</li>
-                {uniqueTags.map((tag) => (
-                  <li class="px-3 transition-all duration-500 opacity-40 hover:opacity-100" data-tag-filter={tag}>
-                    {tag}
+                {featuredCategories.map((category) => (
+                  <li
+                    class="px-3 transition-all duration-500 opacity-40 hover:opacity-100"
+                    data-category-filter={category.name}
+                    data-category-tags={category.tags.join(',')}
+                  >
+                    {category.name}
                   </li>
                 ))}
             </ul>
@@ -163,16 +163,43 @@ const uniqueTags = [...new Set(allResources.map((r) => r.data.tags).flat())];
     applyGridTranslations();
   });
 
-  // Tag click auto-populates search
-  const tagLinks = document.querySelectorAll('[data-tag-filter]');
-  tagLinks.forEach(link => {
+  // Category click filters resources
+  const categoryLinks = document.querySelectorAll('[data-category-filter]');
+  categoryLinks.forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
-      const tag = (link as HTMLElement).dataset.tagFilter || '';
-      if (searchInput) {
-        (searchInput as HTMLInputElement).value = tag;
-        searchInput.dispatchEvent(new Event('input'));
+      const categoryName = (link as HTMLElement).dataset.categoryFilter || '';
+      const categoryTags = (link as HTMLElement).dataset.categoryTags || '';
+
+      // If "All" category, clear search and show all
+      if (categoryName === 'All' || categoryTags === '') {
+        if (searchInput) {
+          (searchInput as HTMLInputElement).value = '';
+          searchInput.dispatchEvent(new Event('input'));
+        }
+        return;
       }
+
+      // Filter by category tags
+      const tagsArray = categoryTags.split(',');
+      resourceCards.forEach(card => {
+        const cardElement = card as HTMLElement;
+        const cardTags = cardElement.dataset.tags?.toLowerCase() || '';
+
+        // Check if any of the category tags match the card's tags
+        const matches = tagsArray.some(tag => cardTags.includes(tag.toLowerCase()));
+
+        cardElement.style.display = matches ? '' : 'none';
+      });
+
+      // Reapply grid translations after filtering
+      applyGridTranslations();
+
+      // Update active state
+      categoryLinks.forEach(l => l.classList.remove('opacity-100'));
+      categoryLinks.forEach(l => l.classList.add('opacity-40'));
+      link.classList.remove('opacity-40');
+      link.classList.add('opacity-100');
     });
   });
 </script>

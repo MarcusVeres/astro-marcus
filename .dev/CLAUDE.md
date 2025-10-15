@@ -12,6 +12,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `npm run preview` | Preview production build locally |
 | `npm run astro ...` | Run Astro CLI commands (e.g., `astro check`, `astro add`) |
 
+**NOTE: You don't need to run `npm run dev` or `npm run build`. I'll run these myself from another terminal.**
+
 ## Architecture Overview
 
 This is an Astro-based personal website built with Tailwind CSS v4, Preact, and content collections.
