@@ -5,10 +5,9 @@ mainTitle: "Center a DIV"
 description: "Learn the modern way to center content using Flexbox. No more margin hacks!"
 icon: "document"
 tags: ["technology", "web", "design"]
-resourceType: "code-tutorial"
+standaloneUrl: "/m/center-a-div"
 order: 50
 pubDate: 2025-01-15
-codepenUrl: "https://codepen.io/GI-IO5T/embed/yLMjypr?default-tab=html,result&theme-id=dark"
 ---
 
 ## The Flexbox Method
