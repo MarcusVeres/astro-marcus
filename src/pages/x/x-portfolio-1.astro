@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+import SocialIcons from '../../components/blocks/SocialIcons.astro'
+import SocialIconsFooter from '../../components/blocks/SocialIconsFooter.astro'
+
+const pageTitle = "Portfolio"
+---
+<BaseLayout pageTitle={`${pageTitle} blog`}>
+
+  <SocialIconsFooter />
+
+  <!-- consider: adding a wrapper container for the 16px extra padding that isn't respected by grid. can't use margin because mx-auto is already in use-->
+  <div class="container grid grid-cols-2 gap-2 p-2 mx-auto mt-12 text-white max-w-7xl sm:p-4 sm:gap-4 sm:grid-cols-3 lg:grid-cols-4">
+    
+    <div class="flex items-center justify-center col-span-2 border rounded-lg shadow-inner bg-gray-950 border-white/10 bg-opacity-40 sm:col-span-3 md:col-span-2">
+      <h1 class="p-1 m-0 text-6xl font-extrabold tracking-wide text-transparent uppercase bg-clip-text bg-gradient-to-r from-yellow-400 to-pink-500">
+        Portfolio
+      </h1>
+    </div>
+
+    <div class="md:col-start-3 card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/pine.jpg')]"></div>
+    </div>
+
+    <div class="card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/cardinal.jpg')]"></div>
+    </div>
+
+    <div class="card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/grandpa.jpg')]"></div>
+    </div>
+
+    <div class="row-span-2 card-zoom">
+      <div class="card-zoom-image bg-[url('/images/portfolio/lamp.jpg')]"></div>
+    </div>
+
+    <div class="card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/knob.jpg')]"></div>
+    </div>
+
+    <div class="row-span-2 card-zoom">
+      <div class="card-zoom-image bg-[url('/images/portfolio/fence.jpg')]"></div>
+    </div>
+
+    <div class="card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/trunk.jpg')]"></div>
+    </div>
+
+    <div class="card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/pipes.jpg')]"></div>
+    </div>
+    
+    <div class="card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/flowers.jpg')]"></div>
+    </div>
+
+    <div class="card-zoom md:col-span-2">
+      <div class="card-zoom-image bg-[url('/images/portfolio/knife.jpg')]"></div>
+      <h3 class="hidden text-center uppercase text-md md:block md:text-2xl lg:text-3xl card-zoom-text xl:text-4xl">Case Study I</h3>
+    </div>
+
+    <div class="card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/tunnel.jpg')]"></div>
+    </div>
+
+    <div class="row-span-2 card-zoom">
+      <div class="card-zoom-image bg-[url('/images/portfolio/streetlight.jpg')]"></div>
+    </div>
+
+    <div class="card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/wall.jpg')]"></div>
+    </div>
+
+    <div class="row-span-2 card-zoom">
+      <div class="card-zoom-image bg-[url('/images/portfolio/spade.jpg')]"></div>
+    </div>
+
+    <div class="card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/miki.jpg')]"></div>
+    </div>
+
+    <div class="card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/glow.jpg')]"></div>
+    </div>
+
+    <div class="card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/shatters.jpg')]"></div>
+    </div>
+
+  </div>
+
+</BaseLayout>

@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 
+import { getResourceColor, featuredCategories } from "../utils/resourceColors";
+
 import SocialIcons from '../components/blocks/SocialIcons.astro'
 import SocialIconsFooter from '../components/blocks/SocialIconsFooter.astro'
 
@@ -8,7 +10,46 @@ const pageTitle = "Portfolio"
 ---
 <BaseLayout pageTitle={`${pageTitle} blog`}>
 
-  <SocialIconsFooter />
+  <!-- GLightbox CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+
+  <!-- <SocialIconsFooter /> -->
+
+  <div class="px-2 pt-4 md:pt-6 md:px-0">
+      <h2 class="pt-4 text-4xl font-extrabold text-center text-white uppercase md:pt-16 md:text-7xl drop-shadow-lg">
+          Portfolio Gallery
+      </h2>
+      <div class="mt-6 font-extrabold text-center text-white uppercase md:mt-14 drop-shadow-lg">
+          <form class="relative max-w-2xl p-0 mx-auto transition-all duration-300 ease-in-out rounded-lg bg-black/40 hover:bg-black/80">
+              <input
+                  id="search-input"
+                  class="w-full px-5 py-3 pr-12 mt-0 text-2xl text-white bg-transparent border-none rounded-lg hover:ring-1"
+                  type="text" placeholder="Search..." />
+              <button
+                  id="clear-search"
+                  type="button"
+                  class="absolute hidden transition-all duration-200 transform -translate-y-1/2 right-4 top-1/2 hover:scale-110"
+                  aria-label="Clear search">
+                  <svg class="w-6 h-6 text-white opacity-60 hover:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <circle cx="12" cy="12" r="10" stroke-width="2"/>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 9l-6 6m0-6l6 6"/>
+                  </svg>
+              </button>
+          </form>
+      </div>
+      <ul
+          class="flex items-center w-full pb-6 mx-auto mt-4 overflow-x-auto font-bold tracking-wider text-center text-yellow-400 uppercase divide-x-2 cursor-pointer divide-yellow-600/20 border-opacity-20 text-md drop-shadow-md md:justify-center md:overflow-x-visible scrollbar-hide snap-x snap-mandatory">
+          {featuredCategories.map((category) => (
+            <li
+              class="flex-shrink-0 px-3 transition-all duration-500 opacity-40 hover:opacity-100 snap-center"
+              data-category-filter={category.name}
+              data-category-tags={category.tags.join(',')}
+            >
+              {category.name}
+            </li>
+          ))}
+      </ul>
+  </div>
 
   <!-- consider: adding a wrapper container for the 16px extra padding that isn't respected by grid. can't use margin because mx-auto is already in use-->
   <div class="container grid grid-cols-2 gap-2 p-2 mx-auto mt-12 text-white max-w-7xl sm:p-4 sm:gap-4 sm:grid-cols-3 lg:grid-cols-4">
@@ -19,75 +60,171 @@ const pageTitle = "Portfolio"
       </h1>
     </div>
 
-    <div class="md:col-start-3 card-zoom aspect-golden">
+    <a
+      href="/images/portfolio/pine.jpg"
+      class="md:col-start-3 card-zoom aspect-golden glightbox"
+      data-title="Pine Tree Macro"
+      data-description="Detailed close-up of pine needles in natural light">
       <div class="card-zoom-image bg-[url('/images/portfolio/pine.jpg')]"></div>
-    </div>
+    </a>
 
-    <div class="card-zoom aspect-golden">
+    <a
+      href="/images/portfolio/cardinal.jpg"
+      class="card-zoom aspect-golden glightbox"
+      data-title="Cardinal Bird"
+      data-description="Nature photography featuring a beautiful cardinal">
       <div class="card-zoom-image bg-[url('/images/portfolio/cardinal.jpg')]"></div>
-    </div>
+    </a>
 
-    <div class="card-zoom aspect-golden">
+    <a
+      href="/images/portfolio/grandpa.jpg"
+      class="card-zoom aspect-golden glightbox"
+      data-title="Portrait Study"
+      data-description="Black and white portrait photography">
       <div class="card-zoom-image bg-[url('/images/portfolio/grandpa.jpg')]"></div>
-    </div>
+    </a>
 
-    <div class="row-span-2 card-zoom">
+    <a
+      href="/images/portfolio/lamp.jpg"
+      class="row-span-2 card-zoom glightbox"
+      data-title="Vintage Lamp"
+      data-description="Architectural detail featuring classic lighting fixture">
       <div class="card-zoom-image bg-[url('/images/portfolio/lamp.jpg')]"></div>
-    </div>
+    </a>
 
-    <div class="card-zoom aspect-golden">
+    <a
+      href="/images/portfolio/knob.jpg"
+      class="card-zoom aspect-golden glightbox"
+      data-title="Door Knob Detail"
+      data-description="Vintage architectural hardware">
       <div class="card-zoom-image bg-[url('/images/portfolio/knob.jpg')]"></div>
-    </div>
+    </a>
 
-    <div class="row-span-2 card-zoom">
+    <a
+      href="/images/portfolio/fence.jpg"
+      class="row-span-2 card-zoom glightbox"
+      data-title="Fence Abstract"
+      data-description="Geometric patterns in urban landscape">
       <div class="card-zoom-image bg-[url('/images/portfolio/fence.jpg')]"></div>
-    </div>
+    </a>
 
-    <div class="card-zoom aspect-golden">
+    <a
+      href="/images/portfolio/trunk.jpg"
+      class="card-zoom aspect-golden glightbox"
+      data-title="Tree Trunk Texture"
+      data-description="Natural patterns and textures">
       <div class="card-zoom-image bg-[url('/images/portfolio/trunk.jpg')]"></div>
-    </div>
+    </a>
 
-    <div class="card-zoom aspect-golden">
+    <a
+      href="/images/portfolio/pipes.jpg"
+      class="card-zoom aspect-golden glightbox"
+      data-title="Industrial Pipes"
+      data-description="Urban industrial photography">
       <div class="card-zoom-image bg-[url('/images/portfolio/pipes.jpg')]"></div>
-    </div>
-    
-    <div class="card-zoom aspect-golden">
-      <div class="card-zoom-image bg-[url('/images/portfolio/flowers.jpg')]"></div>
-    </div>
+    </a>
 
-    <div class="card-zoom md:col-span-2">
+    <a
+      href="/images/portfolio/flowers.jpg"
+      class="card-zoom aspect-golden glightbox"
+      data-title="Floral Study"
+      data-description="Botanical photography">
+      <div class="card-zoom-image bg-[url('/images/portfolio/flowers.jpg')]"></div>
+    </a>
+
+    <a
+      href="/m/case-study-knife"
+      class="card-zoom md:col-span-2 glightbox"
+      data-type="inline"
+      data-title="Knife Design Case Study"
+      data-description="In-depth look at the design process">
       <div class="card-zoom-image bg-[url('/images/portfolio/knife.jpg')]"></div>
       <h3 class="hidden text-center uppercase text-md md:block md:text-2xl lg:text-3xl card-zoom-text xl:text-4xl">Case Study I</h3>
-    </div>
+    </a>
 
-    <div class="card-zoom aspect-golden">
+    <a
+      href="/images/portfolio/tunnel.jpg"
+      class="card-zoom aspect-golden glightbox"
+      data-title="Tunnel Perspective"
+      data-description="Architectural perspective study">
       <div class="card-zoom-image bg-[url('/images/portfolio/tunnel.jpg')]"></div>
-    </div>
+    </a>
 
-    <div class="row-span-2 card-zoom">
+    <a
+      href="/images/portfolio/streetlight.jpg"
+      class="row-span-2 card-zoom glightbox"
+      data-title="Streetlight"
+      data-description="Urban lighting at golden hour">
       <div class="card-zoom-image bg-[url('/images/portfolio/streetlight.jpg')]"></div>
-    </div>
+    </a>
 
-    <div class="card-zoom aspect-golden">
+    <a
+      href="/images/portfolio/wall.jpg"
+      class="card-zoom aspect-golden glightbox"
+      data-title="Textured Wall"
+      data-description="Abstract surface study">
       <div class="card-zoom-image bg-[url('/images/portfolio/wall.jpg')]"></div>
-    </div>
+    </a>
 
-    <div class="row-span-2 card-zoom">
+    <a
+      href="/images/portfolio/spade.jpg"
+      class="row-span-2 card-zoom glightbox"
+      data-title="Garden Spade"
+      data-description="Still life photography">
       <div class="card-zoom-image bg-[url('/images/portfolio/spade.jpg')]"></div>
-    </div>
+    </a>
 
-    <div class="card-zoom aspect-golden">
+    <a
+      href="/images/portfolio/miki.jpg"
+      class="card-zoom aspect-golden glightbox"
+      data-title="Portrait - Miki"
+      data-description="Natural light portrait photography">
       <div class="card-zoom-image bg-[url('/images/portfolio/miki.jpg')]"></div>
-    </div>
+    </a>
 
-    <div class="card-zoom aspect-golden">
+    <a
+      href="/images/portfolio/glow.jpg"
+      class="card-zoom aspect-golden glightbox"
+      data-title="Glowing Light"
+      data-description="Light and shadow study">
       <div class="card-zoom-image bg-[url('/images/portfolio/glow.jpg')]"></div>
-    </div>
+    </a>
 
-    <div class="card-zoom aspect-golden">
+    <a
+      href="/images/portfolio/shatters.jpg"
+      class="card-zoom aspect-golden glightbox"
+      data-title="Shattered Glass"
+      data-description="Abstract texture and pattern">
       <div class="card-zoom-image bg-[url('/images/portfolio/shatters.jpg')]"></div>
-    </div>
+    </a>
 
   </div>
 
 </BaseLayout>
+
+<!-- GLightbox JS -->
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+<script>
+  import GLightbox from 'glightbox';
+
+  // Initialize GLightbox
+  const lightbox = GLightbox({
+    touchNavigation: true,
+    loop: true,
+    autoplayVideos: true,
+    closeButton: true,
+    preload: true,
+    svg: {
+      close: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>',
+      next: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>',
+      prev: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>'
+    }
+  });
+
+  // Optional: Add custom styling or event listeners
+  lightbox.on('open', () => {
+    console.log('Lightbox opened');
+  });
+
+</script>
