@@ -18,6 +18,23 @@
       aspect-ratio: 0.85/1;
   }
 
+  /* Responsive variant for md breakpoint and up */
+  @media (min-width: 768px) {
+    .md\:aspect-chonk {
+      aspect-ratio: 0.85/1;
+    }
+  }
+  @media (min-width: 1024px) {
+    .lg\:aspect-chonk {
+      aspect-ratio: 0.85/1;
+    }
+  }
+  @media (min-width: 1280px) {
+    .xl\:aspect-chonk {
+      aspect-ratio: 0.85/1;
+    }
+  }
+
   .aspect-golden {
       aspect-ratio: 1.618/1;
   }
