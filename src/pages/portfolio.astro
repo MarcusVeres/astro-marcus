@@ -295,12 +295,20 @@ const sortedItems = portfolioItems.sort((a, b) => {
 <script>
   import GLightbox from 'glightbox';
 
-  // Build slides array from hidden content divs
+  // Build slides array from hidden content divs using data-index attribute
   const portfolioItems = document.querySelectorAll('.portfolio-item');
-  const slides = Array.from(portfolioItems).map((item, index) => {
-    const contentDiv = document.getElementById(`glb-content-${index}`);
+
+  console.log('Found portfolio items:', portfolioItems.length);
+
+  // Build slides array using the data-index to find correct content
+  const slides = Array.from(portfolioItems).map((item) => {
+    const dataIndex = item.getAttribute('data-index');
+    const contentDiv = document.getElementById(`glb-content-${dataIndex}`);
+
+    console.log(`Item with data-index ${dataIndex}:`, contentDiv ? 'found' : 'NOT FOUND');
+
     return {
-      content: contentDiv ? contentDiv.innerHTML : '<p>No content available</p>'
+      content: contentDiv ? contentDiv.innerHTML : `<p>No content available for index ${dataIndex}</p>`
     };
   });
 
@@ -322,10 +330,11 @@ const sortedItems = portfolioItems.sort((a, b) => {
   });
 
   // Manually attach click handlers to portfolio items
-  portfolioItems.forEach((item, index) => {
+  portfolioItems.forEach((item, domIndex) => {
     item.addEventListener('click', (e) => {
       e.preventDefault();
-      lightbox.openAt(index);
+      console.log(`Clicked item at DOM position ${domIndex}`);
+      lightbox.openAt(domIndex);
     });
   });
 
