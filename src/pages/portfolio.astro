@@ -103,8 +103,9 @@ const sortedItems = portfolioItems.sort((a, b) => {
 
       return (
         <a
-          href={image}
+          href="#"
           class={`card-zoom glightbox ${gridClass} ${aspectClass} ${startClass}`}
+          data-type="inline"
           data-glightbox={`description: .glb-desc-${index}`}
         >
           <div class={`card-zoom-image bg-[url('${image}')]`}></div>
@@ -136,7 +137,7 @@ const sortedItems = portfolioItems.sort((a, b) => {
     flex-direction: column;
     max-width: 1200px;
     max-height: 90vh;
-    overflow: hidden;
+    height: 90vh;
     background: #1a1a1a;
     border-radius: 12px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
@@ -144,22 +145,25 @@ const sortedItems = portfolioItems.sort((a, b) => {
 
   .preview-image-container {
     flex-shrink: 0;
-    max-height: 60vh;
+    max-height: 50vh;
     overflow: hidden;
     background: #000;
   }
 
   .preview-image {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
-    object-fit: contain;
+    object-fit: cover;
   }
 
   .preview-details {
+    flex: 1;
     padding: 2rem;
     color: white;
     overflow-y: auto;
+    overflow-x: hidden;
+    min-height: 0;
   }
 
   .preview-title {
@@ -249,14 +253,17 @@ const sortedItems = portfolioItems.sort((a, b) => {
   @media (max-width: 768px) {
     .glightbox-preview-card {
       max-height: 95vh;
+      height: 95vh;
     }
 
     .preview-image-container {
-      max-height: 50vh;
+      max-height: 40vh;
     }
 
     .preview-details {
       padding: 1.5rem;
+      flex: 1;
+      overflow-y: auto;
     }
 
     .preview-title {
