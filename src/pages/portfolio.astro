@@ -295,17 +295,31 @@ const sortedItems = portfolioItems.sort((a, b) => {
 <script>
   import GLightbox from 'glightbox';
 
+  // IMPORTANT: Prevent GLightbox from auto-discovering elements
+  // We'll manually build the slides array
+
   // Build slides array from hidden content divs using data-index attribute
-  const portfolioItems = document.querySelectorAll('.portfolio-item');
+  // Select only DIRECT children of the grid container
+  const gridContainer = document.querySelector('.container.grid');
+  const portfolioItems = gridContainer ?
+    Array.from(gridContainer.children).filter(el => el.classList.contains('portfolio-item')) :
+    [];
 
   console.log('Found portfolio items:', portfolioItems.length);
+
+  // Debug: Log each item found
+  portfolioItems.forEach((item, i) => {
+    const dataIndex = item.getAttribute('data-index');
+    const bgImage = item.querySelector('.card-zoom-image')?.style.backgroundImage;
+    console.log(`DOM position ${i}: data-index="${dataIndex}", image="${bgImage}"`);
+  });
 
   // Build slides array using the data-index to find correct content
   const slides = Array.from(portfolioItems).map((item) => {
     const dataIndex = item.getAttribute('data-index');
     const contentDiv = document.getElementById(`glb-content-${dataIndex}`);
 
-    console.log(`Item with data-index ${dataIndex}:`, contentDiv ? 'found' : 'NOT FOUND');
+    console.log(`Building slide for data-index ${dataIndex}:`, contentDiv ? 'found' : 'NOT FOUND');
 
     return {
       content: contentDiv ? contentDiv.innerHTML : `<p>No content available for index ${dataIndex}</p>`
