@@ -70,6 +70,7 @@ const resources = defineCollection({
     color: z.string().optional(),
     order: z.number().optional(),
     pubDate: z.date().optional(),
+    resourceType: z.enum(['default', 'code-tutorial', 'recipe', 'pdf']).optional().default('default'), // Layout type
     image: z.object({
       url: z.string(),
       alt: z.string()

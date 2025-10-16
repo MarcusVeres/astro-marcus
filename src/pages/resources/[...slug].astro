@@ -1,6 +1,8 @@
 ---
 import { getCollection, render } from 'astro:content';
 import ResourceLayout from '../../layouts/ResourceLayout.astro';
+import CodeTutorialLayout from '../../layouts/CodeTutorialLayout.astro';
+import RecipeLayout from '../../layouts/RecipeLayout.astro';
 
 export async function getStaticPaths() {
   const resources = await getCollection('resources');
@@ -12,8 +14,15 @@ export async function getStaticPaths() {
 
 const { resource } = Astro.props;
 const { Content } = await render(resource);
+
+// Choose layout based on resourceType
+const resourceType = resource.data.resourceType || 'default';
+const LayoutComponent =
+  resourceType === 'code-tutorial' ? CodeTutorialLayout :
+  resourceType === 'recipe' ? RecipeLayout :
+  ResourceLayout;
 ---
 
-<ResourceLayout frontmatter={resource.data}>
+<LayoutComponent frontmatter={resource.data}>
   <Content />
-</ResourceLayout>
+</LayoutComponent>

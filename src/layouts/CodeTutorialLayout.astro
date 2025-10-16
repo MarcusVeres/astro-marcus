@@ -1,0 +1,248 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  frontmatter: {
+    title: string;
+    description: string;
+    tags: string[];
+    pubDate?: Date;
+    codepenUrl?: string;
+    image?: {
+      url: string;
+      alt: string;
+    };
+  };
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<BaseLayout pageTitle={frontmatter.title}>
+
+  <div
+    class="bg-gray-900 sitename debug-screens"
+    itemscope
+    itemtype="http://schema.org/WebPage"
+  >
+    <!-- 🔘 Allows users to skip directly to the main content of the page using TAB -->
+    <a
+      class="absolute top-0 left-0 invisible screen-reader-text"
+      href="#mainContent"
+      >Skip to content</a
+    >
+
+    <!-- Design with grid, since it's easier... then refactor with flex for compatibility -->
+    <section id="method-1" class="p-8">
+      <div
+        class="container grid max-w-6xl grid-cols-12 gap-6 p-8 pb-10 mx-auto bg-white shadow rounded-xl"
+      >
+        <div class="flex justify-between col-span-12">
+          <h1 class="text-2xl">How can I center a DIV?</h1>
+          <ul class="flex list-of-tags">
+            <li class="px-3 py-1 bg-gray-100 rounded-md shadow">CSS</li>
+            <li class="px-3 py-1 ml-2 bg-gray-100 rounded-md shadow">HTML</li>
+          </ul>
+        </div>
+        <div
+          class="relative col-span-12 bg-gray-700 h-60 rounded-xl unselectable"
+          id="target-container"
+        >
+          <div
+            class="relative flex items-center justify-center w-full h-full bg-gray-800 rounded-xl"
+            id="resize-target"
+          >
+            <div class="p-4 uppercase bg-yellow-400">Flex Centered Content</div>
+          </div>
+          <div
+            class="absolute p-2 text-center bg-yellow-300 rounded-md cursor-pointer left-full top-full resize-toggle resize-toggle-w"
+            id="size-adjuster"
+          >
+            <i class="fa fa-hand-paper"></i>
+          </div>
+          <!--  -->
+          <!-- make these AFTER elements -->
+        </div>
+        <div class="col-span-12 md:col-span-7 rounded-xl">
+          <p
+            class="codepen"
+            data-height="350"
+            data-theme-id="dark"
+            data-default-tab="html,css"
+            data-user="GI-IO5T"
+            data-slug-hash="yLMjypr"
+            style="
+              height: 229px;
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 2px solid;
+              margin: 1em 0;
+              padding: 1em;
+            "
+            data-pen-title="yLMjypr"
+          >
+            <span
+              >See the Pen
+              <a href="https://codepen.io/GI-IO5T/pen/yLMjypr"> yLMjypr</a> by
+              Marcus (<a href="https://codepen.io/GI-IO5T">@GI-IO5T</a>) on
+              <a href="https://codepen.io">CodePen</a>.</span
+            >
+          </p>
+          <script
+            async
+            src="https://cpwebassets.codepen.io/assets/embed/ei.js"
+          ></script>
+        </div>
+        <div
+          class="flex flex-col justify-between col-span-12 pl-4 text-sm md:col-span-5 md:col-start-8"
+        >
+          <ul>
+            <li class="p-2">
+              Parent element must be <span class="code-word">flex</span>
+            </li>
+            <li class="p-2">
+              Center <span class="font-bold">horizontally</span> with
+              <span class="code-word">justify-content:center;</span>
+            </li>
+            <li class="p-2">
+              Center <span class="font-bold">vertically</span> with
+              <span class="code-word">align-items:center;</span>
+            </li>
+            <li class="p-2">
+              Setting <span class="font-bold">height</span> to
+              <span class="code-word">100vh</span> will make the flex container
+              stretch to 100% of the vertical height of its container. This is
+              done to show off vertical centering in the example, but you may
+              not need it in your code.
+            </li>
+          </ul>
+          <ul class="flex justify-between next-nav">
+            <li class="px-4 py-2 rounded-md shadow bg-gray-50 button">
+              Show me another way
+              <i class="text-gray-300 fa fa-arrow-circle-down"></i>
+              <!-- dropdown with other ways -- and/or -- goes to another way -->
+            </li>
+            <li class="px-4 py-2 ml-4 rounded-md shadow bg-gray-50 button">
+              This is the way <i class="text-gray-300 fas fa-thumbs-up"></i>
+              <!-- opens Share menu -->
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+</BaseLayout>
+
+<style>
+  /* Unable to compile RN -- saving time */
+  #size-adjuster {
+    margin-left: -20px;
+    margin-top: -20px;
+  }
+  .unselectable {
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+  }
+</style>
+
+
+<!-- TODO :: Replace this resize with a pure JS, custom resize of CSS element -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-resize/1.1/jquery.ba-resize.min.js"></script>
+
+<!-- This should contain the minimal amount of JS -->
+<script>
+
+  // 
+  var body = null; 
+  var isResizing = false;
+  var minResizeHeight = 120;
+  var minResizeWidth = 200;
+  var target = document.getElementById('resize-target'); // just a prototype -- will set dynamically 
+  var targetContainer = document.getElementById('target-container'); // just a prototype -- will set dynamically 
+  let sizeAdjuster = document.getElementById('size-adjuster');
+  
+  // TODO :: Customize JS formatting, or roll out my own 
+  function activate() 
+  {
+      sizeAdjuster.addEventListener('mousedown', widthAdjustMouseDown);
+      
+      body = document.getElementsByTagName('body')[0];
+      body.addEventListener('mousemove', mouseMoving);
+      body.addEventListener('mouseup', widthAdjustMouseUp);
+  } 
+  activate();
+      
+  function deactivate()
+  {
+      // In reverse order. 
+      sizeAdjuster.removeEventListener('mousedown', widthAdjustMouseDown);
+      
+      body.removeEventListener('mousemove', mouseMoving);
+      body.removeEventListener('mouseup', widthAdjustMouseUp);
+      
+      document.getElementById('seon-wrapper').remove();
+  }
+
+
+  // 
+  function widthAdjustMouseDown(element) 
+  {
+      isResizing = true;
+  }
+  function widthAdjustMouseUp(element) 
+  {
+      isResizing = false;
+  }
+  function mouseMoving(event) 
+  {
+      // TODO :: dynamically set the "target" based on what is being clicked 
+      
+    if (isResizing) 
+      {   
+          // console.log( event.clientX );
+
+          // var rect = event.target.getBoundingClientRect();
+          var rect = targetContainer.getBoundingClientRect();
+          var x = event.clientX - rect.left; //x position within the element.
+          var y = event.clientY - rect.top;  //y position within the element.
+
+          if ( x < minResizeWidth ) 
+          {
+              x = minResizeWidth;
+          }
+          else if ( x > rect.width )
+          {
+              x = rect.width;
+          }
+
+          if ( y < minResizeHeight ) 
+          {
+              y = minResizeHeight;
+          }
+          else if ( y > rect.height )
+          {
+              y = rect.height;
+          }
+
+          // console.log("Left? : " + x + " ; Top? : " + y + ".");
+
+      // var percent = (event.clientX / window.innerWidth * 100);
+      // var percent = (x / targetContainer.width * 100);
+
+          target.style.width = x + 'px';					// Width of the editor is where the mouse is dragging. 
+          sizeAdjuster.style.left = x + 'px';    
+
+          target.style.height = y + 'px';					// Width of the editor is where the mouse is dragging. 
+          sizeAdjuster.style.top = y + 'px';    
+    }
+  }
+
+</script>
