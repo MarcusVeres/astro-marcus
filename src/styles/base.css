@@ -11,3 +11,26 @@ body {
   font-feature-settings: "liga" 1, "kern" 1;
   text-rendering: optimizeLegibility;
 }
+
+
+    /* -- CODE  -- */
+
+    /* codepen embeds -- https://blog.codepen.io/2017/05/01/make-embedded-pen-resizeable/ */
+    .cp_embed_wrapper {
+        @apply rounded-lg;
+    }
+    .cp_embed_wrapper iframe {
+        @apply rounded-lg;
+    }
+
+    .resize-toggle {
+        @apply w-10 h-10 bg-yellow-200 rounded-md;
+    }
+    .resize-toggle-h {
+
+    }
+
+    .code-word {
+        @apply font-mono font-bold text-green-400;
+    }
+    

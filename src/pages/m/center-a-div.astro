@@ -16,16 +16,19 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       >Skip to content</a
     >
 
+
+
+
     <!-- Design with grid, since it's easier... then refactor with flex for compatibility -->
     <section id="method-1" class="p-8">
       <div
-        class="container grid max-w-6xl grid-cols-12 gap-6 p-8 pb-10 mx-auto bg-white shadow rounded-xl"
+        class="container grid max-w-6xl grid-cols-12 gap-6 p-8 pb-10 mx-auto text-white shadow rounded-xl"
       >
         <div class="flex justify-between col-span-12">
-          <h1 class="text-2xl">How can I center a DIV?</h1>
-          <ul class="flex list-of-tags">
-            <li class="px-3 py-1 bg-gray-100 rounded-md shadow">CSS</li>
-            <li class="px-3 py-1 ml-2 bg-gray-100 rounded-md shadow">HTML</li>
+          <h1 class="text-2xl font-bold">How to Center a DIV with Flexbox</h1>
+          <ul class="flex text-black list-of-tags">
+            <li class="block px-2 py-0 mx-1 mb-2 mr-1 text-sm font-light text-blue-300 duration-500 bg-transparent border border-blue-400 rounded-full lg:mr-0 lg:py-1 hover:bg-blue-600 hover:text-white hover:border-transparent">CSS</li>
+            <li class="block px-2 py-0 mx-1 mb-2 mr-1 text-sm font-light text-blue-300 duration-500 bg-transparent border border-blue-400 rounded-full lg:mr-0 lg:py-1 hover:bg-blue-600 hover:text-white hover:border-transparent">HTML</li>
           </ul>
         </div>
         <div
@@ -36,7 +39,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             class="relative flex items-center justify-center w-full h-full bg-gray-800 rounded-xl"
             id="resize-target"
           >
-            <div class="p-4 uppercase bg-yellow-400">Flex Centered Content</div>
+            <div class="p-4 text-black uppercase bg-yellow-400">Flex Centered Content</div>
           </div>
           <div
             class="absolute p-2 text-center bg-yellow-300 rounded-md cursor-pointer left-full top-full resize-toggle resize-toggle-w"
@@ -100,6 +103,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
               not need it in your code.
             </li>
           </ul>
+
+          <!--
           <ul class="flex justify-between next-nav">
             <li class="px-4 py-2 rounded-md shadow bg-gray-50 button">
               Show me another way
@@ -109,6 +114,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
               This is the way <i class="text-gray-300 fas fa-thumbs-up"></i>
             </li>
           </ul>
+          -->
+
         </div>
       </div>
     </section>
@@ -203,4 +210,72 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           sizeAdjuster.style.top = y + 'px';
     }
   }
+</script>
+
+<!-- ============================================ -->
+<!-- WINDOW RESIZE HANDLER (separate for debugging) -->
+<!-- ============================================ -->
+<script>
+  // Get references to elements
+  const resizeTarget = document.getElementById('resize-target');
+  const container = document.getElementById('target-container');
+  const adjuster = document.getElementById('size-adjuster');
+
+  // Store the last known container size to detect changes
+  let lastContainerWidth = 0;
+  let lastContainerHeight = 0;
+
+  function handleWindowResize() {
+    if (!container || !resizeTarget || !adjuster) return;
+
+    const containerRect = container.getBoundingClientRect();
+    const currentTargetWidth = parseFloat(resizeTarget.style.width) || resizeTarget.offsetWidth;
+    const currentTargetHeight = parseFloat(resizeTarget.style.height) || resizeTarget.offsetHeight;
+
+    // Check if container size actually changed
+    if (containerRect.width !== lastContainerWidth || containerRect.height !== lastContainerHeight) {
+      console.log('Container resized:', {
+        oldWidth: lastContainerWidth,
+        newWidth: containerRect.width,
+        oldHeight: lastContainerHeight,
+        newHeight: containerRect.height
+      });
+
+      // If target is larger than container, constrain it
+      if (currentTargetWidth > containerRect.width) {
+        const newWidth = Math.max(200, containerRect.width);
+        resizeTarget.style.width = newWidth + 'px';
+        adjuster.style.left = newWidth + 'px';
+        console.log('Constrained width to:', newWidth);
+      }
+
+      if (currentTargetHeight > containerRect.height) {
+        const newHeight = Math.max(120, containerRect.height);
+        resizeTarget.style.height = newHeight + 'px';
+        adjuster.style.top = newHeight + 'px';
+        console.log('Constrained height to:', newHeight);
+      }
+
+      // Update last known size
+      lastContainerWidth = containerRect.width;
+      lastContainerHeight = containerRect.height;
+    }
+  }
+
+  // Initialize on load
+  window.addEventListener('DOMContentLoaded', () => {
+    if (container) {
+      const rect = container.getBoundingClientRect();
+      lastContainerWidth = rect.width;
+      lastContainerHeight = rect.height;
+      console.log('Initial container size:', lastContainerWidth, 'x', lastContainerHeight);
+    }
+  });
+
+  // Listen for window resize with debounce
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(handleWindowResize, 150);
+  });
 </script>
