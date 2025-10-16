@@ -30,52 +30,76 @@ export const featuredCategories = [
   },
 ];
 
-// Tag-to-color mapping for resources
-export const tagColorMap: Record<string, string> = {
-  // Technology & Internet
-  'technology': 'blue-700',
-  'internet': 'blue-700',
-  'web': 'blue-700',
-  'advertising': 'blue-700',
-  'programming': 'blue-700',
-  'ai': 'blue-700',
-
-  // Personal Development
-  'personal-development': 'purple-700',
-  'philosophy': 'purple-700',
-  'principles': 'purple-700',
-  'memory': 'purple-700',
-  'self-improvement': 'purple-700',
-  'learning': 'purple-700',
-
-  // Communication & Speaking
-  'communication': 'pink-700',
-  'public-speaking': 'pink-700',
-  'writing': 'pink-700',
-  'speaking': 'pink-700',
-
-  // Design & Graphics
-  'design': 'pink-700',
-  'graphics': 'pink-700',
-  'art': 'pink-700',
-  'making': 'pink-700',
-
-  // Business & Finance
-  'business': 'green-700',
-  'finance': 'green-700',
-  'professional': 'green-700',
-
-  // Food & Fun
-  'food': 'yellow-400',
-  'games': 'yellow-400',
-  'entertainment': 'yellow-400',
-  'life': 'yellow-400',
-  'health': 'yellow-400',
-  'social': 'yellow-400',
+// Cyberpunk/Stained Glass Color Palette (6 colors)
+// Green → Cyan → Blue → Purple → Magenta → Pink
+export const categoryColors = {
+  build: 'blue-500',          // Technology 
+  communicate: 'pink-500',    // Communication
+  create: 'green-500',        // Creative 
+  grow: 'purple-600',         // Personal growth
+  live: 'yellow-500',         // Life/wellness
+  thrive: 'red-600',          // Business
 };
 
-// Color rotation for unmapped tags
-const colorRotation = ['blue-700', 'purple-700', 'pink-700', 'yellow-400', 'green-700'];
+// Tag-to-color mapping for resources
+export const tagColorMap: Record<string, string> = {
+  // Build - Cyan (Technology & Internet)
+  'technology': categoryColors.build,
+  'internet': categoryColors.build,
+  'web': categoryColors.build,
+  'advertising': categoryColors.build,
+  'programming': categoryColors.build,
+  'ai': categoryColors.build,
+
+  // Grow - Purple (Personal Development)
+  'personal-development': categoryColors.grow,
+  'philosophy': categoryColors.grow,
+  'principles': categoryColors.grow,
+  'memory': categoryColors.grow,
+  'self-improvement': categoryColors.grow,
+  'learning': categoryColors.grow,
+
+  // Communicate - Fuchsia (Communication & Speaking)
+  'communication': categoryColors.communicate,
+  'public-speaking': categoryColors.communicate,
+  'writing': categoryColors.communicate,
+  'speaking': categoryColors.communicate,
+
+  // Create - Pink (Design & Graphics)
+  'design': categoryColors.create,
+  'graphics': categoryColors.create,
+  'art': categoryColors.create,
+  'making': categoryColors.create,
+  'entertainment': categoryColors.create,
+
+  // Thrive - Blue (Business & Finance)
+  'business': categoryColors.thrive,
+  'finance': categoryColors.thrive,
+  'professional': categoryColors.thrive,
+
+  // Live - Emerald (Food & Fun)
+  'food': categoryColors.live,
+  'games': categoryColors.live,
+  'life': categoryColors.live,
+  'health': categoryColors.live,
+  'social': categoryColors.live,
+
+  // Additional unmapped tags
+  'baking': categoryColors.live,
+  'automotive': categoryColors.thrive,
+  'maintenance': categoryColors.build,
+  'wellness': categoryColors.grow,
+};
+
+// Color rotation for unmapped tags (follows stained glass gradient)
+const colorRotation = [
+  categoryColors.live,        // Emerald green
+  categoryColors.build,       // Cyan
+  categoryColors.thrive,      // Blue
+  categoryColors.grow,        // Purple
+  categoryColors.communicate, // Fuchsia
+  categoryColors.create,      // Pink
+];
 
 // Get color for a resource based on tags
 export function getResourceColor(tags: string[], manualColor?: string, index: number = 0): string {
