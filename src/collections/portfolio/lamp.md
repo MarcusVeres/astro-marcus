@@ -1,0 +1,11 @@
+---
+title: "Vintage Lamp"
+description: "Architectural detail featuring classic lighting fixture. A study in form and function."
+image: "/images/portfolio/lamp.jpg"
+category: ["photography", "architecture"]
+contentType: "simple"
+order: 3
+pubDate: 2024-07-20
+---
+
+Classic architectural photography highlighting vintage design and craftsmanship.

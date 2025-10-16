@@ -1,12 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-
+import { getCollection } from 'astro:content';
 import { getResourceColor, featuredCategories } from "../utils/resourceColors";
+import { generatePreviewHTML } from '../utils/portfolioPreview';
 
 import SocialIcons from '../components/blocks/SocialIcons.astro'
 import SocialIconsFooter from '../components/blocks/SocialIconsFooter.astro'
 
 const pageTitle = "Portfolio"
+
+// Get all portfolio items and sort by order
+const portfolioItems = await getCollection('portfolio');
+const sortedItems = portfolioItems.sort((a, b) => {
+  const orderA = a.data.order || 999;
+  const orderB = b.data.order || 999;
+  return orderA - orderB;
+});
 ---
 <BaseLayout pageTitle={`${pageTitle} blog`}>
 
@@ -53,154 +62,212 @@ const pageTitle = "Portfolio"
 
   <!-- consider: adding a wrapper container for the 16px extra padding that isn't respected by grid. can't use margin because mx-auto is already in use-->
   <div class="container grid grid-cols-2 gap-2 p-2 mx-auto mt-12 text-white max-w-7xl sm:p-4 sm:gap-4 sm:grid-cols-3 lg:grid-cols-4">
-    
+
     <div class="flex items-center justify-center col-span-2 border rounded-lg shadow-inner bg-gray-950 border-white/10 bg-opacity-40 sm:col-span-3 md:col-span-2">
       <h1 class="p-1 m-0 text-6xl font-extrabold tracking-wide text-transparent uppercase bg-clip-text bg-gradient-to-r from-yellow-400 to-pink-500">
         Portfolio
       </h1>
     </div>
 
-    <a
-      href="/images/portfolio/pine.jpg"
-      class="md:col-start-3 card-zoom aspect-golden glightbox"
-      data-title="Pine Tree Macro"
-      data-description="Detailed close-up of pine needles in natural light">
-      <div class="card-zoom-image bg-[url('/images/portfolio/pine.jpg')]"></div>
-    </a>
+    {sortedItems.map((item, index) => {
+      const { title, description, image, contentType, gridSpan, aspectRatio, caseStudyUrl, externalUrl, externalLabel, iframeUrl, links } = item.data;
 
-    <a
-      href="/images/portfolio/cardinal.jpg"
-      class="card-zoom aspect-golden glightbox"
-      data-title="Cardinal Bird"
-      data-description="Nature photography featuring a beautiful cardinal">
-      <div class="card-zoom-image bg-[url('/images/portfolio/cardinal.jpg')]"></div>
-    </a>
+      // Generate custom preview HTML content
+      const previewHTML = generatePreviewHTML({
+        title,
+        description,
+        image,
+        contentType,
+        caseStudyUrl,
+        externalUrl,
+        externalLabel,
+        iframeUrl,
+        links
+      });
 
-    <a
-      href="/images/portfolio/grandpa.jpg"
-      class="card-zoom aspect-golden glightbox"
-      data-title="Portrait Study"
-      data-description="Black and white portrait photography">
-      <div class="card-zoom-image bg-[url('/images/portfolio/grandpa.jpg')]"></div>
-    </a>
+      // Determine grid classes based on gridSpan
+      let gridClass = '';
+      if (gridSpan === 'wide') gridClass = 'md:col-span-2';
+      else if (gridSpan === 'tall') gridClass = 'row-span-2';
+      else if (gridSpan === 'large') gridClass = 'md:col-span-2 row-span-2';
 
-    <a
-      href="/images/portfolio/lamp.jpg"
-      class="row-span-2 card-zoom glightbox"
-      data-title="Vintage Lamp"
-      data-description="Architectural detail featuring classic lighting fixture">
-      <div class="card-zoom-image bg-[url('/images/portfolio/lamp.jpg')]"></div>
-    </a>
+      // Determine aspect ratio class
+      let aspectClass = '';
+      if (aspectRatio === 'golden') aspectClass = 'aspect-golden';
+      else if (aspectRatio === 'square') aspectClass = 'aspect-square';
+      else if (aspectRatio === 'portrait') aspectClass = 'aspect-portrait';
+      else if (aspectRatio === 'landscape') aspectClass = 'aspect-landscape';
 
-    <a
-      href="/images/portfolio/knob.jpg"
-      class="card-zoom aspect-golden glightbox"
-      data-title="Door Knob Detail"
-      data-description="Vintage architectural hardware">
-      <div class="card-zoom-image bg-[url('/images/portfolio/knob.jpg')]"></div>
-    </a>
+      // For first collection item, add md:col-start-3 to match original layout
+      const startClass = index === 0 ? 'md:col-start-3' : '';
 
-    <a
-      href="/images/portfolio/fence.jpg"
-      class="row-span-2 card-zoom glightbox"
-      data-title="Fence Abstract"
-      data-description="Geometric patterns in urban landscape">
-      <div class="card-zoom-image bg-[url('/images/portfolio/fence.jpg')]"></div>
-    </a>
-
-    <a
-      href="/images/portfolio/trunk.jpg"
-      class="card-zoom aspect-golden glightbox"
-      data-title="Tree Trunk Texture"
-      data-description="Natural patterns and textures">
-      <div class="card-zoom-image bg-[url('/images/portfolio/trunk.jpg')]"></div>
-    </a>
-
-    <a
-      href="/images/portfolio/pipes.jpg"
-      class="card-zoom aspect-golden glightbox"
-      data-title="Industrial Pipes"
-      data-description="Urban industrial photography">
-      <div class="card-zoom-image bg-[url('/images/portfolio/pipes.jpg')]"></div>
-    </a>
-
-    <a
-      href="/images/portfolio/flowers.jpg"
-      class="card-zoom aspect-golden glightbox"
-      data-title="Floral Study"
-      data-description="Botanical photography">
-      <div class="card-zoom-image bg-[url('/images/portfolio/flowers.jpg')]"></div>
-    </a>
-
-    <a
-      href="/m/case-study-knife"
-      class="card-zoom md:col-span-2 glightbox"
-      data-type="inline"
-      data-title="Knife Design Case Study"
-      data-description="In-depth look at the design process">
-      <div class="card-zoom-image bg-[url('/images/portfolio/knife.jpg')]"></div>
-      <h3 class="hidden text-center uppercase text-md md:block md:text-2xl lg:text-3xl card-zoom-text xl:text-4xl">Case Study I</h3>
-    </a>
-
-    <a
-      href="/images/portfolio/tunnel.jpg"
-      class="card-zoom aspect-golden glightbox"
-      data-title="Tunnel Perspective"
-      data-description="Architectural perspective study">
-      <div class="card-zoom-image bg-[url('/images/portfolio/tunnel.jpg')]"></div>
-    </a>
-
-    <a
-      href="/images/portfolio/streetlight.jpg"
-      class="row-span-2 card-zoom glightbox"
-      data-title="Streetlight"
-      data-description="Urban lighting at golden hour">
-      <div class="card-zoom-image bg-[url('/images/portfolio/streetlight.jpg')]"></div>
-    </a>
-
-    <a
-      href="/images/portfolio/wall.jpg"
-      class="card-zoom aspect-golden glightbox"
-      data-title="Textured Wall"
-      data-description="Abstract surface study">
-      <div class="card-zoom-image bg-[url('/images/portfolio/wall.jpg')]"></div>
-    </a>
-
-    <a
-      href="/images/portfolio/spade.jpg"
-      class="row-span-2 card-zoom glightbox"
-      data-title="Garden Spade"
-      data-description="Still life photography">
-      <div class="card-zoom-image bg-[url('/images/portfolio/spade.jpg')]"></div>
-    </a>
-
-    <a
-      href="/images/portfolio/miki.jpg"
-      class="card-zoom aspect-golden glightbox"
-      data-title="Portrait - Miki"
-      data-description="Natural light portrait photography">
-      <div class="card-zoom-image bg-[url('/images/portfolio/miki.jpg')]"></div>
-    </a>
-
-    <a
-      href="/images/portfolio/glow.jpg"
-      class="card-zoom aspect-golden glightbox"
-      data-title="Glowing Light"
-      data-description="Light and shadow study">
-      <div class="card-zoom-image bg-[url('/images/portfolio/glow.jpg')]"></div>
-    </a>
-
-    <a
-      href="/images/portfolio/shatters.jpg"
-      class="card-zoom aspect-golden glightbox"
-      data-title="Shattered Glass"
-      data-description="Abstract texture and pattern">
-      <div class="card-zoom-image bg-[url('/images/portfolio/shatters.jpg')]"></div>
-    </a>
+      return (
+        <a
+          href={image}
+          class={`card-zoom glightbox ${gridClass} ${aspectClass} ${startClass}`}
+          data-glightbox={`description: .glb-desc-${index}`}
+        >
+          <div class={`card-zoom-image bg-[url('${image}')]`}></div>
+          {contentType === 'case-study' && (
+            <h3 class="hidden text-center uppercase text-md md:block md:text-2xl lg:text-3xl card-zoom-text xl:text-4xl">Case Study</h3>
+          )}
+          {/* Hidden div with preview HTML content */}
+          <div class={`glb-desc-${index} hidden`}>
+            <Fragment set:html={previewHTML} />
+          </div>
+        </a>
+      );
+    })}
 
   </div>
 
 </BaseLayout>
+
+<!-- Custom GLightbox Styles -->
+<style is:global>
+  /* Override GLightbox default styles */
+  .glightbox-container {
+    background: rgba(0, 0, 0, 0.95) !important;
+  }
+
+  /* Preview Card Styles */
+  .glightbox-preview-card {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    max-height: 90vh;
+    overflow: hidden;
+    background: #1a1a1a;
+    border-radius: 12px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  .preview-image-container {
+    flex-shrink: 0;
+    max-height: 60vh;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .preview-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+  }
+
+  .preview-details {
+    padding: 2rem;
+    color: white;
+    overflow-y: auto;
+  }
+
+  .preview-title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #fbbf24, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .preview-description {
+    font-size: 1.125rem;
+    line-height: 1.75;
+    color: #d1d5db;
+    margin-bottom: 1.5rem;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(to right, #fbbf24, #ec4899);
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(251, 191, 36, 0.3);
+  }
+
+  .preview-social-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    color: #fbbf24;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.875rem;
+  }
+
+  .social-link:hover {
+    background: rgba(251, 191, 36, 0.1);
+    border-color: #fbbf24;
+  }
+
+  /* Navigation buttons */
+  .gslide-description {
+    background: transparent !important;
+  }
+
+  .gdesc-inner {
+    padding: 0 !important;
+  }
+
+  .gclose, .gnext, .gprev {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease !important;
+  }
+
+  .gclose:hover, .gnext:hover, .gprev:hover {
+    background: rgba(251, 191, 36, 0.2) !important;
+    border-color: #fbbf24 !important;
+  }
+
+  /* Mobile responsive */
+  @media (max-width: 768px) {
+    .glightbox-preview-card {
+      max-height: 95vh;
+    }
+
+    .preview-image-container {
+      max-height: 50vh;
+    }
+
+    .preview-details {
+      padding: 1.5rem;
+    }
+
+    .preview-title {
+      font-size: 1.5rem;
+    }
+
+    .preview-description {
+      font-size: 1rem;
+    }
+  }
+</style>
 
 <!-- GLightbox JS -->
 <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
@@ -212,9 +279,9 @@ const pageTitle = "Portfolio"
   const lightbox = GLightbox({
     touchNavigation: true,
     loop: true,
-    autoplayVideos: true,
     closeButton: true,
     preload: true,
+    closeOnOutsideClick: true,  // Enable click outside to close
     svg: {
       close: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>',
       next: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>',
@@ -222,9 +289,13 @@ const pageTitle = "Portfolio"
     }
   });
 
-  // Optional: Add custom styling or event listeners
+  // Log events for debugging
   lightbox.on('open', () => {
     console.log('Lightbox opened');
+  });
+
+  lightbox.on('close', () => {
+    console.log('Lightbox closed');
   });
 
 </script>

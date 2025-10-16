@@ -18,21 +18,42 @@ const blog = defineCollection({
 });
 
 const portfolio = defineCollection({
-  loader: glob({ pattern: '**/[^_]*.mdx', base: "./src/collections/portfolio" }), // MDX for component flexibility
+  loader: glob({ pattern: '**/[^_]*.md', base: "./src/collections/portfolio" }), // Changed to .md for simpler content
   schema: z.object({
-    client: z.string().optional(),  // Might not have client for personal projects
-    deliverables: z.array(z.string()),
-    demoUrl: z.string().optional(),  // Made optional
-    featured: z.boolean().default(false),
-    images: z.array(z.object({
-      url: z.string(),
-      alt: z.string()
-    })),
-    liveUrl: z.string().optional(),  // Made optional
-    outcome: z.string(),
-    tags: z.array(z.string()),
-    technologies: z.array(z.string()),
     title: z.string(),
+    description: z.string(),
+    image: z.string(),  // Hero image URL
+    category: z.array(z.string()).optional(),  // For filtering ["design", "3d", "photography"]
+    order: z.number().optional(),
+    pubDate: z.date().optional(),
+
+    // Content type determines lightbox behavior
+    contentType: z.enum(['simple', 'case-study', 'external', 'iframe']).default('simple'),
+
+    // Case study fields (when contentType = 'case-study')
+    caseStudyUrl: z.string().optional(),  // Internal URL like "/m/knife-design"
+
+    // External project fields (when contentType = 'external')
+    externalUrl: z.string().optional(),   // External URL
+    externalLabel: z.string().optional(), // Button text like "View on Behance"
+
+    // Iframe fields (when contentType = 'iframe')
+    iframeUrl: z.string().optional(),     // Any URL to embed
+
+    // Optional links to display in preview (social media, etc.)
+    links: z.array(z.object({
+      label: z.string(),
+      url: z.string(),
+      icon: z.string().optional()  // Icon identifier like "behance", "github"
+    })).optional(),
+
+    // Grid display options
+    gridSpan: z.enum(['default', 'wide', 'tall', 'large']).optional().default('default'),
+    aspectRatio: z.enum(['golden', 'square', 'portrait', 'landscape']).optional().default('golden'),
+
+    // Legacy fields for backwards compatibility if needed
+    client: z.string().optional(),
+    technologies: z.array(z.string()).optional(),
   })
 });
 
