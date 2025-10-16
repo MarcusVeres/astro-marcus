@@ -7,7 +7,7 @@ icon: "book"
 tags: ["personal-development", "philosophy", "principles"]
 order: 1
 pubDate: 2025-01-01
-standaloneUrl: "/edicts"
+standaloneUrl: "/m/edicts"
 image:
   url: "https://www.iestork.org/wp-content/uploads/2024/02/cover-jpeg.webp"
   alt: "Book cover for 10 Principles"
