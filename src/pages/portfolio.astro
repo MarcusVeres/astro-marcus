@@ -104,15 +104,15 @@ const sortedItems = portfolioItems.sort((a, b) => {
       return (
         <a
           href="#"
-          class={`card-zoom glightbox ${gridClass} ${aspectClass} ${startClass}`}
-          data-glightbox={`type: inline; content: .glb-desc-${index};`}
+          class={`portfolio-item card-zoom ${gridClass} ${aspectClass} ${startClass}`}
+          data-index={index}
         >
           <div class="card-zoom-image" style={`background-image: url('${image}');`}></div>
           {contentType === 'case-study' && (
             <h3 class="hidden text-center uppercase text-md md:block md:text-2xl lg:text-3xl card-zoom-text xl:text-4xl">Case Study</h3>
           )}
           {/* Hidden div with preview HTML content */}
-          <div class={`glb-desc-${index} hidden`} style="display: none;">
+          <div id={`glb-content-${index}`} style="display: none;">
             <Fragment set:html={previewHTML} />
           </div>
         </a>
@@ -295,18 +295,38 @@ const sortedItems = portfolioItems.sort((a, b) => {
 <script>
   import GLightbox from 'glightbox';
 
-  // Initialize GLightbox
+  // Build slides array from hidden content divs
+  const portfolioItems = document.querySelectorAll('.portfolio-item');
+  const slides = Array.from(portfolioItems).map((item, index) => {
+    const contentDiv = document.getElementById(`glb-content-${index}`);
+    return {
+      content: contentDiv ? contentDiv.innerHTML : '<p>No content available</p>'
+    };
+  });
+
+  console.log('Created slides:', slides.length);
+
+  // Initialize GLightbox with slides array
   const lightbox = GLightbox({
+    elements: slides,
     touchNavigation: true,
     loop: true,
     closeButton: true,
     preload: true,
-    closeOnOutsideClick: true,  // Enable click outside to close
+    closeOnOutsideClick: true,
     svg: {
       close: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>',
       next: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>',
       prev: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>'
     }
+  });
+
+  // Manually attach click handlers to portfolio items
+  portfolioItems.forEach((item, index) => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      lightbox.openAt(index);
+    });
   });
 
   // Log events for debugging

@@ -4,8 +4,6 @@ description: "Urban lighting photographed during the magic hour, when natural an
 image: "/images/portfolio/streetlight.jpg"
 category: ["photography", "urban"]
 contentType: "external"
-externalUrl: "https://unsplash.com/@marcusveres/streetlight"
-externalLabel: "View on Unsplash"
 order: 4
 pubDate: 2024-06-10
 ---
