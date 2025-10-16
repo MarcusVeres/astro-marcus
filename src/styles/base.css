@@ -23,13 +23,6 @@ body {
         @apply rounded-lg;
     }
 
-    .resize-toggle {
-        @apply w-10 h-10 bg-yellow-200 rounded-md;
-    }
-    .resize-toggle-h {
-
-    }
-
     .code-word {
         @apply font-mono font-bold text-green-400;
     }
