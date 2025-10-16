@@ -23,6 +23,18 @@ const sortedResources = allResources.sort((a, b) => {
   return dateB.getTime() - dateA.getTime();
 });
 ---
+
+<style>
+  /* Hide scrollbar but allow scrolling on mobile category bar */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
+  }
+</style>
+
 <BaseLayout pageTitle={`RE sources ${pageTitle}!`}>
 
     <section class="relative">
@@ -52,10 +64,10 @@ const sortedResources = allResources.sort((a, b) => {
                 </form>
             </div>
             <ul
-                class="flex items-center justify-center w-full pb-6 mx-auto mt-4 font-bold tracking-wider text-center text-yellow-400 uppercase divide-x-2 cursor-pointer divide-yellow-600/20 border-opacity-20 text-md drop-shadow-md">
+                class="flex items-center w-full pb-6 mx-auto mt-4 font-bold tracking-wider text-center text-yellow-400 uppercase divide-x-2 cursor-pointer divide-yellow-600/20 border-opacity-20 text-md drop-shadow-md overflow-x-auto md:justify-center md:overflow-x-visible scrollbar-hide snap-x snap-mandatory">
                 {featuredCategories.map((category) => (
                   <li
-                    class="px-3 transition-all duration-500 opacity-40 hover:opacity-100"
+                    class="px-3 transition-all duration-500 opacity-40 hover:opacity-100 flex-shrink-0 snap-center"
                     data-category-filter={category.name}
                     data-category-tags={category.tags.join(',')}
                   >
