@@ -63,6 +63,7 @@ const resources = defineCollection({
     title: z.string(),
     surTitle: z.string().optional(),  // e.g., "How to Bake"
     mainTitle: z.string().optional(), // e.g., "Carrot Muffins" (defaults to title if not provided)
+    subTitle: z.string().optional(),  // e.g., "A beginner's guide" (displays below mainTitle)
     description: z.string(),
     icon: z.string(),
     tags: z.array(z.string()),
