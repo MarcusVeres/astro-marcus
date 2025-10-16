@@ -105,15 +105,14 @@ const sortedItems = portfolioItems.sort((a, b) => {
         <a
           href="#"
           class={`card-zoom glightbox ${gridClass} ${aspectClass} ${startClass}`}
-          data-type="inline"
-          data-glightbox={`description: .glb-desc-${index}`}
+          data-glightbox={`type: inline; content: .glb-desc-${index};`}
         >
-          <div class={`card-zoom-image bg-[url('${image}')]`}></div>
+          <div class="card-zoom-image" style={`background-image: url('${image}');`}></div>
           {contentType === 'case-study' && (
             <h3 class="hidden text-center uppercase text-md md:block md:text-2xl lg:text-3xl card-zoom-text xl:text-4xl">Case Study</h3>
           )}
           {/* Hidden div with preview HTML content */}
-          <div class={`glb-desc-${index} hidden`}>
+          <div class={`glb-desc-${index} hidden`} style="display: none;">
             <Fragment set:html={previewHTML} />
           </div>
         </a>
@@ -135,12 +134,26 @@ const sortedItems = portfolioItems.sort((a, b) => {
   .glightbox-preview-card {
     display: flex;
     flex-direction: column;
+    width: 90vw;
     max-width: 1200px;
     max-height: 90vh;
     height: 90vh;
+    margin: 0 auto;
     background: #1a1a1a;
     border-radius: 12px;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  /* Fix GLightbox container centering */
+  .gslide-inner-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Hide default image loader */
+  .gloader {
+    display: none !important;
   }
 
   .preview-image-container {
