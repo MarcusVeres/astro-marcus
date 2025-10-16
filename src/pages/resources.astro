@@ -45,7 +45,7 @@ const sortedResources = allResources.sort((a, b) => {
             <h2 class="pt-4 text-4xl font-extrabold text-center text-white uppercase md:pt-16 md:text-7xl drop-shadow-lg">
                 Become unstoppable
             </h2>
-            <div class="font-extrabold text-center text-white uppercase mt-14 drop-shadow-lg">
+            <div class="mt-6 font-extrabold text-center text-white uppercase md:mt-14 drop-shadow-lg">
                 <form class="relative max-w-2xl p-0 mx-auto transition-all duration-300 ease-in-out rounded-lg bg-black/40 hover:bg-black/80">
                     <input
                         id="search-input"
@@ -64,10 +64,10 @@ const sortedResources = allResources.sort((a, b) => {
                 </form>
             </div>
             <ul
-                class="flex items-center w-full pb-6 mx-auto mt-4 font-bold tracking-wider text-center text-yellow-400 uppercase divide-x-2 cursor-pointer divide-yellow-600/20 border-opacity-20 text-md drop-shadow-md overflow-x-auto md:justify-center md:overflow-x-visible scrollbar-hide snap-x snap-mandatory">
+                class="flex items-center w-full pb-6 mx-auto mt-4 overflow-x-auto font-bold tracking-wider text-center text-yellow-400 uppercase divide-x-2 cursor-pointer divide-yellow-600/20 border-opacity-20 text-md drop-shadow-md md:justify-center md:overflow-x-visible scrollbar-hide snap-x snap-mandatory">
                 {featuredCategories.map((category) => (
                   <li
-                    class="px-3 transition-all duration-500 opacity-40 hover:opacity-100 flex-shrink-0 snap-center"
+                    class="flex-shrink-0 px-3 transition-all duration-500 opacity-40 hover:opacity-100 snap-center"
                     data-category-filter={category.name}
                     data-category-tags={category.tags.join(',')}
                   >
