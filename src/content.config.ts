@@ -8,7 +8,8 @@ import { glob } from "astro/loaders";
 
 // 3. Define your collection(s)
 const galleries = defineCollection({
-  loader: glob({ pattern: "*.json", base: "src/content/galleries" }),
+  // loader: glob({ pattern: "*.json", base: "src/content/galleries" }),
+  loader: glob({ pattern: "*.json", base: "src/collections/galleries" }),
   schema: ({ image }) =>
     z.object({
       images: z.array(
