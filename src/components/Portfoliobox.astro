@@ -17,36 +17,41 @@ const images = portfolioItems.map(item => ({
 ---
 
 <!-- Lightbox Dialog Only (thumbnails are in main grid) -->
-<dialog class="lightbox-dialog" data-option={transitionType || "slide-in"}>
-    <div class="lightbox-content">
+<dialog class="lightbox-dialog border-none p-0 overflow-clip bg-transparent" data-option={transitionType || "slide-in"}>
+    <div class="lightbox-content w-screen h-screen grid grid-cols-1 grid-rows-1">
       {
         images.map((image, index) => (
-          <figure class="lightbox-image-container" id={`image-${index}`}>
+          <figure class="lightbox-image-container grid grid-cols-1 place-content-center opacity-0 pointer-events-none transition-all" id={`image-${index}`}>
             {/* For performance, only the first few images are eager loaded */}
-            <div class="lightbox-image-wrapper">
+            <div class="lightbox-image-wrapper flex items-center justify-center">
               <img
                 src={image.src}
                 alt={image.alt}
                 loading={index < 4 ? "eager" : "lazy"}
-                class="lightbox-image"
+                class="lightbox-image max-w-full w-auto h-auto mx-auto block"
                 data-index={index}
               />
             </div>
-            <figcaption class="lightbox-caption">
+            <figcaption class="lightbox-caption px-2 py-4 opacity-100 transition-opacity">
               {image.title ? (
-                <p>
+                <p class="font-extrabold text-center mx-auto text-gray-50 text-balance pt-6 pb-3">
                   {index + 1}. {image.title}
                 </p>
               ) : null}
-              {image.description ? <p>{image.description}</p> : null}
+              {image.description ? (
+                <p class="font-light text-center mx-auto text-gray-50 text-balance">
+                  {image.description}
+                </p>
+              ) : null}
             </figcaption>
           </figure>
         ))
       }
     </div>
     <!-- Navigation buttons -->
-    <button class="prev-button" aria-label="previous slide">
+    <button class="prev-button block bg-transparent border-none outline-none cursor-pointer z-[999] opacity-100 transition-opacity" aria-label="previous slide">
       <svg
+        class="text-teal-400/75 w-9 h-full aspect-square p-0 transition-all duration-200 hover:text-teal-300/95"
         xmlns="http://www.w3.org/2000/svg"
         width="32"
         height="32"
@@ -63,8 +68,9 @@ const images = portfolioItems.map(item => ({
         ></path>
       </svg>
     </button>
-    <button class="next-button" aria-label="next slide">
+    <button class="next-button block bg-transparent border-none outline-none cursor-pointer z-[999] opacity-100 transition-opacity" aria-label="next slide">
       <svg
+        class="text-teal-400/75 w-9 h-full aspect-square p-0 transition-all duration-200 hover:text-teal-300/95"
         xmlns="http://www.w3.org/2000/svg"
         width="32"
         height="32"
@@ -81,8 +87,9 @@ const images = portfolioItems.map(item => ({
         ></path>
       </svg>
     </button>
-    <button class="close-button" aria-label="close button">
+    <button class="close-button block bg-transparent border-none outline-none cursor-zoom-out z-[999] opacity-100 transition-opacity" aria-label="close button">
       <svg
+        class="text-teal-400/75 w-9 h-full aspect-square p-0 transition-all duration-200 hover:text-teal-300/95"
         xmlns="http://www.w3.org/2000/svg"
         width="32"
         height="32"
@@ -98,19 +105,19 @@ const images = portfolioItems.map(item => ({
   </dialog>
 
 <style>
-  /* Lightbox Configuration */
+  /* Lightbox CSS Custom Properties & Critical Animations */
   .lightbox-dialog {
-    /* Adjust these custom properties if you like */
-    --duration-zoom-in: 0.75s; /* Duration of the zoom effect */
-    --duration-background-transition: 0.3s; /* Duration of lightbox background transition*/
-    --duration-slide-transition: 0.3s; /* Duration of slide transition*/
-    --duration-close-transition: 0.5s; /* close*/
-    --caption-height: 5lh; /* use line height units for size of caption area */
+    /* Animation durations - customizable */
+    --duration-zoom-in: 0.75s;
+    --duration-background-transition: 0.3s;
+    --duration-slide-transition: 0.3s;
+    --duration-close-transition: 0.5s;
+    --caption-height: 5lh;
     --ease-zoom: cubic-bezier(0.5, -0.5, 0.1, 1.5);
     --ease-slide-transition: cubic-bezier(0.9, 0, 0.1, 1);
   }
+
   @media (prefers-reduced-motion) {
-    /* Set  tranistion speed to 0*/
     .lightbox-dialog {
       --duration-zoom-in: 0s;
       --duration-slide-transition: 0s;
@@ -119,65 +126,30 @@ const images = portfolioItems.map(item => ({
     }
   }
 
-  img,
-  picture {
-    display: block;
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
-
-  /* Prevent interaction with page when modal is open. */
+  /* Prevent page scroll when lightbox is open */
   html:has(dialog[open]) {
     overflow: hidden;
   }
-  /* Thumbnails and container, change as required */
-  .thumbnail-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-    gap: clamp(1rem, 2vw, 1.5rem);
-    max-width: 90vw;
-    overflow: clip;
-  }
-  .thumbnail-button {
-    padding: 0;
-    border: none;
-    outline: none;
-    background: none;
-    cursor: zoom-in;
-    &:focus {
-      outline: none;
-    }
-  }
 
-  /* Lightbox and children */
-
-  /* Exit State */
-
+  /* Dialog Exit State (before opening) */
   .lightbox-dialog {
     opacity: 0;
     display: none;
-    border: none;
-    padding: 0;
-    overflow: clip;
-    background: none;
     transform: translateX(100%);
-    /* For exit */
-
     transition:
       overlay 1s ease-in allow-discrete,
       display 1s ease-in allow-discrete;
   }
-  @media (width <= 640px) {
-    /* Set to zero for mobile for now */
 
+  @media (width <= 640px) {
     .lightbox-dialog {
       transition:
         overlay 0s ease-in allow-discrete,
         display 0s ease-in allow-discrete;
     }
   }
-  /* Open state */
+
+  /* Dialog Open State with Named Grid Areas for Button Positioning */
   .lightbox-dialog[open] {
     opacity: 1;
     max-width: 100%;
@@ -186,15 +158,14 @@ const images = portfolioItems.map(item => ({
     display: grid;
     grid-template-columns: [main-start] 10ch [interior-start] 1fr[interior-end] 10ch [main-end];
     grid-template-rows: [main-start] 5ch [interior-start] 1fr [interior-end] 5ch [main-end];
-    /* named grid areas used for navigation positioning */
     grid-template-areas:
       "tlhs top trhs"
       "clhs content crhs"
       "blhs bottom brhs";
-    transform: translateX(0); /* Slide in */
+    transform: translateX(0);
   }
 
-  /* Before opening  */
+  /* Starting style (entry animation) */
   @starting-style {
     .lightbox-dialog[open] {
       translate: 0 100vh;
@@ -202,147 +173,92 @@ const images = portfolioItems.map(item => ({
     .lightbox-dialog[open]::backdrop {
       opacity: 0;
     }
-    .lightbox-dialog[open]
-      .lightbox-content
-      .lightbox-image-container
-      .lightbox-caption {
+    .lightbox-dialog[open] .lightbox-content .lightbox-image-container .lightbox-caption {
       opacity: 0;
     }
     .lightbox-dialog[open] button {
       opacity: 0;
     }
   }
-  /* Open State*/
+
+  /* Backdrop styling */
+  .lightbox-dialog::backdrop {
+    opacity: 0;
+    background: oklch(40% 0 0 / 95%);
+  }
+
   .lightbox-dialog[open]::backdrop {
     opacity: 1;
   }
 
-  /* Exit State */
-  .lightbox-dialog::backdrop {
-    opacity: 0;
-    background: oklch(40% 0 0 / 95%);
-    /* Blur background if using semi-transparent background */
-    /* backdrop-filter: blur(5px); */
-  }
-  @starting-style {
-    .lightbox-dialog[open]::backdrop {
-      opacity: 0;
-    }
-  }
-
-  /* When dialog is closing */
+  /* Closing state */
+  .lightbox-dialog.closing,
   .lightbox-dialog.closing::backdrop {
     opacity: 0;
     transition: opacity var(--duration-close-transition) ease;
   }
-  .lightbox-dialog.closing {
-    opacity: 0;
-    transition: opacity var(--duration-close-transition) ease;
-  }
-  .closing .active .lightbox-image {
-    /* This needs more work, but gonna ship as is */
-    /* animation: zoom-out-animation var(--duration-close-transition) ease-out
-      forwards;
-    outline: 4px solid red; */
-  }
 
-  /* Lightbox Content */
+  /* Lightbox Content Grid */
   .lightbox-content {
-    grid-column-start: main-start;
-    grid-column-end: main-end;
-    grid-row-start: main-start;
-    grid-row-end: main-end;
-    width: 100dvw;
-    height: 100dvh;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+    grid-column: main-start / main-end;
+    grid-row: main-start / main-end;
     grid-template-areas: "content";
   }
 
-  /* Initial state for the image */
+  /* Image Container Grid Layout */
   .lightbox-image-container {
     grid-area: content;
-    display: grid;
-    grid-template-columns: 1fr;
     grid-template-rows: 1fr var(--caption-height);
     grid-template-areas:
       "image"
       "caption";
-    place-content: center;
-    opacity: 0;
-    pointer-events: none;
-    /* Slide switch transitions, opacity is used in fade mode, transform in slide */
     transition:
       opacity var(--duration-slide-transition) var(--ease-slide-transition),
-      transform var(--duration-slide-transition) var(--ease-slide-transition); /* Open-props transition to liven it up a bit */
-
-    &.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .lightbox-image-wrapper {
-      grid-area: image;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .lightbox-caption {
-      opacity: 1;
-      transition: opacity var(--duration-background-transition) ease-in;
-      grid-area: caption;
-      padding: 1ch;
-      /* background: oklch(10% 0 0 / 20%); */
-      /* background-image: linear-gradient(to right, orange 50%, pink 50%); */
-    }
-    .lightbox-image {
-      /* Custom properties, origin and scall are modified by JS  */
-      --initial-scale: 1;
-      --initial-x: 0px;
-      --initial-y: 0px;
-      --final-x: 0px;
-      --final-y: 0px;
-      --final-scale: 1;
-
-      /* end of custom props */
-      max-height: calc(100dvh - var(--caption-height));
-      max-width: 100%;
-      width: auto;
-      height: auto;
-      margin: 0 auto;
-      display: block;
-      transform-origin: center center;
-      animation: zoom-in-animation var(--duration-zoom-in) var(--ease-zoom)
-        forwards;
-      opacity: 1;
-    }
+      transform var(--duration-slide-transition) var(--ease-slide-transition);
   }
+
+  .lightbox-image-container.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .lightbox-image-wrapper {
+    grid-area: image;
+  }
+
+  .lightbox-caption {
+    grid-area: caption;
+    transition: opacity var(--duration-background-transition) ease-in;
+  }
+
+  /* Image animation properties (set by JS) */
+  .lightbox-image {
+    --initial-scale: 1;
+    --initial-x: 0px;
+    --initial-y: 0px;
+    --final-x: 0px;
+    --final-y: 0px;
+    --final-scale: 1;
+    max-height: calc(100dvh - var(--caption-height));
+    transform-origin: center center;
+    animation: zoom-in-animation var(--duration-zoom-in) var(--ease-zoom) forwards;
+  }
+
   @keyframes zoom-in-animation {
     from {
-      transform: translate(var(--initial-x), var(--initial-y))
-        scale(var(--initial-scale));
+      transform: translate(var(--initial-x), var(--initial-y)) scale(var(--initial-scale));
     }
     to {
-      transform: translate(var(--final-x), var(--final-y))
-        scale(var(--final-scale));
-    }
-  }
-  @keyframes zoom-out-animation {
-    from {
-      transform: translate(var(--final-x), var(--final-y))
-        scale(var(--final-scale));
-    }
-    to {
-      transform: translate(var(--initial-x), var(--initial-y))
-        scale(var(--initial-scale));
+      transform: translate(var(--final-x), var(--final-y)) scale(var(--final-scale));
     }
   }
 
-  /* Styling for fade and slide transitions  */
+  /* Transition type: fade */
   .lightbox-dialog[data-option="fade"] .lightbox-image-container {
     transform: none;
   }
 
+  /* Transition type: slide */
   .lightbox-dialog[data-option="slide"] .lightbox-image-container {
     transform: translateX(100%);
   }
@@ -359,65 +275,19 @@ const images = portfolioItems.map(item => ({
     transform: translateX(0%);
   }
 
-  /* Slide caption */
-  .lightbox-caption {
-    p {
-      font-weight: 200;
-      text-align: center;
-      margin: auto;
-      color: oklch(95% 0 0);
-      text-wrap: pretty;
-    }
-    /* Image title */
-    p:first-child {
-      font-weight: 800;
-      padding-block-start: 1.5rem;
-      padding-block-end: 0.75rem;
-    }
-  }
-
-  /* Navigation Buttons */
-  .lightbox-dialog {
-    button {
-      z-index: 999;
-      border: none;
-      outline: none;
-      opacity: 1;
-      transition: opacity var(--duration-background-transition) ease-in
-        allow-discrete;
-      /* Style the SVG  icons*/
-      svg {
-        color: oklch(60% 0.01 150 / 75%);
-        width: 38px;
-        height: 100%;
-        aspect-ratio: 1 / 1;
-        padding: 0;
-        transition: all 0.2s ease-in-out;
-      }
-      &:hover svg {
-        color: oklch(85% 0.15 150 / 95%);
-      }
-    }
-  }
-  .prev-button,
-  .next-button,
-  .close-button {
-    display: block;
-    background: none;
-    cursor: pointer;
-  }
-
+  /* Navigation Button Grid Positioning */
   .prev-button {
     grid-area: clhs;
     padding-right: 50%;
   }
+
   .next-button {
     grid-area: crhs;
     padding-left: 50%;
   }
+
   .close-button {
     grid-area: trhs;
-    cursor: zoom-out;
     padding-left: 50%;
   }
 </style>
