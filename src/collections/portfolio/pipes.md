@@ -4,7 +4,7 @@ description: "Urban industrial photography celebrating functional design and wea
 image: "/images/portfolio/pipes.jpg"
 category: ["photography", "industrial"]
 contentType: "simple"
-order: 8
+order: 1400
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-09-10

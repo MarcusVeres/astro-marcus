@@ -4,7 +4,7 @@ description: "Abstract texture and pattern study. Finding beauty in fragmentatio
 image: "/images/portfolio/shatters.jpg"
 category: ["photography", "abstract"]
 contentType: "simple"
-order: 17
+order: 500
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-07-22

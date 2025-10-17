@@ -5,7 +5,7 @@ image: "/images/portfolio/knife.jpg"
 category: ["design", "3d", "case-study"]
 contentType: "case-study"
 caseStudyUrl: "/m/case-study-knife"
-order: 10
+order: 1200
 gridSpan: "md:col-span-2"
 aspectRatio: "default"
 showOverlay: true

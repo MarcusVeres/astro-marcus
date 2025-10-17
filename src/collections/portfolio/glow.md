@@ -4,7 +4,7 @@ description: "Light and shadow study exploring the interplay between illuminatio
 image: "/images/portfolio/glow.jpg"
 category: ["photography", "abstract"]
 contentType: "simple"
-order: 16
+order: 600
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-08-10

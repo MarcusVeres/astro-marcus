@@ -4,7 +4,7 @@ description: "Nature photography featuring a beautiful cardinal in its natural h
 image: "/images/portfolio/cardinal.jpg"
 category: ["photography", "wildlife"]
 contentType: "simple"
-order: 2
+order: 2000
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-09-01

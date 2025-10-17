@@ -4,7 +4,7 @@ description: "Detailed close-up of pine needles in natural light. Capturing the 
 image: "/images/portfolio/pine.jpg"
 category: ["photography", "nature"]
 contentType: "simple"
-order: 1
+order: 2100
 gridSpan: "default"
 aspectRatio: "golden"
 gridPosition: "md:col-start-3"

@@ -4,7 +4,7 @@ description: "Macro photography of weathered wood revealing texture, grain, and 
 image: "/images/portfolio/splinters.jpg"
 category: ["photography", "abstract"]
 contentType: "simple"
-order: 21
+order: 100
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-07-30

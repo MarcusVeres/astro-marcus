@@ -4,7 +4,7 @@ description: "Mechanical photography showcasing industrial design and engineerin
 image: "/images/portfolio/engine.jpg"
 category: ["photography", "industrial"]
 contentType: "simple"
-order: 19
+order: 300
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-09-15

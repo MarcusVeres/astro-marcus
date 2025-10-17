@@ -4,7 +4,7 @@ description: "Macro photography of tree bark revealing intricate natural pattern
 image: "/images/portfolio/bark.jpg"
 category: ["photography", "nature"]
 contentType: "simple"
-order: 18
+order: 400
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-08-20

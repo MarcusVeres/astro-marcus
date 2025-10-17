@@ -10,11 +10,11 @@ import SocialIconsFooter from '../components/blocks/SocialIconsFooter.astro'
 
 const pageTitle = "Portfolio"
 
-// Get portfolio collection and sort by order
+// Get portfolio collection and sort by order (descending - newest work first)
 const allPortfolio = await getCollection('portfolio');
 const sortedPortfolio = allPortfolio
   .filter(item => item.data.order !== undefined)
-  .sort((a, b) => a.data.order - b.data.order);
+  .sort((a, b) => b.data.order - a.data.order);
 ---
 
 <style>

@@ -4,7 +4,7 @@ description: "Geometric patterns in urban landscape. Exploring lines, shadows, a
 image: "/images/portfolio/fence.jpg"
 category: ["photography", "abstract"]
 contentType: "simple"
-order: 6
+order: 1600
 gridSpan: "row-span-2"
 aspectRatio: "default"
 pubDate: 2024-06-18

@@ -4,7 +4,7 @@ description: "Urban lighting photographed during the magic hour, when natural an
 image: "/images/portfolio/streetlight.jpg"
 category: ["photography", "urban"]
 contentType: "simple"
-order: 12
+order: 1000
 gridSpan: "row-span-2"
 aspectRatio: "default"
 pubDate: 2024-06-10

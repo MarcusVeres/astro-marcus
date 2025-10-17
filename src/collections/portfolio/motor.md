@@ -4,7 +4,7 @@ description: "Industrial design photography highlighting precision engineering a
 image: "/images/portfolio/motor.jpg"
 category: ["photography", "industrial"]
 contentType: "simple"
-order: 20
+order: 200
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-09-18

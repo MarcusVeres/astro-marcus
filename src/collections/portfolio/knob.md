@@ -4,7 +4,7 @@ description: "Vintage architectural hardware showcasing craftsmanship and patina
 image: "/images/portfolio/knob.jpg"
 category: ["photography", "architecture"]
 contentType: "simple"
-order: 5
+order: 1700
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-07-05

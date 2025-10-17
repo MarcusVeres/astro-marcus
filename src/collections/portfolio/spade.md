@@ -4,7 +4,7 @@ description: "Still life photography of well-used tools. A meditation on work, w
 image: "/images/portfolio/spade.jpg"
 category: ["photography", "still-life"]
 contentType: "simple"
-order: 14
+order: 800
 gridSpan: "row-span-2"
 aspectRatio: "default"
 pubDate: 2024-06-25

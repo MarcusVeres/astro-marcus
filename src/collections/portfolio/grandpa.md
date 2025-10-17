@@ -4,7 +4,7 @@ description: "Black and white portrait photography capturing character and emoti
 image: "/images/portfolio/grandpa.jpg"
 category: ["photography", "portrait"]
 contentType: "simple"
-order: 3
+order: 1900
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-05-12
