@@ -1,0 +1,28 @@
+{
+  "images": [
+    {
+      "src": "/src/assets/images/render-1.png",
+      "alt": "A cute panda munching on bamboo",
+      "title": "Bamboo Lover",
+      "description": "Pandas can eat up to 38 kilograms (84 pounds) of bamboo a day!"
+    },
+    {
+      "src": "/src/assets/images/logo.png",
+      "alt": "A cute panda munching on bamboo",
+      "title": "Bamboo Lo234222ver",
+      "description": "Pandas can eat up to 38 kilograms (84 pounds) of bamboo a day!"
+    },
+    {
+      "src": "/src/assets/images/render-1.png",
+      "alt": "A cute panda munching on bamboo",
+      "title": "Bamboo Lov234er",
+      "description": "Pandas can eat up to 38 kilograms (84 pounds) of bamboo a day!"
+    },
+    {
+      "src": "/src/assets/images/logo.png",
+      "alt": "A cute panda munching on bamboo",
+      "title": "Bamboo Love21134r",
+      "description": "Pandas can eat up to 38 kilograms (84 pounds) of bamboo a day!"
+    }
+  ]
+}

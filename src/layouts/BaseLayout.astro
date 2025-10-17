@@ -1,4 +1,6 @@
 ---
+import { ClientRouter } from "astro:transitions"; // CRITICAL FOR FUCKING GALLERY SLIDER TING
+
 import Footer from '../components/Footer.astro'
 import Header from '../components/Header.astro'
 
@@ -26,6 +28,9 @@ const { pageTitle } = Astro.props;
 
 		<!-- TailwindPlus Elements script -->
 		<script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
+
+		<!-- CRITICAL FOR PANDA GALLERY BULLSHIT -->
+		<ClientRouter />
 
 	</head>
 	<body class="antialiased bg-gray-900">

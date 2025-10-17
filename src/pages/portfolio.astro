@@ -1,28 +1,38 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-import { getCollection } from 'astro:content';
+import Layout from "@layouts/Layout.astro";
+
+import Pandabox from '../components/Pandabox.astro'
+
 import { getResourceColor, featuredCategories } from "../utils/resourceColors";
 
 import SocialIcons from '../components/blocks/SocialIcons.astro'
 import SocialIconsFooter from '../components/blocks/SocialIconsFooter.astro'
 
 const pageTitle = "Portfolio"
-
-// Get all portfolio items and sort by order
-const portfolioItems = await getCollection('portfolio');
-const sortedItems = portfolioItems.sort((a, b) => {
-  const orderA = a.data.order || 999;
-  const orderB = b.data.order || 999;
-  return orderA - orderB;
-});
 ---
+
+<style>
+
+.lightbox-dialog {
+  /* Adjust these custom properties if you like */
+  --duration-zoom-in: 1.2s; /* Duration of the zoom effect */
+  --duration-background-transition: 0.5s; /* Duration of lightbox background transition*/
+  --duration-slide-transition: 0.5s; /* Duration of slide transition*/
+  --duration-close-transition: 0.75s; /* close*/
+  --caption-height: 5lh; /* use line height units for size of caption area */
+  --ease-zoom: cubic-bezier(0.5, -0.5, 0.1, 1.5);
+  --ease-slide-transition: cubic-bezier(0.9, 0, 0.1, 1);
+}
+
+</style>
+
 <BaseLayout pageTitle={`${pageTitle} blog`}>
+<!-- <Layout title="PandaBox: An Astro Lightbox and Gallery"> -->
+  
+  <!-- <Pandabox galleryid="panda" transitionType="fade" /> -->
+  <Pandabox galleryid="panda" transitionType="fade" />
 
-  <!-- GLightbox CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
-  <link rel="stylesheet" href="/src/styles/lightbox.css" />
-
-  <!-- <SocialIconsFooter /> -->
 
   <div class="px-2 pt-4 md:pt-6 md:px-0">
       <h2 class="pt-4 text-4xl font-extrabold text-center text-white uppercase md:pt-16 md:text-7xl drop-shadow-lg">
@@ -62,118 +72,83 @@ const sortedItems = portfolioItems.sort((a, b) => {
 
   <!-- consider: adding a wrapper container for the 16px extra padding that isn't respected by grid. can't use margin because mx-auto is already in use-->
   <div class="container grid grid-cols-2 gap-2 p-2 mx-auto mt-12 text-white max-w-7xl sm:p-4 sm:gap-4 sm:grid-cols-3 lg:grid-cols-4">
-
+    
     <div class="flex items-center justify-center col-span-2 border rounded-lg shadow-inner bg-gray-950 border-white/10 bg-opacity-40 sm:col-span-3 md:col-span-2">
       <h1 class="p-1 m-0 text-6xl font-extrabold tracking-wide text-transparent uppercase bg-clip-text bg-gradient-to-r from-yellow-400 to-pink-500">
         Portfolio
       </h1>
     </div>
 
-    {sortedItems.map((item, index) => {
-      const { title, description, image, contentType, gridSpan, aspectRatio } = item.data;
+    <div class="md:col-start-3 card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/pine.jpg')]"></div>
+    </div>
 
-      // Determine grid classes based on gridSpan
-      let gridClass = '';
-      if (gridSpan === 'wide') gridClass = 'md:col-span-2';
-      else if (gridSpan === 'tall') gridClass = 'row-span-2';
-      else if (gridSpan === 'large') gridClass = 'md:col-span-2 row-span-2';
+    <div class="card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/cardinal.jpg')]"></div>
+    </div>
 
-      // Determine aspect ratio class
-      let aspectClass = '';
-      if (aspectRatio === 'golden') aspectClass = 'aspect-golden';
-      else if (aspectRatio === 'square') aspectClass = 'aspect-square';
-      else if (aspectRatio === 'portrait') aspectClass = 'aspect-portrait';
-      else if (aspectRatio === 'landscape') aspectClass = 'aspect-landscape';
+    <div class="card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/grandpa.jpg')]"></div>
+    </div>
 
-      // For first collection item, add md:col-start-3 to match original layout
-      const startClass = index === 0 ? 'md:col-start-3' : '';
+    <div class="row-span-2 card-zoom">
+      <div class="card-zoom-image bg-[url('/images/portfolio/lamp.jpg')]"></div>
+    </div>
 
-      // Generate the URL for this portfolio item
-      const itemUrl = `/portfolio/${item.id}`;
+    <div class="card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/knob.jpg')]"></div>
+    </div>
 
-      return (
-        <a
-          href={itemUrl}
-          class={`glightbox portfolio-item card-zoom ${gridClass} ${aspectClass} ${startClass}`}
-          data-type="iframe"
-          data-width="90vw"
-          data-height="90vh"
-        >
-          <div class="card-zoom-image" style={`background-image: url('${image}');`}></div>
-          {contentType === 'case-study' && (
-            <h3 class="hidden text-center uppercase text-md md:block md:text-2xl lg:text-3xl card-zoom-text xl:text-4xl">Case Study</h3>
-          )}
-        </a>
-      );
-    })}
+    <div class="row-span-2 card-zoom">
+      <div class="card-zoom-image bg-[url('/images/portfolio/fence.jpg')]"></div>
+    </div>
+
+    <div class="card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/trunk.jpg')]"></div>
+    </div>
+
+    <div class="card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/pipes.jpg')]"></div>
+    </div>
+    
+    <div class="card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/flowers.jpg')]"></div>
+    </div>
+
+    <div class="card-zoom md:col-span-2">
+      <div class="card-zoom-image bg-[url('/images/portfolio/knife.jpg')]"></div>
+      <h3 class="hidden text-center uppercase text-md md:block md:text-2xl lg:text-3xl card-zoom-text xl:text-4xl">Case Study I</h3>
+    </div>
+
+    <div class="card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/tunnel.jpg')]"></div>
+    </div>
+
+    <div class="row-span-2 card-zoom">
+      <div class="card-zoom-image bg-[url('/images/portfolio/streetlight.jpg')]"></div>
+    </div>
+
+    <div class="card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/wall.jpg')]"></div>
+    </div>
+
+    <div class="row-span-2 card-zoom">
+      <div class="card-zoom-image bg-[url('/images/portfolio/spade.jpg')]"></div>
+    </div>
+
+    <div class="card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/miki.jpg')]"></div>
+    </div>
+
+    <div class="card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/glow.jpg')]"></div>
+    </div>
+
+    <div class="card-zoom aspect-golden">
+      <div class="card-zoom-image bg-[url('/images/portfolio/shatters.jpg')]"></div>
+    </div>
 
   </div>
 
 </BaseLayout>
-
-<!-- GLightbox JS -->
-<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
-
-<script>
-  import GLightbox from 'glightbox';
-
-  // Build elements array manually for GLightbox
-  const portfolioLinks = document.querySelectorAll('.glightbox');
-  console.log('Found', portfolioLinks.length, 'portfolio items');
-
-  // Build inline HTML with iframe for each portfolio item
-  const elements = Array.from(portfolioLinks).map((link, index) => {
-    const relativeHref = link.getAttribute('href');
-    const absoluteHref = new URL(relativeHref, window.location.origin).href;
-
-    return {
-      content: `<iframe src="${absoluteHref}" style="width: 90vw; height: 90vh; border: none;"></iframe>`,
-      type: 'inline'
-    };
-  });
-
-  console.log('Built elements array:', elements[0]);
-
-  // Initialize GLightbox with manually built elements array
-  const lightbox = GLightbox({
-    elements: elements,
-    touchNavigation: true,
-    loop: true,
-    closeButton: true,
-    preload: false,
-    closeOnOutsideClick: true,
-    svg: {
-      close: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>',
-      next: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>',
-      prev: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>'
-    }
-  });
-
-  // Manually attach click handlers
-  portfolioLinks.forEach((link, index) => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      console.log('Opening lightbox at index:', index);
-      lightbox.openAt(index);
-    });
-  });
-
-  console.log('GLightbox initialized');
-
-  // Debug: Log when lightbox opens
-  lightbox.on('open', (slide) => {
-    console.log('Lightbox opened, slide:', slide);
-    // Check if iframe was created
-    setTimeout(() => {
-      const iframe = document.querySelector('.gslide-media iframe');
-      const gslideMedia = document.querySelector('.gslide-media');
-      console.log('gslide-media element:', gslideMedia);
-      console.log('gslide-media innerHTML:', gslideMedia?.innerHTML);
-      console.log('Iframe found:', iframe);
-      if (iframe) {
-        console.log('Iframe src:', iframe.src);
-        console.log('Iframe dimensions:', iframe.offsetWidth, 'x', iframe.offsetHeight);
-      }
-    }, 100);
-  });
-</script>
+<!-- </Layout> -->

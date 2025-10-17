@@ -1,6 +1,29 @@
-// Import the glob loader
+// PANDABOX
+
+// 1. Import utilities from `astro:content`
+import { defineCollection, z } from "astro:content";
+
+// 2. Import loader(s)
 import { glob } from "astro/loaders";
-import { z, defineCollection } from "astro:content";
+
+// 3. Define your collection(s)
+const galleries = defineCollection({
+  loader: glob({ pattern: "*.json", base: "src/content/galleries" }),
+  schema: ({ image }) =>
+    z.object({
+      images: z.array(
+        z.object({
+          src: image(),
+          alt: z.string(),
+          title: z.string(),
+          description: z.string(),
+        }),
+      ),
+    }),
+});
+
+
+// MINE
 
 const blog = defineCollection({
     loader: glob({ pattern: '**/[^_]*.md', base: "./src/collections/blog" }),
@@ -102,6 +125,7 @@ const resources = defineCollection({
   })
 });
 
+
 // OPTIONAL 
 
 // If you split jobs into individual files
@@ -136,4 +160,6 @@ const resources = defineCollection({
 // Export collections for use with glob
 // Only export jobs/tools if using individual files approach
 
-export const collections = { blog, portfolio, products, resources };
+
+// export const collections = { blog, galleries: galleries, portfolio, products, resources };
+export const collections = { galleries: galleries };
