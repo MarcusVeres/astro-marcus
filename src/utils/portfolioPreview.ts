@@ -1,15 +1,20 @@
 /**
- * Generate custom HTML content for GLightbox portfolio previews
- * Based on portfolio item contentType
+ * Portfolio Preview HTML Generator
+ *
+ * NOTE: This file generates HTML strings for GLightbox.
+ * The actual component is at: /src/components/portfolio/PortfolioLightboxCard.astro
+ *
+ * To change the design, edit the Astro component.
+ * This function should match the component's output.
  */
 
-interface PortfolioLink {
+export interface PortfolioLink {
   label: string;
   url: string;
   icon?: string;
 }
 
-interface PreviewOptions {
+export interface PreviewOptions {
   title: string;
   description: string;
   image: string;
@@ -23,6 +28,7 @@ interface PreviewOptions {
 
 /**
  * Generate HTML for portfolio preview card
+ * This mirrors the PortfolioLightboxCard.astro component
  */
 export function generatePreviewHTML(options: PreviewOptions): string {
   const {
@@ -32,7 +38,7 @@ export function generatePreviewHTML(options: PreviewOptions): string {
     contentType,
     caseStudyUrl,
     externalUrl,
-    externalLabel,
+    externalLabel = 'View Project',
     iframeUrl,
     links = []
   } = options;
@@ -46,11 +52,11 @@ export function generatePreviewHTML(options: PreviewOptions): string {
     `;
   }
 
-  // Generate action button based on content type
+  // Generate action button
   let actionButton = '';
   if (contentType === 'case-study' && caseStudyUrl) {
     actionButton = `
-      <a href="${caseStudyUrl}" class="btn-primary" target="_blank">
+      <a href="${caseStudyUrl}" class="btn-lightbox btn-primary" target="_blank">
         Read Full Case Study
         <svg class="inline-block w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
@@ -59,8 +65,8 @@ export function generatePreviewHTML(options: PreviewOptions): string {
     `;
   } else if (contentType === 'external' && externalUrl) {
     actionButton = `
-      <a href="${externalUrl}" class="btn-primary" target="_blank" rel="noopener noreferrer">
-        ${externalLabel || 'View Project'}
+      <a href="${externalUrl}" class="btn-lightbox btn-primary" target="_blank" rel="noopener noreferrer">
+        ${externalLabel}
         <svg class="inline-block w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
         </svg>
@@ -68,7 +74,7 @@ export function generatePreviewHTML(options: PreviewOptions): string {
     `;
   }
 
-  // Generate social/external links
+  // Generate social links
   let socialLinks = '';
   if (links.length > 0) {
     const linkItems = links.map(link => `
@@ -79,36 +85,33 @@ export function generatePreviewHTML(options: PreviewOptions): string {
     `).join('');
 
     socialLinks = `
-      <div class="preview-social-links">
+      <div class="lightbox-social-links">
         ${linkItems}
       </div>
     `;
   }
 
-  // Return complete preview card HTML
+  // Return complete preview card HTML (matches PortfolioLightboxCard.astro)
   return `
-    <div class="glightbox-preview-card">
-      <div class="preview-image-container">
-        <img src="${image}" alt="${title}" class="preview-image" />
-      </div>
-      <div class="preview-details">
-        <h2 class="preview-title">${title}</h2>
-        <p class="preview-description">${description}</p>
-        ${actionButton}
-        ${socialLinks}
+    <div class="lightbox-card">
+      <!-- Background Image -->
+      <div class="lightbox-bg" style="background-image: url('${image}');"></div>
+
+      <!-- Glassmorphic Panel -->
+      <div class="lightbox-panel">
+        <!-- Drag Handle -->
+        <div class="lightbox-handle">
+          <div class="handle-bar"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="lightbox-content">
+          <h2 class="lightbox-title">${title}</h2>
+          <p class="lightbox-description">${description}</p>
+          ${actionButton}
+          ${socialLinks}
+        </div>
       </div>
     </div>
   `;
-}
-
-/**
- * Escape HTML attribute values
- */
-export function escapeHTML(str: string): string {
-  return str
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#039;');
 }

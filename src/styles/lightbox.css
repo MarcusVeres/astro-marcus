@@ -1,0 +1,76 @@
+/**
+ * GLightbox Custom Styles
+ * Overrides for GLightbox library to match portfolio design
+ *
+ * Component: /src/components/portfolio/PortfolioLightboxCard.astro
+ * Edit the component file to change the lightbox design.
+ */
+
+/* ==================================
+   GLightbox Overrides
+   ================================== */
+
+/* GLightbox Container */
+.glightbox-container {
+  background: rgba(0, 0, 0, 0.95) !important;
+}
+
+/* Center content */
+.gslide-inner-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hide default image loader */
+.gloader {
+  display: none !important;
+}
+
+/* Remove default description styles */
+.gslide-description {
+  background: transparent !important;
+}
+
+.gdesc-inner {
+  padding: 0 !important;
+}
+
+/* Navigation Buttons */
+.gclose,
+.gnext,
+.gprev {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease !important;
+}
+
+.gclose:hover,
+.gnext:hover,
+.gprev:hover {
+  background: rgba(251, 191, 36, 0.2) !important;
+  border-color: #fbbf24 !important;
+}
+
+/* ==================================
+   Custom Scrollbar
+   ================================== */
+
+.lightbox-panel::-webkit-scrollbar {
+  width: 8px;
+}
+
+.lightbox-panel::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.lightbox-panel::-webkit-scrollbar-thumb {
+  background: rgba(251, 191, 36, 0.5);
+  border-radius: 4px;
+}
+
+.lightbox-panel::-webkit-scrollbar-thumb:hover {
+  background: rgba(251, 191, 36, 0.7);
+}
