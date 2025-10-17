@@ -1,52 +1,32 @@
 ---
-import { type CollectionEntry, getEntry } from "astro:content";
-import { Image } from "astro:assets";
+import { type CollectionEntry } from "astro:content";
 
 interface Props {
-  galleryid: string;
-  gallery?: CollectionEntry<"galleries">;
+  portfolioItems: CollectionEntry<"portfolio">[];
   transitionType?: string;
 }
 
-const { galleryid, transitionType } = Astro.props;
-const gallery = await getEntry("galleries", galleryid);
-const images = gallery?.data.images ?? [];
-// Change image width for thumbnails as required
+const { portfolioItems, transitionType } = Astro.props;
+// Transform portfolio items into image-like structure for the lightbox
+const images = portfolioItems.map(item => ({
+  src: item.data.image,
+  alt: item.data.title,
+  title: item.data.title,
+  description: item.data.description
+}));
 ---
 
-<section class="thumbnail-container gallery" id={"gallery-" + galleryid}>
-  {
-    images.map((image, index) => (
-      <button
-        class="thumbnail-button"
-        data-index={index}
-        aria-label={`View image ${index + 1}: ${image.alt}`}
-      >
-        <Image
-          src={image.src}
-          alt={image.alt}
-          layout="constrained"
-          width={300}
-          quality={40}
-          loading="eager"
-          data-index={index}
-          class="thumbnail"
-        />
-      </button>
-    ))
-  }
-  <dialog class="lightbox-dialog" data-option={transitionType || "fade"}>
+<!-- Lightbox Dialog Only (thumbnails are in main grid) -->
+<dialog class="lightbox-dialog" data-option={transitionType || "slide-in"}>
     <div class="lightbox-content">
       {
         images.map((image, index) => (
           <figure class="lightbox-image-container" id={`image-${index}`}>
-            {/* For performance, only the first few images are eager loaded, if we rely on lazy only there is a glitch on Chromoum browsers as the image is loaded. */}
+            {/* For performance, only the first few images are eager loaded */}
             <div class="lightbox-image-wrapper">
-              <Image
+              <img
                 src={image.src}
                 alt={image.alt}
-                layout="full-width"
-                quality={40}
                 loading={index < 4 ? "eager" : "lazy"}
                 class="lightbox-image"
                 data-index={index}
@@ -116,7 +96,6 @@ const images = gallery?.data.images ?? [];
       </svg>
     </button>
   </dialog>
-</section>
 
 <style>
   /* Lightbox Configuration */
@@ -455,8 +434,9 @@ const images = gallery?.data.images ?? [];
   }
 
   document.addEventListener("astro:page-load", () => {
-    const thumbnailButtons = document.querySelectorAll<HTMLButtonElement>(
-      ".thumbnail-button img",
+    // Select grid items instead of thumbnail buttons
+    const portfolioItems = document.querySelectorAll<HTMLElement>(
+      "[data-portfolio-item]",
     );
     const lightboxDialog =
       document.querySelector<HTMLDialogElement>(".lightbox-dialog");
@@ -597,11 +577,11 @@ const images = gallery?.data.images ?? [];
       }
     }
 
-    function openLightbox(button: HTMLButtonElement): void {
+    function openLightbox(item: HTMLElement): void {
       if (!lightboxDialog) return;
 
-      const rect = button.getBoundingClientRect();
-      const index = Number.parseInt(button.dataset.index || "0", 10);
+      const rect = item.getBoundingClientRect();
+      const index = Number.parseInt(item.dataset.index || "0", 10);
 
       const activeImage = document.getElementById(`image-${index}`);
       if (activeImage) {
@@ -657,12 +637,12 @@ const images = gallery?.data.images ?? [];
 
     function showPreviousImage(): void {
       const prevIndex =
-        (currentIndex - 1 + thumbnailButtons.length) % thumbnailButtons.length;
+        (currentIndex - 1 + portfolioItems.length) % portfolioItems.length;
       showImageAtIndex(prevIndex);
     }
 
     function showNextImage(): void {
-      const nextIndex = (currentIndex + 1) % thumbnailButtons.length;
+      const nextIndex = (currentIndex + 1) % portfolioItems.length;
       showImageAtIndex(nextIndex);
     }
 
@@ -723,8 +703,11 @@ const images = gallery?.data.images ?? [];
     }
 
     // Attach event listeners with abort signal for cleanup
-    for (const button of thumbnailButtons) {
-      button.addEventListener("click", () => openLightbox(button), { signal });
+    // Listen to clicks on portfolio grid items
+    for (const item of portfolioItems) {
+      item.addEventListener("click", () => openLightbox(item), { signal });
+      // Add cursor pointer style
+      item.style.cursor = "pointer";
     }
     prevButton?.addEventListener("click", showPreviousImage, { signal });
     nextButton?.addEventListener("click", showNextImage, { signal });

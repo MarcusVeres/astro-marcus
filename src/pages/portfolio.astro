@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 import { getCollection } from 'astro:content'
-import Pandabox from '../components/Pandabox.astro'
+import Portfoliobox from '../components/Portfoliobox.astro'
 
 import { getResourceColor, featuredCategories } from "../utils/resourceColors";
 
@@ -33,9 +33,9 @@ const sortedPortfolio = allPortfolio
 </style>
 
 <BaseLayout pageTitle={`${pageTitle} blog`}>
-  
-  <!-- <Pandabox galleryid="panda" transitionType="fade" /> -->
-  <Pandabox galleryid="portfolio" transitionType="slide-in" />
+
+  <!-- Portfolio Lightbox (using markdown data) -->
+  <Portfoliobox portfolioItems={sortedPortfolio} transitionType="slide-in" />
 
   <div class="px-2 pt-4 md:pt-6 md:px-0">
       <h2 class="pt-4 text-4xl font-extrabold text-center text-white uppercase md:pt-16 md:text-7xl drop-shadow-lg">
