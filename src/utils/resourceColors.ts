@@ -30,6 +30,38 @@ export const featuredCategories = [
   },
 ];
 
+// Portfolio categories (for portfolio page filtering)
+export const portfolioCategories = [
+  {
+    name: 'All',
+    tags: [], // Empty means show all
+  },
+  {
+    name: 'Art',
+    tags: ['art', 'painting', 'drawing', 'illustration'],
+  },
+  {
+    name: 'Design',
+    tags: ['design', '3d', 'graphics', 'art'],
+  },
+  {
+    name: 'Photography',
+    tags: ['photography', 'nature', 'wildlife', 'portrait', 'urban', 'industrial', 'abstract', 'architecture', 'still-life'],
+  },
+  {
+    name: 'Programming',
+    tags: ['programming', 'web', 'technology', 'code'],
+  },
+  {
+    name: 'Video',
+    tags: ['video', 'animation', 'motion'],
+  },
+  {
+    name: 'Writing',
+    tags: ['writing', 'article', 'case-study'],
+  },
+];
+
 // Cyberpunk/Stained Glass Color Palette (6 colors)
 // Green → Cyan → Blue → Purple → Magenta → Pink
 export const categoryColors = {

@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 import { getCollection } from 'astro:content'
 import Portfoliobox from '../components/Portfoliobox.astro'
 
-import { getResourceColor, featuredCategories } from "../utils/resourceColors";
+import { portfolioCategories } from "../utils/resourceColors";
 
 import SocialIcons from '../components/blocks/SocialIcons.astro'
 import SocialIconsFooter from '../components/blocks/SocialIconsFooter.astro'
@@ -35,11 +35,11 @@ const sortedPortfolio = allPortfolio
 <BaseLayout pageTitle={`${pageTitle} blog`}>
 
   <!-- Portfolio Lightbox (using markdown data) -->
-  <Portfoliobox portfolioItems={sortedPortfolio} transitionType="slide-in" />
+  <Portfoliobox portfolioItems={sortedPortfolio} transitionType="fade" />
 
   <div class="px-2 pt-4 md:pt-6 md:px-0">
       <h2 class="pt-4 text-4xl font-extrabold text-center text-white uppercase md:pt-16 md:text-7xl drop-shadow-lg">
-          Portfolio Gallery
+          Portfolio
       </h2>
       <div class="mt-6 font-extrabold text-center text-white uppercase md:mt-14 drop-shadow-lg">
           <form class="relative max-w-2xl p-0 mx-auto transition-all duration-300 ease-in-out rounded-lg bg-black/40 hover:bg-black/80">
@@ -61,7 +61,7 @@ const sortedPortfolio = allPortfolio
       </div>
       <ul
           class="flex items-center w-full pb-6 mx-auto mt-4 overflow-x-auto font-bold tracking-wider text-center text-yellow-400 uppercase divide-x-2 cursor-pointer divide-yellow-600/20 border-opacity-20 text-md drop-shadow-md md:justify-center md:overflow-x-visible scrollbar-hide snap-x snap-mandatory">
-          {featuredCategories.map((category) => (
+          {portfolioCategories.map((category) => (
             <li
               class="flex-shrink-0 px-3 transition-all duration-500 opacity-40 hover:opacity-100 snap-center"
               data-category-filter={category.name}
@@ -115,15 +115,39 @@ const sortedPortfolio = allPortfolio
   </div>
 
   <script>
-    // Portfolio filtering and dual-mode layout
-    document.addEventListener('DOMContentLoaded', () => {
+    // Portfolio filtering and dual-mode layout (Enhanced with URL hash support)
+    document.addEventListener('astro:page-load', () => {
       const portfolioGrid = document.querySelector('.portfolio-grid');
       const portfolioItems = document.querySelectorAll('[data-portfolio-item]');
-      const searchInput = document.getElementById('search-input');
+      const searchInput = document.getElementById('search-input') as HTMLInputElement | null;
       const clearButton = document.getElementById('clear-search');
       const categoryButtons = document.querySelectorAll('[data-category-filter]');
 
       let activeFilter = 'all';
+
+      // Create AbortController for cleanup
+      const abortController = new AbortController();
+      const signal = abortController.signal;
+
+      // Update URL hash with current search/filter state
+      function updateHash(value: string) {
+        if (value) {
+          window.location.hash = encodeURIComponent(value);
+        } else {
+          // Clear hash without adding to history
+          history.replaceState(null, '', window.location.pathname);
+        }
+      }
+
+      // Show/hide clear button based on input value
+      function toggleClearButton() {
+        if (!searchInput || !clearButton) return;
+        if (searchInput.value.length > 0) {
+          clearButton.classList.remove('hidden');
+        } else {
+          clearButton.classList.add('hidden');
+        }
+      }
 
       // Update grid mode based on filter state
       function updateGridMode() {
@@ -135,43 +159,80 @@ const sortedPortfolio = allPortfolio
       }
 
       // Filter items by category
-      function filterByCategory(categoryTags) {
+      function filterByCategory(categoryTags: string) {
         const tags = categoryTags.split(',').map(t => t.trim().toLowerCase());
 
         portfolioItems.forEach(item => {
-          const itemCategories = item.dataset.categories?.toLowerCase() || '';
+          const itemElement = item as HTMLElement;
+          const itemCategories = itemElement.dataset.categories?.toLowerCase() || '';
           const matches = tags.some(tag => itemCategories.includes(tag));
 
           if (matches || categoryTags === 'all') {
-            item.removeAttribute('data-hidden');
+            itemElement.removeAttribute('data-hidden');
           } else {
-            item.setAttribute('data-hidden', 'true');
+            itemElement.setAttribute('data-hidden', 'true');
           }
         });
       }
 
       // Filter items by search query
-      function filterBySearch(query) {
+      function filterBySearch(query: string) {
         const lowerQuery = query.toLowerCase();
 
         portfolioItems.forEach(item => {
-          const title = item.dataset.title?.toLowerCase() || '';
-          const categories = item.dataset.categories?.toLowerCase() || '';
+          const itemElement = item as HTMLElement;
+          const title = itemElement.dataset.title?.toLowerCase() || '';
+          const categories = itemElement.dataset.categories?.toLowerCase() || '';
           const matches = title.includes(lowerQuery) || categories.includes(lowerQuery);
 
           if (matches || query === '') {
-            item.removeAttribute('data-hidden');
+            itemElement.removeAttribute('data-hidden');
           } else {
-            item.setAttribute('data-hidden', 'true');
+            itemElement.setAttribute('data-hidden', 'true');
           }
         });
       }
 
       // Category filter buttons
       categoryButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          const categoryName = button.dataset.categoryFilter || 'all';
-          const categoryTags = button.dataset.categoryTags || 'all';
+        button.addEventListener('click', (e) => {
+          e.preventDefault();
+          const buttonElement = button as HTMLElement;
+          const categoryName = buttonElement.dataset.categoryFilter || 'All';
+          const categoryTags = buttonElement.dataset.categoryTags || '';
+
+          // If "All" category, clear search and show all
+          if (categoryName === 'All' || categoryTags === '') {
+            if (searchInput) {
+              searchInput.value = '';
+              searchInput.dispatchEvent(new Event('input'));
+            }
+            updateHash('');
+            return;
+          }
+
+          // Populate search box with lowercase category name
+          const lowerCategoryName = categoryName.toLowerCase();
+          if (searchInput) {
+            searchInput.value = lowerCategoryName;
+            toggleClearButton(); // Show clear button
+          }
+
+          // Filter by category tags
+          const tagsArray = categoryTags.split(',');
+          portfolioItems.forEach(item => {
+            const itemElement = item as HTMLElement;
+            const itemCategories = itemElement.dataset.categories?.toLowerCase() || '';
+
+            // Check if any of the category tags match
+            const matches = tagsArray.some(tag => itemCategories.includes(tag.toLowerCase()));
+
+            if (matches) {
+              itemElement.removeAttribute('data-hidden');
+            } else {
+              itemElement.setAttribute('data-hidden', 'true');
+            }
+          });
 
           // Update active state
           categoryButtons.forEach(btn => btn.classList.remove('opacity-100'));
@@ -179,35 +240,22 @@ const sortedPortfolio = allPortfolio
           button.classList.remove('opacity-40');
           button.classList.add('opacity-100');
 
-          // Clear search when category is clicked
-          if (searchInput) {
-            searchInput.value = '';
-            clearButton?.classList.add('hidden');
-          }
-
-          // Apply filter
-          if (categoryTags === 'all') {
-            activeFilter = 'all';
-            portfolioItems.forEach(item => item.removeAttribute('data-hidden'));
-          } else {
-            activeFilter = categoryName;
-            filterByCategory(categoryTags);
-          }
-
+          // Update grid mode
+          activeFilter = lowerCategoryName;
           updateGridMode();
-        });
+
+          // Update URL hash
+          updateHash(lowerCategoryName);
+        }, { signal });
       });
 
-      // Search input
+      // Search input with debounce
+      let searchTimeout: number;
       searchInput?.addEventListener('input', (e) => {
-        const query = e.target.value;
+        const query = (e.target as HTMLInputElement).value;
 
-        // Show/hide clear button
-        if (query.length > 0) {
-          clearButton?.classList.remove('hidden');
-        } else {
-          clearButton?.classList.add('hidden');
-        }
+        // Toggle clear button visibility
+        toggleClearButton();
 
         // Clear category selection
         categoryButtons.forEach(btn => {
@@ -218,22 +266,54 @@ const sortedPortfolio = allPortfolio
         // Apply filter
         if (query === '') {
           activeFilter = 'all';
-          portfolioItems.forEach(item => item.removeAttribute('data-hidden'));
+          portfolioItems.forEach(item => (item as HTMLElement).removeAttribute('data-hidden'));
         } else {
           activeFilter = 'search';
           filterBySearch(query);
         }
 
         updateGridMode();
-      });
+
+        // Update URL hash with debounce (500ms)
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+          updateHash(query.toLowerCase());
+        }, 500);
+      }, { signal });
 
       // Clear search button
       clearButton?.addEventListener('click', () => {
         if (searchInput) {
           searchInput.value = '';
           searchInput.dispatchEvent(new Event('input'));
+          searchInput.focus();
         }
-      });
+      }, { signal });
+
+      // Read hash on page load and restore filter state
+      const hash = window.location.hash.slice(1); // Remove #
+      if (hash) {
+        const decodedHash = decodeURIComponent(hash).toLowerCase();
+
+        // Check if it's a category name (case-insensitive)
+        const categoryButton = Array.from(categoryButtons).find(
+          btn => (btn as HTMLElement).dataset.categoryFilter?.toLowerCase() === decodedHash
+        );
+
+        if (categoryButton) {
+          // It's a category - click it
+          (categoryButton as HTMLElement).click();
+        } else if (searchInput) {
+          // It's a search term - populate search
+          searchInput.value = decodedHash;
+          searchInput.dispatchEvent(new Event('input'));
+        }
+      }
+
+      // Clean up event listeners when navigating away
+      document.addEventListener('astro:before-preparation', () => {
+        abortController.abort();
+      }, { once: true });
     });
   </script>
 
