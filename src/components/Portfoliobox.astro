@@ -283,6 +283,9 @@ const images = portfolioItems.map(item => ({
     }
     .lightbox-image-wrapper {
       grid-area: image;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .lightbox-caption {
       opacity: 1;
@@ -303,8 +306,12 @@ const images = portfolioItems.map(item => ({
 
       /* end of custom props */
       max-height: calc(100dvh - var(--caption-height));
+      max-width: 100%;
       width: auto;
-      transform-origin: top left;
+      height: auto;
+      margin: 0 auto;
+      display: block;
+      transform-origin: center center;
       animation: zoom-in-animation var(--duration-zoom-in) var(--ease-zoom)
         forwards;
       opacity: 1;
