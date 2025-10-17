@@ -469,15 +469,23 @@ const images = gallery?.data.images ?? [];
 
     const debug = false; // Enable debug logging
 
+    // Early exit if lightbox dialog doesn't exist on this page
+    if (!lightboxDialog) {
+      return;
+    }
+
+    // Create an AbortController to clean up event listeners when navigating away
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
     // Set closeDuration from CSS custom property
     const closeDuration =
       parseFloat(
-        getComputedStyle(lightboxDialog!).getPropertyValue(
+        getComputedStyle(lightboxDialog).getPropertyValue(
           "--duration-close-transition",
         ),
       ) * 1000; // Convert seconds to milliseconds
 
-    console.log(closeDuration);
     let currentIndex = 0;
     let resizeTimeout: number | undefined;
 
@@ -714,32 +722,49 @@ const images = gallery?.data.images ?? [];
       }
     }
 
-    // Attach event listeners
+    // Attach event listeners with abort signal for cleanup
     for (const button of thumbnailButtons) {
-      button.addEventListener("click", () => openLightbox(button));
+      button.addEventListener("click", () => openLightbox(button), { signal });
     }
-    prevButton?.addEventListener("click", showPreviousImage);
-    nextButton?.addEventListener("click", showNextImage);
-    closeButton?.addEventListener("click", closeDialog);
-    document.addEventListener("keydown", handleKeydown);
-    document.addEventListener("touchstart", handleSwipe);
+    prevButton?.addEventListener("click", showPreviousImage, { signal });
+    nextButton?.addEventListener("click", showNextImage, { signal });
+    closeButton?.addEventListener("click", closeDialog, { signal });
+    document.addEventListener("keydown", handleKeydown, { signal });
+    document.addEventListener("touchstart", handleSwipe, { signal });
 
     // Handle centering on resize with debouncing
-    window.addEventListener("resize", () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = window.setTimeout(applyCenteringToAllImages, 300);
-    });
+    window.addEventListener(
+      "resize",
+      () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = window.setTimeout(applyCenteringToAllImages, 300);
+      },
+      { signal },
+    );
 
     // Clean up classes on dialog close event
-    lightboxDialog?.addEventListener("close", () => {
-      const lightboxImageContainers = document.querySelectorAll<HTMLElement>(
-        ".lightbox-image-container",
-      );
+    lightboxDialog?.addEventListener(
+      "close",
+      () => {
+        const lightboxImageContainers = document.querySelectorAll<HTMLElement>(
+          ".lightbox-image-container",
+        );
 
-      // Clean up active classes
-      for (const container of lightboxImageContainers) {
-        container.classList.remove("active", "previous", "next");
-      }
-    });
+        // Clean up active classes
+        for (const container of lightboxImageContainers) {
+          container.classList.remove("active", "previous", "next");
+        }
+      },
+      { signal },
+    );
+
+    // Clean up event listeners when navigating away
+    document.addEventListener(
+      "astro:before-preparation",
+      () => {
+        abortController.abort();
+      },
+      { once: true },
+    );
   });
 </script>

@@ -160,6 +160,5 @@ const resources = defineCollection({
 // Export collections for use with glob
 // Only export jobs/tools if using individual files approach
 
-
-// export const collections = { blog, galleries: galleries, portfolio, products, resources };
-export const collections = { galleries: galleries };
+// export const collections = { galleries: galleries }; // TEST 
+export const collections = { blog, galleries, portfolio, products, resources };
