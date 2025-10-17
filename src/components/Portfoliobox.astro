@@ -19,30 +19,30 @@ const images = portfolioItems.map(item => ({
 ---
 
 <!-- Lightbox Dialog Only (thumbnails are in main grid) -->
-<dialog class="lightbox-dialog border-none p-0 overflow-clip bg-transparent" data-option={transitionType || "slide-in"}>
-    <div class="lightbox-content w-screen h-screen grid grid-cols-1 grid-rows-1">
+<dialog class="p-0 bg-transparent border-none lightbox-dialog overflow-clip" data-option={transitionType || "slide-in"}>
+    <div class="grid w-screen h-screen grid-cols-1 grid-rows-1 lightbox-content">
       {
         images.map((image, index) => (
-          <figure class="lightbox-image-container grid grid-cols-1 place-content-center opacity-0 pointer-events-none transition-all" id={`image-${index}`}>
+          <figure class="grid grid-cols-1 transition-all opacity-0 pointer-events-none lightbox-image-container place-content-center" id={`image-${index}`}>
             {/* For performance, only the first few images are eager loaded */}
-            <div class="lightbox-image-wrapper flex items-center justify-center">
+            <div class="flex items-center justify-center lightbox-image-wrapper">
               <img
                 src={image.src}
                 alt={image.alt}
                 loading={index < 4 ? "eager" : "lazy"}
-                class="lightbox-image max-w-full w-auto h-auto mx-auto block"
+                class="block w-auto h-auto max-w-full mx-auto lightbox-image"
                 data-index={index}
               />
             </div>
-            <figcaption class="lightbox-caption px-4 py-4 opacity-100 transition-opacity">
+            <figcaption class="px-4 py-4 transition-opacity opacity-100 lightbox-caption">
               <div class="max-w-4xl mx-auto">
                 {image.title ? (
-                  <p class="font-extrabold text-center text-gray-50 text-balance pt-4 pb-2 text-lg">
+                  <p class="pt-4 pb-2 text-lg font-extrabold text-center text-gray-50 text-balance">
                     {index + 1}. {image.title}
                   </p>
                 ) : null}
                 {image.description ? (
-                  <p class="font-light text-center text-gray-300 text-balance pb-3 text-sm">
+                  <p class="pb-3 text-sm font-light text-center text-gray-300 text-balance">
                     {image.description}
                   </p>
                 ) : null}
@@ -52,7 +52,7 @@ const images = portfolioItems.map(item => ({
                   <!-- View Project Button -->
                   <a
                     href={`/portfolio/${image.slug}`}
-                    class="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white bg-indigo-500 rounded-lg hover:bg-indigo-600 transition-colors no-underline"
+                    class="inline-flex items-center gap-2 px-4 py-2 text-sm font-semibold text-white no-underline transition-colors bg-indigo-500 rounded-lg hover:bg-indigo-600"
                     data-portfolio-link
                   >
                     <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -69,7 +69,7 @@ const images = portfolioItems.map(item => ({
                       href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(image.title)}&url=${encodeURIComponent(`https://astro-marcus.netlify.app/portfolio/${image.slug}`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="inline-flex items-center justify-center w-9 h-9 text-gray-400 bg-gray-800 rounded-lg hover:bg-gray-700 hover:text-white transition-colors"
+                      class="inline-flex items-center justify-center text-gray-400 transition-colors bg-gray-800 rounded-lg w-9 h-9 hover:bg-gray-700 hover:text-white"
                       aria-label="Share on Twitter"
                       data-social-share="twitter"
                     >
@@ -83,7 +83,7 @@ const images = portfolioItems.map(item => ({
                       href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://astro-marcus.netlify.app/portfolio/${image.slug}`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="inline-flex items-center justify-center w-9 h-9 text-gray-400 bg-gray-800 rounded-lg hover:bg-gray-700 hover:text-white transition-colors"
+                      class="inline-flex items-center justify-center text-gray-400 transition-colors bg-gray-800 rounded-lg w-9 h-9 hover:bg-gray-700 hover:text-white"
                       aria-label="Share on Facebook"
                       data-social-share="facebook"
                     >
@@ -97,7 +97,7 @@ const images = portfolioItems.map(item => ({
                       href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://astro-marcus.netlify.app/portfolio/${image.slug}`)}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="inline-flex items-center justify-center w-9 h-9 text-gray-400 bg-gray-800 rounded-lg hover:bg-gray-700 hover:text-white transition-colors"
+                      class="inline-flex items-center justify-center text-gray-400 transition-colors bg-gray-800 rounded-lg w-9 h-9 hover:bg-gray-700 hover:text-white"
                       aria-label="Share on LinkedIn"
                       data-social-share="linkedin"
                     >
@@ -109,7 +109,7 @@ const images = portfolioItems.map(item => ({
                     <!-- Copy Link Button -->
                     <button
                       type="button"
-                      class="inline-flex items-center justify-center w-9 h-9 text-gray-400 bg-gray-800 rounded-lg hover:bg-gray-700 hover:text-white transition-colors copy-link-button"
+                      class="inline-flex items-center justify-center text-gray-400 transition-colors bg-gray-800 rounded-lg w-9 h-9 hover:bg-gray-700 hover:text-white copy-link-button"
                       aria-label="Copy link"
                       data-url={`https://astro-marcus.netlify.app/portfolio/${image.slug}`}
                       data-social-share="copy"
@@ -129,7 +129,7 @@ const images = portfolioItems.map(item => ({
     <!-- Navigation buttons -->
     <button class="prev-button block bg-transparent border-none outline-none cursor-pointer z-[999] opacity-100 transition-opacity" aria-label="previous slide">
       <svg
-        class="text-teal-400/75 w-9 h-full aspect-square p-0 transition-all duration-200 hover:text-teal-300/95"
+        class="h-full p-0 transition-all duration-200 text-pink-50/75 w-9 aspect-square hover:text-white/100"
         xmlns="http://www.w3.org/2000/svg"
         width="32"
         height="32"
@@ -148,7 +148,7 @@ const images = portfolioItems.map(item => ({
     </button>
     <button class="next-button block bg-transparent border-none outline-none cursor-pointer z-[999] opacity-100 transition-opacity" aria-label="next slide">
       <svg
-        class="text-teal-400/75 w-9 h-full aspect-square p-0 transition-all duration-200 hover:text-teal-300/95"
+        class="h-full p-0 transition-all duration-200 text-pink-50/75 w-9 aspect-square hover:text-white/100"
         xmlns="http://www.w3.org/2000/svg"
         width="32"
         height="32"
@@ -167,7 +167,7 @@ const images = portfolioItems.map(item => ({
     </button>
     <button class="close-button block bg-transparent border-none outline-none cursor-zoom-out z-[999] opacity-100 transition-opacity" aria-label="close button">
       <svg
-        class="text-teal-400/75 w-9 h-full aspect-square p-0 transition-all duration-200 hover:text-teal-300/95"
+        class="h-full p-0 transition-all duration-200 text-pink-50/75 w-9 aspect-square hover:text-white/100"
         xmlns="http://www.w3.org/2000/svg"
         width="32"
         height="32"
@@ -262,7 +262,9 @@ const images = portfolioItems.map(item => ({
   /* Backdrop styling */
   .lightbox-dialog::backdrop {
     opacity: 0;
-    background: oklch(40% 0 0 / 95%);
+    backdrop-filter: blur(8px);
+    /* background: oklch(40% 0 0 / 5%); */
+    background: oklch(0.2101 0.0318 264.66 / 69%)
   }
 
   .lightbox-dialog[open]::backdrop {
