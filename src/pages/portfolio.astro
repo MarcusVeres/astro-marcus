@@ -2,7 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro'
 import { getCollection } from 'astro:content';
 import { getResourceColor, featuredCategories } from "../utils/resourceColors";
-import { generatePreviewHTML } from '../utils/portfolioPreview';
 
 import SocialIcons from '../components/blocks/SocialIcons.astro'
 import SocialIconsFooter from '../components/blocks/SocialIconsFooter.astro'
@@ -71,20 +70,7 @@ const sortedItems = portfolioItems.sort((a, b) => {
     </div>
 
     {sortedItems.map((item, index) => {
-      const { title, description, image, contentType, gridSpan, aspectRatio, caseStudyUrl, externalUrl, externalLabel, iframeUrl, links } = item.data;
-
-      // Generate custom preview HTML content
-      const previewHTML = generatePreviewHTML({
-        title,
-        description,
-        image,
-        contentType,
-        caseStudyUrl,
-        externalUrl,
-        externalLabel,
-        iframeUrl,
-        links
-      });
+      const { title, description, image, contentType, gridSpan, aspectRatio } = item.data;
 
       // Determine grid classes based on gridSpan
       let gridClass = '';
@@ -102,20 +88,19 @@ const sortedItems = portfolioItems.sort((a, b) => {
       // For first collection item, add md:col-start-3 to match original layout
       const startClass = index === 0 ? 'md:col-start-3' : '';
 
+      // Generate the URL for this portfolio item
+      const itemUrl = `/portfolio/${item.id}`;
+
       return (
         <a
-          href="#"
+          href={itemUrl}
           class={`portfolio-item card-zoom ${gridClass} ${aspectClass} ${startClass}`}
-          data-index={index}
+          data-glightbox={`type: iframe`}
         >
           <div class="card-zoom-image" style={`background-image: url('${image}');`}></div>
           {contentType === 'case-study' && (
             <h3 class="hidden text-center uppercase text-md md:block md:text-2xl lg:text-3xl card-zoom-text xl:text-4xl">Case Study</h3>
           )}
-          {/* Hidden div with preview HTML content */}
-          <div id={`glb-content-${index}`} style="display: none;">
-            <Fragment set:html={previewHTML} />
-          </div>
         </a>
       );
     })}
@@ -124,50 +109,14 @@ const sortedItems = portfolioItems.sort((a, b) => {
 
 </BaseLayout>
 
-<!-- Lightbox styles are now in /src/styles/lightbox.css -->
-
 <!-- GLightbox JS -->
 <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
 
 <script>
   import GLightbox from 'glightbox';
 
-  // IMPORTANT: Prevent GLightbox from auto-discovering elements
-  // We'll manually build the slides array
-
-  // Build slides array from hidden content divs using data-index attribute
-  // Select only DIRECT children of the grid container
-  const gridContainer = document.querySelector('.container.grid');
-  const portfolioItems = gridContainer ?
-    Array.from(gridContainer.children).filter(el => el.classList.contains('portfolio-item')) :
-    [];
-
-  console.log('Found portfolio items:', portfolioItems.length);
-
-  // Debug: Log each item found
-  portfolioItems.forEach((item, i) => {
-    const dataIndex = item.getAttribute('data-index');
-    const bgImage = item.querySelector('.card-zoom-image')?.style.backgroundImage;
-    console.log(`DOM position ${i}: data-index="${dataIndex}", image="${bgImage}"`);
-  });
-
-  // Build slides array using the data-index to find correct content
-  const slides = Array.from(portfolioItems).map((item) => {
-    const dataIndex = item.getAttribute('data-index');
-    const contentDiv = document.getElementById(`glb-content-${dataIndex}`);
-
-    console.log(`Building slide for data-index ${dataIndex}:`, contentDiv ? 'found' : 'NOT FOUND');
-
-    return {
-      content: contentDiv ? contentDiv.innerHTML : `<p>No content available for index ${dataIndex}</p>`
-    };
-  });
-
-  console.log('Created slides:', slides.length);
-
-  // Initialize GLightbox with slides array
+  // Initialize GLightbox - it will automatically find elements with data-glightbox attribute
   const lightbox = GLightbox({
-    elements: slides,
     touchNavigation: true,
     loop: true,
     closeButton: true,
@@ -180,22 +129,5 @@ const sortedItems = portfolioItems.sort((a, b) => {
     }
   });
 
-  // Manually attach click handlers to portfolio items
-  portfolioItems.forEach((item, domIndex) => {
-    item.addEventListener('click', (e) => {
-      e.preventDefault();
-      console.log(`Clicked item at DOM position ${domIndex}`);
-      lightbox.openAt(domIndex);
-    });
-  });
-
-  // Log events for debugging
-  lightbox.on('open', () => {
-    console.log('Lightbox opened');
-  });
-
-  lightbox.on('close', () => {
-    console.log('Lightbox closed');
-  });
-
+  console.log('GLightbox initialized with automatic element discovery');
 </script>

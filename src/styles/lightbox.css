@@ -54,23 +54,26 @@
 }
 
 /* ==================================
-   Custom Scrollbar
+   Iframe Styling
    ================================== */
 
-.lightbox-panel::-webkit-scrollbar {
-  width: 8px;
+/* Make iframes fill the lightbox area */
+.gslide-iframe {
+  width: 90vw !important;
+  height: 90vh !important;
+  max-width: 1400px;
 }
 
-.lightbox-panel::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 4px;
+/* Ensure iframe container is centered */
+.gslide-media {
+  width: 100% !important;
+  max-width: 1400px !important;
 }
 
-.lightbox-panel::-webkit-scrollbar-thumb {
-  background: rgba(251, 191, 36, 0.5);
-  border-radius: 4px;
-}
-
-.lightbox-panel::-webkit-scrollbar-thumb:hover {
-  background: rgba(251, 191, 36, 0.7);
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .gslide-iframe {
+    width: 95vw !important;
+    height: 95vh !important;
+  }
 }

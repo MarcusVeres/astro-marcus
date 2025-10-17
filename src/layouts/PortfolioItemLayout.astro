@@ -1,0 +1,191 @@
+---
+/**
+ * Portfolio Item Layout
+ * Simple template for portfolio items displayed in lightbox iframe
+ */
+
+interface Props {
+  frontmatter: {
+    title: string;
+    description: string;
+    image: string;
+    contentType?: string;
+    caseStudyUrl?: string;
+    externalUrl?: string;
+    externalLabel?: string;
+    links?: Array<{
+      label: string;
+      url: string;
+      icon?: string;
+    }>;
+  };
+}
+
+const { frontmatter } = Astro.props;
+const { title, description, image, contentType, caseStudyUrl, externalUrl, externalLabel, links = [] } = frontmatter;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+      background: #000;
+      color: #fff;
+      min-height: 100vh;
+      overflow-y: auto;
+    }
+
+    .portfolio-item {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 60vh;
+      object-fit: cover;
+    }
+
+    .content {
+      flex: 1;
+      padding: 2rem;
+      background: linear-gradient(180deg, #000 0%, #1a1a1a 100%);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, #fbbf24, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .description {
+      font-size: 1.25rem;
+      line-height: 1.75;
+      color: #d1d5db;
+      margin-bottom: 2rem;
+    }
+
+    .markdown-content {
+      font-size: 1.125rem;
+      line-height: 1.75;
+      color: #e5e7eb;
+      margin-bottom: 2rem;
+    }
+
+    .markdown-content h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      color: #fbbf24;
+    }
+
+    .markdown-content p {
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      font-weight: 700;
+      text-decoration: none;
+      border-radius: 0.5rem;
+      transition: all 0.3s ease;
+      margin-right: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(to right, #fbbf24, #ec4899);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(251, 191, 36, 0.3);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0.5rem;
+      color: #fbbf24;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      font-size: 0.875rem;
+    }
+
+    .social-link:hover {
+      background: rgba(251, 191, 36, 0.1);
+      border-color: #fbbf24;
+    }
+  </style>
+</head>
+<body>
+  <div class="portfolio-item">
+    <img src={image} alt={title} class="hero-image" />
+
+    <div class="content">
+      <h1>{title}</h1>
+      <p class="description">{description}</p>
+
+      {contentType === 'case-study' && caseStudyUrl && (
+        <a href={caseStudyUrl} class="btn btn-primary" target="_blank">
+          Read Full Case Study →
+        </a>
+      )}
+
+      {contentType === 'external' && externalUrl && (
+        <a href={externalUrl} class="btn btn-primary" target="_blank">
+          {externalLabel || 'View Project'} →
+        </a>
+      )}
+
+      <div class="markdown-content">
+        <slot />
+      </div>
+
+      {links.length > 0 && (
+        <div class="social-links">
+          {links.map(link => (
+            <a href={link.url} class="social-link" target="_blank">
+              {link.label}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+</body>
+</html>

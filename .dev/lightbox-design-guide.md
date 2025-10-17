@@ -1,53 +1,74 @@
 # Portfolio Lightbox - Design Guide
 
+> **✨ MAJOR SIMPLIFICATION COMPLETE (2025-10-16)**
+>
+> We've completely redesigned the architecture! Gone are the days of:
+> - ❌ `PortfolioLightboxCard.astro` component generating HTML strings
+> - ❌ `portfolioPreview.ts` utility duplicating logic
+> - ❌ Hidden divs with inline HTML scattered across the DOM
+> - ❌ Manual GLightbox slide array construction
+>
+> **Now we have:**
+> - ✅ Simple markdown files with frontmatter
+> - ✅ One layout template (`PortfolioItemLayout.astro`)
+> - ✅ GLightbox's native iframe support
+> - ✅ Clean, maintainable, 3-file architecture
+
 ## 🎨 Architecture Overview
 
-The lightbox system is now modular and easy to customize!
+The lightbox system uses a SIMPLE, iframe-based approach - just 3 main files!
 
 ### File Structure
 
 ```
-/src/components/portfolio/
-  └── PortfolioLightboxCard.astro    👈 EDIT THIS to change design
-
-/src/styles/
-  └── lightbox.css                    👈 GLightbox overrides only
-
-/src/utils/
-  └── portfolioPreview.ts             👈 Generates HTML (mirrors component)
+/src/layouts/
+  └── PortfolioItemLayout.astro       👈 EDIT THIS to change design
 
 /src/pages/
-  └── portfolio.astro                 👈 Main portfolio page
+  └── portfolio.astro                 👈 Main portfolio grid
+  └── portfolio/[...slug].astro       👈 Dynamic route for items
+
+/src/styles/
+  └── lightbox.css                    👈 GLightbox + iframe overrides
+
+/src/collections/portfolio/
+  └── *.md                            👈 Portfolio markdown files
 ```
 
 ## 🎯 How to Customize the Design
 
-### Option 1: Edit the Astro Component (Recommended)
-**File**: `/src/components/portfolio/PortfolioLightboxCard.astro`
+### Edit the Portfolio Item Layout
+**File**: `/src/layouts/PortfolioItemLayout.astro`
 
-This is where the magic happens! The component has:
-- ✅ **Props** for data (title, description, image, links, etc.)
-- ✅ **HTML structure** with Tailwind classes
-- ✅ **Scoped styles** in `<style>` block
-- ✅ **Comments** explaining each section
+This is a simple, standalone HTML template that displays in an iframe. It has:
+- ✅ **Frontmatter props** for data (title, description, image, links, etc.)
+- ✅ **HTML structure** with inline styles
+- ✅ **Markdown slot** for content from `.md` files
+- ✅ **No dependencies** - completely self-contained
 
 **Current Design Features:**
-- Background image (covers full area)
-- Glassmorphic panel at bottom
-- Drag handle bar
-- Scrollable content area
-- Gradient title
-- Action buttons (case study / external links)
+- Hero image at top (60vh height, cover fit)
+- Gradient title (yellow → pink)
+- Description text
+- Conditional action buttons (case study / external links)
+- Markdown content area
 - Social media links
 
-### Option 2: Tweak Global Styles
+**How It Works:**
+1. Portfolio markdown files in `/src/collections/portfolio/*.md`
+2. Dynamic route `/src/pages/portfolio/[...slug].astro` generates pages
+3. Each page uses `PortfolioItemLayout.astro` as template
+4. GLightbox opens these pages in an iframe
+5. Simple, clean, easy to maintain!
+
+### Tweak Global Styles
 **File**: `/src/styles/lightbox.css`
 
-Only use this for:
+Use this for:
 - GLightbox library overrides
 - Navigation button styling
-- Scrollbar customization
-- Global animations
+- Iframe sizing and responsiveness
+- Background overlay customization
 
 ## 🏗️ Current Design Structure
 
@@ -184,12 +205,16 @@ interface Props {
 
 ## 🔧 How Data Flows
 
-1. **Portfolio Markdown** → Data defined in frontmatter
-2. **portfolio.astro** → Reads collection, calls `generatePreviewHTML()`
-3. **portfolioPreview.ts** → Generates HTML string
-4. **Hidden div** → Contains generated HTML
-5. **GLightbox** → Reads hidden div, displays in lightbox
-6. **lightbox.css** → Styles applied
+**NEW SIMPLIFIED FLOW:**
+
+1. **Portfolio Markdown** (`/src/collections/portfolio/*.md`) → Data defined in frontmatter
+2. **portfolio.astro** → Reads collection, displays grid with iframe links
+3. **portfolio/[...slug].astro** → Dynamic route generates individual pages
+4. **PortfolioItemLayout.astro** → Wraps markdown content in styled template
+5. **GLightbox** → Opens page URL in iframe (automatic discovery via `data-glightbox`)
+6. **lightbox.css** → Styles GLightbox container and iframe
+
+**No hidden divs. No HTML generation. Just clean, simple URLs!**
 
 ## 💡 Quick Experiments
 
