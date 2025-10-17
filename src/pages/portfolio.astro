@@ -114,4 +114,127 @@ const sortedPortfolio = allPortfolio
 
   </div>
 
+  <script>
+    // Portfolio filtering and dual-mode layout
+    document.addEventListener('DOMContentLoaded', () => {
+      const portfolioGrid = document.querySelector('.portfolio-grid');
+      const portfolioItems = document.querySelectorAll('[data-portfolio-item]');
+      const searchInput = document.getElementById('search-input');
+      const clearButton = document.getElementById('clear-search');
+      const categoryButtons = document.querySelectorAll('[data-category-filter]');
+
+      let activeFilter = 'all';
+
+      // Update grid mode based on filter state
+      function updateGridMode() {
+        if (activeFilter === 'all') {
+          portfolioGrid?.setAttribute('data-mode', 'curated');
+        } else {
+          portfolioGrid?.setAttribute('data-mode', 'filtered');
+        }
+      }
+
+      // Filter items by category
+      function filterByCategory(categoryTags) {
+        const tags = categoryTags.split(',').map(t => t.trim().toLowerCase());
+
+        portfolioItems.forEach(item => {
+          const itemCategories = item.dataset.categories?.toLowerCase() || '';
+          const matches = tags.some(tag => itemCategories.includes(tag));
+
+          if (matches || categoryTags === 'all') {
+            item.removeAttribute('data-hidden');
+          } else {
+            item.setAttribute('data-hidden', 'true');
+          }
+        });
+      }
+
+      // Filter items by search query
+      function filterBySearch(query) {
+        const lowerQuery = query.toLowerCase();
+
+        portfolioItems.forEach(item => {
+          const title = item.dataset.title?.toLowerCase() || '';
+          const categories = item.dataset.categories?.toLowerCase() || '';
+          const matches = title.includes(lowerQuery) || categories.includes(lowerQuery);
+
+          if (matches || query === '') {
+            item.removeAttribute('data-hidden');
+          } else {
+            item.setAttribute('data-hidden', 'true');
+          }
+        });
+      }
+
+      // Category filter buttons
+      categoryButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const categoryName = button.dataset.categoryFilter || 'all';
+          const categoryTags = button.dataset.categoryTags || 'all';
+
+          // Update active state
+          categoryButtons.forEach(btn => btn.classList.remove('opacity-100'));
+          categoryButtons.forEach(btn => btn.classList.add('opacity-40'));
+          button.classList.remove('opacity-40');
+          button.classList.add('opacity-100');
+
+          // Clear search when category is clicked
+          if (searchInput) {
+            searchInput.value = '';
+            clearButton?.classList.add('hidden');
+          }
+
+          // Apply filter
+          if (categoryTags === 'all') {
+            activeFilter = 'all';
+            portfolioItems.forEach(item => item.removeAttribute('data-hidden'));
+          } else {
+            activeFilter = categoryName;
+            filterByCategory(categoryTags);
+          }
+
+          updateGridMode();
+        });
+      });
+
+      // Search input
+      searchInput?.addEventListener('input', (e) => {
+        const query = e.target.value;
+
+        // Show/hide clear button
+        if (query.length > 0) {
+          clearButton?.classList.remove('hidden');
+        } else {
+          clearButton?.classList.add('hidden');
+        }
+
+        // Clear category selection
+        categoryButtons.forEach(btn => {
+          btn.classList.remove('opacity-100');
+          btn.classList.add('opacity-40');
+        });
+
+        // Apply filter
+        if (query === '') {
+          activeFilter = 'all';
+          portfolioItems.forEach(item => item.removeAttribute('data-hidden'));
+        } else {
+          activeFilter = 'search';
+          filterBySearch(query);
+        }
+
+        updateGridMode();
+      });
+
+      // Clear search button
+      clearButton?.addEventListener('click', () => {
+        if (searchInput) {
+          searchInput.value = '';
+          searchInput.dispatchEvent(new Event('input'));
+        }
+      });
+    });
+  </script>
+
 </BaseLayout>

@@ -70,4 +70,23 @@
       @apply scale-100;
   }
 
+  /* Portfolio dual-mode layout */
+  /* Curated mode - respects custom grid spans from frontmatter (default) */
+  .portfolio-grid[data-mode="curated"] .portfolio-item {
+    /* Custom spans applied via inline classes - no override needed */
+  }
+
+  /* Filtered mode - uniform auto-flowing grid */
+  .portfolio-grid[data-mode="filtered"] .portfolio-item {
+    /* Override all custom spans to create uniform grid */
+    grid-column: auto !important;
+    grid-row: auto !important;
+    aspect-ratio: 1.618 / 1 !important; /* Golden ratio */
+  }
+
+  /* Hide filtered items */
+  .portfolio-item[data-hidden="true"] {
+    display: none;
+  }
+
 }
