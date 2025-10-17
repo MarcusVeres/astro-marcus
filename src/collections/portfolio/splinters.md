@@ -5,6 +5,8 @@ image: "/images/portfolio/splinters.jpg"
 category: ["photography", "abstract"]
 contentType: "simple"
 order: 21
+gridSpan: "default"
+aspectRatio: "golden"
 pubDate: 2024-07-30
 ---
 

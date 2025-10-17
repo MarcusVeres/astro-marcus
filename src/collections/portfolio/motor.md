@@ -5,6 +5,8 @@ image: "/images/portfolio/motor.jpg"
 category: ["photography", "industrial"]
 contentType: "simple"
 order: 20
+gridSpan: "default"
+aspectRatio: "golden"
 pubDate: 2024-09-18
 ---
 

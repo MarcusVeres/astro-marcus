@@ -5,8 +5,9 @@ image: "/images/portfolio/bark.jpg"
 category: ["photography", "nature"]
 contentType: "simple"
 order: 18
+gridSpan: "default"
+aspectRatio: "golden"
 pubDate: 2024-08-20
-gridSpan: "tall"
 ---
 
 Nature photography celebrating organic textures and natural patterns.

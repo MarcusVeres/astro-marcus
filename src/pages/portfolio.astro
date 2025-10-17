@@ -102,7 +102,7 @@ const sortedPortfolio = allPortfolio
           data-title={item.data.title}
           data-categories={item.data.category.join(',')}
         >
-          <div class={`card-zoom-image bg-[url('${item.data.image}')]`}></div>
+          <div class="card-zoom-image" style={`background-image: url('${item.data.image}')`}></div>
           {item.data.showOverlay && (
             <h3 class="hidden text-center uppercase text-md md:block md:text-2xl lg:text-3xl card-zoom-text xl:text-4xl">
               {item.data.title}
