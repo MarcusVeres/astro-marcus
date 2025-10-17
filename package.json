@@ -13,7 +13,6 @@
     "@astrojs/rss": "^4.0.12",
     "@tailwindcss/vite": "^4.1.13",
     "astro": "^5.13.4",
-    "glightbox": "^3.3.1",
     "preact": "^10.27.1",
     "tailwindcss": "^4.1.13"
   }
