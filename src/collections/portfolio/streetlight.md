@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/PortfolioItemLayout.astro
 title: "Streetlight at Golden Hour"
 description: "Urban lighting photographed during the magic hour, when natural and artificial light blend perfectly."
 image: "/images/portfolio/streetlight.jpg"

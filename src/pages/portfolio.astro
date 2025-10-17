@@ -94,8 +94,10 @@ const sortedItems = portfolioItems.sort((a, b) => {
       return (
         <a
           href={itemUrl}
-          class={`portfolio-item card-zoom ${gridClass} ${aspectClass} ${startClass}`}
-          data-glightbox={`type: iframe`}
+          class={`glightbox portfolio-item card-zoom ${gridClass} ${aspectClass} ${startClass}`}
+          data-type="iframe"
+          data-width="90vw"
+          data-height="90vh"
         >
           <div class="card-zoom-image" style={`background-image: url('${image}');`}></div>
           {contentType === 'case-study' && (
@@ -115,12 +117,30 @@ const sortedItems = portfolioItems.sort((a, b) => {
 <script>
   import GLightbox from 'glightbox';
 
-  // Initialize GLightbox - it will automatically find elements with data-glightbox attribute
+  // Build elements array manually for GLightbox
+  const portfolioLinks = document.querySelectorAll('.glightbox');
+  console.log('Found', portfolioLinks.length, 'portfolio items');
+
+  // Build inline HTML with iframe for each portfolio item
+  const elements = Array.from(portfolioLinks).map((link, index) => {
+    const relativeHref = link.getAttribute('href');
+    const absoluteHref = new URL(relativeHref, window.location.origin).href;
+
+    return {
+      content: `<iframe src="${absoluteHref}" style="width: 90vw; height: 90vh; border: none;"></iframe>`,
+      type: 'inline'
+    };
+  });
+
+  console.log('Built elements array:', elements[0]);
+
+  // Initialize GLightbox with manually built elements array
   const lightbox = GLightbox({
+    elements: elements,
     touchNavigation: true,
     loop: true,
     closeButton: true,
-    preload: true,
+    preload: false,
     closeOnOutsideClick: true,
     svg: {
       close: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>',
@@ -129,5 +149,31 @@ const sortedItems = portfolioItems.sort((a, b) => {
     }
   });
 
-  console.log('GLightbox initialized with automatic element discovery');
+  // Manually attach click handlers
+  portfolioLinks.forEach((link, index) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      console.log('Opening lightbox at index:', index);
+      lightbox.openAt(index);
+    });
+  });
+
+  console.log('GLightbox initialized');
+
+  // Debug: Log when lightbox opens
+  lightbox.on('open', (slide) => {
+    console.log('Lightbox opened, slide:', slide);
+    // Check if iframe was created
+    setTimeout(() => {
+      const iframe = document.querySelector('.gslide-media iframe');
+      const gslideMedia = document.querySelector('.gslide-media');
+      console.log('gslide-media element:', gslideMedia);
+      console.log('gslide-media innerHTML:', gslideMedia?.innerHTML);
+      console.log('Iframe found:', iframe);
+      if (iframe) {
+        console.log('Iframe src:', iframe.src);
+        console.log('Iframe dimensions:', iframe.offsetWidth, 'x', iframe.offsetHeight);
+      }
+    }, 100);
+  });
 </script>
