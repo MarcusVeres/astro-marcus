@@ -4,7 +4,9 @@ description: "Architectural detail featuring classic lighting fixture. A study i
 image: "/images/portfolio/lamp.jpg"
 category: ["photography", "architecture"]
 contentType: "simple"
-order: 3
+order: 4
+gridSpan: "row-span-2"
+aspectRatio: "default"
 pubDate: 2024-07-20
 ---
 

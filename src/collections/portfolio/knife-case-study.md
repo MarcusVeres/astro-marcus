@@ -6,6 +6,9 @@ category: ["design", "3d", "case-study"]
 contentType: "case-study"
 caseStudyUrl: "/m/case-study-knife"
 order: 10
+gridSpan: "md:col-span-2"
+aspectRatio: "default"
+showOverlay: true
 pubDate: 2024-10-01
 client: "Personal Project"
 technologies: ["Blender", "Photoshop", "Illustrator"]

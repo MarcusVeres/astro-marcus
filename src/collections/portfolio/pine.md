@@ -5,6 +5,9 @@ image: "/images/portfolio/pine.jpg"
 category: ["photography", "nature"]
 contentType: "simple"
 order: 1
+gridSpan: "default"
+aspectRatio: "golden"
+gridPosition: "md:col-start-3"
 pubDate: 2024-08-15
 ---
 

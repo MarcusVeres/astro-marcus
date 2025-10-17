@@ -5,6 +5,8 @@ image: "/images/portfolio/shatters.jpg"
 category: ["photography", "abstract"]
 contentType: "simple"
 order: 17
+gridSpan: "default"
+aspectRatio: "golden"
 pubDate: 2024-07-22
 ---
 

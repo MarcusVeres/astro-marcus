@@ -5,6 +5,8 @@ image: "/images/portfolio/cardinal.jpg"
 category: ["photography", "wildlife"]
 contentType: "simple"
 order: 2
+gridSpan: "default"
+aspectRatio: "golden"
 pubDate: 2024-09-01
 ---
 

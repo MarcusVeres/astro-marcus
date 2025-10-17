@@ -5,6 +5,8 @@ image: "/images/portfolio/glow.jpg"
 category: ["photography", "abstract"]
 contentType: "simple"
 order: 16
+gridSpan: "default"
+aspectRatio: "golden"
 pubDate: 2024-08-10
 ---
 

@@ -5,6 +5,8 @@ image: "/images/portfolio/miki.jpg"
 category: ["photography", "portrait"]
 contentType: "simple"
 order: 15
+gridSpan: "default"
+aspectRatio: "golden"
 pubDate: 2024-09-05
 ---
 

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
-
+import { getCollection } from 'astro:content'
 import Pandabox from '../components/Pandabox.astro'
 
 import { getResourceColor, featuredCategories } from "../utils/resourceColors";
@@ -9,6 +9,12 @@ import SocialIcons from '../components/blocks/SocialIcons.astro'
 import SocialIconsFooter from '../components/blocks/SocialIconsFooter.astro'
 
 const pageTitle = "Portfolio"
+
+// Get portfolio collection and sort by order
+const allPortfolio = await getCollection('portfolio');
+const sortedPortfolio = allPortfolio
+  .filter(item => item.data.order !== undefined)
+  .sort((a, b) => a.data.order - b.data.order);
 ---
 
 <style>
@@ -68,82 +74,43 @@ const pageTitle = "Portfolio"
   </div>
 
   <!-- consider: adding a wrapper container for the 16px extra padding that isn't respected by grid. can't use margin because mx-auto is already in use-->
-  <div class="container grid grid-cols-2 gap-2 p-2 mx-auto mt-12 text-white max-w-7xl sm:p-4 sm:gap-4 sm:grid-cols-3 lg:grid-cols-4">
-    
+  <div class="container grid grid-cols-2 gap-2 p-2 mx-auto mt-12 text-white max-w-7xl sm:p-4 sm:gap-4 sm:grid-cols-3 lg:grid-cols-4 portfolio-grid" data-mode="curated">
+
+    <!-- Title Card -->
     <div class="flex items-center justify-center col-span-2 border rounded-lg shadow-inner bg-gray-950 border-white/10 bg-opacity-40 sm:col-span-3 md:col-span-2">
       <h1 class="p-1 m-0 text-6xl font-extrabold tracking-wide text-transparent uppercase bg-clip-text bg-gradient-to-r from-yellow-400 to-pink-500">
         Portfolio
       </h1>
     </div>
 
-    <div class="md:col-start-3 card-zoom aspect-golden">
-      <div class="card-zoom-image bg-[url('/images/portfolio/pine.jpg')]"></div>
-    </div>
+    <!-- Dynamic Portfolio Items -->
+    {sortedPortfolio.map((item, index) => {
+      // Build grid classes based on frontmatter
+      const gridClasses = [
+        'card-zoom',
+        'portfolio-item',
+        item.data.gridSpan !== 'default' ? item.data.gridSpan : '',
+        item.data.aspectRatio === 'golden' ? 'aspect-golden' : '',
+        item.data.gridPosition || ''
+      ].filter(Boolean).join(' ');
 
-    <div class="card-zoom aspect-golden">
-      <div class="card-zoom-image bg-[url('/images/portfolio/cardinal.jpg')]"></div>
-    </div>
-
-    <div class="card-zoom aspect-golden">
-      <div class="card-zoom-image bg-[url('/images/portfolio/grandpa.jpg')]"></div>
-    </div>
-
-    <div class="row-span-2 card-zoom">
-      <div class="card-zoom-image bg-[url('/images/portfolio/lamp.jpg')]"></div>
-    </div>
-
-    <div class="card-zoom aspect-golden">
-      <div class="card-zoom-image bg-[url('/images/portfolio/knob.jpg')]"></div>
-    </div>
-
-    <div class="row-span-2 card-zoom">
-      <div class="card-zoom-image bg-[url('/images/portfolio/fence.jpg')]"></div>
-    </div>
-
-    <div class="card-zoom aspect-golden">
-      <div class="card-zoom-image bg-[url('/images/portfolio/trunk.jpg')]"></div>
-    </div>
-
-    <div class="card-zoom aspect-golden">
-      <div class="card-zoom-image bg-[url('/images/portfolio/pipes.jpg')]"></div>
-    </div>
-    
-    <div class="card-zoom aspect-golden">
-      <div class="card-zoom-image bg-[url('/images/portfolio/flowers.jpg')]"></div>
-    </div>
-
-    <div class="card-zoom md:col-span-2">
-      <div class="card-zoom-image bg-[url('/images/portfolio/knife.jpg')]"></div>
-      <h3 class="hidden text-center uppercase text-md md:block md:text-2xl lg:text-3xl card-zoom-text xl:text-4xl">Case Study I</h3>
-    </div>
-
-    <div class="card-zoom aspect-golden">
-      <div class="card-zoom-image bg-[url('/images/portfolio/tunnel.jpg')]"></div>
-    </div>
-
-    <div class="row-span-2 card-zoom">
-      <div class="card-zoom-image bg-[url('/images/portfolio/streetlight.jpg')]"></div>
-    </div>
-
-    <div class="card-zoom aspect-golden">
-      <div class="card-zoom-image bg-[url('/images/portfolio/wall.jpg')]"></div>
-    </div>
-
-    <div class="row-span-2 card-zoom">
-      <div class="card-zoom-image bg-[url('/images/portfolio/spade.jpg')]"></div>
-    </div>
-
-    <div class="card-zoom aspect-golden">
-      <div class="card-zoom-image bg-[url('/images/portfolio/miki.jpg')]"></div>
-    </div>
-
-    <div class="card-zoom aspect-golden">
-      <div class="card-zoom-image bg-[url('/images/portfolio/glow.jpg')]"></div>
-    </div>
-
-    <div class="card-zoom aspect-golden">
-      <div class="card-zoom-image bg-[url('/images/portfolio/shatters.jpg')]"></div>
-    </div>
+      return (
+        <div
+          class={gridClasses}
+          data-portfolio-item
+          data-index={index}
+          data-title={item.data.title}
+          data-categories={item.data.category.join(',')}
+        >
+          <div class={`card-zoom-image bg-[url('${item.data.image}')]`}></div>
+          {item.data.showOverlay && (
+            <h3 class="hidden text-center uppercase text-md md:block md:text-2xl lg:text-3xl card-zoom-text xl:text-4xl">
+              {item.data.title}
+            </h3>
+          )}
+        </div>
+      );
+    })}
 
   </div>
 

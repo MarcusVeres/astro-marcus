@@ -72,8 +72,10 @@ const portfolio = defineCollection({
     })).optional(),
 
     // Grid display options
-    gridSpan: z.enum(['default', 'wide', 'tall', 'large']).optional().default('default'),
-    aspectRatio: z.enum(['golden', 'square', 'portrait', 'landscape']).optional().default('golden'),
+    gridSpan: z.string().optional().default('default'),  // Tailwind classes like "row-span-2", "md:col-span-2", or "default"
+    aspectRatio: z.string().optional().default('golden'),  // "golden", "square", "default", or custom aspect ratio
+    gridPosition: z.string().optional(),  // Precise positioning like "md:col-start-3"
+    showOverlay: z.boolean().optional(),  // Show text overlay on card (for case studies)
 
     // Legacy fields for backwards compatibility if needed
     client: z.string().optional(),

@@ -4,7 +4,9 @@ description: "Architectural perspective study showcasing depth, symmetry, and le
 image: "/images/portfolio/tunnel.jpg"
 category: ["photography", "architecture"]
 contentType: "simple"
-order: 5
+order: 11
+gridSpan: "default"
+aspectRatio: "golden"
 pubDate: 2024-08-28
 ---
 

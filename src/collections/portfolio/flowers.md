@@ -4,7 +4,9 @@ description: "Botanical photography capturing delicate petals and organic forms 
 image: "/images/portfolio/flowers.jpg"
 category: ["photography", "nature"]
 contentType: "simple"
-order: 12
+order: 9
+gridSpan: "default"
+aspectRatio: "golden"
 pubDate: 2024-05-20
 ---
 
