@@ -139,10 +139,11 @@ const sortedResources = allResources.sort((a, b) => {
 </BaseLayout>
 
 <script>
-  const searchInput = document.getElementById('search-input') as HTMLInputElement | null;
-  const clearButton = document.getElementById('clear-search');
-  const resourceCards = document.querySelectorAll('[data-resource-card]');
-  const resourceGrid = document.getElementById('resource-grid');
+  document.addEventListener('astro:page-load', () => {
+    const searchInput = document.getElementById('search-input') as HTMLInputElement | null;
+    const clearButton = document.getElementById('clear-search');
+    const resourceCards = document.querySelectorAll('[data-resource-card]');
+    const resourceGrid = document.getElementById('resource-grid');
 
   // All possible translation classes
   const allTranslateClasses = ['-translate-y-56', '-translate-y-32', '-translate-y-20', '-translate-y-0'];
@@ -204,15 +205,19 @@ const sortedResources = allResources.sort((a, b) => {
     });
   }
 
-  // Apply translations on load
-  applyGridTranslations();
+    // Apply translations on load
+    applyGridTranslations();
 
-  // Reapply on window resize (for responsive column changes)
-  let resizeTimeout: number;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(applyGridTranslations, 100);
-  });
+    // Create AbortController for cleanup
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
+    // Reapply on window resize (for responsive column changes)
+    let resizeTimeout: number;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(applyGridTranslations, 100);
+    }, { signal });
 
   // Clear button functionality
   clearButton?.addEventListener('click', () => {
@@ -306,8 +311,7 @@ const sortedResources = allResources.sort((a, b) => {
     });
   });
 
-  // Read hash on page load and restore filter state
-  window.addEventListener('DOMContentLoaded', () => {
+    // Read hash on page load and restore filter state
     const hash = window.location.hash.slice(1); // Remove #
     if (hash) {
       const decodedHash = decodeURIComponent(hash).toLowerCase();
@@ -326,5 +330,10 @@ const sortedResources = allResources.sort((a, b) => {
         searchInput.dispatchEvent(new Event('input'));
       }
     }
+
+    // Clean up event listeners when navigating away
+    document.addEventListener('astro:before-preparation', () => {
+      abortController.abort();
+    }, { once: true });
   });
 </script>
