@@ -8,7 +8,7 @@ caseStudyUrl: "/m/case-study-knife"
 order: 1200
 gridSpan: "md:col-span-2"
 aspectRatio: "default"
-showOverlay: true
+showOverlay: false
 pubDate: 2024-10-01
 client: "Personal Project"
 technologies: ["Blender", "Photoshop", "Illustrator"]
