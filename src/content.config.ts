@@ -46,7 +46,8 @@ const portfolio = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    image: z.string(),  // Hero image URL
+    image: z.string(),  // Hero image URL (used in lightbox)
+    thumbnail: z.string().optional(),  // Optional thumbnail for grid (falls back to image)
     category: z.array(z.string()).optional(),  // For filtering ["design", "3d", "photography"]
     order: z.number().optional(),
     pubDate: z.date().optional(),
