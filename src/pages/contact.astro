@@ -97,7 +97,20 @@ const pageTitle = "Contact"
     <h2 class="text-4xl font-semibold tracking-tight text-white text-pretty sm:text-5xl">Let’s talk about your project</h2>
     <p class="mt-2 text-gray-400 text-lg/8">We help companies and individuals build out their brand guidelines.</p>
     <div class="flex flex-col gap-16 mt-16 sm:gap-y-20 lg:flex-row">
-      <form name="contact" method="POST" action="/contact-success" netlify netlify-honeypot="bot-field" class="lg:flex-auto">
+      <!-- Success Message (hidden by default) -->
+      <div id="form-success" class="hidden p-6 mb-8 bg-green-500 border-l-4 border-green-700 rounded-lg lg:flex-auto bg-opacity-20">
+        <div class="flex items-start">
+          <svg class="flex-shrink-0 w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <div class="ml-3">
+            <h3 class="text-lg font-semibold text-green-400">Message sent successfully!</h3>
+            <p class="mt-2 text-green-300">Thank you for reaching out. I'll get back to you within 24-48 hours.</p>
+          </div>
+        </div>
+      </div>
+
+      <form name="contact" method="POST" netlify netlify-honeypot="bot-field" class="lg:flex-auto">
         <!-- Honeypot field for spam protection -->
         <input type="hidden" name="form-name" value="contact" />
         <p class="hidden">
@@ -175,5 +188,39 @@ const pageTitle = "Contact"
     </div>
   </div>
 -->
+
+<script>
+  // Handle Netlify form submission and show success message
+  const form = document.querySelector('form[name="contact"]');
+  const successMessage = document.getElementById('form-success');
+
+  if (form && successMessage) {
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // Get form data
+      const formData = new FormData(form);
+
+      // Submit to Netlify
+      fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      })
+      .then(() => {
+        // Show success message
+        form.classList.add('hidden');
+        successMessage.classList.remove('hidden');
+
+        // Scroll to success message
+        successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        alert('There was an error submitting your form. Please try again or email me directly.');
+      });
+    });
+  }
+</script>
 
 </BaseLayout>

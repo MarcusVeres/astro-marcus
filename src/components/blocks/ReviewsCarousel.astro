@@ -1,18 +1,8 @@
 ---
-import { getCollection } from "astro:content";
+import reviewsData from '../../data/reviews.json';
 
-// Get featured reviews only
-const allReviews = await getCollection("reviews");
-const featuredReviews = allReviews
-  .filter(review => review.data.featured === true)
-  .sort((a, b) => {
-    if (a.data.order !== undefined && b.data.order !== undefined) {
-      return a.data.order - b.data.order;
-    }
-    if (a.data.order !== undefined) return -1;
-    if (b.data.order !== undefined) return 1;
-    return 0;
-  });
+// Get first 3 reviews for carousel
+const featuredReviews = reviewsData.slice(0, 3);
 ---
 
 <style>
@@ -48,17 +38,17 @@ const featuredReviews = allReviews
     <div class={`review-item ${index === 0 ? 'active' : ''}`} data-index={index}>
       <figure>
         <blockquote class="font-semibold text-white text-lg/8">
-          <p>"{review.data.quote}"</p>
+          <p>"{review.review}"</p>
         </blockquote>
         <figcaption class="flex mt-10 gap-x-6">
           <img
-            src={review.data.image}
-            alt={review.data.name}
+            src={review.photo}
+            alt={review.name}
             class="flex-none bg-gray-800 rounded-full size-12 object-cover"
           />
           <div>
-            <div class="text-base font-semibold text-white">{review.data.name}</div>
-            <div class="text-gray-400 text-sm/6">{review.data.role} at {review.data.company}</div>
+            <div class="text-base font-semibold text-white">{review.name}</div>
+            <div class="text-gray-400 text-sm/6">{review.title}</div>
           </div>
         </figcaption>
       </figure>
