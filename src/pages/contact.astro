@@ -57,16 +57,16 @@ const pageTitle = "Contact"
       </div>
       <div class="mt-16 sm:mt-24 lg:mt-0 lg:shrink-0 lg:grow">
         <!-- Phone Frame with Calendly Embed -->
-        <div class="relative max-w-sm mx-auto">
+        <div class="relative max-w-sm mx-auto rounded-4xl">
           <!-- Phone outer shell -->
-          <div class="relative p-3 bg-gray-700 shadow-2xl rounded-5xl">
+          <div class="relative p-3 bg-gray-700 shadow-2xl rounded-4xl">
             <!-- Phone notch -->
             <div class="absolute left-0 right-0 z-10 flex justify-center top-3">
               <div class="w-32 h-6 bg-gray-800 rounded-b-3xl"></div>
             </div>
 
             <!-- Phone screen -->
-            <div class="relative overflow-hidden bg-white rounded-4xl" style="height: 640px;">
+            <div class="relative overflow-hidden bg-white rounded-3xl" style="height: 640px;">
               <!-- Calendly Inline Widget -->
               <div class="calendly-inline-widget" data-url="https://calendly.com/marcus-veres/30min" style="min-width:100%;height:100%;"></div>
             </div>
@@ -94,11 +94,12 @@ const pageTitle = "Contact"
     <rect width="100%" height="100%" fill="url(#83fd4e5a-9d52-42fc-97b6-718e5d7ee527)" stroke-width="0" />
   </svg>
   <div class="max-w-xl px-6 mx-auto lg:max-w-7xl lg:px-8">
-    <h2 class="text-4xl font-semibold tracking-tight text-white text-pretty sm:text-5xl">Let’s talk about your project</h2>
+    <h2 class="text-4xl font-semibold tracking-tight text-white text-pretty sm:text-5xl">Let's talk about your project</h2>
     <p class="mt-2 text-gray-400 text-lg/8">We help companies and individuals build out their brand guidelines.</p>
-    <div class="flex flex-col gap-16 mt-16 sm:gap-y-20 lg:flex-row">
+    <div class="flex flex-col items-center justify-center gap-16 mt-16 sm:gap-y-20 lg:flex-row">
+
       <!-- Success Message (hidden by default) -->
-      <div id="form-success" class="hidden p-6 mb-8 bg-green-500 border-l-4 border-green-700 rounded-lg lg:flex-auto bg-opacity-20">
+      <div id="form-success" class="hidden p-6 mb-8 border-l-4 border-green-700 rounded-lg bg-green-500/20 lg:flex-auto">
         <div class="flex items-start">
           <svg class="flex-shrink-0 w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -111,6 +112,7 @@ const pageTitle = "Contact"
       </div>
 
       <form name="contact" method="POST" netlify netlify-honeypot="bot-field" class="lg:flex-auto">
+
         <!-- Honeypot field for spam protection -->
         <input type="hidden" name="form-name" value="contact" />
         <p class="hidden">
