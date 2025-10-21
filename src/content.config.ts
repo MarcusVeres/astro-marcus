@@ -130,6 +130,20 @@ const resources = defineCollection({
   })
 });
 
+const reviews = defineCollection({
+  loader: glob({ pattern: '**/[^_]*.md', base: "./src/collections/reviews" }),
+  schema: z.object({
+    name: z.string(),
+    role: z.string(),
+    company: z.string(),
+    image: z.string(),
+    quote: z.string(),
+    rating: z.number().optional(),
+    order: z.number().optional(),
+    featured: z.boolean().optional(),
+  })
+});
+
 
 // OPTIONAL 
 
@@ -165,5 +179,5 @@ const resources = defineCollection({
 // Export collections for use with glob
 // Only export jobs/tools if using individual files approach
 
-// export const collections = { galleries: galleries }; // TEST 
-export const collections = { blog, galleries, portfolio, products, resources };
+// export const collections = { galleries: galleries }; // TEST
+export const collections = { blog, galleries, portfolio, products, resources, reviews };

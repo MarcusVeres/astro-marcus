@@ -6,9 +6,12 @@ import IconEnvelope from '@components/atoms/IconEnvelope.astro'
 
 import SocialIcons from '../components/blocks/SocialIcons.astro'
 import SocialLinks from '../components/blocks/SocialLinks.astro'
+import ReviewsCarousel from '../components/blocks/ReviewsCarousel.astro'
 
 const pageTitle = "Contact"
 ---
+
+<script is:inline src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
 <BaseLayout pageTitle={`${pageTitle} blog`}>
 
   <div class="relative isolate">
@@ -53,19 +56,27 @@ const pageTitle = "Contact"
         </div>
       </div>
       <div class="mt-16 sm:mt-24 lg:mt-0 lg:shrink-0 lg:grow">
-        <svg role="img" viewBox="0 0 366 729" class="mx-auto w-91.5 max-w-full drop-shadow-xl">
-          <title>App screenshot</title>
-          <defs>
-            <clipPath id="2ade4387-9c63-4fc4-b754-10e687a0d332">
-              <rect width="316" height="684" rx="36" />
-            </clipPath>
-          </defs>
-          <path d="M363.315 64.213C363.315 22.99 341.312 1 300.092 1H66.751C25.53 1 3.528 22.99 3.528 64.213v44.68l-.857.143A2 2 0 0 0 1 111.009v24.611a2 2 0 0 0 1.671 1.973l.95.158a2.26 2.26 0 0 1-.093.236v26.173c.212.1.398.296.541.643l-1.398.233A2 2 0 0 0 1 167.009v47.611a2 2 0 0 0 1.671 1.973l1.368.228c-.139.319-.314.533-.511.653v16.637c.221.104.414.313.56.689l-1.417.236A2 2 0 0 0 1 237.009v47.611a2 2 0 0 0 1.671 1.973l1.347.225c-.135.294-.302.493-.49.607v377.681c0 41.213 22 63.208 63.223 63.208h95.074c.947-.504 2.717-.843 4.745-.843l.141.001h.194l.086-.001 33.704.005c1.849.043 3.442.37 4.323.838h95.074c41.222 0 63.223-21.999 63.223-63.212v-394.63c-.259-.275-.48-.796-.63-1.47l-.011-.133 1.655-.276A2 2 0 0 0 366 266.62v-77.611a2 2 0 0 0-1.671-1.973l-1.712-.285c.148-.839.396-1.491.698-1.811V64.213Z" fill="#4B5563" />
-          <path d="M16 59c0-23.748 19.252-43 43-43h246c23.748 0 43 19.252 43 43v615c0 23.196-18.804 42-42 42H58c-23.196 0-42-18.804-42-42V59Z" fill="#343E4E" />
-          <foreignObject width="316" height="684" clip-path="url(#2ade4387-9c63-4fc4-b754-10e687a0d332)" transform="translate(24 24)">
-            <img src="https://tailwindcss.com/plus-assets/img/component-images/mobile-app-screenshot.png" alt="" />
-          </foreignObject>
-        </svg>
+        <!-- Phone Frame with Calendly Embed -->
+        <div class="relative max-w-sm mx-auto">
+          <!-- Phone outer shell -->
+          <div class="relative p-3 bg-gray-700 shadow-2xl rounded-5xl">
+            <!-- Phone notch -->
+            <div class="absolute left-0 right-0 z-10 flex justify-center top-3">
+              <div class="w-32 h-6 bg-gray-800 rounded-b-3xl"></div>
+            </div>
+
+            <!-- Phone screen -->
+            <div class="relative overflow-hidden bg-white rounded-4xl" style="height: 640px;">
+              <!-- Calendly Inline Widget -->
+              <div class="calendly-inline-widget" data-url="https://calendly.com/marcus-veres/30min" style="min-width:100%;height:100%;"></div>
+            </div>
+          </div>
+
+          <!-- Side buttons -->
+          <div class="absolute w-1 h-12 bg-gray-700 rounded-l-lg -left-1 top-24"></div>
+          <div class="absolute w-1 h-16 bg-gray-700 rounded-l-lg -left-1 top-40"></div>
+          <div class="absolute w-1 h-16 bg-gray-700 rounded-r-lg -right-1 top-32"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -86,18 +97,32 @@ const pageTitle = "Contact"
     <h2 class="text-4xl font-semibold tracking-tight text-white text-pretty sm:text-5xl">Let’s talk about your project</h2>
     <p class="mt-2 text-gray-400 text-lg/8">We help companies and individuals build out their brand guidelines.</p>
     <div class="flex flex-col gap-16 mt-16 sm:gap-y-20 lg:flex-row">
-      <form action="#" method="POST" class="lg:flex-auto">
+      <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="lg:flex-auto">
+        <!-- Honeypot field for spam protection -->
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="hidden">
+          <label>
+            Don't fill this out if you're human: <input name="bot-field" />
+          </label>
+        </p>
+
         <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
           <div>
             <label for="first-name" class="block font-semibold text-white text-sm/6">First name</label>
             <div class="mt-2.5">
-              <input id="first-name" type="text" name="first-name" autocomplete="given-name" class="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 backdrop-blur-sm placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500" />
+              <input id="first-name" type="text" name="first-name" autocomplete="given-name" required class="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 backdrop-blur-sm placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500" />
             </div>
           </div>
           <div>
             <label for="last-name" class="block font-semibold text-white text-sm/6">Last name</label>
             <div class="mt-2.5">
-              <input id="last-name" type="text" name="last-name" autocomplete="family-name" class="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 backdrop-blur-sm placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500" />
+              <input id="last-name" type="text" name="last-name" autocomplete="family-name" required class="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 backdrop-blur-sm placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500" />
+            </div>
+          </div>
+          <div>
+            <label for="email" class="block font-semibold text-white text-sm/6">Email</label>
+            <div class="mt-2.5">
+              <input id="email" type="email" name="email" autocomplete="email" required class="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 backdrop-blur-sm placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500" />
             </div>
           </div>
           <div>
@@ -106,8 +131,8 @@ const pageTitle = "Contact"
               <input id="budget" type="text" name="budget" class="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 backdrop-blur-sm placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500" />
             </div>
           </div>
-          <div>
-            <label for="website" class="block font-semibold text-white text-sm/6">Website</label>
+          <div class="sm:col-span-2">
+            <label for="website" class="block font-semibold text-white text-sm/6">Website (optional)</label>
             <div class="mt-2.5">
               <input id="website" type="url" name="website" class="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 backdrop-blur-sm placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500" />
             </div>
@@ -115,29 +140,19 @@ const pageTitle = "Contact"
           <div class="sm:col-span-2">
             <label for="message" class="block font-semibold text-white text-sm/6">Message</label>
             <div class="mt-2.5">
-              <textarea id="message" name="message" rows="4" class="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 backdrop-blur-sm placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"></textarea>
+              <textarea id="message" name="message" rows="4" required class="block w-full rounded-md bg-white/5 px-3.5 py-2 text-base text-white outline-1 -outline-offset-1 outline-white/10 backdrop-blur-sm placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500"></textarea>
             </div>
           </div>
         </div>
         <div class="mt-10">
-          <button type="submit" class="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Let’s talk</button>
+          <button type="submit" class="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Let's talk</button>
         </div>
         <p class="mt-4 text-gray-400 text-sm/6">By submitting this form, I agree to the <a href="#" class="font-semibold text-indigo-400 whitespace-nowrap">privacy policy</a>.</p>
       </form>
       <div class="lg:mt-6 lg:w-80 lg:flex-none">
-        <img src="https://tailwindcss.com/plus-assets/img/logos/workcation-logo-indigo-500.svg" alt="" class="w-auto h-12" />
-        <figure class="mt-10">
-          <blockquote class="font-semibold text-white text-lg/8">
-            <p>“Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo expedita voluptas culpa sapiente alias molestiae. Numquam corrupti in laborum sed rerum et corporis.”</p>
-          </blockquote>
-          <figcaption class="flex mt-10 gap-x-6">
-            <img src="https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=96&h=96&q=80" alt="" class="flex-none bg-gray-800 rounded-full size-12" />
-            <div>
-              <div class="text-base font-semibold text-white">Brenna Goyette</div>
-              <div class="text-gray-400 text-sm/6">CEO of Workcation</div>
-            </div>
-          </figcaption>
-        </figure>
+        <div class="mt-10">
+          <ReviewsCarousel />
+        </div>
       </div>
     </div>
   </div>

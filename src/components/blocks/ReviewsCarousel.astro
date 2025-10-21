@@ -1,0 +1,157 @@
+---
+import { getCollection } from "astro:content";
+
+// Get featured reviews only
+const allReviews = await getCollection("reviews");
+const featuredReviews = allReviews
+  .filter(review => review.data.featured === true)
+  .sort((a, b) => {
+    if (a.data.order !== undefined && b.data.order !== undefined) {
+      return a.data.order - b.data.order;
+    }
+    if (a.data.order !== undefined) return -1;
+    if (b.data.order !== undefined) return 1;
+    return 0;
+  });
+---
+
+<style>
+  .review-carousel {
+    position: relative;
+  }
+
+  .review-item {
+    display: none;
+    animation: fadeIn 0.5s ease-in;
+  }
+
+  .review-item.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .carousel-paused .review-item {
+    animation-play-state: paused;
+  }
+</style>
+
+<div class="review-carousel" data-interval="6000">
+  {featuredReviews.map((review, index) => (
+    <div class={`review-item ${index === 0 ? 'active' : ''}`} data-index={index}>
+      <figure>
+        <blockquote class="font-semibold text-white text-lg/8">
+          <p>"{review.data.quote}"</p>
+        </blockquote>
+        <figcaption class="flex mt-10 gap-x-6">
+          <img
+            src={review.data.image}
+            alt={review.data.name}
+            class="flex-none bg-gray-800 rounded-full size-12 object-cover"
+          />
+          <div>
+            <div class="text-base font-semibold text-white">{review.data.name}</div>
+            <div class="text-gray-400 text-sm/6">{review.data.role} at {review.data.company}</div>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+  ))}
+
+  <!-- Carousel indicators -->
+  {featuredReviews.length > 1 && (
+    <div class="flex justify-center mt-6 gap-x-2">
+      {featuredReviews.map((_, index) => (
+        <button
+          type="button"
+          class={`carousel-indicator w-2 h-2 rounded-full transition-all ${index === 0 ? 'bg-indigo-500 w-8' : 'bg-gray-600 hover:bg-gray-500'}`}
+          data-index={index}
+          aria-label={`Go to review ${index + 1}`}
+        />
+      ))}
+    </div>
+  )}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const carousels = document.querySelectorAll('.review-carousel');
+
+    carousels.forEach(carousel => {
+      const items = carousel.querySelectorAll('.review-item');
+      const indicators = carousel.querySelectorAll('.carousel-indicator');
+      const interval = parseInt(carousel.getAttribute('data-interval') || '6000');
+      let currentIndex = 0;
+      let autoRotateInterval: number | null = null;
+      let isPaused = false;
+
+      const showReview = (index: number) => {
+        items.forEach((item, i) => {
+          item.classList.toggle('active', i === index);
+        });
+        indicators.forEach((indicator, i) => {
+          if (i === index) {
+            indicator.classList.add('bg-indigo-500', 'w-8');
+            indicator.classList.remove('bg-gray-600', 'w-2');
+          } else {
+            indicator.classList.remove('bg-indigo-500', 'w-8');
+            indicator.classList.add('bg-gray-600', 'w-2');
+          }
+        });
+        currentIndex = index;
+      };
+
+      const nextReview = () => {
+        if (!isPaused) {
+          const nextIndex = (currentIndex + 1) % items.length;
+          showReview(nextIndex);
+        }
+      };
+
+      const startAutoRotate = () => {
+        if (autoRotateInterval) clearInterval(autoRotateInterval);
+        autoRotateInterval = window.setInterval(nextReview, interval);
+      };
+
+      const stopAutoRotate = () => {
+        if (autoRotateInterval) {
+          clearInterval(autoRotateInterval);
+          autoRotateInterval = null;
+        }
+      };
+
+      // Indicator click handlers
+      indicators.forEach(indicator => {
+        indicator.addEventListener('click', () => {
+          const index = parseInt(indicator.getAttribute('data-index') || '0');
+          showReview(index);
+          stopAutoRotate();
+          startAutoRotate();
+        });
+      });
+
+      // Pause on hover
+      carousel.addEventListener('mouseenter', () => {
+        isPaused = true;
+        carousel.classList.add('carousel-paused');
+      });
+
+      carousel.addEventListener('mouseleave', () => {
+        isPaused = false;
+        carousel.classList.remove('carousel-paused');
+      });
+
+      // Start auto-rotation
+      if (items.length > 1) {
+        startAutoRotate();
+      }
+    });
+  });
+</script>
