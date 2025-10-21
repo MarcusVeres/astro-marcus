@@ -97,7 +97,7 @@ const pageTitle = "Contact"
     <h2 class="text-4xl font-semibold tracking-tight text-white text-pretty sm:text-5xl">Let’s talk about your project</h2>
     <p class="mt-2 text-gray-400 text-lg/8">We help companies and individuals build out their brand guidelines.</p>
     <div class="flex flex-col gap-16 mt-16 sm:gap-y-20 lg:flex-row">
-      <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" class="lg:flex-auto">
+      <form name="contact" method="POST" action="/contact-success" netlify netlify-honeypot="bot-field" class="lg:flex-auto">
         <!-- Honeypot field for spam protection -->
         <input type="hidden" name="form-name" value="contact" />
         <p class="hidden">
