@@ -5,13 +5,15 @@ import SectionBlog from '../../components/sections/SectionBlog.astro';
 //
 import { getCollection } from "astro:content";
 
-// Get all unique tags from both blog posts and resources
+// Get all unique tags from blog posts, resources, and portfolio
 const allPosts = await getCollection("blog");
 const allResources = await getCollection("resources");
+const allPortfolio = await getCollection("portfolio");
 
 const allTags = [
   ...allPosts.map((post) => post.data.tags).flat(),
-  ...allResources.map((resource) => resource.data.tags).flat()
+  ...allResources.map((resource) => resource.data.tags).flat(),
+  ...allPortfolio.map((item) => item.data.tags || []).flat()
 ];
 const uniqueTags = [...new Set(allTags)];
 

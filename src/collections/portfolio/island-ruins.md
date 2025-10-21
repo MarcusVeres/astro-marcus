@@ -3,7 +3,7 @@ title: "Island Ruins"
 description: "From concept sketches to final 3D render."
 image: "/images/portfolio/island-ruins.png"
 thumbnail: "/images/portfolio/island-ruins-wide.png"
-category: ["design", "3d", "case-study"]
+tags: ["design", "3d", "case-study"]
 __contentType: "case-study"
 __caseStudyUrl: "/m/case-study-knife"
 order: 2200

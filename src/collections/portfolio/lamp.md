@@ -2,7 +2,7 @@
 title: "Vintage Lamp"
 description: "Architectural detail featuring classic lighting fixture. A study in form and function."
 image: "/images/portfolio/lamp.jpg"
-category: ["photography", "architecture"]
+tags: ["photography", "architecture"]
 contentType: "simple"
 order: 1800
 gridSpan: "row-span-2"

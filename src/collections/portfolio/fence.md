@@ -2,7 +2,7 @@
 title: "Fence Abstract"
 description: "Geometric patterns in urban landscape. Exploring lines, shadows, and repetition."
 image: "/images/portfolio/fence.jpg"
-category: ["photography", "abstract"]
+tags: ["photography", "abstract"]
 contentType: "simple"
 order: 1600
 gridSpan: "row-span-2"

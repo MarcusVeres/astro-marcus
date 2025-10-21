@@ -2,7 +2,7 @@
 title: "Pine Tree Macro"
 description: "Detailed close-up of pine needles in natural light. Capturing the intricate patterns and textures found in nature."
 image: "/images/portfolio/pine.jpg"
-category: ["photography", "nature"]
+tags: ["photography", "nature"]
 contentType: "simple"
 order: 2100
 gridSpan: "default"

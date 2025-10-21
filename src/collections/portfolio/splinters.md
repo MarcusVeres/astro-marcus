@@ -2,7 +2,7 @@
 title: "Splinters"
 description: "Macro photography of weathered wood revealing texture, grain, and the passage of time."
 image: "/images/portfolio/splinters.jpg"
-category: ["photography", "abstract"]
+tags: ["photography", "abstract"]
 contentType: "simple"
 order: 100
 gridSpan: "default"

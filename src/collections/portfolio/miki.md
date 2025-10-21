@@ -2,7 +2,7 @@
 title: "Portrait - Miki"
 description: "Natural light portrait photography capturing authentic moments and genuine expression."
 image: "/images/portfolio/miki.jpg"
-category: ["photography", "portrait"]
+tags: ["photography", "portrait"]
 contentType: "simple"
 order: 700
 gridSpan: "default"

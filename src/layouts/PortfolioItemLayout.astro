@@ -12,7 +12,7 @@ interface Props {
     title: string;
     description?: string;
     image: string;
-    category: string[];
+    tags: string[];
     pubDate?: Date;
     contentType?: string;
     caseStudyUrl?: string;
@@ -28,7 +28,7 @@ interface Props {
 }
 
 const { frontmatter, slug } = Astro.props;
-const { title, description, image, category, pubDate, contentType, caseStudyUrl, externalUrl, externalLabel, links = [] } = frontmatter;
+const { title, description, image, tags, pubDate, contentType, caseStudyUrl, externalUrl, externalLabel, links = [] } = frontmatter;
 
 // Generate share URL for social media
 const currentUrl = slug ? `https://astro-marcus.netlify.app/portfolio/${slug}` : '';
@@ -37,9 +37,9 @@ const currentUrl = slug ? `https://astro-marcus.netlify.app/portfolio/${slug}` :
 <BaseLayout pageTitle={title}>
     <div class="prose bg-gray-900">
         <div class="prose-content">
-            <!-- Category tags as intro -->
-            {category && category.length > 0 && (
-                <p class="font-semibold text-indigo-400 text-base/7">{category.join(', ')}</p>
+            <!-- Tags as intro -->
+            {tags && tags.length > 0 && (
+                <p class="font-semibold text-indigo-400 text-base/7">{tags.join(', ')}</p>
             )}
 
             <!-- Main title -->
@@ -108,16 +108,16 @@ const currentUrl = slug ? `https://astro-marcus.netlify.app/portfolio/${slug}` :
                 </div>
             )}
 
-            <!-- Category tags at bottom -->
-            {category && category.length > 0 && (
+            <!-- Tags at bottom (clickable) -->
+            {tags && tags.length > 0 && (
                 <div class="mt-16 pt-8 border-t border-gray-700">
-                    <p class="text-sm font-semibold text-gray-400 mb-4">Categories:</p>
+                    <p class="text-sm font-semibold text-gray-400 mb-4">Tags:</p>
                     <ul class="flex flex-wrap gap-2 list-none mt-0 space-y-0">
-                        {category.map((cat) => (
+                        {tags.map((tag) => (
                             <li class="m-0">
-                                <span class="inline-block px-3 py-1 text-sm bg-indigo-500/10 text-indigo-400 rounded-full border border-indigo-500/20">
-                                    {cat}
-                                </span>
+                                <a href={`/tags/${tag}`} class="inline-block px-3 py-1 text-sm bg-indigo-500/10 text-indigo-400 rounded-full border border-indigo-500/20 hover:bg-indigo-500/20 transition-colors no-underline">
+                                    {tag}
+                                </a>
                             </li>
                         ))}
                     </ul>

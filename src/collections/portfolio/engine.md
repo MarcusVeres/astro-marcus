@@ -2,7 +2,7 @@
 title: "Engine Details"
 description: "Mechanical photography showcasing industrial design and engineering beauty."
 image: "/images/portfolio/engine.jpg"
-category: ["photography", "industrial"]
+tags: ["photography", "industrial"]
 contentType: "simple"
 order: 300
 gridSpan: "default"

@@ -2,7 +2,7 @@
 title: "Tunnel Perspective"
 description: "Architectural perspective study showcasing depth, symmetry, and leading lines."
 image: "/images/portfolio/tunnel.jpg"
-category: ["photography", "architecture"]
+tags: ["photography", "architecture"]
 contentType: "simple"
 order: 1100
 gridSpan: "default"

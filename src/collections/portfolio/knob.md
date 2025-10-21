@@ -2,7 +2,7 @@
 title: "Door Knob Detail"
 description: "Vintage architectural hardware showcasing craftsmanship and patina."
 image: "/images/portfolio/knob.jpg"
-category: ["photography", "architecture"]
+tags: ["photography", "architecture"]
 contentType: "simple"
 order: 1700
 gridSpan: "default"

@@ -8,18 +8,20 @@ import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
 
-    // Get both blog posts and resources
+    // Get blog posts, resources, and portfolio
     const allPosts = await getCollection("blog");
     const allResources = await getCollection("resources");
+    const allPortfolio = await getCollection("portfolio");
 
-    // Get a list of all unique tags from both collections
+    // Get a list of all unique tags from all three collections
     const allTags = [
         ...allPosts.map((post) => post.data.tags).flat(),
-        ...allResources.map((resource) => resource.data.tags).flat()
+        ...allResources.map((resource) => resource.data.tags).flat(),
+        ...allPortfolio.map((item) => item.data.tags || []).flat()
     ];
     const uniqueTags = [...new Set(allTags)];
 
-    // Create pages for each tag, with filtered posts and resources
+    // Create pages for each tag, with filtered posts, resources, and portfolio
     return uniqueTags.map((tag) => {
         const filteredPosts = allPosts.filter((post) =>
             post.data.tags.includes(tag)
@@ -27,18 +29,22 @@ export async function getStaticPaths() {
         const filteredResources = allResources.filter((resource) =>
             resource.data.tags.includes(tag)
         );
+        const filteredPortfolio = allPortfolio.filter((item) =>
+            item.data.tags && item.data.tags.includes(tag)
+        );
         return {
             params: { tag },
             props: {
                 posts: filteredPosts,
-                resources: filteredResources
+                resources: filteredResources,
+                portfolio: filteredPortfolio
             },
         };
     });
 }
 
 const { tag } = Astro.params;
-const { posts, resources } = Astro.props;
+const { posts, resources, portfolio } = Astro.props;
 
 ---
 <BaseLayout pageTitle={tag}>
@@ -174,11 +180,49 @@ const { posts, resources } = Astro.props;
             </div>
         )}
 
-        <div class="flex items-center justify-center gap-4 pt-44">
+        <!-- Portfolio Section -->
+        {portfolio.length > 0 && (
+            <div class="px-6 mx-auto mt-20 max-w-7xl lg:px-8">
+                <h2 class="text-3xl font-semibold tracking-tight text-white text-pretty sm:text-4xl">
+                    Portfolio tagged with: <span class="underline">{ tag }</span>
+                </h2>
+                <div class="pt-10 mt-10 border-t border-gray-700">
+                    <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+                        {portfolio.map((item) => (
+                            <article class="relative group">
+                                <a href={`/portfolio/${item.id}`} class="block overflow-hidden rounded-lg aspect-square">
+                                    <img
+                                        src={item.data.thumbnail || item.data.image}
+                                        alt={item.data.title}
+                                        class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
+                                    />
+                                    <div class="absolute inset-0 transition-opacity bg-black/60 group-hover:bg-black/40"></div>
+                                    <h3 class="absolute inset-0 flex items-center justify-center p-4 text-sm font-semibold text-center text-white">
+                                        {item.data.title}
+                                    </h3>
+                                </a>
+                                <div class="flex gap-2 mt-3 text-xs">
+                                    {item.data.tags && item.data.tags.map((portfolioTag) => (
+                                        <a href={`/tags/${portfolioTag}`} class="px-2 py-1 font-medium text-gray-300 rounded-full bg-gray-800/60 hover:bg-gray-800">
+                                            {portfolioTag}
+                                        </a>
+                                    ))}
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+                </div>
+            </div>
+        )}
+
+        <div class="flex flex-wrap items-center justify-center gap-4 pt-44">
             <ButtonAura link="/tags" label="Back to Tags Page" />
             <ButtonAura link="/blog" label="Back to Blog" />
             {resources.length > 0 && (
                 <ButtonAura link="/resources" label="All Resources" />
+            )}
+            {portfolio.length > 0 && (
+                <ButtonAura link="/portfolio" label="All Portfolio" />
             )}
         </div>
     </div>

@@ -102,7 +102,7 @@ const sortedPortfolio = allPortfolio
           data-portfolio-item
           data-index={index}
           data-title={item.data.title}
-          data-categories={item.data.category.join(',')}
+          data-categories={item.data.tags?.join(',') || ''}
         >
           <div class="card-zoom-image" style={`background-image: url('${item.data.thumbnail || item.data.image}')`}></div>
           {item.data.showOverlay && (

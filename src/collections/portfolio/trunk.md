@@ -2,7 +2,7 @@
 title: "Tree Trunk Texture"
 description: "Natural patterns and textures found in weathered bark. A study in organic geometry."
 image: "/images/portfolio/trunk.jpg"
-category: ["photography", "nature"]
+tags: ["photography", "nature"]
 contentType: "simple"
 order: 1500
 gridSpan: "default"

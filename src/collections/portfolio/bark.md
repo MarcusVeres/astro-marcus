@@ -2,7 +2,7 @@
 title: "Bark Texture"
 description: "Macro photography of tree bark revealing intricate natural patterns and textures."
 image: "/images/portfolio/bark.jpg"
-category: ["photography", "nature"]
+tags: ["photography", "nature"]
 contentType: "simple"
 order: 400
 gridSpan: "default"

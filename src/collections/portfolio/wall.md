@@ -2,7 +2,7 @@
 title: "Textured Wall"
 description: "Abstract surface study exploring texture, color, and the passage of time."
 image: "/images/portfolio/wall.jpg"
-category: ["photography", "abstract"]
+tags: ["photography", "abstract"]
 contentType: "simple"
 order: 900
 gridSpan: "default"

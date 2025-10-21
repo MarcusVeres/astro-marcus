@@ -2,7 +2,7 @@
 title: "Shack"
 description: "From concept sketches to final 3D render."
 image: "/images/portfolio/shack-color.png"
-category: ["design", "3d", "case-study"]
+tags: ["design", "3d", "case-study"]
 contentType: "simple"
 order: 2500
 gridSpan: "default"

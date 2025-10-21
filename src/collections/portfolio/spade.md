@@ -2,7 +2,7 @@
 title: "Garden Spade"
 description: "Still life photography of well-used tools. A meditation on work, wear, and utility."
 image: "/images/portfolio/spade.jpg"
-category: ["photography", "still-life"]
+tags: ["photography", "still-life"]
 contentType: "simple"
 order: 800
 gridSpan: "row-span-2"
