@@ -7,6 +7,7 @@ icon: "document"
 tags: ["advertising", "technology", "business"]
 order: 3
 pubDate: 2024-11-20
+featured: true
 fileUrl: "/resources/intro-to-rtb.pdf"
 fileType: "PDF"
 image:

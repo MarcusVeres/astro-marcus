@@ -118,6 +118,7 @@ const resources = defineCollection({
     color: z.string().optional(),
     order: z.number().optional(),
     pubDate: z.date().optional(),
+    featured: z.boolean().optional(),  // Feature on home page
     resourceType: z.enum(['default', 'code-tutorial', 'recipe', 'pdf']).optional().default('default'), // Layout type
     image: z.object({
       url: z.string(),

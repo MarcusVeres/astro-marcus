@@ -8,6 +8,7 @@ icon: "document"
 tags: ["public-speaking", "memory", "communication"]
 order: 2
 pubDate: 2024-12-15
+featured: true
 fileUrl: "/resources/memorization-for-public-speakers-1.0.2.pdf"
 fileType: "PDF"
 image:
