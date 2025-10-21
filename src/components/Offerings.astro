@@ -1,0 +1,201 @@
+---
+
+import ButtonAura from './atoms/ButtonAura.astro'
+
+---
+
+    <form class="pt-24 bg-gray-900 group/tiers sm:pt-32">
+        <div class="px-6 mx-auto max-w-7xl lg:px-8">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="font-semibold text-indigo-400 text-base/7">Services - Simplified</h2>
+                <p class="mt-2 text-5xl font-semibold tracking-tight text-white text-balance sm:text-6xl">Select your Starting Point</p>
+            </div>
+            <p class="max-w-2xl mx-auto mt-6 text-lg font-medium text-center text-gray-400 text-pretty sm:text-xl/8">Choose an affordable plan that’s packed with the best features for engaging your audience, creating customer loyalty, and driving sales.</p>
+            <div class="flex justify-center mt-16">
+                <fieldset aria-label="Payment frequency">
+                    <div class="grid grid-cols-2 p-1 font-semibold text-center rounded-full gap-x-1 text-xs/5 inset-ring inset-ring-white/10">
+                        <label class="group relative rounded-full px-2.5 py-1 has-checked:bg-indigo-500">
+                            <input type="radio" name="frequency" value="monthly" checked class="absolute inset-0 rounded-full appearance-none" />
+                            <span class="text-gray-400 group-has-checked:text-white">One-Time</span>
+                        </label>
+                        <label class="group relative rounded-full px-2.5 py-1 has-checked:bg-indigo-500">
+                            <input type="radio" name="frequency" value="annually" class="absolute inset-0 rounded-full appearance-none" />
+                            <span class="text-gray-400 group-has-checked:text-white">Retainer</span>
+                        </label>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="grid max-w-md grid-cols-1 gap-8 mx-auto mt-10 isolate lg:mx-0 lg:max-w-none lg:grid-cols-3">
+                <div class="p-8 group/tier rounded-3xl bg-gray-800/50 ring-1 ring-white/15 data-featured:ring-2 data-featured:ring-indigo-400 xl:p-10">
+                    <div class="flex items-center justify-between gap-x-4">
+                        <h3 id="tier-tier-freelancer" class="font-semibold text-white text-lg/8 group-data-featured/tier:text-indigo-400">Communication Clarity</h3>
+                        <p class="rounded-full bg-indigo-500 px-2.5 py-1 text-xs/5 font-semibold text-white group-not-data-featured/tier:hidden">Most popular</p>
+                    </div>
+                    <p class="mt-4 text-gray-300 text-sm/6">
+                        Got a presentation, pitch, or message that's not quite landing? We'll find your core idea, structure it for maximum impact, and make it memorable. You'll walk away ready to deliver with confidence.
+                    </p>
+                    <p class="mt-4 text-gray-300 text-sm/6">
+                        Perfect for: Toastmasters speeches, business presentations, important pitches, or anytime you need your words to work.
+                    </p>
+                    <p class="mt-6 flex items-baseline gap-x-1 group-not-has-[[name=frequency][value=monthly]:checked]/tiers:hidden">
+                        <span class="text-4xl font-semibold tracking-tight text-white">$149</span>
+                        <span class="font-semibold text-gray-400 text-sm/6">once</span>
+                    </p>
+                    <p class="mt-6 flex items-baseline gap-x-1 group-not-has-[[name=frequency][value=annually]:checked]/tiers:hidden">
+                        <span class="text-4xl font-semibold tracking-tight text-white">$499</span>
+                        <span class="font-semibold text-gray-400 text-sm/6">/month</span>
+                    </p>
+                    <a href="#" aria-describedby="tier-freelancer" class="block w-full px-3 py-2 mt-6 font-semibold text-center text-white rounded-md bg-white/10 text-sm/6 inset-ring inset-ring-white/5 group-data-featured/tier:bg-indigo-500 group-data-featured/tier:inset-ring-0 hover:bg-white/20 group-data-featured/tier:hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 group-not-data-featured/tier:focus-visible:outline-white/75">Buy plan</a>
+                    <ul role="list" class="mt-8 space-y-3 text-gray-300 text-sm/6 xl:mt-10">
+                        <li class="flex gap-x-3">
+                            <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="flex-none w-5 h-6 text-indigo-400">
+                            <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                            </svg>
+                            5 products
+                        </li>
+                        <li class="flex gap-x-3">
+                            <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="flex-none w-5 h-6 text-indigo-400">
+                            <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                            </svg>
+                            Up to 1,000 subscribers
+                        </li>
+                        <li class="flex gap-x-3">
+                            <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="flex-none w-5 h-6 text-indigo-400">
+                            <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                            </svg>
+                            Basic analytics
+                        </li>
+                        <li class="flex gap-x-3">
+                            <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="flex-none w-5 h-6 text-indigo-400">
+                            <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                            </svg>
+                            48-hour support response time
+                        </li>
+                    </ul>
+                </div>
+                <div data-featured="true" class="p-8 group/tier rounded-3xl bg-gray-800/50 ring-1 ring-white/15 data-featured:ring-2 data-featured:ring-indigo-400 xl:p-10">
+                    <div class="flex items-center justify-between gap-x-4">
+                        <h3 id="tier-tier-startup" class="font-semibold text-white text-lg/8 group-data-featured/tier:text-indigo-400">Business Systems Audit</h3>
+                        <p class="rounded-full bg-indigo-500 px-2.5 py-1 text-xs/5 font-semibold text-white group-not-data-featured/tier:hidden">Popular</p>
+                    </div>
+                    <p class="mt-4 text-gray-300 text-sm/6">
+                        Something's broken in how your business operates - could be tech, process, communication, or all three. I'll analyze it, spot the patterns you're too close to see, and give you a prioritized roadmap to fix it.
+                    </p>
+                        <p class="mt-4 text-gray-300 text-sm/6">
+Perfect for: Small businesses that feel stuck, processes that don't make sense anymore, or technology that's supposed to help but doesn't.
+                    </p>
+                    <p class="mt-6 flex items-baseline gap-x-1 group-not-has-[[name=frequency][value=monthly]:checked]/tiers:hidden">
+                        <span class="text-4xl font-semibold tracking-tight text-white">$499</span>
+                        <span class="font-semibold text-gray-400 text-sm/6">once</span>
+                    </p>
+                    <p class="mt-6 flex items-baseline gap-x-1 group-not-has-[[name=frequency][value=annually]:checked]/tiers:hidden">
+                        <span class="text-4xl font-semibold tracking-tight text-white">$1,499</span>
+                        <span class="font-semibold text-gray-400 text-sm/6">/month</span>
+                    </p>
+                    <a href="#" aria-describedby="tier-startup" class="block w-full px-3 py-2 mt-6 font-semibold text-center text-white rounded-md bg-white/10 text-sm/6 inset-ring inset-ring-white/5 group-data-featured/tier:bg-indigo-500 group-data-featured/tier:inset-ring-0 hover:bg-white/20 group-data-featured/tier:hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 group-not-data-featured/tier:focus-visible:outline-white/75">Buy plan</a>
+                    <ul role="list" class="mt-8 space-y-3 text-gray-300 text-sm/6 xl:mt-10">
+                        <li class="flex gap-x-3">
+                            <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="flex-none w-5 h-6 text-indigo-400">
+                            <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                            </svg>
+                            25 products
+                        </li>
+                        <li class="flex gap-x-3">
+                            <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="flex-none w-5 h-6 text-indigo-400">
+                            <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                            </svg>
+                            Up to 10,000 subscribers
+                        </li>
+                        <li class="flex gap-x-3">
+                            <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="flex-none w-5 h-6 text-indigo-400">
+                            <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                            </svg>
+                            Advanced analytics
+                        </li>
+                        <li class="flex gap-x-3">
+                            <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="flex-none w-5 h-6 text-indigo-400">
+                            <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                            </svg>
+                            24-hour support response time
+                        </li>
+                        <li class="flex gap-x-3">
+                            <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="flex-none w-5 h-6 text-indigo-400">
+                            <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                            </svg>
+                            Marketing automations
+                        </li>
+                    </ul>
+                </div>
+                <div class="p-8 group/tier rounded-3xl bg-gray-800/50 ring-1 ring-white/15 data-featured:ring-2 data-featured:ring-indigo-400 xl:p-10">
+                    <div class="flex items-center justify-between gap-x-4">
+                        <h3 id="tier-tier-enterprise" class="font-semibold text-white text-lg/8 group-data-featured/tier:text-indigo-400">Custom Projects</h3>
+                        <p class="rounded-full bg-indigo-500 px-2.5 py-1 text-xs/5 font-semibold text-white group-not-data-featured/tier:hidden">Most popular</p>
+                    </div>
+                    <p class="mt-4 text-gray-300 text-sm/6">
+                        Building something specific? Website, app, training program, game, tool - whatever you need. We'll scope it properly, quote it fairly, and build it right.
+                    </p>
+                    <p class="mt-4 text-gray-300 text-sm/6">
+                        Perfect for: When you know what you want but need someone who can actually make it happen.
+                    </p>
+                    <p class="mt-6 flex items-baseline gap-x-1 group-not-has-[[name=frequency][value=monthly]:checked]/tiers:hidden">
+                        <span class="text-4xl font-semibold tracking-tight text-white">Custom</span>
+                        <span class="font-semibold text-gray-400 text-sm/6">.</span>
+                    </p>
+                    <p class="mt-6 flex items-baseline gap-x-1 group-not-has-[[name=frequency][value=annually]:checked]/tiers:hidden">
+                        <span class="text-4xl font-semibold tracking-tight text-white">Custom</span>
+                        <span class="font-semibold text-gray-400 text-sm/6">..</span>
+                    </p>
+                    <a href="#" aria-describedby="tier-enterprise" class="block w-full px-3 py-2 mt-6 font-semibold text-center text-white rounded-md bg-white/10 text-sm/6 inset-ring inset-ring-white/5 group-data-featured/tier:bg-indigo-500 group-data-featured/tier:inset-ring-0 hover:bg-white/20 group-data-featured/tier:hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 group-not-data-featured/tier:focus-visible:outline-white/75">Buy plan</a>
+                    <ul role="list" class="mt-8 space-y-3 text-gray-300 text-sm/6 xl:mt-10">
+                        <li class="flex gap-x-3">
+                            <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="flex-none w-5 h-6 text-indigo-400">
+                            <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                            </svg>
+                            Unlimited products
+                        </li>
+                        <li class="flex gap-x-3">
+                            <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="flex-none w-5 h-6 text-indigo-400">
+                            <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                            </svg>
+                            Unlimited subscribers
+                        </li>
+                        <li class="flex gap-x-3">
+                            <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="flex-none w-5 h-6 text-indigo-400">
+                            <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                            </svg>
+                            Advanced analytics
+                        </li>
+                        <li class="flex gap-x-3">
+                            <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="flex-none w-5 h-6 text-indigo-400">
+                            <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                            </svg>
+                            1-hour, dedicated support response time
+                        </li>
+                        <li class="flex gap-x-3">
+                            <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="flex-none w-5 h-6 text-indigo-400">
+                            <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                            </svg>
+                            Marketing automations
+                        </li>
+                        <li class="flex gap-x-3">
+                            <svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="flex-none w-5 h-6 text-indigo-400">
+                            <path d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" fill-rule="evenodd" />
+                            </svg>
+                            Custom reporting tools
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="flex flex-col items-center justify-between p-8 gap-x-8 gap-y-6 rounded-3xl bg-gray-800/20 ring-1 ring-white/10 sm:gap-y-10 sm:p-10 lg:col-span-3 lg:flex-row lg:items-center">
+                    <h3 class="font-semibold text-indigo-400 text-base/7">First time here?</h3>
+                    <p class="mt-1 text-gray-400 text-base/7">
+                        Not quite sure what you need? We'll figure it out together.
+                    </p>
+                    <ButtonAura label="Call me" link="mailto:marcus.veres@gmail.com" />
+                    <!-- <a href="#" class="rounded-md bg-white/10 px-3.5 py-2 text-sm/6 font-semibold text-white inset-ring inset-ring-white/5 hover:bg-white/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white/75">Buy discounted license <span aria-hidden="true">&rarr;</span></a> -->
+                </div>
+
+
+            </div>
+        </div>
+    </form>

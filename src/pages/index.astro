@@ -11,6 +11,9 @@ import HeroSplitScreenshot from '../components/sections/HeroSplitScreenshot.astr
 import CTAGlassGlow from '../components/sections/CTAGlassGlow.astro'
 import FeatureCentered2x2 from '../components/sections/FeatureCentered2x2.astro'
 import BentoThreeColumn from '../components/sections/BentoThreeColumn.astro'
+import Offerings from '../components/Offerings.astro'
+import Path from '../components/Path.astro'
+import Resources from '../components/Resources.astro'
 import Reviews from '../components/Reviews.astro'
 import FAQs from '../components/FAQs.astro'
 
@@ -55,11 +58,15 @@ const pageTitle = "Home Page"
 				</div>
 				<h1 class="mt-10 text-5xl font-semibold tracking-tight text-white text-pretty sm:text-7xl">Express yourself authentically</h1>
 				<p class="mt-8 text-lg font-medium text-gray-400 text-pretty sm:text-xl/8">
-					Is something not working? Maybe nobody hears your message, trouble with technology is holding you back, or a vision remains trapped inside your head. <em>You already know what needs to change.</em> Now claim the power to change it.
+					You know what needs to change. Maybe your message isn't landing, your tech stack is holding you back, or that vision in your head won't translate to reality.
+				</p>
+				<p class="mt-8 text-lg font-medium text-gray-400 text-pretty sm:text-xl/8">
+					Here's the thing: you're not missing talent or ideas. You're missing the bridge between "I know what I want" and "here it is, working."
+That's what I do. I build that bridge.
 				</p>
 				<div class="flex items-center mt-10 gap-x-6">
 					<ButtonAura label="Start Now" link="mailto:marcus.veres@gmail.com" />
-					<a href="#buckets" class="font-semibold text-white text-sm/6">Explore What's Possible <span aria-hidden="true">→</span></a>
+					<a href="#buckets" class="font-semibold text-white text-sm/6">See What's Possible <span aria-hidden="true">→</span></a>
 				</div>
 			</div>
 			<div class="flex max-w-2xl mx-auto mt-16 sm:mt-24 lg:mt-0 lg:mr-0 lg:ml-10 lg:max-w-none lg:flex-none xl:ml-32">
@@ -78,11 +85,35 @@ const pageTitle = "Home Page"
             <p class="max-w-lg mx-auto mt-2 text-4xl font-semibold tracking-tight text-center text-white text-balance sm:text-5xl md:max-w-5xl">Building a brighter future through connection, creation and communication</p>
 			-->
             <h2 class="font-semibold text-center text-indigo-400 text-base/7">Master the Forces That Shape Tomorrow</h2>
-            <p class="max-w-lg mx-auto mt-2 text-4xl font-semibold tracking-tight text-center text-white text-balance sm:text-5xl md:max-w-5xl">Your transformation happens at the intersection of three powers
+            <p class="max-w-lg mx-auto mt-2 text-4xl font-semibold tracking-tight text-center text-white text-balance sm:text-5xl md:max-w-5xl">
+				Three ways I help you level up
 			</p>
 			
             <div class="grid gap-4 mt-10 sm:mt-16 lg:grid-cols-3">
-                
+
+				<!-- Humanity and Social Good -->
+                <div class="relative">
+                    <div class="absolute bg-gray-800 rounded-lg inset-px lg:rounded-r-4xl"></div>
+                    <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-r-[calc(2rem+1px)]">
+                        <div class="px-8 pt-8 pb-3 sm:px-10 sm:pt-10 sm:pb-0">
+                            <p class="mt-2 text-lg font-medium tracking-tight text-center text-white">
+								<!-- Humanity & Social Good -->
+								Make Your Message Land
+							</p>
+                            <p class="max-w-lg mt-2 text-gray-400 text-sm/6 max-lg:text-center">
+								<!-- Create positive impact through technology and community, focusing on solutions that benefit society and promote human flourishing. -->
+								 You have something important to say. Let's make sure people actually hear it. Whether it's a presentation, a pitch, or your entire brand voice - I help you find the words that work.
+							</p>
+                        </div>
+                        <div class="@container relative min-h-120 w-full grow max-lg:mx-auto max-lg:max-w-sm">
+                            <div class="absolute inset-x-10 top-10 bottom-0 overflow-hidden rounded-t-[12cqw] border-x-[3cqw] border-t-[3cqw] border-gray-700 bg-gray-900 outline outline-white/20">
+                                <img src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-mobile-friendly.png" alt="" class="object-cover object-top size-full" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute rounded-lg shadow-sm pointer-events-none inset-px outline outline-white/15 lg:rounded-r-4xl"></div>
+                </div>
+
                 <!-- Technology and AI -->
                 <div class="relative">
                     <div class="absolute bg-gray-800 rounded-lg inset-px lg:rounded-l-4xl"></div>
@@ -90,10 +121,10 @@ const pageTitle = "Home Page"
                         <div class="px-8 pt-8 pb-3 sm:px-10 sm:pt-10 sm:pb-0">
                             <p class="mt-2 text-lg font-medium tracking-tight text-center text-white">
 								<!-- Technology & AI -->
-								Creativity
+								Build Systems That Help
 							</p>
                             <p class="max-w-lg mt-2 text-gray-400 text-sm/6 max-lg:text-center">
-								Turn emerging technologies from mysterious forces into tools you wield. Build systems that amplify your vision instead of constraining it. 
+								Technology should solve problems, not create them. I design and build tools, apps, and websites that do what you need - without the bloat or the bullshit.
 							</p>
                         </div>
                         <div class="@container relative min-h-120 w-full grow max-lg:mx-auto max-lg:max-w-sm">
@@ -112,10 +143,10 @@ const pageTitle = "Home Page"
                         <div class="px-8 pt-8 pb-3 sm:px-10 sm:pt-10 sm:pb-0">
                             <p class="mt-2 text-lg font-medium tracking-tight text-center text-white">
 								<!-- Personal Development & Learning -->
-								Connection
+								Develop People (Including You)
 							</p>
                             <p class="max-w-lg mt-2 text-gray-400 text-sm/6 max-lg:text-center">
-								Sharpen your ability to learn, adapt, and evolve faster than the world changes around you. Master the frameworks that turn confusion into clarity, obstacles into opportunities.
+								I see patterns others miss. I help you spot your own potential, build your skills, and become the version of yourself that gets shit done.
 							</p>
                         </div>
                         <div class="@container relative min-h-120 w-full grow max-lg:mx-auto max-lg:max-w-sm">
@@ -125,29 +156,6 @@ const pageTitle = "Home Page"
                         </div>
                     </div>
                     <div class="absolute rounded-lg shadow-sm pointer-events-none inset-px outline outline-white/15"></div>
-                </div>
-
-                <!-- Humanity and Social Good -->
-                <div class="relative">
-                    <div class="absolute bg-gray-800 rounded-lg inset-px lg:rounded-r-4xl"></div>
-                    <div class="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-r-[calc(2rem+1px)]">
-                        <div class="px-8 pt-8 pb-3 sm:px-10 sm:pt-10 sm:pb-0">
-                            <p class="mt-2 text-lg font-medium tracking-tight text-center text-white">
-								<!-- Humanity & Social Good -->
-								Communication
-							</p>
-                            <p class="max-w-lg mt-2 text-gray-400 text-sm/6 max-lg:text-center">
-								<!-- Create positive impact through technology and community, focusing on solutions that benefit society and promote human flourishing. -->
-								 Channel your power toward something greater. Create ripples that become waves. Build businesses, movements, and connections that outlive trends and transform communities.
-							</p>
-                        </div>
-                        <div class="@container relative min-h-120 w-full grow max-lg:mx-auto max-lg:max-w-sm">
-                            <div class="absolute inset-x-10 top-10 bottom-0 overflow-hidden rounded-t-[12cqw] border-x-[3cqw] border-t-[3cqw] border-gray-700 bg-gray-900 outline outline-white/20">
-                                <img src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-mobile-friendly.png" alt="" class="object-cover object-top size-full" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="absolute rounded-lg shadow-sm pointer-events-none inset-px outline outline-white/15 lg:rounded-r-4xl"></div>
                 </div>
 
             </div>
@@ -172,221 +180,72 @@ const pageTitle = "Home Page"
 				<h2 class="font-semibold text-indigo-400 text-base/7">Award winning support</h2>
 				<p class="mt-2 text-4xl font-semibold tracking-tight text-white sm:text-5xl">I'm here to help you grow</p>
 				<p class="mt-6 text-gray-300 text-base/7">
-					Most coaches sell you their journey, not yours. Most consultants tell you things that you already know. You need somebody who becomes the weapon that you need in your present situation → strategist, designer, developer, speaker, catalyst. Someone who sharpens <em>you</em>, not their own reputation.
+					Most coaches sell you their journey. Most consultants tell you things you already know. Most developers disappear after launch.
+				</p>
+				<p class="mt-6 text-gray-300 text-base/7">
+					I'm not doing any of that.
+				</p>
+				<p class="mt-6 text-gray-300 text-base/7">
+					I become whatever you need right now: strategist, teacher, builder, translator, catalyst. Someone who sharpens your edge, not their own reputation.
+				</p>
+				<p class="mt-6 text-gray-300 text-base/7">
+					Won the 30 Under 30? Yeah. Won Toastmasters competitions? Multiple times. Built things for Chase, Coca-Cola, USAF? Yep.
+				</p>
+				<p class="mt-6 text-gray-300 text-base/7">
+					But none of that matters if I can't solve your problem.
 				</p>
 				<div class="flex items-center mt-10 gap-x-6">
-					<ButtonAura label="Refine your Edge" link="mailto:marcus.veres@gmail.com" />
-					<a href="#buckets" class="font-semibold text-white text-sm/6">Explore What's Possible <span aria-hidden="true">→</span></a>
+					<ButtonAura label="Let's talk" link="mailto:marcus.veres@gmail.com" />
+					<a href="#buckets" class="font-semibold text-white text-sm/6">
+						See how I work <span aria-hidden="true">→</span></a>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="py-12 overflow-hidden bg-gray-900 sm:pt-20">
-		<div class="px-6 mx-auto max-w-7xl lg:px-8">
-			<div class="grid max-w-2xl grid-cols-1 mx-auto gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
-			<div class="lg:pt-4 lg:pr-8">
-				<div class="lg:max-w-lg">
-				<h2 class="font-semibold text-indigo-400 text-base/7">
-					Your path from clarity to transformation
-				</h2>
-				<p class="mt-2 text-4xl font-semibold tracking-tight text-white text-pretty sm:text-5xl">
-					Your Hero's Journey
-				</p>
-				<p class="mt-6 text-gray-300 text-lg/8">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.</p>
-				<dl class="max-w-xl mt-10 space-y-8 text-gray-400 text-base/7 lg:max-w-none">
-					<div class="relative pl-9">
-						<dt class="inline font-semibold text-white">
-							<svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="absolute text-indigo-400 top-1 left-1 size-5">
-								<path d="M5.5 17a4.5 4.5 0 0 1-1.44-8.765 4.5 4.5 0 0 1 8.302-3.046 3.5 3.5 0 0 1 4.504 4.272A4 4 0 0 1 15 17H5.5Zm3.75-2.75a.75.75 0 0 0 1.5 0V9.66l1.95 2.1a.75.75 0 1 0 1.1-1.02l-3.25-3.5a.75.75 0 0 0-1.1 0l-3.25 3.5a.75.75 0 1 0 1.1 1.02l1.95-2.1v4.59Z" clip-rule="evenodd" fill-rule="evenodd" />
-							</svg>
-							Clarity
-						</dt>
-						<dd class="inline">
-							Uncover the roots of your problem - not the symptoms. Strip away the noise until only truth remains. 
-						</dd>
-					</div>
-					<div class="relative pl-9">
-						<dt class="inline font-semibold text-white">
-							<svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="absolute text-indigo-400 top-1 left-1 size-5">
-								<path d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z" clip-rule="evenodd" fill-rule="evenodd" />
-							</svg>
-							Strategy
-						</dt>
-						<dd class="inline">
-							You'll build something real. Whether it's a digital presence that actually converts, a message that finally lands, or systems that scale - you'll have tangible power in your hands.
-						</dd>
-					</div>
-					<div class="relative pl-9">
-						<dt class="inline font-semibold text-white">
-							<svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="absolute text-indigo-400 top-1 left-1 size-5">
-								<path d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z" clip-rule="evenodd" fill-rule="evenodd" />
-							</svg>
-							Motivation
-						</dt>
-						<dd class="inline">
-							You'll move with confidence. With new tools, new voice, new velocity. The same obstacles that stopped you become stepping stones. You don't just solve today's problem - you become unstoppable.
-						</dd>
-					</div>
-					<div class="relative pl-9">
-						<dt class="inline font-semibold text-white">
-							<svg viewBox="0 0 20 20" fill="currentColor" data-slot="icon" aria-hidden="true" class="absolute text-indigo-400 top-1 left-1 size-5">
-								<path d="M4.632 3.533A2 2 0 0 1 6.577 2h6.846a2 2 0 0 1 1.945 1.533l1.976 8.234A3.489 3.489 0 0 0 16 11.5H4c-.476 0-.93.095-1.344.267l1.976-8.234Z" />
-								<path d="M4 13a2 2 0 1 0 0 4h12a2 2 0 1 0 0-4H4Zm11.24 2a.75.75 0 0 1 .75-.75H16a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75h-.01a.75.75 0 0 1-.75-.75V15Zm-2.25-.75a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75H13a.75.75 0 0 0 .75-.75V15a.75.75 0 0 0-.75-.75h-.01Z" clip-rule="evenodd" fill-rule="evenodd" />
-							</svg>
-							Transformation
-						</dt>
-						<dd class="inline">
-							You'll build something real. Whether it's a digital presence that actually converts, a message that finally lands, or systems that scale - you'll have tangible power in your hands.
-						</dd>
-					</div>
-				</dl>
-				</div>
-			</div>
-			<div class="relative pt-12 lg:pt-16">
-				<img src="/images/personal-development-journey.png" alt="Product screenshot" class="shadow-xl rounded-xl ring-1 ring-white/10 md:-ml-4 lg:-ml-0" />
-				<!-- <img width="2432" height="1442" src="https://tailwindcss.com/plus-assets/img/component-images/dark-project-app-screenshot.png" alt="Product screenshot" class="shadow-xl w-3xl max-w-none rounded-xl ring-1 ring-white/10 sm:w-228 md:-ml-4 lg:-ml-0" /> -->
-			</div>
-			</div>
-		</div>
-	</div>
+	<Path />
 
-	<div id="resources" class="py-12 bg-gray-900 sm:pt-20">
-		<div class="px-6 mx-auto max-w-7xl lg:px-8">
-			<div class="max-w-2xl mx-auto text-center">
-				<h2 class="text-4xl font-semibold tracking-tight text-white text-balance sm:text-5xl">Sharpen Your Edge</h2>
-				<p class="mt-2 text-gray-400 text-lg/8">Resources that empower.</p>
-			</div>
-			<div class="grid max-w-2xl grid-cols-1 gap-8 mx-auto mt-16 auto-rows-fr sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-				<article class="relative flex flex-col justify-end px-8 pb-8 overflow-hidden bg-gray-800 isolate rounded-2xl pt-80 sm:pt-48 lg:pt-80">
-					<img src="https://www.iestork.org/wp-content/uploads/2024/02/cover-jpeg.webp" alt="" class="absolute inset-0 object-cover -z-10 size-full" />
-					<div class="absolute bottom-0 left-0 right-0 h-full max-h-1/2 -z-10 bg-linear-to-t from-blue-900 via-blue-900/90"></div>
-					<div class="absolute inset-0 -z-10 rounded-2xl inset-ring inset-ring-white/10"></div>
-					<h3 class="mt-3 font-semibold text-white text-lg/6">
-						<a href="/edicts">
-							<span class="absolute inset-0"></span>
-							10 Principles for Self Improvement
-						</a>
-					</h3>
-					<div class="flex flex-wrap items-center pt-3 overflow-hidden text-gray-300 text-sm/6">
-						<p class="">
-							Timeless principles that cut through modern chaos. When everyone else is playing checkers, you'll be ending the game.
-						</p>
-					</div>
-				</article>
-				<article class="relative flex flex-col justify-end px-8 pb-8 overflow-hidden bg-gray-800 isolate rounded-2xl pt-80 sm:pt-48 lg:pt-80">
-					<img src="/images/resources/memorization-for-public-speaking-1.png" alt="" class="absolute inset-0 object-cover -z-10 size-full" />
-					<div class="absolute bottom-0 left-0 right-0 h-full max-h-1/2 -z-10 bg-linear-to-t from-blue-900 via-blue-900/90"></div>
-					<div class="absolute inset-0 -z-10 rounded-2xl inset-ring inset-ring-white/10"></div>
-					<h3 class="mt-3 font-semibold text-white text-lg/6">
-						<a target="_blank" href="/resources/memorization-for-public-speakers-1.0.2.pdf">
-							<span class="absolute inset-0"></span>
-							Memorization for Public Speakers
-						</a>
-					</h3>
-					<div class="flex flex-wrap items-center pt-3 overflow-hidden text-gray-300 text-sm/6">
-						<p class="">
-							How world champion speakers encode, store, and deploy information. Your mind becomes a fortress of accessible power.
-						</p>
-					</div>
-				</article>
-				<article class="relative flex flex-col justify-end px-8 pb-8 overflow-hidden bg-gray-800 isolate rounded-2xl pt-80 sm:pt-48 lg:pt-80">
-					<img src="https://images.unsplash.com/photo-1547586696-ea22b4d4235d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3270&q=80" alt="" class="absolute inset-0 object-cover -z-10 size-full" />
-					<div class="absolute bottom-0 left-0 right-0 h-full max-h-1/2 -z-10 bg-linear-to-t from-blue-900 via-blue-900/90"></div>
-					<div class="absolute inset-0 -z-10 rounded-2xl inset-ring inset-ring-white/10"></div>
-					<h3 class="mt-3 font-semibold text-white text-lg/6">
-						<a target="_blank" href="/resources/memorization-for-public-speakers-1.0.2.pdf">
-							<span class="absolute inset-0"></span>
-							Intro to Real-Time Bidding (RTB)
-						</a>
-					</h3>
-					<div class="flex flex-wrap items-center pt-3 overflow-hidden text-gray-300 text-sm/6">
-						<p class="">
-							Understanding the real game behind online attention, influence, and conversion. See the matrix, then bend it.
-						</p>
-					</div>
-				</article>
-			</div>
-		</div>
-	</div>
-	
-	<div class="py-24 bg-gray-900 sm:py-32">
-		<div class="px-6 mx-auto max-w-7xl lg:px-8">
-			<div class="max-w-2xl mx-auto lg:text-center">
+	<Resources />
+
+	<Offerings />
+
+	<div class="pt-24 bg-gray-900 sm:pt-32">
+		<div class="max-w-2xl mx-auto text-center">
 			<h2 class="font-semibold text-indigo-400 text-base/7">
-				Transformative Tools
+				Trusted by serious companies
 			</h2>
-			<p class="mt-2 text-4xl font-semibold tracking-tight text-white text-pretty sm:text-5xl lg:text-balance">
-				Choose Your Weapon
+			<p class="mt-2 text-4xl font-semibold tracking-tight text-white text-balance sm:text-5xl">
+				I've delivered results for
 			</p>
-			<p class="mt-6 text-gray-300 text-lg/8">Quis tellus eget adipiscing convallis sit sit eget aliquet quis. Suspendisse eget egestas a elementum pulvinar et feugiat blandit at. In mi viverra elit nunc.</p>
-			</div>
-			<div class="max-w-2xl mx-auto mt-16 sm:mt-20 lg:mt-24 lg:max-w-4xl">
-			<dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-				<div class="relative pl-16">
-					<dt class="font-semibold text-white text-base/7">
-						<div class="absolute top-0 left-0 flex items-center justify-center bg-indigo-500 rounded-lg size-10">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="text-white size-6">
-							<path d="M12 16.5V9.75m0 0 3 3m-3-3-3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z" stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-						</div>
-						Strategic Clarity Sessions
-					</dt>
-					<dd class="mt-2 text-gray-400 text-base/7">
-						You're drowning in options, paralyzed by possibilities. In 90 minutes, we cut through years of confusion. You leave with a battle plan so clear, execution becomes inevitable. For leaders facing impossible decisions.
-					</dd>
-				</div>
-				<div class="relative pl-16">
-					<dt class="font-semibold text-white text-base/7">
-						<div class="absolute top-0 left-0 flex items-center justify-center bg-indigo-500 rounded-lg size-10">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="text-white size-6">
-							<path d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-						</div>
-						Digital Transformations
-					</dt>
-					<dd class="mt-2 text-gray-400 text-base/7">
-						Your digital presence is a rusty blade - dull, slow, ineffective. We forge you something sharp: strategy that cuts, design that captivates, systems that scale. You get a weapon worthy of your vision.
-					</dd>
-				</div>
-				<div class="relative pl-16">
-					<dt class="font-semibold text-white text-base/7">
-						<div class="absolute top-0 left-0 flex items-center justify-center bg-indigo-500 rounded-lg size-10">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="text-white size-6">
-							<path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-						</div>
-						Communication Mastery
-					</dt>
-					<dd class="mt-2 text-gray-400 text-base/7">
-						Your message dies before it reaches anyone. Learn the frameworks that make world champions. Transform your voice from noise into signal. For individuals and teams ready to be heard.
-					</dd>
-				</div>
-				<div class="relative pl-16">
-					<dt class="font-semibold text-white text-base/7">
-						<div class="absolute top-0 left-0 flex items-center justify-center bg-indigo-500 rounded-lg size-10">
-						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="text-white size-6">
-							<path d="M7.864 4.243A7.5 7.5 0 0 1 19.5 10.5c0 2.92-.556 5.709-1.568 8.268M5.742 6.364A7.465 7.465 0 0 0 4.5 10.5a7.464 7.464 0 0 1-1.15 3.993m1.989 3.559A11.209 11.209 0 0 0 8.25 10.5a3.75 3.75 0 1 1 7.5 0c0 .527-.021 1.049-.064 1.565M12 10.5a14.94 14.94 0 0 1-3.6 9.75m6.633-4.596a18.666 18.666 0 0 1-2.485 5.33" stroke-linecap="round" stroke-linejoin="round" />
-						</svg>
-						</div>
-						The Unnamed Challenge
-					</dt>
-					<dd class="mt-2 text-gray-400 text-base/7">
-						You know something needs to change but can't name it. Start here. Free 25-minute reconnaissance. We'll identify your real enemy together.
-					</dd>
-				</div>
-			</dl>
+		</div>
+		<div class="px-6 pt-12 mx-auto max-w-7xl lg:px-8 lg:pt-20">
+			<div class="grid items-center max-w-lg grid-cols-4 mx-auto gap-x-8 gap-y-12 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+
+				<img width="158" height="48" src="/images/client-logos/logo-chase.svg" alt="JPMorgan Chase" class="object-contain w-full col-span-2 max-h-12 sm:col-start-2 lg:col-span-1" />
+
+				<img width="158" height="48" src="/images/client-logos/logo-coca-cola.svg" alt="Coca Colo" class="object-contain w-full col-span-2 max-h-12 lg:col-span-1" />
+
+				<img width="158" height="48" src="/images/client-logos/logo-kpmg.svg" alt="KPMG" class="object-contain w-full col-span-2 max-h-12 lg:col-span-1" />
+
+				<img width="158" height="48" src="/images/client-logos/logo-salesforce.svg" alt="Salesforce" class="object-contain w-full col-span-2 max-h-12 lg:col-span-1" />
+
+				<img width="158" height="48" src="/images/client-logos/logo-usaf.svg" alt="USAF" class="object-contain w-full col-span-2 col-start-2 max-h-12 sm:col-start-auto lg:col-span-1" />
+				
 			</div>
 		</div>
 	</div>
+
+	<Reviews />
 
 	<div class="bg-gray-900">
-		<div class="py-24 mx-auto max-w-7xl sm:px-6 sm:py-32 lg:px-8">
+		<div class="pt-4 mx-auto max-w-7xl sm:px-6 sm:pt-8 lg:px-8">
 			<div class="relative px-6 py-24 overflow-hidden text-center bg-gray-800 isolate after:pointer-events-none after:absolute after:inset-0 after:inset-ring after:inset-ring-white/10 sm:rounded-3xl sm:px-16 after:sm:rounded-3xl">
-				<h2 class="text-4xl font-semibold tracking-tight text-white text-balance sm:text-5xl">You already have everything you need.</h2>
-				<p class="max-w-xl mx-auto mt-6 text-gray-300 text-lg/8 text-pretty">Start wielding power. Your transformation begins with one decision.</p>
+				<h2 class="text-4xl font-semibold tracking-tight text-white text-balance sm:text-5xl">Ready to begin?</h2>
+				<p class="max-w-xl mx-auto mt-6 text-gray-300 text-lg/8 text-pretty">
+					Join hundreds of happy customers. We will grow together.
+				</p>
 				<div class="flex items-center justify-center mt-10 gap-x-6">
-					<ButtonAura label="Define your destiny" link="mailto:marcus.veres@gmail.com" />
+					<ButtonAura label="Start Here" link="mailto:marcus.veres@gmail.com" />
 					<a href="#" class="font-semibold text-white text-sm/6">
 						Explore your options
 						<span aria-hidden="true">→</span>
@@ -405,64 +264,18 @@ const pageTitle = "Home Page"
 		</div>
 	</div>
 
-	<Reviews />
-
-	<div class="pt-12 bg-gray-900 sm:pt-20">
-		<div class="max-w-2xl mx-auto text-center">
-			<h2 class="font-semibold text-indigo-400 text-base/7">
-				Forces for Change
-			</h2>
-			<p class="mt-2 text-4xl font-semibold tracking-tight text-white text-balance sm:text-5xl">Delivering results for  powerful brands</p>
-		</div>
-		<div class="px-6 pt-12 mx-auto max-w-7xl lg:px-8 lg:pt-20">
-			<div class="grid items-center max-w-lg grid-cols-4 mx-auto gap-x-8 gap-y-12 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-
-				<img width="158" height="48" src="/images/client-logos/logo-chase.svg" alt="SavvyCal" class="object-contain w-full col-span-2 max-h-12 sm:col-start-2 lg:col-span-1" />
-
-				<img width="158" height="48" src="/images/client-logos/logo-coca-cola.svg" alt="Transistor" class="object-contain w-full col-span-2 max-h-12 lg:col-span-1" />
-
-				<img width="158" height="48" src="/images/client-logos/logo-kpmg.svg" alt="Reform" class="object-contain w-full col-span-2 max-h-12 lg:col-span-1" />
-
-				<img width="158" height="48" src="/images/client-logos/logo-salesforce.svg" alt="Tuple" class="object-contain w-full col-span-2 max-h-12 lg:col-span-1" />
-
-				<img width="158" height="48" src="/images/client-logos/logo-usaf.svg" alt="Statamic" class="object-contain w-full col-span-2 col-start-2 max-h-12 sm:col-start-auto lg:col-span-1" />
-				
-			</div>
-		</div>
-		<!--
-		<div class="px-6 pt-6 mx-auto max-w-7xl lg:px-8">
-			<div class="grid items-center max-w-lg grid-cols-4 mx-auto gap-x-8 gap-y-12 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-
-				<img width="158" height="48" src="https://tailwindcss.com/plus-assets/img/logos/158x48/transistor-logo-white.svg" alt="Transistor" class="object-contain w-full col-span-2 max-h-12 lg:col-span-1" />
-
-				<img width="158" height="48" src="https://tailwindcss.com/plus-assets/img/logos/158x48/reform-logo-white.svg" alt="Reform" class="object-contain w-full col-span-2 max-h-12 lg:col-span-1" />
-
-				<img width="158" height="48" src="https://tailwindcss.com/plus-assets/img/logos/158x48/tuple-logo-white.svg" alt="Tuple" class="object-contain w-full col-span-2 max-h-12 lg:col-span-1" />
-
-				<img width="158" height="48" src="https://tailwindcss.com/plus-assets/img/logos/158x48/savvycal-logo-white.svg" alt="SavvyCal" class="object-contain w-full col-span-2 max-h-12 sm:col-start-2 lg:col-span-1" />
-
-				<img width="158" height="48" src="https://tailwindcss.com/plus-assets/img/logos/158x48/statamic-logo-white.svg" alt="Statamic" class="object-contain w-full col-span-2 col-start-2 max-h-12 sm:col-start-auto lg:col-span-1" />
-				
-			</div>
-			<div class="flex justify-center mt-16">
-				<p class="relative rounded-full bg-gray-800/75 px-4 py-1.5 text-sm/6 text-gray-400 inset-ring inset-ring-white/10">
-					<span class="hidden md:inline">No request too small. No company too big.</span>
-					<a href="#" class="font-semibold text-indigo-400 hover:text-indigo-300"><span aria-hidden="true" class="absolute inset-0"></span> Read our customer stories <span aria-hidden="true">&rarr;</span></a>
-				</p>
-			</div>
-		</div>
-		 -->
-	</div>
-
 	<FAQs />
 
 	<div class="relative overflow-hidden bg-gray-900 isolate">
 		<div class="px-6 py-12 lg:pb-20 lg:pt-28 lg:px-8">
 			<div class="max-w-2xl mx-auto text-center">
-			<h2 class="text-4xl font-semibold tracking-tight text-white text-balance sm:text-5xl">Boost your productivity. Start using our app today.</h2>
-			<p class="max-w-xl mx-auto mt-6 text-gray-300 text-lg/8 text-pretty">Incididunt sint fugiat pariatur cupidatat consectetur sit cillum anim id veniam aliqua proident excepteur commodo do ea.</p>
+			<h2 class="text-4xl font-semibold tracking-tight text-white text-balance sm:text-5xl">You already know what needs to change.</h2>
+			<p class="max-w-xl mx-auto mt-6 text-gray-300 text-lg/8 text-pretty">The question isn't "can I do this?"
+				It's "who can help me do this faster and better?"
+				That's me :)
+			</p>
 			<div class="flex items-center justify-center mt-10 gap-x-6">
-				<ButtonAura label="Start Now" link="mailto:marcus.veres@gmail.com" />
+				<ButtonAura label="Let's Talk" link="mailto:marcus.veres@gmail.com" />
 				<!-- <a href="#" class="font-semibold text-white text-sm/6 hover:text-gray-300">Learn more <span aria-hidden="true">→</span></a> -->
 			</div>
 			</div>
