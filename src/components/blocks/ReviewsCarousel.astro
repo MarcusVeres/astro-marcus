@@ -2,7 +2,12 @@
 import reviewsData from '../../data/reviews.json';
 
 // Get first 3 reviews for carousel
-const featuredReviews = reviewsData.slice(0, 3);
+const featuredReviews = new Array( 
+  reviewsData[4] , 
+  reviewsData[7] , 
+  reviewsData[3] , 
+  reviewsData[0] , 
+);
 ---
 
 <style>
@@ -44,7 +49,7 @@ const featuredReviews = reviewsData.slice(0, 3);
           <img
             src={review.photo}
             alt={review.name}
-            class="flex-none bg-gray-800 rounded-full size-12 object-cover"
+            class="flex-none object-cover bg-gray-800 rounded-full size-12"
           />
           <div>
             <div class="text-base font-semibold text-white">{review.name}</div>
