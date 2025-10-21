@@ -1,11 +1,22 @@
 ---
-const { label, link, openInNewTab = false } = Astro.props;
+const { label, link, openInNewTab = false, type = "link" } = Astro.props;
+
+// Shared classes for both link and button
+const outerClasses = "cursor-pointer transition-all ease-in-out duration-500 font-semibold text-gray-800 hover:text-black uppercase text-sm/6 animate-background rounded-full border-[3px] border-black/90 hover:border-black/30 bg-gradient-to-r from-green-300 via-blue-600 to-red-300 bg-[length:_400%_400%] p-0.5 [animation-duration:_6s]";
+const innerClasses = "inline-block px-6 py-2 text-xs font-bold tracking-widest rounded-full bg-pink-50 hover:bg-white";
 ---
-<a
-  href={link}
-  class="transition-all ease-in-out duration-500 font-semibold text-gray-800 hover:text-black uppercase text-sm/6 animate-background rounded-full border-[3px] border-black/90 hover:border-black/30 bg-gradient-to-r from-green-300 via-blue-600 to-red-300 bg-[length:_400%_400%] p-0.5 [animation-duration:_6s]"
-  {...(openInNewTab && { target: "_blank", rel: "noopener noreferrer" })}
->
-  <span class="inline-block px-6 py-2 text-xs font-bold tracking-widest rounded-full bg-pink-50 hover:bg-white">{label}</span>
-</a>
+
+{type === "submit" ? (
+  <button type="submit" class={outerClasses}>
+    <span class={innerClasses}>{label}</span>
+  </button>
+) : (
+  <a
+    href={link}
+    class={outerClasses}
+    {...(openInNewTab && { target: "_blank", rel: "noopener noreferrer" })}
+  >
+    <span class={innerClasses}>{label}</span>
+  </a>
+)}
 

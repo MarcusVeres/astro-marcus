@@ -51,8 +51,8 @@ const pageTitle = "Contact"
           <ButtonAura label="Let's Go" link="#form-contact" />
             <!-- <a href="#form-contact" class="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Get started</a> -->
           <a href="mailto:marcus.veres@gmail.com" class="font-semibold text-white text-sm/6">
-            Skip the form... send an email <span aria-hidden="true"><IconEnvelope class="inline w-6 h-6" /></span>
-        </a>
+            Skip the form and send an email <span aria-hidden="true">→ <IconEnvelope class="inline w-6 h-6" /></span>
+          </a>
         </div>
       </div>
       <div class="mt-16 sm:mt-24 lg:mt-0 lg:shrink-0 lg:grow">
@@ -99,10 +99,10 @@ const pageTitle = "Contact"
   <div class="max-w-xl px-6 mx-auto lg:max-w-7xl lg:px-8">
     <h2 class="text-4xl font-semibold tracking-tight text-white text-pretty sm:text-5xl">Let's talk about your project</h2>
     <p class="mt-2 text-gray-400 text-lg/8">We help companies and individuals build out their brand guidelines.</p>
-    <div class="flex flex-col items-center justify-center gap-16 mt-16 sm:gap-y-20 lg:flex-row">
+    <div class="flex flex-col gap-16 mt-16 sm:gap-y-20 lg:flex-row lg:items-start lg:justify-center">
 
       <!-- Success Message (hidden by default) -->
-      <div id="form-success" class="hidden p-6 mb-8 border-l-4 border-green-700 rounded-lg bg-green-500/20 lg:flex-auto">
+      <div id="form-success" class="hidden max-w-2xl p-6 mx-auto mb-8 border-l-4 border-green-700 rounded-lg bg-green-500/20 lg:mx-0">
         <div class="flex items-start">
           <svg class="flex-shrink-0 w-6 h-6 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -114,7 +114,7 @@ const pageTitle = "Contact"
         </div>
       </div>
 
-      <form name="contact" method="POST" netlify netlify-honeypot="bot-field" class="lg:flex-auto">
+      <form name="contact" method="POST" netlify netlify-honeypot="bot-field" class="max-w-2xl mx-auto lg:mx-0 lg:flex-auto">
 
         <!-- Honeypot field for spam protection -->
         <input type="hidden" name="form-name" value="contact" />
@@ -164,15 +164,16 @@ const pageTitle = "Contact"
             </div>
           </div>
         </div>
-        <div class="mt-10">
-          <button type="submit" class="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Let's talk</button>
+        <div class="flex flex-col items-center justify-between mt-10 sm:flex-row">
+          <ButtonAura label="Let's talk" type="submit" />
+          <a href="mailto:marcus.veres@gmail.com" class="font-semibold text-white text-sm/6">
+            Never mind, I'll send an email <span aria-hidden="true">→ <IconEnvelope class="inline w-6 h-6" /></span>
+          </a>
         </div>
-        <p class="mt-4 text-gray-400 text-sm/6">By submitting this form, I agree to the <a href="#" class="font-semibold text-indigo-400 whitespace-nowrap">privacy policy</a>.</p>
+        <!-- <p class="mt-4 text-center text-gray-400 text-sm/6">By submitting this form, I agree to the <a href="#" class="font-semibold text-indigo-400 whitespace-nowrap">privacy policy</a>.</p> -->
       </form>
-      <div class="lg:mt-6 lg:w-80 lg:flex-none">
-        <div class="mt-10">
-          <ReviewsCarousel />
-        </div>
+      <div class="max-w-sm mx-auto mt-7 lg:shrink-0 lg:grow">
+        <ReviewsCarousel />
       </div>
     </div>
   </div>
