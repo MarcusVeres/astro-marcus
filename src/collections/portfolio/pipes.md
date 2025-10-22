@@ -1,7 +1,7 @@
 ---
 title: "Industrial Pipes"
 description: "Urban industrial photography celebrating functional design and weathered materials."
-image: "/images/portfolio/pipes.jpg"
+image: "@images/portfolio/pipes.jpg"
 tags: ["photography", "industrial"]
 contentType: "simple"
 order: 1400

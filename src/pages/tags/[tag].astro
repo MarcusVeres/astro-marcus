@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogPost from '../../layouts/BlogPost.astro';
+import { Image } from 'astro:assets';
 
 import ButtonAura from '../../components/atoms/ButtonAura.astro'
 
@@ -191,10 +192,13 @@ const { posts, resources, portfolio } = Astro.props;
                         {portfolio.map((item) => (
                             <article class="relative group">
                                 <a href={`/portfolio/${item.id}`} class="block overflow-hidden rounded-lg aspect-square">
-                                    <img
+                                    <Image
                                         src={item.data.thumbnail || item.data.image}
                                         alt={item.data.title}
                                         class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-110"
+                                        widths={[300, 400, 600]}
+                                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                                        loading="lazy"
                                     />
                                     <div class="absolute inset-0 transition-opacity bg-black/60 group-hover:bg-black/40"></div>
                                     <h3 class="absolute inset-0 flex items-center justify-center p-4 text-sm font-semibold text-center text-white">

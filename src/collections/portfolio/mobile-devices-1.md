@@ -1,7 +1,7 @@
 ---
 title: "Mobile Devices"
 description: "From concept sketches to final 3D render."
-image: "/images/portfolio/mobile-devices-1.jpg"
+image: "@images/portfolio/mobile-devices-1.jpg"
 tags: ["design", "3d", "case-study"]
 contentType: "simple"
 order: 2300

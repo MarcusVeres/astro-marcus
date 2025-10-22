@@ -1,7 +1,7 @@
 ---
 title: "Portrait Study"
 description: "Black and white portrait photography capturing character and emotion through natural light."
-image: "/images/portfolio/grandpa.jpg"
+image: "@images/portfolio/grandpa.jpg"
 tags: ["photography", "portrait"]
 contentType: "simple"
 order: 1900

@@ -1,7 +1,7 @@
 ---
 title: "Glowing Light"
 description: "Light and shadow study exploring the interplay between illumination and darkness."
-image: "/images/portfolio/glow.jpg"
+image: "@images/portfolio/glow.jpg"
 tags: ["photography", "abstract"]
 contentType: "simple"
 order: 600

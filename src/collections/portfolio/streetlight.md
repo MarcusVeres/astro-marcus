@@ -1,7 +1,7 @@
 ---
 title: "Streetlight at Golden Hour"
 description: "Urban lighting photographed during the magic hour, when natural and artificial light blend perfectly."
-image: "/images/portfolio/streetlight.jpg"
+image: "@images/portfolio/streetlight.jpg"
 tags: ["photography", "urban"]
 contentType: "simple"
 order: 1000

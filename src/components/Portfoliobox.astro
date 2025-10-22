@@ -1,5 +1,6 @@
 ---
 import { type CollectionEntry } from "astro:content";
+import { Image } from 'astro:assets';
 import ButtonAura from './atoms/ButtonAura.astro';
 
 interface Props {
@@ -15,7 +16,7 @@ const images = portfolioItems.map(item => ({
   title: item.data.title,
   description: item.data.description,
   slug: item.id, // For linking to standalone page
-  category: item.data.category,
+  tags: item.data.tags,
   links: item.data.links || [] // Featured links (Behance, Dribbble, etc.)
 }));
 ---
@@ -28,12 +29,14 @@ const images = portfolioItems.map(item => ({
           <figure class="grid grid-cols-1 transition-all opacity-0 pointer-events-none lightbox-image-container place-content-center" id={`image-${index}`}>
             {/* For performance, only the first few images are eager loaded */}
             <div class="flex items-center justify-center lightbox-image-wrapper">
-              <img
+              <Image
                 src={image.src}
                 alt={image.alt}
                 loading={index < 4 ? "eager" : "lazy"}
                 class="block w-auto h-auto max-w-full mx-auto lightbox-image"
                 data-index={index}
+                widths={[800, 1200, 1600]}
+                sizes="100vw"
               />
             </div>
             <figcaption class="px-4 py-4 transition-opacity opacity-100 lightbox-caption">
@@ -470,10 +473,10 @@ const images = portfolioItems.map(item => ({
 
       if (!wrapperWidth || !wrapperHeight) return;
 
-      const imageWidth = Number.parseFloat(image.getAttribute("width") || "0");
-      const imageHeight = Number.parseFloat(
-        image.getAttribute("height") || "0",
-      );
+      // Use naturalWidth/naturalHeight for actual image dimensions
+      // or getBoundingClientRect if image hasn't loaded yet
+      const imageWidth = image.naturalWidth || image.getBoundingClientRect().width;
+      const imageHeight = image.naturalHeight || image.getBoundingClientRect().height;
 
       if (!imageWidth || !imageHeight) {
         console.error("Image dimensions are invalid.");

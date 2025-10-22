@@ -1,7 +1,7 @@
 ---
 title: "Donut Shop"
 description: "From concept sketches to final 3D render."
-image: "/images/portfolio/donut-shop.jpg"
+image: "@images/portfolio/donut-shop.jpg"
 tags: ["design", "3d", "case-study"]
 contentType: "simple"
 order: 2550

@@ -1,7 +1,7 @@
 ---
 title: "Engine Details"
 description: "Mechanical photography showcasing industrial design and engineering beauty."
-image: "/images/portfolio/engine.jpg"
+image: "@images/portfolio/engine.jpg"
 tags: ["photography", "industrial"]
 contentType: "simple"
 order: 300

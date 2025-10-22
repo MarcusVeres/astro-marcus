@@ -1,7 +1,7 @@
 ---
 title: "Knife Design Case Study"
 description: "In-depth look at the design process for a custom chef's knife. From concept sketches to final 3D render."
-image: "/images/portfolio/knife.jpg"
+image: "@images/portfolio/knife.jpg"
 tags: ["design", "3d", "case-study"]
 contentType: "case-study"
 caseStudyUrl: "/m/case-study-knife"

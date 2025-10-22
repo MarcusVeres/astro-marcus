@@ -1,7 +1,7 @@
 ---
 title: "Motor Assembly"
 description: "Industrial design photography highlighting precision engineering and functional beauty."
-image: "/images/portfolio/motor.jpg"
+image: "@images/portfolio/motor.jpg"
 tags: ["photography", "industrial"]
 contentType: "simple"
 order: 200

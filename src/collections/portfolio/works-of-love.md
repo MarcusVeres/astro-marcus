@@ -1,7 +1,7 @@
 ---
 title: "Works of Love"
 description: "From concept sketches to final 3D render."
-image: "/images/portfolio/works-of-love-1.png"
+image: "@images/portfolio/works-of-love-1.png"
 tags: ["design", "3d", "case-study"]
 contentType: "simple"
 order: 2600

@@ -43,11 +43,11 @@ const blog = defineCollection({
 
 const portfolio = defineCollection({
   loader: glob({ pattern: '**/[^_]*.md', base: "./src/collections/portfolio" }), // Changed to .md for simpler content
-  schema: z.object({
+  schema: ({ image }) => z.object({
     title: z.string(),
     description: z.string(),
-    image: z.string(),  // Hero image URL (used in lightbox)
-    thumbnail: z.string().optional(),  // Optional thumbnail for grid (falls back to image)
+    image: image(),  // Optimized image (auto WEBP conversion!)
+    thumbnail: image().optional(),  // Optional thumbnail for grid (falls back to image)
     tags: z.array(z.string()).optional(),  // For filtering and tag pages ["design", "3d", "photography"]
     order: z.number().optional(),
     pubDate: z.date().optional(),

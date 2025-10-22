@@ -1,7 +1,7 @@
 ---
 title: "Shattered Glass"
 description: "Abstract texture and pattern study. Finding beauty in fragmentation and chaos."
-image: "/images/portfolio/shatters.jpg"
+image: "@images/portfolio/shatters.jpg"
 tags: ["photography", "abstract"]
 contentType: "simple"
 order: 500

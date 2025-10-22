@@ -5,7 +5,11 @@
       "Bash(dir)",
       "WebSearch",
       "WebFetch(domain:github.com)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Bash(dir \"C:\\Dropbox\\projects\\marcusveres.com\\astro-marcus\\src\\assets\\images\\portfolio\")",
+      "Bash(dir \"C:\\Dropbox\\projects\\marcusveres.com\\astro-marcus\\public\\images\\portfolio\")",
+      "Bash(findstr:*)",
+      "Bash(copy:*)"
     ],
     "deny": [],
     "ask": []

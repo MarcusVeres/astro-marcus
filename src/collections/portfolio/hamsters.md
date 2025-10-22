@@ -1,7 +1,7 @@
 ---
 title: "\"Hamsters\""
 description: "From concept sketches to final 3D render."
-image: "/images/portfolio/hamsters.png"
+image: "@images/portfolio/hamsters.png"
 tags: ["design", "3d", "case-study"]
 contentType: "simple"
 order: 2350

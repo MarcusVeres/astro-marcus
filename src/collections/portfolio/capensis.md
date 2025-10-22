@@ -1,7 +1,7 @@
 ---
 title: "Capensis"
 description: "From concept sketches to final 3D render."
-image: "/images/portfolio/capensis.png"
+image: "@images/portfolio/capensis.png"
 tags: ["design", "3d", "case-study"]
 contentType: "simple"
 order: 3200

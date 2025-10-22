@@ -1,7 +1,7 @@
 ---
 title: "Floral Study"
 description: "Botanical photography capturing delicate petals and organic forms in soft light."
-image: "/images/portfolio/flowers.jpg"
+image: "@images/portfolio/flowers.jpg"
 tags: ["photography", "nature"]
 contentType: "simple"
 order: 1300
