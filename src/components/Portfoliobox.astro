@@ -459,8 +459,8 @@ const images = portfolioItems.map(item => ({
       }
     }
 
-    function calculateCentering(image: HTMLImageElement): void {
-      const wrapper = image.closest(".lightbox-image-wrapper") as HTMLElement;
+    function calculateCentering(element: HTMLElement): void {
+      const wrapper = element.closest(".lightbox-image-wrapper") as HTMLElement;
 
       if (!wrapper) {
         console.error("Image wrapper not found.");
@@ -473,10 +473,18 @@ const images = portfolioItems.map(item => ({
 
       if (!wrapperWidth || !wrapperHeight) return;
 
+      // Find the actual <img> element (Astro Image component uses <picture><img></picture>)
+      const img = element.tagName === 'IMG' ? element as HTMLImageElement : element.querySelector('img');
+
+      if (!img) {
+        console.error("Image element not found.");
+        return;
+      }
+
       // Use naturalWidth/naturalHeight for actual image dimensions
       // or getBoundingClientRect if image hasn't loaded yet
-      const imageWidth = image.naturalWidth || image.getBoundingClientRect().width;
-      const imageHeight = image.naturalHeight || image.getBoundingClientRect().height;
+      const imageWidth = img.naturalWidth || img.getBoundingClientRect().width;
+      const imageHeight = img.naturalHeight || img.getBoundingClientRect().height;
 
       if (!imageWidth || !imageHeight) {
         console.error("Image dimensions are invalid.");
@@ -502,9 +510,9 @@ const images = portfolioItems.map(item => ({
       finalX = Math.max(0, finalX);
       finalY = Math.max(0, finalY);
 
-      image.style.setProperty("--final-x", `${finalX}px`);
-      image.style.setProperty("--final-y", `${finalY}px`);
-      image.style.setProperty("--final-scale", `1`);
+      element.style.setProperty("--final-x", `${finalX}px`);
+      element.style.setProperty("--final-y", `${finalY}px`);
+      element.style.setProperty("--final-scale", `1`);
     }
 
     function showImageAtIndex(index: number): void {
@@ -523,11 +531,13 @@ const images = portfolioItems.map(item => ({
         newActiveImage.classList.add("active");
         currentIndex = index;
 
-        const image =
-          newActiveImage.querySelector<HTMLImageElement>(".lightbox-image");
-        if (image) {
-          logDebugInfo("Image Loaded", undefined, image);
-          calculateCentering(image);
+        const imageElement =
+          newActiveImage.querySelector<HTMLElement>(".lightbox-image");
+        if (imageElement) {
+          // Find the actual img element for logging
+          const img = imageElement.tagName === 'IMG' ? imageElement as HTMLImageElement : imageElement.querySelector('img');
+          logDebugInfo("Image Loaded", undefined, img || undefined);
+          calculateCentering(imageElement);
         }
 
         const prevIndex =
@@ -573,9 +583,9 @@ const images = portfolioItems.map(item => ({
             return;
           }
 
-          const lightboxImage =
-            activeImage.querySelector<HTMLImageElement>(".lightbox-image");
-          if (lightboxImage) {
+          const lightboxImageElement =
+            activeImage.querySelector<HTMLElement>(".lightbox-image");
+          if (lightboxImageElement) {
             const buttonAspectRatio = rect.width / rect.height;
             const wrapperAspectRatio = wrapperRect.width / wrapperRect.height;
 
@@ -584,9 +594,9 @@ const images = portfolioItems.map(item => ({
                 ? rect.width / wrapperRect.width
                 : rect.height / wrapperRect.height;
 
-            lightboxImage.style.setProperty("--initial-x", `${rect.left}px`);
-            lightboxImage.style.setProperty("--initial-y", `${rect.top}px`);
-            lightboxImage.style.setProperty(
+            lightboxImageElement.style.setProperty("--initial-x", `${rect.left}px`);
+            lightboxImageElement.style.setProperty("--initial-y", `${rect.top}px`);
+            lightboxImageElement.style.setProperty(
               "--initial-scale",
               `${initialScale}`,
             );
@@ -594,7 +604,7 @@ const images = portfolioItems.map(item => ({
             logDebugInfo("Thumbnail Clicked", rect);
 
             if (lightboxDialog.getAttribute("data-option") !== "slide") {
-              calculateCentering(lightboxImage);
+              calculateCentering(lightboxImageElement);
             }
 
             showImageAtIndex(currentIndex);
@@ -629,7 +639,7 @@ const images = portfolioItems.map(item => ({
 
     function applyCenteringToAllImages(): void {
       const lightboxImages =
-        document.querySelectorAll<HTMLImageElement>(".lightbox-image");
+        document.querySelectorAll<HTMLElement>(".lightbox-image");
       lightboxImages.forEach(calculateCentering);
     }
 

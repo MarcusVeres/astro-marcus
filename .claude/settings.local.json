@@ -9,7 +9,8 @@
       "Bash(dir \"C:\\Dropbox\\projects\\marcusveres.com\\astro-marcus\\src\\assets\\images\\portfolio\")",
       "Bash(dir \"C:\\Dropbox\\projects\\marcusveres.com\\astro-marcus\\public\\images\\portfolio\")",
       "Bash(findstr:*)",
-      "Bash(copy:*)"
+      "Bash(copy:*)",
+      "Bash(npm run build:*)"
     ],
     "deny": [],
     "ask": []
