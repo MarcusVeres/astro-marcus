@@ -339,8 +339,6 @@ const images = portfolioItems.map(item => ({
     --initial-scale: 1;
     --initial-x: 0px;
     --initial-y: 0px;
-    --final-x: 0px;
-    --final-y: 0px;
     --final-scale: 1;
     max-height: 100vh;
     max-width: 100vw;
@@ -354,7 +352,7 @@ const images = portfolioItems.map(item => ({
       transform: translate(var(--initial-x), var(--initial-y)) scale(var(--initial-scale));
     }
     to {
-      transform: translate(var(--final-x), var(--final-y)) scale(var(--final-scale));
+      transform: scale(var(--final-scale));
     }
   }
 
@@ -486,6 +484,13 @@ const images = portfolioItems.map(item => ({
       const imageWidth = img.naturalWidth || img.getBoundingClientRect().width;
       const imageHeight = img.naturalHeight || img.getBoundingClientRect().height;
 
+      console.log('=== calculateCentering DEBUG ===');
+      console.log('Element:', element);
+      console.log('Img element:', img);
+      console.log('Wrapper size:', wrapperWidth, 'x', wrapperHeight);
+      console.log('Image natural size:', img.naturalWidth, 'x', img.naturalHeight);
+      console.log('Image computed size:', imageWidth, 'x', imageHeight);
+
       if (!imageWidth || !imageHeight) {
         console.error("Image dimensions are invalid.");
         return;
@@ -509,6 +514,9 @@ const images = portfolioItems.map(item => ({
 
       finalX = Math.max(0, finalX);
       finalY = Math.max(0, finalY);
+
+      console.log('Final transform:', `X=${finalX}px, Y=${finalY}px`);
+      console.log('================================');
 
       element.style.setProperty("--final-x", `${finalX}px`);
       element.style.setProperty("--final-y", `${finalY}px`);
@@ -537,7 +545,7 @@ const images = portfolioItems.map(item => ({
           // Find the actual img element for logging
           const img = imageElement.tagName === 'IMG' ? imageElement as HTMLImageElement : imageElement.querySelector('img');
           logDebugInfo("Image Loaded", undefined, img || undefined);
-          calculateCentering(imageElement);
+          // Centering is now handled by flexbox
         }
 
         const prevIndex =
@@ -603,9 +611,7 @@ const images = portfolioItems.map(item => ({
 
             logDebugInfo("Thumbnail Clicked", rect);
 
-            if (lightboxDialog.getAttribute("data-option") !== "slide") {
-              calculateCentering(lightboxImageElement);
-            }
+            // Centering is now handled by flexbox, no manual calculation needed
 
             showImageAtIndex(currentIndex);
           }
@@ -637,11 +643,7 @@ const images = portfolioItems.map(item => ({
       }
     }
 
-    function applyCenteringToAllImages(): void {
-      const lightboxImages =
-        document.querySelectorAll<HTMLElement>(".lightbox-image");
-      lightboxImages.forEach(calculateCentering);
-    }
+    // Centering is now handled by CSS flexbox, no manual calculation needed
 
     function handleSwipe(event: TouchEvent): void {
       const touchStartX = event.touches[0].clientX;
@@ -693,15 +695,7 @@ const images = portfolioItems.map(item => ({
     document.addEventListener("keydown", handleKeydown, { signal });
     document.addEventListener("touchstart", handleSwipe, { signal });
 
-    // Handle centering on resize with debouncing
-    window.addEventListener(
-      "resize",
-      () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = window.setTimeout(applyCenteringToAllImages, 300);
-      },
-      { signal },
-    );
+    // Resize handling no longer needed - flexbox handles centering automatically
 
     // Copy link functionality
     const copyLinkButtons = document.querySelectorAll<HTMLButtonElement>(".copy-link-button");
