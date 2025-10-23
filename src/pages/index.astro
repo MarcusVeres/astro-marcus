@@ -17,9 +17,10 @@ import Resources from '../components/Resources.astro'
 import Reviews from '../components/Reviews.astro'
 import FAQs from '../components/FAQs.astro'
 
-// Specifics 
+// Specifics
 import { Image } from 'astro:assets'  // Import Astro's Image component
 import logo from '../assets/images/logo.png'  // Import the image
+import avatar from '../assets/images/avatar.png'  // Import avatar image
 
 // Variables
 const pageTitle = "Home Page"
@@ -71,7 +72,14 @@ That's what I do. I build that bridge.
 			</div>
 			<div class="flex max-w-2xl mx-auto mt-16 sm:mt-24 lg:mt-0 lg:mr-0 lg:ml-10 lg:max-w-none lg:flex-none xl:ml-32">
 				<div class="flex-none w-full max-w-3xl sm:max-w-5xl lg:max-w-2xl">
-					<img width="1080" height="1080" src="/images/smile-transparent-no-crop-1024.png" alt="App screenshot" class="rounded-md shadow-2xl w-304 bg-white/5 ring-1 ring-white/10" />
+					<Image
+						src={avatar}
+						alt="Marcus Veres"
+						class="rounded-md shadow-2xl w-304 bg-white/5 ring-1 ring-white/10"
+						widths={[400, 600, 1080]}
+						sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
+						loading="eager"
+					/>
 				</div>
 			</div>
 		</div>
@@ -164,7 +172,13 @@ That's what I do. I build that bridge.
 
 	<div id="promise" class="flex flex-col items-center justify-center max-w-6xl px-6 pt-8 mx-auto bg-gray-900 md:flex-row lg:px-8 md:pt-20">
 		<div class="relative w-full max-w-4xl overflow-hidden md:w-96 md:flex-shrink-0 bg-gray-50/10 rounded-2xl md:h-full">
-			<img src="/images/smile-transparent-no-crop-1024.png" alt="" class="object-cover size-full" />
+			<Image
+				src={avatar}
+				alt="Marcus Veres"
+				class="object-cover size-full"
+				widths={[400, 600, 800]}
+				sizes="(max-width: 768px) 100vw, 400px"
+			/>
 			<svg viewBox="0 0 926 676" aria-hidden="true" class="absolute -bottom-24 left-24 w-231.5 transform-gpu blur-[118px]">
 			<path d="m254.325 516.708-90.89 158.331L0 436.427l254.325 80.281 163.691-285.15c1.048 131.759 36.144 345.144 168.149 144.613C751.171 125.508 707.17-93.823 826.603 41.15c95.546 107.978 104.766 294.048 97.432 373.585L685.481 297.694l16.974 360.474-448.13-141.46Z" fill="url(#60c3c621-93e0-4a09-a0e6-4c228a0116d8)" fill-opacity=".4" />
 			<defs>

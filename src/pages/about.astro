@@ -10,6 +10,9 @@ import ThingsIDo from '../components/sections/ThingsIDo.astro'
 import ToolsIUse from '../components/sections/ToolsIUse.astro'
 import WorkExperience from '../components/sections/WorkExperience.astro'
 
+import { Image } from 'astro:assets'
+import avatar from '../assets/images/avatar.png'
+
 const pageTitle = "Contact"
 ---
 <BaseLayout pageTitle={`${pageTitle} blog`}>
@@ -56,7 +59,14 @@ const pageTitle = "Contact"
 			</div>
 			<div class="flex max-w-2xl mx-auto mt-16 sm:mt-24 lg:mt-0 lg:mr-0 lg:ml-10 lg:max-w-md lg:flex-none xl:ml-32">
 				<div class="flex-none w-full max-w-3xl sm:max-w-5xl lg:max-w-2xl">
-					<img width="1080" height="1080" src="/images/smile-transparent-no-crop-1024.png" alt="App screenshot" class="rounded-md shadow-2xl w-304 bg-white/5 ring-1 ring-white/10" />
+					<Image
+						src={avatar}
+						alt="Marcus Veres"
+						class="rounded-md shadow-2xl w-304 bg-white/5 ring-1 ring-white/10"
+						widths={[400, 600, 1080]}
+						sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 450px"
+						loading="eager"
+					/>
 				</div>
 			</div>
 		</div>
