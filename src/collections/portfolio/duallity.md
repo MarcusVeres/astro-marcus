@@ -2,6 +2,7 @@
 title: "Duallity"
 description: "From concept sketches to final 3D render."
 image: "@images/portfolio/duallity.png"
+thumbnail: "@images/portfolio/duallity-light.png"
 tags: ["design", "3d", "case-study"]
 contentType: "simple"
 order: 3000
