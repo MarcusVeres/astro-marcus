@@ -20,10 +20,17 @@ const { pageTitle } = Astro.props;
 		
 		<title>Marcus Veres // {pageTitle}</title>
 
-		<!-- Optimized Google Fonts - only 3 weights for better contrast -->
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+		<!-- Critical: Preload fonts FIRST (before any CSS) -->
+		<link rel="preload" href="/fonts/inter/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+		<link rel="preload" href="/fonts/inter/inter-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+		<link rel="preload" href="/fonts/inter/inter-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+		<!-- Critical: Inline @font-face to avoid render-blocking -->
+		<style>
+			@font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url('/fonts/inter/inter-latin-400-normal.woff2') format('woff2')}
+			@font-face{font-family:'Inter';font-style:normal;font-weight:600;font-display:swap;src:url('/fonts/inter/inter-latin-600-normal.woff2') format('woff2')}
+			@font-face{font-family:'Inter';font-style:normal;font-weight:800;font-display:swap;src:url('/fonts/inter/inter-latin-800-normal.woff2') format('woff2')}
+		</style>
 
 		<!-- Page-specific head content -->
 		<slot name="head" />
