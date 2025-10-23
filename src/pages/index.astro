@@ -29,8 +29,7 @@ const pageTitle = "Home Page"
 ---
 <BaseLayout pageTitle={`Marcus Veres // Communication Mastery`}>
 
-	<!-- Preload LCP image (hero avatar) -->
-	<link slot="head" rel="preload" as="image" href={avatar.src} fetchpriority="high" />
+	<!-- Avatar hidden on mobile, so no preload needed -->
 
 	<div class="relative overflow-hidden bg-gray-900 isolate">
 		<svg aria-hidden="true" class="absolute inset-0 -z-10 size-full mask-[radial-gradient(100%_100%_at_top_right,white,transparent)] stroke-white/10">
@@ -74,14 +73,14 @@ That's what I do. I build that bridge.
 					<a href="#buckets" class="font-semibold text-white text-sm/6">See What's Possible <span aria-hidden="true">→</span></a>
 				</div>
 			</div>
-			<div class="flex max-w-2xl mx-auto mt-16 sm:mt-24 lg:mt-0 lg:mr-0 lg:ml-10 lg:max-w-none lg:flex-none xl:ml-32">
-				<div class="flex-none w-full max-w-3xl sm:max-w-5xl lg:max-w-2xl">
+			<div class="hidden lg:flex max-w-2xl mx-auto lg:mt-0 lg:mr-0 lg:ml-10 lg:max-w-none lg:flex-none xl:ml-32">
+				<div class="flex-none w-full lg:max-w-2xl">
 					<Image
 						src={avatar}
 						alt="Marcus Veres"
 						class="rounded-md shadow-2xl w-304 bg-white/5 ring-1 ring-white/10"
-						widths={[400, 600]}
-						sizes="(max-width: 640px) 400px, 600px"
+						widths={[600]}
+						sizes="600px"
 						loading="eager"
 						fetchpriority="high"
 					/>
