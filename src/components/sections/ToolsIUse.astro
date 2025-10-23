@@ -13,7 +13,7 @@ const tools = Object.values(toolsData.data);
       <li class="relative group aspect-square">
         <div class="flex items-center justify-center w-full h-full transition-all duration-300 fill-white group-hover:fill-current" style={`color: ${tool.SvgColor}`}>
           <Fragment set:html={tool.Svg} />
-          <div class="absolute p-4 mx-8 text-lg font-medium text-center text-white uppercase transition-all duration-300 translate-y-12 rounded-sm opacity-0 bg-black/50 group-hover:opacity-100 bg-opacity-20">
+          <div class="absolute p-4 mx-8 text-lg font-semibold text-center text-white uppercase transition-all duration-300 translate-y-12 rounded-sm opacity-0 bg-black/50 group-hover:opacity-100 bg-opacity-20">
             {tool.Title}
           </div>
         </div>

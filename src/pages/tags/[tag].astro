@@ -83,7 +83,7 @@ const { posts, resources, portfolio } = Astro.props;
                     </div>
                     <div class="flex gap-2 pt-6 mt-6 text-xs border-t border-white/10">
                         { post.data.tags.map( ( tag ) => (
-                            <a href={`/tags/${tag}`} class="relative z-10 rounded-full bg-gray-800/60 px-3 py-1.5 font-medium text-gray-300 hover:bg-gray-800">
+                            <a href={`/tags/${tag}`} class="relative z-10 rounded-full bg-gray-800/60 px-3 py-1.5 font-semibold text-gray-300 hover:bg-gray-800">
                                 { tag }
                             </a>
                         ) ) }
@@ -135,7 +135,7 @@ const { posts, resources, portfolio } = Astro.props;
                                 </div>
                                 <div class="flex gap-2 pt-6 mt-6 text-xs border-t border-white/10">
                                     { post.data.tags.map( ( tag ) => (
-                                        <a href={`/tags/${tag}`} class="relative z-10 rounded-full bg-gray-800/60 px-3 py-1.5 font-medium text-gray-300 hover:bg-gray-800">
+                                        <a href={`/tags/${tag}`} class="relative z-10 rounded-full bg-gray-800/60 px-3 py-1.5 font-semibold text-gray-300 hover:bg-gray-800">
                                             { tag }
                                         </a>
                                     ) ) }
@@ -169,7 +169,7 @@ const { posts, resources, portfolio } = Astro.props;
                                 </p>
                                 <div class="flex gap-2 mt-4 text-xs">
                                     {resource.data.tags.map((resourceTag) => (
-                                        <a href={`/tags/${resourceTag}`} class="px-3 py-1.5 font-medium text-gray-300 rounded-full bg-gray-800/60 hover:bg-gray-800">
+                                        <a href={`/tags/${resourceTag}`} class="px-3 py-1.5 font-semibold text-gray-300 rounded-full bg-gray-800/60 hover:bg-gray-800">
                                             {resourceTag}
                                         </a>
                                     ))}
@@ -207,7 +207,7 @@ const { posts, resources, portfolio } = Astro.props;
                                 </a>
                                 <div class="flex gap-2 mt-3 text-xs">
                                     {item.data.tags && item.data.tags.map((portfolioTag) => (
-                                        <a href={`/tags/${portfolioTag}`} class="px-2 py-1 font-medium text-gray-300 rounded-full bg-gray-800/60 hover:bg-gray-800">
+                                        <a href={`/tags/${portfolioTag}`} class="px-2 py-1 font-semibold text-gray-300 rounded-full bg-gray-800/60 hover:bg-gray-800">
                                             {portfolioTag}
                                         </a>
                                     ))}

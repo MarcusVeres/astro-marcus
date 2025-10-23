@@ -64,7 +64,7 @@ const sortedResources = allResources.sort((a, b) => {
                 </form>
             </div>
             <ul
-                class="flex items-center w-full pb-6 mx-auto mt-4 overflow-x-auto font-bold tracking-wider text-center text-yellow-400 uppercase divide-x-2 cursor-pointer divide-yellow-600/20 border-opacity-20 text-md drop-shadow-md md:justify-center md:overflow-x-visible scrollbar-hide snap-x snap-mandatory">
+                class="flex items-center w-full pb-6 mx-auto mt-4 overflow-x-auto font-extrabold tracking-wider text-center text-yellow-400 uppercase divide-x-2 cursor-pointer divide-yellow-600/20 border-opacity-20 text-md drop-shadow-md md:justify-center md:overflow-x-visible scrollbar-hide snap-x snap-mandatory">
                 {featuredCategories.map((category) => (
                   <li
                     class="flex-shrink-0 px-3 transition-all duration-500 opacity-40 hover:opacity-100 snap-center"
@@ -111,11 +111,11 @@ const sortedResources = allResources.sort((a, b) => {
                        class={`resource-card flex flex-col items-left justify-center gap-4 md:gap-6 xl:gap-8 py-2 transition-all duration-500 transform ${bgColorClass} rounded-2xl pane xl:aspect-chonk md:hover:scale-125 md:hover:z-30 md:hover:shadow-2xl`}>
                       <h4 class="text-2xl font-extrabold tracking-tight text-left md:text-xl xl:text-4xl">
                         {displaySurTitle && (
-                          <span class="block text-lg font-bold md:text-base xl:text-2xl">{displaySurTitle}</span>
+                          <span class="block text-lg font-extrabold md:text-base xl:text-2xl">{displaySurTitle}</span>
                         )}
                         <span class="block">{displayMainTitle}</span>
                         {displaySubTitle && (
-                          <span class="block text-lg font-bold md:text-base xl:text-2xl">{displaySubTitle}</span>
+                          <span class="block text-lg font-extrabold md:text-base xl:text-2xl">{displaySubTitle}</span>
                         )}
                       </h4>
                       <ResourceIcon icon={resource.data.icon} />

@@ -20,10 +20,10 @@ const { pageTitle } = Astro.props;
 		
 		<title>Marcus Veres // {pageTitle}</title>
 
-		<!-- Preload critical Inter font weights -->
-		<link rel="preload" href="/fonts/inter/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-		<link rel="preload" href="/fonts/inter/inter-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
-		<link rel="preload" href="/fonts/inter/inter-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+		<!-- Optimized Google Fonts - only 3 weights for better contrast -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
 		<!-- Page-specific head content -->
 		<slot name="head" />
