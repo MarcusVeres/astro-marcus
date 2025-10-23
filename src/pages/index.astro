@@ -21,6 +21,7 @@ import FAQs from '../components/FAQs.astro'
 import { Image } from 'astro:assets'  // Import Astro's Image component
 import logo from '../assets/images/logo.png'  // Import the image
 import avatar from '../assets/images/avatar.png'  // Import avatar image
+import bentoPlaceholder from '../assets/images/placeholders/bento-03-mobile-friendly.png'  // Placeholder image
 
 // Variables
 const pageTitle = "Home Page"
@@ -76,8 +77,8 @@ That's what I do. I build that bridge.
 						src={avatar}
 						alt="Marcus Veres"
 						class="rounded-md shadow-2xl w-304 bg-white/5 ring-1 ring-white/10"
-						widths={[400, 600, 1080]}
-						sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 600px"
+						widths={[400, 600]}
+						sizes="(max-width: 640px) 400px, 600px"
 						loading="eager"
 					/>
 				</div>
@@ -115,7 +116,7 @@ That's what I do. I build that bridge.
                         </div>
                         <div class="@container relative min-h-120 w-full grow max-lg:mx-auto max-lg:max-w-sm">
                             <div class="absolute inset-x-10 top-10 bottom-0 overflow-hidden rounded-t-[12cqw] border-x-[3cqw] border-t-[3cqw] border-gray-700 bg-gray-900 outline outline-white/20">
-                                <img src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-mobile-friendly.png" alt="" class="object-cover object-top size-full" />
+                                <Image src={bentoPlaceholder} alt="" class="object-cover object-top size-full" widths={[300, 400, 600]} sizes="(max-width: 640px) 300px, 400px" />
                             </div>
                         </div>
                     </div>
@@ -137,7 +138,7 @@ That's what I do. I build that bridge.
                         </div>
                         <div class="@container relative min-h-120 w-full grow max-lg:mx-auto max-lg:max-w-sm">
                             <div class="absolute inset-x-10 top-10 bottom-0 overflow-hidden rounded-t-[12cqw] border-x-[3cqw] border-t-[3cqw] border-gray-700 bg-gray-900 outline outline-white/20">
-                                <img src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-mobile-friendly.png" alt="" class="object-cover object-top size-full" />
+                                <Image src={bentoPlaceholder} alt="" class="object-cover object-top size-full" widths={[300, 400, 600]} sizes="(max-width: 640px) 300px, 400px" />
                             </div>
                         </div>
                     </div>
@@ -159,7 +160,7 @@ That's what I do. I build that bridge.
                         </div>
                         <div class="@container relative min-h-120 w-full grow max-lg:mx-auto max-lg:max-w-sm">
                             <div class="absolute inset-x-10 top-10 bottom-0 overflow-hidden rounded-t-[12cqw] border-x-[3cqw] border-t-[3cqw] border-gray-700 bg-gray-900 outline outline-white/20">
-                                <img src="https://tailwindcss.com/plus-assets/img/component-images/bento-03-mobile-friendly.png" alt="" class="object-cover object-top size-full" />
+                                <Image src={bentoPlaceholder} alt="" class="object-cover object-top size-full" widths={[300, 400, 600]} sizes="(max-width: 640px) 300px, 400px" />
                             </div>
                         </div>
                     </div>
@@ -176,8 +177,8 @@ That's what I do. I build that bridge.
 				src={avatar}
 				alt="Marcus Veres"
 				class="object-cover size-full"
-				widths={[400, 600, 800]}
-				sizes="(max-width: 768px) 100vw, 400px"
+				widths={[400, 600]}
+				sizes="(max-width: 640px) 400px, 400px"
 			/>
 			<svg viewBox="0 0 926 676" aria-hidden="true" class="absolute -bottom-24 left-24 w-231.5 transform-gpu blur-[118px]">
 			<path d="m254.325 516.708-90.89 158.331L0 436.427l254.325 80.281 163.691-285.15c1.048 131.759 36.144 345.144 168.149 144.613C751.171 125.508 707.17-93.823 826.603 41.15c95.546 107.978 104.766 294.048 97.432 373.585L685.481 297.694l16.974 360.474-448.13-141.46Z" fill="url(#60c3c621-93e0-4a09-a0e6-4c228a0116d8)" fill-opacity=".4" />
