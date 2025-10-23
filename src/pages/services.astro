@@ -1,8 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
 
+import ButtonAura from '@components/atoms/ButtonAura.astro'
+
+import Offerings from '@components/Offerings.astro'
+import Pedigree from '@components/Pedigree.astro'
+import Reviews from '@components/Reviews.astro'
+
 import HeroImageTiles from '../components/sections/HeroImageTiles.astro'
 import FeatureCentered2x2 from '../components/sections/FeatureCentered2x2.astro'
+
 import CTAGlassGlow from '../components/sections/CTAGlassGlow.astro'
 import BentoThreeColumn from '../components/sections/BentoThreeColumn.astro'
 
@@ -10,49 +17,75 @@ const pageTitle = "Services"
 ---
 <BaseLayout pageTitle={`I am the bestest Astro Marcus and this is my ${pageTitle}!`}>
 
-	<FeatureCentered2x2 title="Everything you need to dominate" />
+	<!-- <FeatureCentered2x2 title="Everything you need to dominate" /> -->
 
-	<BentoThreeColumn />
+	<div class="relative isolate">
+      <svg aria-hidden="true" class="absolute inset-x-0 top-0 -z-10 h-256 w-full mask-[radial-gradient(32rem_32rem_at_center,white,transparent)] stroke-white/10">
+        <defs>
+          <pattern id="1f932ae7-37de-4c0a-a8b0-a6e3b4d44b84" width="200" height="200" x="50%" y="-1" patternUnits="userSpaceOnUse">
+            <path d="M.5 200V.5H200" fill="none" />
+          </pattern>
+        </defs>
+        <svg x="50%" y="-1" class="overflow-visible fill-gray-800">
+          <path d="M-200 0h201v201h-201Z M600 0h201v201h-201Z M-400 600h201v201h-201Z M200 800h201v201h-201Z" stroke-width="0" />
+        </svg>
+        <rect width="100%" height="100%" fill="url(#1f932ae7-37de-4c0a-a8b0-a6e3b4d44b84)" stroke-width="0" />
+      </svg>
+      <div aria-hidden="true" class="absolute top-0 right-0 -ml-24 overflow-hidden left-1/2 -z-10 transform-gpu blur-3xl lg:ml-24 xl:ml-48">
+        <div style="clip-path: polygon(63.1% 29.5%, 100% 17.1%, 76.6% 3%, 48.4% 0%, 44.6% 4.7%, 54.5% 25.3%, 59.8% 49%, 55.2% 57.8%, 44.4% 57.2%, 27.8% 47.9%, 35.1% 81.5%, 0% 97.7%, 39.2% 100%, 35.2% 81.4%, 97.2% 52.8%, 63.1% 29.5%)" class="aspect-801/1036 w-200.25 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30"></div>
+      </div>
+      <div class="overflow-hidden">
+        <div class="px-6 pt-12 pb-32 mx-auto max-w-7xl sm:pt-60 lg:px-8 lg:pt-20">
+          <div class="max-w-2xl mx-auto gap-x-14 lg:mx-0 lg:flex lg:max-w-none lg:items-center">
+            <div class="relative w-full lg:max-w-xl lg:shrink-0 xl:max-w-2xl">
+              <h1 class="text-5xl font-semibold tracking-tight text-white text-pretty sm:text-7xl">We’re changing the way people connect</h1>
+              <p class="mt-8 text-lg font-medium text-gray-400 text-pretty sm:max-w-md sm:text-xl/8 lg:max-w-none">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua. Anim aute id magna aliqua ad ad non deserunt sunt.</p>
+              <div class="flex items-center mt-10 gap-x-6">
+                <ButtonAura link="/contact" label="Get Started" />
+                <a href="/portfolio" class="font-semibold text-white text-sm/6">See portfolio <span aria-hidden="true">→</span></a>
+              </div>
+            </div>
+            <div class="flex justify-end gap-8 mt-14 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
+              <div class="flex-none pt-32 ml-auto space-y-8 w-44 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-0 xl:pt-80">
+                <div class="relative">
+                  <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80" alt="" class="object-cover w-full shadow-lg aspect-2/3 rounded-xl bg-gray-700/5" />
+                  <div class="absolute inset-0 pointer-events-none rounded-xl ring-1 ring-white/10 ring-inset"></div>
+                </div>
+              </div>
+              <div class="flex-none mr-auto space-y-8 w-44 sm:mr-0 sm:pt-52 lg:pt-36">
+                <div class="relative">
+                  <img src="https://images.unsplash.com/photo-1485217988980-11786ced9454?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80" alt="" class="object-cover w-full shadow-lg aspect-2/3 rounded-xl bg-gray-700/5" />
+                  <div class="absolute inset-0 pointer-events-none rounded-xl ring-1 ring-white/10 ring-inset"></div>
+                </div>
+                <div class="relative">
+                  <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-x=.4&w=396&h=528&q=80" alt="" class="object-cover w-full shadow-lg aspect-2/3 rounded-xl bg-gray-700/5" />
+                  <div class="absolute inset-0 pointer-events-none rounded-xl ring-1 ring-white/10 ring-inset"></div>
+                </div>
+              </div>
+              <div class="flex-none pt-32 space-y-8 w-44 sm:pt-0">
+                <div class="relative">
+                  <img src="https://images.unsplash.com/photo-1670272504528-790c24957dda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=left&w=400&h=528&q=80" alt="" class="object-cover w-full shadow-lg aspect-2/3 rounded-xl bg-gray-700/5" />
+                  <div class="absolute inset-0 pointer-events-none rounded-xl ring-1 ring-white/10 ring-inset"></div>
+                </div>
+                <div class="relative">
+                  <img src="https://images.unsplash.com/photo-1670272505284-8faba1c31f7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80" alt="" class="object-cover w-full shadow-lg aspect-2/3 rounded-xl bg-gray-700/5" />
+                  <div class="absolute inset-0 pointer-events-none rounded-xl ring-1 ring-white/10 ring-inset"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-	<CTAGlassGlow title="Supercharge your productivity." subtitle="Become more effective today!" />
+	<Offerings />
 
-	<div class="grid h-screen p-10 place-content-center bg-gradient-to-b from-black to-black">
+	<!-- <BentoThreeColumn /> -->
 
-		<a href="#" class="transition-all ease-in-out duration-700 block animate-background rounded-full border-8 border-black/80 bg-gradient-to-r from-green-300 via-blue-600 to-red-300 bg-[length:_400%_400%] p-2 [animation-duration:_6s] group hover:border-black/50 hover:bg-black/50">
-			<span class="transition-all ease-in-out duration-700 block px-10 py-4 text-md md:text-[44px] text-white uppercase rounded-full bg-black/90 font-extralight group-hover:bg-black/50"> Push to Start </span>
-		</a>
+	<Pedigree />
 
-	</div>
+	<Reviews />
 
-	<div class="grid h-screen p-10 place-content-center bg-gradient-to-tr from-green-50 to-teal-50 via-pink-50">
-	<a href="#" class="block animate-background rounded-full border-8 border-black/30 bg-gradient-to-r from-green-300 via-blue-600 to-red-300 bg-[length:_400%_400%] p-1 [animation-duration:_6s]">
-		<span class="block px-10 py-4 text-lg font-semibold rounded-full bg-pink-50"> Push to Start </span>
-	</a>
-	</div>
-
-	<div class="bg-gradient-to-tr from-mint-100 via-slate-50 to-white dark:from-black dark:to-slate-900 bg-slate-200 dark:bg-slate-950 text-black dark:text-white gap-5 bg-no-repeat bg-cover flex min-h-[100vh] py-20 flex-col items-center justify-center">
-	<!-- <div class="bg-gradient-to-tr from-mint-100 via-pink-200 to-pink-50 dark:from-black dark:to-slate-900 bg-slate-50 dark:bg-slate-950 text-black dark:text-white gap-5 bg-no-repeat bg-cover flex min-h-[100vh] py-20 flex-col items-center justify-center"> -->
-
-		<div
-		class="no-repeat border-[10px] border-black/80 w-full max-w-lg bg-conic/[from_var(--border-angle)] from-red-400 to-pink-500 dark:from-black via-green-300 dark:to-black animate-rotate-border-wide rounded-full p-[8px] transition-all ease-in-out duration-300 text-gray-300 hover:text-gray-100"
-		>
-		<div class="p-5 bg-black border rounded-full dark:bg-zinc-900 border-white/40">
-			<p class="text-5xl text-center dark:text-white font-extralight">
-			START NOW
-			</p>
-		</div>
-		</div>
-
-		<div
-		class="no-repeat border-[16px] border-black/90 w-full max-w-lg bg-conic/[from_var(--border-angle)] from-red-400 to-pink-500 dark:from-black via-green-300 dark:to-black animate-rotate-border-wide rounded-full p-[4px] transition-all ease-in-out duration-300 text-gray-300 hover:text-gray-100 shadow-2xl shadow-slate-600"
-		>
-		<div class="p-5 bg-black rounded-full opacity-100 dark:bg-zinc-900 ">
-			<p class="text-5xl text-center dark:text-white font-extralight">
-			START NOW
-			</p>
-		</div>
-		</div>
-
-	</div>
+	<!-- <CTAGlassGlow title="Supercharge your productivity." subtitle="Become more effective today!" /> -->
 
 </BaseLayout>
