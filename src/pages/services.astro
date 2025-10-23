@@ -13,34 +13,43 @@ import FeatureCentered2x2 from '../components/sections/FeatureCentered2x2.astro'
 import CTAGlassGlow from '../components/sections/CTAGlassGlow.astro'
 import BentoThreeColumn from '../components/sections/BentoThreeColumn.astro'
 
+import { Image } from 'astro:assets'
+
+// Import showcase project images
+import islandRuinsImg from '../assets/images/portfolio/island-ruins-wide.png'
+import quittingSimulatorImg from '../assets/images/portfolio/quiting-simulator.png'
+import donutShopImg from '../assets/images/portfolio/donut-shop.jpg'
+import duallityImg from '../assets/images/portfolio/duallity.png'
+import e33Img from '../assets/images/portfolio/33-e.png'
+
 const pageTitle = "Services"
 
 // Showcase projects - 5 featured works displayed in hero
 const showcaseProjects = [
 	{
-		image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80',
-		title: 'Project 1',
-		link: '/portfolio/knife-case-study', // Example: link to portfolio item
+		image: islandRuinsImg,
+		title: 'Island Ruins',
+		link: '/portfolio/island-ruins',
 	},
 	{
-		image: 'https://images.unsplash.com/photo-1485217988980-11786ced9454?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80',
-		title: 'Project 2',
-		link: '/resources/blender-3d', // Example: link to resource
+		image: quittingSimulatorImg,
+		title: 'Quitting Simulator',
+		link: '/portfolio/quitting-simulator',
 	},
 	{
-		image: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=focalpoint&fp-x=.4&w=396&h=528&q=80',
-		title: 'Project 3',
-		link: '/portfolio', // Example: link to portfolio index
+		image: donutShopImg,
+		title: 'Donut Shop',
+		link: '/portfolio/donut-shop',
 	},
 	{
-		image: 'https://images.unsplash.com/photo-1670272504528-790c24957dda?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&crop=left&w=400&h=528&q=80',
-		title: 'Project 4',
-		link: '/resources/center-a-div', // Example: link to resource
+		image: duallityImg,
+		title: 'Duallity',
+		link: '/portfolio/duallity',
 	},
 	{
-		image: 'https://images.unsplash.com/photo-1670272505284-8faba1c31f7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&h=528&q=80',
-		title: 'Project 5',
-		link: '/portfolio/marcus-logo', // Example: link to portfolio item
+		image: e33Img,
+		title: '33-E',
+		link: '/portfolio/33-e',
 	},
 ];
 ---
@@ -81,27 +90,27 @@ const showcaseProjects = [
             <div class="flex justify-end gap-8 mt-14 sm:-mt-44 sm:justify-start sm:pl-20 lg:mt-0 lg:pl-0">
               <div class="flex-none pt-32 ml-auto space-y-8 w-44 sm:ml-0 sm:pt-80 lg:order-last lg:pt-36 xl:order-0 xl:pt-80">
                 <a href={showcaseProjects[0].link} class="block card-zoom aspect-2/3">
-                  <img src={showcaseProjects[0].image} alt={showcaseProjects[0].title} class="card-zoom-image" />
+                  <Image src={showcaseProjects[0].image} alt={showcaseProjects[0].title} class="card-zoom-image" widths={[400]} sizes="176px" />
                   <div class="absolute inset-0 pointer-events-none rounded-xl ring-1 ring-white/10 ring-inset"></div>
                 </a>
               </div>
               <div class="flex-none mr-auto space-y-8 w-44 sm:mr-0 sm:pt-52 lg:pt-36">
                 <a href={showcaseProjects[1].link} class="block card-zoom aspect-2/3">
-                  <img src={showcaseProjects[1].image} alt={showcaseProjects[1].title} class="card-zoom-image" />
+                  <Image src={showcaseProjects[1].image} alt={showcaseProjects[1].title} class="card-zoom-image" widths={[400]} sizes="176px" />
                   <div class="absolute inset-0 pointer-events-none rounded-xl ring-1 ring-white/10 ring-inset"></div>
                 </a>
                 <a href={showcaseProjects[2].link} class="block card-zoom aspect-2/3">
-                  <img src={showcaseProjects[2].image} alt={showcaseProjects[2].title} class="card-zoom-image" />
+                  <Image src={showcaseProjects[2].image} alt={showcaseProjects[2].title} class="card-zoom-image" widths={[400]} sizes="176px" />
                   <div class="absolute inset-0 pointer-events-none rounded-xl ring-1 ring-white/10 ring-inset"></div>
                 </a>
               </div>
               <div class="flex-none pt-32 space-y-8 w-44 sm:pt-0">
                 <a href={showcaseProjects[3].link} class="block card-zoom aspect-2/3">
-                  <img src={showcaseProjects[3].image} alt={showcaseProjects[3].title} class="card-zoom-image" />
+                  <Image src={showcaseProjects[3].image} alt={showcaseProjects[3].title} class="card-zoom-image" widths={[400]} sizes="176px" />
                   <div class="absolute inset-0 pointer-events-none rounded-xl ring-1 ring-white/10 ring-inset"></div>
                 </a>
                 <a href={showcaseProjects[4].link} class="block card-zoom aspect-2/3">
-                  <img src={showcaseProjects[4].image} alt={showcaseProjects[4].title} class="card-zoom-image" />
+                  <Image src={showcaseProjects[4].image} alt={showcaseProjects[4].title} class="card-zoom-image" widths={[400]} sizes="176px" />
                   <div class="absolute inset-0 pointer-events-none rounded-xl ring-1 ring-white/10 ring-inset"></div>
                 </a>
               </div>
