@@ -11,7 +11,22 @@
       "Bash(findstr:*)",
       "Bash(copy:*)",
       "Bash(npm run build:*)",
-      "Bash(dir \"C:\\Dropbox\\projects\\marcusveres.com\\astro-marcus\\public\\images\\client-logos\")"
+      "Bash(dir \"C:\\Dropbox\\projects\\marcusveres.com\\astro-marcus\\public\\images\\client-logos\")",
+      "Bash(tree:*)",
+      "Bash(for dir in \"C:\\Dropbox\\projects\\marcusveres.com\\astro-marcus\\temp\\capensis\\static\\img\\projects\"/*)",
+      "Bash(do if [ -d \"$dir\" ])",
+      "Bash(fi)",
+      "Bash(done)",
+      "Bash(for dir in */)",
+      "Bash(for project in alchemetal bond-nfc fireguard geovin-furniture health-is-cool-360 nabob-sustainable opus ph-scale-outfitters smu-2048 social-game-universe stouffville-motorfest-2009 sybaris-analytics towit trackula wylde-about-health yourscope-silo)",
+      "Bash(do echo -n \"$project: \")",
+      "Bash(if [ -d \"C:\\Dropbox\\projects\\marcusveres.com\\astro-marcus\\temp\\capensis\\static\\img\\projects$project\\images\" ])",
+      "Bash(then ls \"C:\\Dropbox\\projects\\marcusveres.com\\astro-marcus\\temp\\capensis\\static\\img\\projects$project\\images\")",
+      "Bash(else echo \"0 (no images folder)\")",
+      "Bash(xcopy:*)",
+      "Bash(robocopy:*)",
+      "Bash(powershell:*)",
+      "Bash(dir:*)"
     ],
     "deny": [],
     "ask": []
