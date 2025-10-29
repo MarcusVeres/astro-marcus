@@ -2,9 +2,10 @@
 title: "Motorfest 2009"
 description: "Annual outdoor exhibition showcasing motor vehicles from Ontario, celebrating automobile culture."
 image: "@images/portfolio/stouffville-motorfest-2009/main.png"
+thumbnail: "@images/portfolio/stouffville-motorfest-2009/thumbnail.png"
 tags: ["design", "graphics", "photography"]
 contentType: "simple"
-order: 1600
+order: 4000
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2009-06-01

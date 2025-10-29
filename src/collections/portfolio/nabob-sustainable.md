@@ -2,9 +2,10 @@
 title: "Nabob Sustainable Packaging"
 description: "Eco-friendly coffee packaging concept featuring wooden barrel dispensers with rotation mechanism."
 image: "@images/portfolio/nabob-sustainable/main.jpg"
+thumbnail: "@images/portfolio/nabob-sustainable/thumbnail.png"
 tags: ["design", "3d", "graphics"]
 contentType: "simple"
-order: 1603
+order: 4030
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2011-02-01

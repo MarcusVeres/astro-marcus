@@ -2,9 +2,10 @@
 title: "TowIt"
 description: "Mobile and web app for reporting vehicles that illegally block roadways, driveways and bike lanes."
 image: "@images/portfolio/towit/main.jpg"
+thumbnail: "@images/portfolio/towit/thumbnail.png"
 tags: ["design", "programming", "web"]
 contentType: "simple"
-order: 1614
+order: 4140
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2014-10-01

@@ -2,9 +2,10 @@
 title: "YourScope Marketing Package"
 description: "Branding and marketing materials for SILO online tutoring system for elementary students."
 image: "@images/portfolio/yourscope-silo/main.jpg"
+thumbnail: "@images/portfolio/yourscope-silo/thumbnail.png"
 tags: ["design", "3d", "graphics"]
 contentType: "simple"
-order: 1604
+order: 4040
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2011-06-01

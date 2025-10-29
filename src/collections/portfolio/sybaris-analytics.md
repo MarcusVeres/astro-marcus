@@ -2,9 +2,10 @@
 title: "Sybaris Corporate"
 description: "Corporate website design and development emphasizing imagination in code."
 image: "@images/portfolio/sybaris-analytics/main.jpg"
+thumbnail: "@images/portfolio/sybaris-analytics/thumbnail.png"
 tags: ["design", "web", "programming", "3d"]
 contentType: "simple"
-order: 1606
+order: 4060
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2012-01-01

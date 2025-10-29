@@ -2,9 +2,10 @@
 title: "Health is Cool 360"
 description: "Multi-platform desktop application to assist healthcare sales teams with presentations."
 image: "@images/portfolio/health-is-cool-360/main.jpg"
+thumbnail: "@images/portfolio/health-is-cool-360/thumbnail.png"
 tags: ["design", "programming"]
 contentType: "simple"
-order: 1610
+order: 4100
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2013-03-01

@@ -2,9 +2,10 @@
 title: "Hollywood Tycoon"
 description: "Facebook tycoon game praised as one of the best casual tycoon games available."
 image: "@images/portfolio/social-game-universe/main.jpg"
+thumbnail: "@images/portfolio/social-game-universe/thumbnail.png"
 tags: ["design", "programming"]
 contentType: "simple"
-order: 1607
+order: 4070
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2012-06-01

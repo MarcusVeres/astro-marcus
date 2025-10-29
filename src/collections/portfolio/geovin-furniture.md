@@ -2,9 +2,10 @@
 title: "Geovin Furniture Catalogue"
 description: "Marketing materials and catalogue design for dining room and bedroom furnishings manufacturer."
 image: "@images/portfolio/geovin-furniture/main.jpg"
+thumbnail: "@images/portfolio/geovin-furniture/thumbnail.png"
 tags: ["design", "graphics"]
 contentType: "simple"
-order: 1602
+order: 4020
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2010-09-01

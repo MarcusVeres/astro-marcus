@@ -2,9 +2,10 @@
 title: "Alchemetal"
 description: "Highly ornamental unicase display typeface for grungy, mysterious or aggressive themes."
 image: "@images/portfolio/alchemetal/main.jpg"
+thumbnail: "@images/portfolio/alchemetal/thumbnail.png"
 tags: ["design", "3d", "art"]
 contentType: "simple"
-order: 1609
+order: 4090
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2012-11-01

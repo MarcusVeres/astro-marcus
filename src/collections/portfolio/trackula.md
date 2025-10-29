@@ -2,9 +2,10 @@
 title: "Trackula"
 description: "Time-tracking and invoicing application with dual modes for contractors and project managers."
 image: "@images/portfolio/trackula/main.jpg"
+thumbnail: "@images/portfolio/trackula/thumbnail.png"
 tags: ["design"]
 contentType: "simple"
-order: 1608
+order: 4080
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2012-09-01

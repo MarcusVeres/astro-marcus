@@ -2,9 +2,10 @@
 title: "OPUS"
 description: "Integrated web application combining calendar, task list, address book and instant messenger."
 image: "@images/portfolio/opus/main.jpg"
+thumbnail: "@images/portfolio/opus/thumbnail.png"
 tags: ["design", "programming", "web"]
 contentType: "simple"
-order: 1612
+order: 4120
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2014-02-01

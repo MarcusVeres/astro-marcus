@@ -2,9 +2,10 @@
 title: "PhScale Outfitters Season 1"
 description: "Independent clothing company producing casual apparel for the young, urban crowd."
 image: "@images/portfolio/ph-scale-outfitters/main.jpg"
+thumbnail: "@images/portfolio/ph-scale-outfitters/thumbnail.png"
 tags: ["design", "art", "graphics"]
 contentType: "simple"
-order: 1601
+order: 4010
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2010-03-01

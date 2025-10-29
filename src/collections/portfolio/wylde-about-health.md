@@ -2,9 +2,10 @@
 title: "Wylde About Health"
 description: "Website design and development for world-renowned complementary alternative medicine expert."
 image: "@images/portfolio/wylde-about-health/main.jpg"
+thumbnail: "@images/portfolio/wylde-about-health/thumbnail.png"
 tags: ["design", "web", "programming"]
 contentType: "simple"
-order: 1605
+order: 4050
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2011-10-01
