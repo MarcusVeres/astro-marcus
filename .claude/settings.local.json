@@ -26,7 +26,10 @@
       "Bash(xcopy:*)",
       "Bash(robocopy:*)",
       "Bash(powershell:*)",
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Bash(for dir in clearbridge jeffrey tcm-limited webdev zenbanx)",
+      "Bash(do echo \"=== $dir ===\")",
+      "Bash(ls:*)"
     ],
     "deny": [],
     "ask": []
