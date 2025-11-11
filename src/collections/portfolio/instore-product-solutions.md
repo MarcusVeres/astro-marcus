@@ -4,7 +4,7 @@ description: "Web design and development project for Instore Product Solutions. 
 image: "@images/portfolio/instore-product-solutions/main.jpg"
 tags: ["design", "web"]
 contentType: "simple"
-order: 5009
+order: 7900
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-01-01

@@ -4,7 +4,7 @@ description: "Web design and development project for Illumination Psych. [Add sp
 image: "@images/portfolio/illumination-psych/main.jpg"
 tags: ["design", "web"]
 contentType: "simple"
-order: 5005
+order: 7940
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-01-01

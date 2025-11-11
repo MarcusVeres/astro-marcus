@@ -4,7 +4,7 @@ description: "Web design and development project for Gina Marie. [Add specific p
 image: "@images/portfolio/gina-marie/main.jpg"
 tags: ["design", "web"]
 contentType: "simple"
-order: 5002
+order: 6990
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-01-01

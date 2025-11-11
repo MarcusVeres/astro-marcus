@@ -4,7 +4,7 @@ description: "Web design and development project for Ken Lloyd. [Add specific pr
 image: "@images/portfolio/ken-lloyd/main.jpg"
 tags: ["design", "web"]
 contentType: "simple"
-order: 5006
+order: 6960
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-01-01

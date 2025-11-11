@@ -4,7 +4,7 @@ description: "Web design and development project for Juice Mobile. [Add specific
 image: "@images/portfolio/juice-mobile/main.jpg"
 tags: ["design", "web"]
 contentType: "simple"
-order: 5010
+order: 7980
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-01-01

@@ -5,7 +5,7 @@ image: "@images/portfolio/health-is-cool-360/main.jpg"
 thumbnail: "@images/portfolio/health-is-cool-360/thumbnail.png"
 tags: ["design", "programming"]
 contentType: "simple"
-order: 4100
+order: 4990
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2013-03-01

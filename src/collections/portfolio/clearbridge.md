@@ -4,7 +4,7 @@ description: "Web development project for Clearbridge. [Add specific project det
 image: "@images/portfolio/clearbridge/clearbridge-0.jpg"
 tags: ["design", "web", "programming"]
 contentType: "simple"
-order: 5000
+order: 7970
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-01-01

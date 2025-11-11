@@ -4,7 +4,7 @@ description: "Web design and development project for Instore Corp Greenbox. [Add
 image: "@images/portfolio/instore-corp-greenbox/main.jpg"
 tags: ["design", "web"]
 contentType: "simple"
-order: 5008
+order: 7950
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-01-01

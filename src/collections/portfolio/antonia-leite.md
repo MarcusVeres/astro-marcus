@@ -4,7 +4,7 @@ description: "Web design and development project for Antonia Leite. [Add specifi
 image: "@images/portfolio/antonia-leite/main.jpg"
 tags: ["design", "web"]
 contentType: "simple"
-order: 5000
+order: 7930
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-01-01

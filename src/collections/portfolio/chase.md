@@ -4,7 +4,7 @@ description: "Web design and development project for Chase. [Add specific projec
 image: "@images/portfolio/chase/main.jpg"
 tags: ["design", "web"]
 contentType: "simple"
-order: 5007
+order: 7990
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-01-01

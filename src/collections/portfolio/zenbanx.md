@@ -4,7 +4,7 @@ description: "Web development project for Zenbanx financial services. [Add speci
 image: "@images/portfolio/zenbanx/zenbanx-1.jpg"
 tags: ["design", "web", "programming"]
 contentType: "simple"
-order: 5100
+order: 7960
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-05-01
