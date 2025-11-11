@@ -5,7 +5,7 @@ image: "@images/portfolio/nabob-sustainable/main.jpg"
 thumbnail: "@images/portfolio/nabob-sustainable/thumbnail.png"
 tags: ["design", "3d", "graphics"]
 contentType: "simple"
-order: 4030
+order: 120
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2011-02-01

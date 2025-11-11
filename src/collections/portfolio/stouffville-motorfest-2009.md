@@ -5,7 +5,7 @@ image: "@images/portfolio/stouffville-motorfest-2009/main.png"
 thumbnail: "@images/portfolio/stouffville-motorfest-2009/thumbnail.png"
 tags: ["design", "graphics", "photography"]
 contentType: "simple"
-order: 4000
+order: 125
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2009-06-01

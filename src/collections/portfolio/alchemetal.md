@@ -5,7 +5,7 @@ image: "@images/portfolio/alchemetal/main.jpg"
 thumbnail: "@images/portfolio/alchemetal/thumbnail.png"
 tags: ["design", "3d", "art"]
 contentType: "simple"
-order: 4090
+order: 110
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2012-11-01
