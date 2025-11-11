@@ -30,7 +30,8 @@
       "Bash(for dir in clearbridge jeffrey tcm-limited webdev zenbanx)",
       "Bash(do echo \"=== $dir ===\")",
       "Bash(ls:*)",
-      "Bash(mkdir -p:*)"
+      "Bash(mkdir -p:*)",
+      "Bash(cp:*)"
     ],
     "deny": [],
     "ask": []
