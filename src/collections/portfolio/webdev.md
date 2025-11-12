@@ -4,7 +4,7 @@ description: "Showcase of web development capabilities and services. [Add specif
 image: "@images/portfolio/webdev/webdev-1.jpg"
 tags: ["design", "web", "programming"]
 contentType: "simple"
-order: 5075
+order: 6920
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-04-01

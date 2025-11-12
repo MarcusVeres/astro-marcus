@@ -4,7 +4,7 @@ description: "Web design and development project for Brandm3dia. [Add specific p
 image: "@images/portfolio/brandm3dia/main.jpg"
 tags: ["design", "web"]
 contentType: "simple"
-order: 6970
+order: 6940
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-01-01

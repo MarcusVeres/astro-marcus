@@ -4,7 +4,7 @@ description: "Web design and development project for Glam Factor. [Add specific 
 image: "@images/portfolio/glam-factor/main.jpg"
 tags: ["design", "web"]
 contentType: "simple"
-order: 6940
+order: 6969
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-01-01

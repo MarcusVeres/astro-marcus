@@ -5,7 +5,7 @@ image: "@images/portfolio/towit/main.jpg"
 thumbnail: "@images/portfolio/towit/thumbnail.png"
 tags: ["design", "programming", "web"]
 contentType: "simple"
-order: 5000
+order: 4985
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2014-10-01

@@ -4,7 +4,7 @@ description: "Web design and development project for Oil Painting Pros. [Add spe
 image: "@images/portfolio/oil-painting-pros/main.jpg"
 tags: ["design", "web"]
 contentType: "simple"
-order: 5012
+order: 6930
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-01-01

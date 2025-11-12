@@ -4,7 +4,7 @@ description: "Web design and development project for Mall Maverick. [Add specifi
 image: "@images/portfolio/mall-maverick/main.jpg"
 tags: ["design", "web"]
 contentType: "simple"
-order: 5013
+order: 6970
 gridSpan: "default"
 aspectRatio: "golden"
 pubDate: 2024-01-01
